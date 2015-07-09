@@ -40,7 +40,8 @@ A fenti parancs az aktuális könyvtárban készít egy OSGeoLive-doc könyvtár
 ennek **hu** alkönyvtárába lesznek a magyar fordítások. A következőkben Linux
 környezetet feltételezünk, az ott használható parancsokat adjuk meg.
 
-.. note::
+.. note:: Megjegyzés
+
    A szövegeket UTF-8 kódlappal kell szerkeszteni, olyan szövegszerkesztő
    programot kell választani mely alkalmas erre. Linux-on általában ez az
    alapértelmezett kódlap. 
@@ -73,7 +74,7 @@ helyi repozitory könyvtárába vagy annak valamelyik alkönyvtárába::
   git pull
 
 Válassz ki egy fájlt az **en** könyvtárból vagy az **en/overview** vagy az
-**en/quickstart** kkönyvtárból, amit még nem fordítottak le eddig.
+**en/quickstart** könyvtárból, amit még nem fordítottak le eddig.
 Másold át a fájlt a megfelelő **hu** könyvtárba. Például::
 
   cd OSGeoLive-doc/hu/quickstart
@@ -88,9 +89,10 @@ A fájl elején található Author direktívák után írd be magad mint fordít
 
   :Translator: ide írd a neved
 
-Ezután kezd el a fordítást.
+Ezután kezdd el a fordítást.
 
-.. note::
+.. note:: Megjegyzés
+
    Az rST formátumban az üres soroknak és a sorok beugratásának is jelentősége
    van. Először érdemes egy rST oktató anyagot elolvasni 
    (http://docutils.sourceforge.net/docs/user/rst/quickstart.html).
@@ -103,7 +105,7 @@ Néhány tanács a fordításhoz
 * ne használj magyarban szenvedő szerkezetet
 * ne ragaszkodj a szószerinti fordításhoz, a tartalom legyen azonos
 * a gyostalpaló (quickstart) dokumentációknál az adott szoftverben is
-  csináld végig a gyakorlatokat a fálreértések elkerülése végett
+  csináld végig a gyakorlatokat a félreértések elkerülése végett
 * legalább még egyszer olvasd át a fordításodat, mielőtt feltöltöd a 
   GitHub-ra
 * az elkészült fordításokat az átolvasás után minél hamarabb töltsd fel a
@@ -127,7 +129,7 @@ alábbi formátumban tedd meg::
 
   HU: osm_quickstart initial translation
 
-mennyiben más jellegű javítást történt, akkor azt írd le (de angolul),
+amennyiben más jellegű javítást történt, akkor azt írd le (de angolul),
 például::
 
   HU: osm_quickstart review
