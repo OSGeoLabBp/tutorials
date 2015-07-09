@@ -1,2 +1,2 @@
 # tutorials
-Hungarina tutorials for QGIS
+Hungarian tutorials for QGIS

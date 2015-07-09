@@ -72,15 +72,15 @@ GPS és GLONASS navigációs állományok letöltése hasonlóan::
 
 Compact rinex állományok kitömörítése
 =====================================
-A letöltött állományokat általában a unix/linux rendszerek Z tömörítő programjával, és az ú.n. compact rinex formátumban tömörítik. A kitömörítéshez kész programok, szkriptek állnak rendelkezésre. Letölthetők pl. a http://terras.gsi.go.jp/ja/crx2rnx.html oldalról. A számítógépnek, operációs rendszernek megfelelő állományt töltsük le, tömörítsük ki, majd a futtatható programokat megfelelő könyvtárba másoljuk. Linux alatt pl.::
+A letöltött állományokat általában a unix/linux rendszerek Z tömörítő programjával, és az ú.n. compact rinex formátumban tömörítik. A kitömörítéshez kész programok, szkriptek állnak rendelkezésre. Letölthetők pl. a http://terras.gsi.go.jp/ja/crx2rnx.html oldalról. A számítógépnek, operációs rendszernek megfelelő állományt töltsük le, tömörítsük ki! A programokat tartalmazó könyvtárat célszerű hozzáadni a *PATH* környzeti változóhoz. Linux alatt pl.::
 
-    tar -xvzf RNXCMP_4.0.6_Linux_x86_32bit.tar.gz
-    cd RNXCMP_4.0.6_Linux_x86_32bit/bin
-    sudo cp * /usr/bin/
+	tar -xvzf RNXCMP_4.0.6_Linux_x86_32bit.tar.gz
+	cd RNXCMP_4.0.6_Linux_x86_32bit/bin
+	PATH="RNXCMP_4.0.6_Linux_x86_32bit:$PATH"
     
 A szkriptek csh burokhoz készültek. Az én linuxomon (Ubuntu) a *csh*-t manuálisan kellett telepíteni::
 
-    sudo apt-get install csh
+	sudo apt-get install csh
     
 Ezután a GNSS állományok kitömörítése egy csh burokból a következőképpen történik (parancsablakból természetesen)::
 
