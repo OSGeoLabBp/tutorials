@@ -1,7 +1,9 @@
 RTKLIB programmal meghatározott pozíciók és a permanens állomás ismert pozíciójának eltérése
 ============================================================================================
-*szerző: Takács Bence (takacs.bence@epito.bme.hu), 
+*szerző: Takács Bence (takacs.bence@epito.bme.hu),
+
 BME Általános- és Felsőgeodézia Tanszék 
+
 utolsó módosítás: 2016. január 7.*
 
 Az előzőekben permanens állomás nyers méréseit dolgoztuk fel RTKLIB szoftverrel, abszolút helymeghatározásként. Tekintettele arra, hogy a permanens állomások pontot pozíciója ismert, így kiszámolthatjuk az abszolút helymeghatározással meghatározott pozíciók valódi hibáit. Erre most egy awk szkriptet mutatunk be. Az awk linux operációs rendszer alatt elérhető. Windows operációs rendszer alá is telepíthető. Az egyik egyszerű megoldás osgeo4w programcsomag telepítése, majd az awk programot ennek parancssorából tudjuk meghívni.
