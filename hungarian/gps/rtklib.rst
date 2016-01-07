@@ -9,3 +9,9 @@ Először is az RTKLIB szoftvert le kell tölteni, alkalmas könyvtárba (pl. C:
 .. image:: images/rtkpost01.png
 
 A beállításokat hagyjuk későbbre!
+
+Ugyanez a feldolgozás parancssorból is elvégezhető::
+
+  rnx2rtkp -p 0 -o but061.pos bute0060.16o brdc0060.16n
+
+Az rnx2rtkp programot kell a C:\\rtklib_2.4.2\\bin könyvtárból indítani, célszerű korábban a könyvtárat rátenni a windows elérési útjára.
