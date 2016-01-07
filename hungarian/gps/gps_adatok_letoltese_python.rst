@@ -21,18 +21,18 @@ Rövid írásunk végén mutattunk egy shell scriptet, amelynek segítségével 
   year = yesterday.strftime('%Y')
   year2 = yesterday.strftime('%y')
 
-** 2. lépés:** permanens állomásunk neve, IGS ftp szerver címe és a szükséges könyvtár
+** 2. lépés:** permanens állomásunk neve, IGS ftp szerver címe és a szükséges könyvtár::
 
   station='bute'
   ftp_server='ftp://igs.bkg.bund.de/EUREF/obs/'
   url =  ftp_server + year + '/' + doy + '/' + station + doy + '0.' + year2 + 'd.Z'
 
-** 3. lépés:** letöltés wget modul segítségével
+** 3. lépés:** letöltés wget modul segítségével::
 
   import wget
   wget.download(url)
 
-** 4. lépés:** navigációs állományok letöltése
+** 4. lépés:** navigációs állományok letöltése::
 
   station='brdc'
   ftp_server='ftp://igs.bkg.bund.de/EUREF/BRDC/'
