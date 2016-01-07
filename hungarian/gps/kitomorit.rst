@@ -15,7 +15,7 @@ A compact rinex mérési fájl pedig a következő paranccsal tömöríthető ki
 
   CRZ2RNX bute0060.16d
 
-A compact rinex mérési fájl ezután már törölhető:
+A compact rinex mérési fájl ezután már törölhető::
 
   del bute0060.16d
 
