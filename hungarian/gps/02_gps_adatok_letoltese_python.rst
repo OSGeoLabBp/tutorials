@@ -32,6 +32,8 @@ Rövid írásunk végén mutattunk egy shell scriptet, amelynek segítségével 
   import wget
   wget.download(url)
 
+Ne felejtsük el a wget modult letölteni (https://pypi.python.org/pypi/wget) telepíteni, vagy az aktuális munkakönyvtárba bemásolni!
+
 ** 4. lépés:** navigációs állományok letöltése::
 
   station='brdc'
