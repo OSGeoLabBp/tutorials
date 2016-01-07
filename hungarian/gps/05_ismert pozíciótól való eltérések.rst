@@ -65,7 +65,7 @@ Ezután csak az adatszekció sorait fogjuk beolvasni, azaz minden olyan sort, am
   	
   }
 
-Minden beolvasott sorból kivesszük a földrajzi koordinátákat, kiszámoljuk ezek eltérést az ismert koordinátáktól, majd a valódi hibákat átváltjuk topocentrikus rendszerbe. A végén 3 tizedesjegy élesen kiírjuk a hibákat::
+Minden beolvasott sorból kivesszük a földrajzi koordinátákat, kiszámoljuk ezek eltérést az ismert koordinátáktól, majd a valódi hibákat átváltjuk topocentrikus rendszerbe. A végén 3 tizedesjegy élesen kiírjuk a hibákat. Később szükségünk lesz még a dátumra és az idppontra is, ezért ezeket is változatlan formában kiírjuk::
 
   BEGIN {
   #know position of station
@@ -90,7 +90,7 @@ Minden beolvasott sorból kivesszük a földrajzi koordinátákat, kiszámoljuk 
   	de = (la0 - la)*3600*dla;
   	dh = h0 - h;
   	
-  	printf("%.3f %.3f %.3f\n", dn, de, dh);
+  	printf("%s %s %.3f %.3f %.3f\n", $1, $2, dn, de, dh);
   }
 
 A futtatás során a kimenenet érdemes egy fájlba átirányítani::
