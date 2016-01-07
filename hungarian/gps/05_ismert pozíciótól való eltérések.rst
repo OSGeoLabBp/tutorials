@@ -92,3 +92,7 @@ Minden beolvasott sorból kivesszük a földrajzi koordinátákat, kiszámoljuk 
   	
   	printf("%.3f %.3f %.3f\n", dn, de, dh);
   }
+
+A futtatás során a kimenenet érdemes egy fájlba átirányítani::
+
+  awk -f pos_error.awk bute0060.pos > pos_error.txt
