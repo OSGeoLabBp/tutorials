@@ -26,3 +26,41 @@ Az RTKPOST programmal végzett feldolgozás eredményállománya fejlécből és
   2016/01/06 00:02:00.000   47.480948018   19.056518484   177.8703   5   5   4.8482   2.9671   7.9363   2.3166   3.9070   3.9430   0.00    0.0
 
 Az adatrész könnyen olvasható, minden sorban egy mérési epochához tartozó eredmények, azaz dátum, idő, meghatározott koordináták, magasság, meghatározás módja, műholdak száma, középhibák található.
+
+Awk szkriptünk elején adjuk meg permanens állomásunk ismert koordinátáit! Majd számítsuk ki, hogy a földrajzi koordinátákban 1 másodperc eltérés topocentrikus koordinátarendszerben közelítően hány méternek felel meg! A földrajzi szélességben ez 31 méter körüli, a földrajzi hosszúságban ez a szélességtől függ, Budapest területén kb. 21 méter. Meg kell adjuk a Föld sugarának közelítő értékét, valamint a pi konstansra is szükségünk lesz. Az eredményt a print paranccsal irathatjuk ki, erre később nem lesz szükség::
+
+  BEGIN {
+  #know position of station
+  	fi0=47+28/60+51.39769/3600;
+  	la0=19+03/60+23.50719/3600;
+  	h0=180.808;
+  
+  #geographical and topocentric change
+  	R=6380000;
+  	pi=3.1415926535898;
+  	dfi=1/3600*pi/180*R;
+  	dla=dfi*cos(fi0/180*pi);
+  	print dfi, dla
+  }
+
+Tehát ezeket a sorokat másoljuk egy fájlba, a fájl kiterjesztése *.awk* legyen, majd az osgeo4w ablakból a futtatás a következő lesz::
+
+  awk -f pos_error.awk bute0060.pos
+
+Ezután csak az adatszekció sorait fogjuk beolvasni, azaz minden olyan sort, ami nem '%' karakterrel kezdődik::
+
+  BEGIN {
+  #know position of station
+  	fi0=47+28/60+51.39769/3600;
+  	la0=19+03/60+23.50719/3600;
+  	h0=180.808;
+  
+  #geographical and topocentric change
+  	R=6380000;
+  	pi=3.1415926535898;
+  	dfi=1/3600*pi/180*R;
+  	dla=dfi*cos(fi0/180*pi);
+  	print dfi, dla
+  } /^[^%]/ {
+  	
+  }
