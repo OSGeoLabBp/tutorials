@@ -47,7 +47,7 @@ Tehát ezeket a sorokat másoljuk egy fájlba, a fájl kiterjesztése *.awk* leg
 
   awk -f pos_error.awk bute0060.pos
 
-Ezután csak az adatszekció sorait fogjuk beolvasni, azaz minden olyan sort, ami nem '%' karakterrel kezdődik::
+Ezután csak az adatszekció sorait fogjuk beolvasni, azaz minden olyan sort, ami nem '%' karakterrel kezdődik. Ezt a ^[^%] mintával adhatjuk meg::
 
   BEGIN {
   #know position of station
@@ -60,7 +60,35 @@ Ezután csak az adatszekció sorait fogjuk beolvasni, azaz minden olyan sort, am
   	pi=3.1415926535898;
   	dfi=1/3600*pi/180*R;
   	dla=dfi*cos(fi0/180*pi);
-  	print dfi, dla
+  	#print dfi, dla
   } /^[^%]/ {
   	
+  }
+
+Minden beolvasott sorból kivesszük a földrajzi koordinátákat, kiszámoljuk ezek eltérést az ismert koordinátáktól, majd a valódi hibákat átváltjuk topocentrikus rendszerbe. A végén 3 tizedesjegy élesen kiírjuk a hibákat::
+
+  BEGIN {
+  #know position of station
+  	fi0=47+28/60+51.39769/3600;
+  	la0=19+03/60+23.50719/3600;
+  	h0=180.808;
+  
+  #geographical and topocentric change
+  	R=6380000;
+  	pi=3.1415926535898;
+  	dfi=1/3600*pi/180*R;
+  	dla=dfi*cos(fi0/180*pi);
+  #	print dfi, dla
+  } /^[^%]/ {
+  #latitude, longitude and height are 3rd, 4th, 5th elements
+  	fi = $3;
+  	la = $4;
+  	h = $5;
+  
+  #calculate east, north and height error
+  	dn = (fi0 - fi)*3600*dfi;
+  	de = (la0 - la)*3600*dla;
+  	dh = h0 - h;
+  	
+  	printf("%.3f %.3f %.3f\n", dn, de, dh);
   }
