@@ -96,3 +96,12 @@ Minden beolvasott sorból kivesszük a földrajzi koordinátákat, kiszámoljuk 
 A futtatás során a kimenenet érdemes egy fájlba átirányítani::
 
   awk -f pos_error.awk bute0060.pos > pos_error.txt
+
+Az eredményfájl első néhány sora a következő lesz::
+
+  2016/01/06 00:00:00.000 -0.495 1.303 3.756
+  2016/01/06 00:00:30.000 -0.467 1.678 4.112
+  2016/01/06 00:01:00.000 -0.485 1.591 3.930
+  2016/01/06 00:01:30.000 -0.372 1.244 3.564
+  2016/01/06 00:02:00.000 -0.469 0.850 2.938
+
