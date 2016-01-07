@@ -6,8 +6,9 @@ Korábban arról írtunk, hogyan lehet egy permanens állomás nyers mérési ad
 Rövid írásunk végén mutattunk egy shell scriptet, amelynek segítségével linux környezetben parancssorból letölthetünk és kitömöríthetünk mérési és navigációs állományokat. Ebben az írásban mindezt python script segítségével oldjuk meg. A python script egyik előnye, hogy lényegében bármilyen operációs rendszeren futtatható. Python alapismerteket feltételezzük, pythonban teljesen kezdőknek javasoljuk: http://www.geod.bme.hu/gis/python/python_oktato.pdf
 
 **1. lépés:** előző nap dátuma::
-from datetime import date, timedelta
-yesterday = date.today() - timedelta(1)
-doy = yesterday.strftime('%j')
-year = yesterday.strftime('%Y')
-year2 = yesterday.strftime('%y')
+
+  from datetime import date, timedelta
+  yesterday = date.today() - timedelta(1)
+  doy = yesterday.strftime('%j')
+  year = yesterday.strftime('%Y')
+  year2 = yesterday.strftime('%y')
