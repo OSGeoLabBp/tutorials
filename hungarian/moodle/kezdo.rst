@@ -13,17 +13,17 @@ Mi a Moodle
 
 Rövid összefoglaló, mire jó, mire célszerű használni a Moodle-t
 
-#tananyagok közreadása (pdf, html)
-#kommunikáció a diákokkal (fórum - hírek/kérdések)
-#fogalomtár
-#kérdésbank és tesztek
-#feladat beadás (digitális)
-#csevegés?
-#kérdőív (visszajelzések gyűjtése a tárgyról)
-#lecke
-#műhelymunka (diákok egymás közötti értékelése)
-#wiki
-#...
+# tananyagok közreadása (pdf, html)
+# kommunikáció a diákokkal (fórum - hírek/kérdések)
+# fogalomtár
+# kérdésbank és tesztek
+# feladat beadás (digitális)
+# csevegés?
+# kérdőív (visszajelzések gyűjtése a tárgyról)
+# lecke
+# műhelymunka (diákok egymás közötti értékelése)
+# wiki
+# ...
 
 A fentiek közül azok bemutatása, melyre van valamilyen kész anyagunk. Ötletelés arról, hogy melyik tárgyban, 
 mire és hol lenne használható. Pl. a projekt tárgyaknál több alkalmazási lehetőséget látok, mivel nincsenek 
