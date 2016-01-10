@@ -28,3 +28,21 @@ Rövid összefoglaló, mire jó, mire célszerű használni a Moodle-t
 A fentiek közül azok bemutatása, melyre van valamilyen kész anyagunk. Ötletelés arról, hogy melyik tárgyban, 
 mire és hol lenne használható. Pl. a projekt tárgyaknál több alkalmazási lehetőséget látok, mivel nincsenek 
 rendszeres órák, a Moodle lehetne az elsődleges kapcsolattartó felület.
+
+Kérdéstípusok
+-------------
+
+On-line tesztben feltehető kérdések típusainak felsorolása, rövid magyarázat, néhány gondolat, jellemző példák
+
+Teszt létrehozása
+-----------------
+
+Tesztek, kérdések általános jellemzése
+--------------------------------------
+
+- képek kezelése
+- általános visszajelzés, egyes válaszokhoz visszajelzés
+- képletszerkesztő
+- többszöri próbálkozás lehetősége
+- válaszok összekeverése
+- tanulást segítő tesztek, próbálkozások számát, ráfordított időt, elért eredményeket látja a tanár
