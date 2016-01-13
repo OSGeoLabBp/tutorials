@@ -7,7 +7,7 @@ Rövid írásunk végén mutattunk egy shell scriptet, amelynek segítségével 
 
 A kitömörítéshez szükséges programok windows operációs rendszer alá a következő `címről <http://terras.gsi.go.jp/ja/crx2rnx/RNXCMP_4.0.6_Windows_bcc.zip>`_ tölthetők le. Kitömörítés után célszerű a batch fájlokat és futtatható programokat tartalmazó könyvtárat hozzáadni a windows PATH rendszerváltozójához, így a compact rinex fájlok kitömörítése bármilyen könyvtárban elvégezhető. 
 
-Célszerű a Z tömörítésű állományokat először kitömöríteni. Erre is kínálnak lehetőséget a fenti címről letöltött programok, de nekem jobban bevállt a gzip tömörítő program használata. Persze ezt is telepíteni kell és az elérési útvonalra (PATH) rátenni. Szóval parancssorból::
+Célszerű a Z tömörítésű állományokat először kitömöríteni. Erre is kínálnak lehetőséget a fenti címről letöltött programok, de nekem jobban bevállt a `gzip <http://www.gzip.org/>`_ tömörítő program használata. Persze ezt is telepíteni kell és az elérési útvonalra (PATH) rátenni. Szóval parancssorból::
 
   gzip -d bute0060.16d.Z
 
