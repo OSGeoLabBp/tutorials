@@ -1,6 +1,6 @@
 Compact rinex fájlok kitömörítése windows alatt
 ===============================================
-*szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék. utolsó módosítás: 2015. június 10.*
+*szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék. utolsó módosítás: 2016. január 13.*
 
 Korábban arról írtunk, hogyan lehet egy permanens állomás nyers mérési adatait `letölteni <https://github.com/OSGeoLabBp/tutorials/blob/master/hungarian/gps/01_gps_adatok_letoltese.rst>`_.
 Rövid írásunk végén mutattunk egy shell scriptet, amelynek segítségével linux környezetben parancssorból letölthetünk és kitömöríthetünk mérési és navigációs állományokat. Ebben a rövid tanulmányban a compact rinex állományok windows operációs rendszer alatt, parancssorból történő kitömörítését mutatjuk be.
