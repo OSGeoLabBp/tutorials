@@ -65,7 +65,7 @@ Ezután csak az adatszekció sorait fogjuk beolvasni, azaz minden olyan sort, am
   	
   }
 
-Minden beolvasott sorból kivesszük a földrajzi koordinátákat, kiszámoljuk ezek eltérést az ismert koordinátáktól, majd a valódi hibákat átváltjuk topocentrikus rendszerbe. A végén 3 tizedesjegy élesen kiírjuk a hibákat. Később szükségünk lesz még a dátumra és az idppontra is, ezért ezeket is változatlan formában kiírjuk::
+Minden beolvasott sorból kivesszük a földrajzi koordinátákat, kiszámoljuk ezek eltérést az ismert koordinátáktól, majd a valódi hibákat átváltjuk topocentrikus rendszerbe. A végén 3 tizedesjegy élesen kiírjuk a hibákat. Később szükségünk lesz még a dátumra és az idpőontra is, ezért ezeket is változatlan formában kiírjuk::
 
   BEGIN {
   #know position of station
