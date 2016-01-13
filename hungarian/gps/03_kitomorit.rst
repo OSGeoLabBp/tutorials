@@ -23,3 +23,56 @@ A navigációs állományokat elegendő a gzip programmal kitömöríteni::
 
   gzip -d brdc0060.16n.Z
   gzip -d brdc0060.16g.Z
+
+A kitömörítés lépéseit is hozzátehetjük a `python <https://github.com/OSGeoLabBp/tutorials/blob/master/hungarian/gps/02_gps_adatok_letoltese_python.rst>`_ szkriptünkhöz::
+
+  import os
+  cmd = 'gzip -df ' + station + doy + '0.' + year2 + 'd.Z'
+  os.system(cmd)
+  cmd = 'CRZ2RNX ' + station + doy + '0.' + year2 + 'd'
+  os.system(cmd)
+  
+Egyben a python szkript::
+
+  #!/usr/bin/python
+  # -*- coding: UTF-8 -*-
+  """ download and uncompress GPS data from IGS station
+  
+  """
+  #get date
+  from datetime import date, timedelta
+  yesterday = date.today() - timedelta(1)
+  doy = yesterday.strftime('%j')
+  year = yesterday.strftime('%Y')
+  year2 = yesterday.strftime('%y')
+  
+  #download z compressed compact rinex observation file
+  station='bute'
+  ftp_server='ftp://igs.bkg.bund.de/EUREF/obs/'
+  url =  ftp_server + year + '/' + doy + '/' + station + doy + '0.' + year2 + 'd.Z'
+  import wget
+  wget.download(url)
+  
+  #uncompress observation file
+  import os
+  cmd = 'gzip -df ' + station + doy + '0.' + year2 + 'd.Z'
+  os.system(cmd)
+  cmd = 'CRZ2RNX ' + station + doy + '0.' + year2 + 'd'
+  os.system(cmd)
+  cmd = 'del ' + station + doy + '0.' + year2 + 'd'
+  os.system(cmd)
+  
+  #get and uncompress GPS and GLONASS navigation files
+  station='brdc'
+  ftp_server='ftp://igs.bkg.bund.de/EUREF/BRDC/'
+  url =  ftp_server + year + '/' + doy + '/' + station + doy + '0.' + year2 + 'n.Z'
+  wget.download(url)
+  cmd = 'gzip -df ' + station + doy + '0.' + year2 + 'n.Z'
+  os.system(cmd)
+  url =  ftp_server + year + '/' + doy + '/' + station + doy + '0.' + year2 + 'g.Z'
+  wget.download(url)
+  cmd = 'gzip -df ' + station + doy + '0.' + year2 + 'g.Z'
+  os.system(cmd)
+
+
+
