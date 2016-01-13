@@ -8,7 +8,7 @@ Először is az RTKLIB szoftvert le kell tölteni, alkalmas könyvtárba (pl. C:
 
 .. image:: images/rtkpost01.png
 
-A beállításokat hagyjuk későbbre!
+A szoftver további beállításait egyelőre hagyjuk későbbre!
 
 Ugyanez a feldolgozás parancssorból is elvégezhető::
 
