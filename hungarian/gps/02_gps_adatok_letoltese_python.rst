@@ -4,7 +4,7 @@ Permanens GPS állomás adatainak letöltése IGS ftp szerverről, python script
 BME Általános- és Felsőgeodézia Tanszék 
 utolsó módosítás: 2016. január 7.*
 
-Korábban arról írtunk, hogyan lehet egy permanens állomás nyers mérési adatait letölteni: https://github.com/OSGeoLabBp/tutorials/blob/master/hungarian/gps/gps_adatok_letoltese.rst.
+Korábban arról írtunk, hogyan lehet egy permanens állomás nyers mérési adatait `letölteni <https://github.com/OSGeoLabBp/tutorials/blob/master/hungarian/gps/gps_adatok_letoltese.rst>`_.
 Rövid írásunk végén mutattunk egy shell scriptet, amelynek segítségével linux környezetben parancssorból letölthetünk és kitömöríthetünk mérési és navigációs állományokat. Ebben az írásban mindezt python script segítségével oldjuk meg. A python script egyik előnye, hogy lényegében bármilyen operációs rendszeren futtatható. A megértéshez python alapismerteket feltételezzük. Pythonban teljesen kezdőknek javasoljuk: http://www.geod.bme.hu/gis/python/python_oktato.pdf.
 
 **0. lépés:** python scriptünk fejléce::
