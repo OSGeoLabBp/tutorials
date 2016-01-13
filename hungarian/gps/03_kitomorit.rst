@@ -9,20 +9,20 @@ A kitömörítéshez szükséges programok windows operációs rendszer alá a k
 
 Célszerű a Z tömörítésű állományokat először kitömöríteni. Erre is kínálnak lehetőséget a fenti címről letöltött programok, de nekem jobban bevállt a `gzip <http://www.gzip.org/>`_ tömörítő program használata. Persze ezt is telepíteni kell és az elérési útvonalra (PATH) rátenni. Szóval parancssorból::
 
-  gzip -d bute0060.16d.Z
+  gzip -d bute1520.15d.Z
 
 A compact rinex mérési fájl pedig a következő paranccsal tömöríthető ki::
 
-  CRZ2RNX bute0060.16d
+  CRZ2RNX bute1520.15d
 
 A compact rinex mérési fájl ezután már törölhető::
 
-  del bute0060.16d
+  del bute1520.15d
 
 A navigációs állományokat elegendő a gzip programmal kitömöríteni::
 
-  gzip -d brdc0060.16n.Z
-  gzip -d brdc0060.16g.Z
+  gzip -d brdc1520.15n.Z
+  gzip -d brdc1520.15g.Z
 
 A kitömörítés lépéseit is hozzátehetjük a `python <https://github.com/OSGeoLabBp/tutorials/blob/master/hungarian/gps/02_gps_adatok_letoltese_python.rst>`_ szkriptünkhöz::
 
@@ -32,7 +32,7 @@ A kitömörítés lépéseit is hozzátehetjük a `python <https://github.com/OS
   cmd = 'CRZ2RNX ' + station + doy + '0.' + year2 + 'd'
   os.system(cmd)
   
-Egyben a python szkript::
+Egyben a python szkript, ami veszi a tegnapi nap dátumát és letölti a BME permanens állomásának mérési adatait, navigációs állományokat, majd mindezeket kitömöríti::
 
   #!/usr/bin/python
   # -*- coding: UTF-8 -*-
