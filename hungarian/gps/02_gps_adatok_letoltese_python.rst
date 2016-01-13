@@ -34,7 +34,7 @@ Rövid írásunk végén mutattunk egy shell scriptet, amelynek segítségével 
   import wget
   wget.download(url)
 
-Ne felejtsük el a wget modult `letölteni <https://pypi.python.org/pypi/wget>`_ és telepíteni, vagy az aktuális munkakönyvtárba bemásolni!
+Ne felejtsük el a `wget <https://pypi.python.org/pypi/wget>`_ modult letölteni és telepíteni, vagy az aktuális munkakönyvtárba bemásolni!
 
 **4. lépés:** navigációs állományok letöltése::
 
