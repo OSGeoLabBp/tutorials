@@ -25,6 +25,7 @@ Rövid összefoglaló, mire jó, mire célszerű használni a Moodle-t
 - lecke
 - műhelymunka (diákok egymás közötti értékelése)
 - wiki
+- képletek szerkesztése (Tex notation)
 - ...
 
 A fentiek közül azok bemutatása, melyre van valamilyen kész anyagunk. Ötletelés arról, hogy melyik tárgyban, 
