@@ -35,7 +35,7 @@ rendszeres órák, a Moodle lehetne az elsődleges kapcsolattartó felület.
 Kérdéstípusok
 -------------
 
-On-line tesztben feltehető kérdések típusainak felsorolása, rövid magyarázat, néhány gondolat, jellemző példák.
+On-line tesztben feltehető kérdések típusainak felsorolása, rövid magyarázat, néhány gondolat, jellemző példák. Inkább jellemző példák, mint lépésről, lépésre bemutató.
 
 Teszt létrehozása
 -----------------
