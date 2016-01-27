@@ -1,5 +1,5 @@
 Observation processing using GAWK and Octave
-===========================================
+============================================
 
     :Authors: **Zoltan Siki** <siki.zoltan@epito.bme.hu>
     :Version: 1.0
@@ -24,76 +24,63 @@ incompatibilities between Octave and Matlab in the following table.
 
 +--------------------------+---------------------+---------------------+
 | **Operation**            | **Octave**          | **Matlab**          |
-|                          |                     |                     |
 +==========================+=====================+=====================+
 | Denial                   | !                   | ~                   |
 |                          | *or*                |                     |
 |                          | ~                   |                     |
-|                          |                     |                     |
 +--------------------------+---------------------+---------------------+
 | Not equal                | !=                  | ~=                  |
 |                          | *or*                |                     |
-|                          |                     |                     |
 |                          | ~=                  |                     |
-|                          |                     |                     |
 +--------------------------+---------------------+---------------------+
 | Increment                | i++                 | i = i + 1           |
 |                          | *or*                |                     |
 |                          | i += 1              |                     |
 |                          | *or*                |                     |
 |                          | i = i + 1           |                     |
-|                          |                     |                     |
 +--------------------------+---------------------+---------------------+
 | Power                    | ^                   | ^                   |
 |                          | *or*                |                     |
 |                          | **                  |                     |
-|                          |                     |                     |
 +--------------------------+---------------------+---------------------+
 | Standard output          | printf('Hello')     | fprintf('Hello')    |
 |                          | *or*                |                     |
 |                          | fprintf('Hello')    |                     |
-|                          |                     |                     |
 +--------------------------+---------------------+---------------------+
 | String constants         | "Hello"             | 'Hello'             |
 |                          | *or*                |                     |
 |                          | 'Hello'             |                     |
-|                          |                     |                     |
 +--------------------------+---------------------+---------------------+
 | String search            | index(str, sample)  | strfind(str, sample)|
 |                          | *or*                |                     |
 |                          | strfind(str, sample)|                     |
 |                          | *or*                |                     |
 |                          | findstr(str, sample)|                     |
-|                          |                     |                     |
 +--------------------------+---------------------+---------------------+
 | End of code block        | end                 | end                 |
 |                          | *or*                |                     |
 |                          | endif               |                     |
 |                          | endwhile            |                     |
 |                          | endfunction         |                     |
-|                          |                     |                     |
 +--------------------------+---------------------+---------------------+
-| Comment                  | #                   | %                   |
+| Comment                  | \#                  | %                   |
 |                          | *or*                |                     |
 |                          | %                   |                     |
-|                          |                     |                     |
 +--------------------------+---------------------+---------------------+
-| Comment block            | %{                  | %{                  |
+| Comment block            | \%\{                | \%\{                |
 |                          | ...                 | ...                 |
-|                          | %}                  | %}                  |
+|                          | %\}                 | %\}                 |
 |                          | *or*                |                     |
-|                          | #{                  |                     |
+|                          | \#{                 |                     |
 |                          | ...                 |                     |
-|                          | #}                  |                     |
-|                          |                     |                     |
+|                          | \#}                 |                     |
 +--------------------------+---------------------+---------------------+
 | Line continuation        | ...                 | ...                 |
 | (at the end of line)     | *or*                |                     |
-|                          | \                   |                     |
-|                          |                     |                     |
+|                          | \\                  |                     |
 +--------------------------+---------------------+---------------------+
 
-IF you would like to use a script in Matlab, too use Octave with the
+If you would like to use a script in Matlab, too use Octave with the
 *--traditional* command line switch. This way you will get warnings in case of
 Maplab incompatible structures.
 
