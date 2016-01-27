@@ -126,7 +126,7 @@ Third step (A variant)
 
 Direct read of text (CSV file) into QGIS.
 
-|10000000000002BE000002E5E43CE5A3_png|
+|leica_gsi_1_png|
 
 Third step (B variant)
 ----------------------
@@ -184,18 +184,18 @@ Using pipes to connect commands
 ..code::
     grep " 8[123].\{4\}\+" labor.gsi | gawk -f gsi3coo_2.awk labor.gsi | gawk -f coo2dxf.awk > labor.dxf
 
-|10000000000002E2000002FC822766A9_png|
+|leica_gsi_1_png|
 
 .. note::
     Development tipp
     iLoad coordinates from Trimble M5, SurvCE RW5 formats 
 
-.. |10000000000002E2000002FC822766A9_png| image:: images/10000000000002E2000002FC822766A9.png
+.. |leica_gsi_1_png| image:: images/leica_gsi_1.png
     :width: 170mm
     :height: 175.98mm
 
 
-.. |10000000000002BE000002E5E43CE5A3_png| image:: images/10000000000002BE000002E5E43CE5A3.png
+.. |leica_gsi_2_png| image:: images/leica_gsi_2.png
     :width: 170mm
     :height: 179.44mm
 
