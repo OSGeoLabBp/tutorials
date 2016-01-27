@@ -187,8 +187,7 @@ Using pipes to connect commands
 |leica_gsi_2_png|
 
 .. note::
-    *Development tipps*: 
-    
+    *Development tipps*:  
     Load coordinates from Trimble M5, SurvCE RW5 formats 
 
 .. |leica_gsi_1_png| image:: images/leica_gsi_1.png
