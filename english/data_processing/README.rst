@@ -107,20 +107,3 @@ Maplab incompatible structures.
 *   extending Octave/Matlab knowlage
 *   vectorization
 
-.. toctree::
-    :maxdepth: 2
-
-    leica_gsi
-    leica_dna03
-    gpx
-    nmea
-    monitoring_data
-    prism
-    lidar
-    one_point
-    level_net
-    propagation_of_error
-    coord_list
-    mnea_stat
-    polinom
-    pseudo_inverz
