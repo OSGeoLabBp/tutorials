@@ -184,11 +184,11 @@ Using pipes to connect commands
 ..code::
     grep " 8[123].\{4\}\+" labor.gsi | gawk -f gsi3coo_2.awk labor.gsi | gawk -f coo2dxf.awk > labor.dxf
 
-|leica_gsi_1_png|
+|leica_gsi_2_png|
 
 .. note::
-    Development tipp
-    iLoad coordinates from Trimble M5, SurvCE RW5 formats 
+    Development tipp: 
+    Load coordinates from Trimble M5, SurvCE RW5 formats 
 
 .. |leica_gsi_1_png| image:: images/leica_gsi_1.png
     :width: 170mm
