@@ -84,7 +84,7 @@ If you would like to use a script in Matlab, too use Octave with the
 *--traditional* command line switch. This way you will get warnings in case of
 Maplab incompatible structures.
 
-*Knowlage covered*
+*Topics covered*
 
 *   using pipelines, redirecting standard input and output (Unix/DOS)
 *   using simple text processing utilities (grep, gawk, etc.)
@@ -94,3 +94,4 @@ Maplab incompatible structures.
 *   extending Octave/Matlab knowlage
 *   vectorization
 
+`Load coordinates from Leica GSI into QGIS or AutoCAD <leica_gsi.rst>`_
