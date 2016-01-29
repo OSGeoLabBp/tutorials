@@ -94,3 +94,7 @@ Maplab incompatible structures.
 *   extending Octave/Matlab knowlage
 *   vectorization
 
+Table of contents
+-----------------
+
+`Load coordinates from Leica GSI into QGIS or AutoCAD <leica_gsi.rst>`_
