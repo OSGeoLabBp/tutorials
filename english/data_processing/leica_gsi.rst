@@ -43,7 +43,7 @@ The *>* will redirect the standard output to the file *labor1.gsi*.
 Second step (A variant)
 -----------------------
 
-Write coordinates into simple text file using gawk.
+Write coordinates into simple text file using gawk (gsi2coo.awk).
 
 .. code:: gawk
 
@@ -129,7 +129,8 @@ Octave function to convert GSI coordinates to real value (val.m)
 Third step (A variant)
 ----------------------
 
-Direct read of text (CSV file) into QGIS.
+Direct read of text (CSV file) into QGIS. *Layer/Add delimited text* from the 
+menu and *Save as...* from the layer's popup menu.
 
 |leica_gsi_1_png|
 
@@ -153,7 +154,7 @@ Generating AutoCAD script (coo2scr.awk)
 Thirs step (C variant)
 ----------------------
 
-Creating AutoCAD DXF file
+Creating AutoCAD DXF file.
 
 .. code:: gawk
 
@@ -165,16 +166,15 @@ Creating AutoCAD DXF file
         print "ENTITIES"
     }
     { # for each input line
-        # point id text
-        print "  0\nTEXT\n  8\nPTEXT\n 10";
-        print $2 + 0.1;
+        print "  0\nTEXT\n  8\nPTEXT\n 10"; # point id text & layer
+        print $2 + 0.1;   # text position
         print " 20";
         print $3 - 0.25;
         print " 30\n0.00\n 40\n0.5\n  1";
         print $1
         print " 50\n0.00"
-        print "  0\nPOINT\n  8\nPOINT";
-        print " 10";
+        print "  0\nPOINT\n  8\nPOINT";  # point entity & layer
+        print " 10";  # position
         print $2;
         print " 20";
         print $3;
@@ -186,7 +186,7 @@ Creating AutoCAD DXF file
         print "  0\nENDSEC\n  0\nEOF"
     }
 
-Using pipes to connect commands
+Using pipes to connect commands to do evething in one step.
 
 .. code:: bash
 
