@@ -50,7 +50,7 @@ The solution details can be found at http://math.stackexchange.com/questions/894
 
 *Mathematical background*
 
-The circuscribed circle through the three point is a section of the sphere.
+The circuscribed circle through the three point is a section of the sphere. There are two possible solutions.
 
 *Octave solution* (sphere3p.m)
 
