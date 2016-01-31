@@ -90,7 +90,7 @@ Monitoring data processing
 
 .. note:: *Fejlesztési javaslat*:
 
-    Display all points section measured at the same time in X-Z.
+    Display all points measured at the same time in X-Z section .
 
 .. |chart_png| image:: images/chart.png
     :width: 148.7mm
