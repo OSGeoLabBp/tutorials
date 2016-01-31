@@ -15,6 +15,7 @@ Load coordinates from Leica GSI into AutoCAD or QGIS (fix field widths)
 Sample data:
 
 .. code::
+
     \*110001+0000000000000101 81..10+0000000000119197 82..10+0000000000118827 83..10+0000000000120014
     \*110002+0000000000000102 81..10+0000000000119192 82..10+0000000000123834 83..10+0000000000120019
     \*110003+0000000000000103 81..10+0000000000119191 82..10+0000000000130036 83..10+0000000000120000
@@ -30,6 +31,7 @@ First step
 Filter lines with grep for codes 81/82/83 (e.g. east, north and elevation).
 
 .. code:: bash
+
     grep " 8[123].\{4\}\+" labor.gsi > labor1.gsi
 
 What is " 8[123].\{4\}\+"? It is a regular expression (regexp), it defines
@@ -77,6 +79,7 @@ Second step (B variant)
 Write coordinates into simple text file using octave (gsi2coo.m)
 
 .. code:: octave
+
     % Leica GSI coordinate loader
     % input file
     f = fopen("labor.gsi", "r");
@@ -115,6 +118,7 @@ Write coordinates into simple text file using octave (gsi2coo.m)
 Octave function to convert GSI coordinates to real value (val.m)
 
 .. code::
+
     function w = val(f)
         dd = [1000, 1000 * 3.28, 0, 0, 0, 0, 10000, 10000 * 3.28, 100000];
         d = dd(str2num(substr(f, 6, 1))+1);
@@ -134,6 +138,7 @@ Third step (B variant)
 Generating AutoCAD script (coo2scr.awk)
 
 .. code:: gawk
+
     BEGIN { FS="[ ]";  # field separator is space
     }
     { # for each line of input file
@@ -150,6 +155,7 @@ Thirs step (C variant)
 Creating AutoCAD DXF file
 
 .. code:: gawk
+
     BEGIN { FS="[ ]";
         # minimal DXF header
         print "  0";
@@ -182,11 +188,13 @@ Creating AutoCAD DXF file
 Using pipes to connect commands
 
 ..code::
+
     grep " 8[123].\{4\}\+" labor.gsi | gawk -f gsi3coo_2.awk labor.gsi | gawk -f coo2dxf.awk > labor.dxf
 
 |leica_gsi_2_png|
 
 .. note::
+
     *Development tipps*:  
     Load coordinates from Trimble M5, SurvCE RW5 formats 
 
