@@ -23,6 +23,7 @@ Solutions
 #.  Let's use ogr2ogr from gdal utilities package from the command line
 
 .. code:: bash
+
     ogr2ogr -f KML god.kml god.gpx
 
 Let's compare the three solutions if we have 500 GPX files to convert.
@@ -34,12 +35,14 @@ one step.
 *Windows*
 
 .. code:: bat
+
     for %%A IN (*.gpx) do ogr2ogr -f KML "%%A".kml "%%A"
 
 
 *Linux*
 
 ..code:: bash
+
     for i in *.gpx; do ogr2ogr -f KML ${i}.kml ${i}; done
 
 .. |QGISGPX_png| image:: images/QGISGPX.png
