@@ -22,7 +22,7 @@ interest. Three points are enough is the rod length is known.
 
 *matemetical backgroud*
 
-r :sup: `2` = (x - x : sub: `0`) :sup: `2` + (y - y :sub: `2`) : sup: `2` + (z - z :sub: `2`) :sup: `2`
+r^2 = (x - x0)^2 + (y - y0)^2 + (z - z0)^2
 
 The solution details can be found at http://math.stackexchange.com/questions/894794/sphere-equation-given-4-points
 
