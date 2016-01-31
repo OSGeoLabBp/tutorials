@@ -12,6 +12,7 @@ Processing GSI file got from Leica DNA03 digital level
 Sample data
 
 .. code::
+
     *410001+00000000?......2         Vonal kezdeti és mérési mód 1 = BF 2 = BFFB
     *110002+000000000000000G 83..58+0000000000000000        Kezdőpont és magasság
     *110003+000000000000000G 32...8+0000000001824936 331.08+0000000000159977 390...+0000000000000002 391.08+0000000000000000
@@ -27,12 +28,14 @@ Sample data
     *410013+00000000?......2
     *110014+000000000000000F 83..08-0000000000046698
     *110015+000000000000000F 32...8+0000000003144885 331.08+0000000000177976 390...+0000000000000002 391.08+0000000000000000
-    *110016+0000000000000002 32...8+0000000003145350 332.08+0000000000109381 390...+0000000000000002 391.08+0000000000000000
+    *110016+0000000000000002 32...8+0000000003145350 332.08+0000000000109381 390...+0000000000000002 391.08+0000000000000000*
+    ...
 
-Solution in Octave
-------------------
+Solution in Octave (gsi.m)
+--------------------------
 
 .. code:: octave
+
     % Leica DNA03 GSI file loader
     % input file
     f = fopen("test.gsi", "r");
@@ -95,7 +98,7 @@ Solution in Octave
     endif
     fclose(f);
 
-*val függvény*
+*val függvény* (val.m)
 
 .. code:: octave
 
@@ -111,16 +114,19 @@ Copy the gsi.m and val.m file into the same folder where the GSI file is.
 
 *Start the program from Octave*:
 
-octave:1>cd /a_gsi/elérési/utja
+.. code:: octave
 
+octave:1>cd /path/to/gsi/file
 octave:2>gsi
 
 *Start the program from a shell/command window*:
 
+.. code:: bash
+
 octave gsi.m
 
 .. note::
-   *Development tipps*  
 
-Statistical analysis of the staff readings in case of BFFB readings (instrument stability)
+    *Development tipps*  
+    Statistical analysis of the staff readings in case of BFFB readings (instrument stability)
 

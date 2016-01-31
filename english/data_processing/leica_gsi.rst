@@ -151,10 +151,10 @@ Generating AutoCAD script (coo2scr.awk)
         printf "POINT %.3f,%.3f,%.3f\n", $2, $3, $4;  # point symbol
     }
 
-Thirs step (C variant)
+Third step (C variant)
 ----------------------
 
-Creating AutoCAD DXF file.
+Creating AutoCAD DXF file (coo2dxf.awk).
 
 .. code:: gawk
 
