@@ -97,11 +97,11 @@ Maplab incompatible structures.
 Table of contents
 -----------------
 
-# `Load coordinates from Leica GSI into QGIS or AutoCAD <leica_gsi.rst>`_
-# `Processing GSI file got from Leica DNA03 digital level <leica_dna03.rst>`_
-# `Converting GPX to KML <gpx.rst>`_
-# `NMEA message processing and display <nmea.rst>`_
-# `Processing observations for a moving point <one_point.rst>`_
+#. `Load coordinates from Leica GSI into QGIS or AutoCAD <leica_gsi.rst>`_
+#. `Processing GSI file got from Leica DNA03 digital level <leica_dna03.rst>`_
+#. `Converting GPX to KML <gpx.rst>`_
+#. `NMEA message processing and display <nmea.rst>`_
+#. `Processing observations for a moving point <one_point.rst>`_
 
 
 
