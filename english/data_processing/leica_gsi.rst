@@ -187,7 +187,7 @@ Creating AutoCAD DXF file
 
 Using pipes to connect commands
 
-..code::
+.. code:: bash
 
     grep " 8[123].\{4\}\+" labor.gsi | gawk -f gsi3coo_2.awk labor.gsi | gawk -f coo2dxf.awk > labor.dxf
 
