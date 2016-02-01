@@ -31,7 +31,7 @@ The solution details can be found at http://math.stackexchange.com/questions/894
 .. code:: octave
 
     % fit sphere through 4 non coplanar points
-    points = dlmread('sphere4p.txt',',');
+    points = dlmread('sphere4p.txt',',');   % separator is comma
     % first four points are used
     M=[points(1,1)^2+points(1,2)^2+points(1,3)^2,points(1,1),points(1,2),points(1,3),1;
        points(2,1)^2+points(2,2)^2+points(2,3)^2,points(2,1),points(2,2),points(2,3),1;
