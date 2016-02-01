@@ -1,11 +1,11 @@
-Measure point with slope pris rod
-=================================
+Measure point with slope prism rod
+==================================
 
-To measure a point on a vertical plan with a total station can be done by
+To measure a point for example on a vertical plan with a total station can be done by
 measuring three or four different points fixing the rod end at the point of 
-interest. Three points are enough is the rod length is known.
+interest. Three points are enough if the rod length is known.
 
-*Keywords:* phere fitting, determinant, submatrix
+*Keywords:* sphere fitting, determinant, submatrix
 
 *Data file*: sphere4.txt
 
@@ -20,7 +20,7 @@ interest. Three points are enough is the rod length is known.
     -2,0,0
     0,0,2
 
-*matemetical backgroud*
+*matematical backgroud*
 
 r^2 = (x - x0)^2 + (y - y0)^2 + (z - z0)^2
 
@@ -37,7 +37,7 @@ The solution details can be found at http://math.stackexchange.com/questions/894
        points(2,1)^2+points(2,2)^2+points(2,3)^2,points(2,1),points(2,2),points(2,3),1;
        points(3,1)^2+points(3,2)^2+points(3,3)^2,points(3,1),points(3,2),points(3,3),1;
        points(4,1)^2+points(4,2)^2+points(4,3)^2,points(4,1),points(4,2),points(4,3),1];
-    dM11 = det(M(:,[2,3,4,5]));
+    dM11 = det(M(:,[2,3,4,5]));    % determinants of different submatrices
     dM12 = det(M(:,[1,3,4,5]));
     dM13 = det(M(:,[1,2,4,5]));
     dM14 = det(M(:,[1,2,3,5]));
@@ -50,7 +50,7 @@ The solution details can be found at http://math.stackexchange.com/questions/894
 
 *Mathematical background*
 
-The circuscribed circle through the three point is a section of the sphere. There are two possible solutions.
+The circuscribed circle through the three points is a section of the sphere. There are two possible solutions.
 
 *Octave solution* (sphere3p.m)
 
