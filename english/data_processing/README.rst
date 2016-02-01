@@ -102,6 +102,7 @@ Table of contents
 #. `Converting GPX to KML <gpx.rst>`_
 #. `NMEA message processing and display <nmea.rst>`_
 #. `Processing observations for a moving point <one_point.rst>`_
+#. `Measure point with slope prism rod <sphere.rst>`_
 
 
 
