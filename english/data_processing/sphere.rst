@@ -45,7 +45,7 @@ The solution details can be found at http://math.stackexchange.com/questions/894
     x0 = 0.5 * dM12 / dM11;
     y0 =-0.5 * dM13 / dM11;
     z0 = 0.5 * dM14 / dM11;
-    r = sqrt(x0^2 + y0^2 + z0^2 – dM15/dM11);
+    r = sqrt(x0^2 + y0^2 + z0^2 - dM15/dM11);
     printf('x0=%.3f y0=%.3f z0=%.3f r=%.3f\n', x0, y0, z0, r);
 
 *Mathematical background*
