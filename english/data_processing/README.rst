@@ -19,7 +19,7 @@ Matlab.
 Samples mostly concern on observation data/file processing.
 
 Samples were tested on Linux but should run on a Windows box, too.
-Octave .m files may need some editing to run with Maplab. We some up some
+Octave .m files may need some editing to run with Matlab. We some up some
 incompatibilities between Octave and Matlab in the following table.
 
 +--------------------------+---------------------+---------------------+
@@ -82,7 +82,7 @@ incompatibilities between Octave and Matlab in the following table.
 
 If you would like to use a script in Matlab, too use Octave with the
 *--traditional* command line switch. This way you will get warnings in case of
-Maplab incompatible structures.
+Matlab incompatible structures.
 
 *Topics covered*
 
