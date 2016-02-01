@@ -48,6 +48,13 @@ The solution details can be found at http://math.stackexchange.com/questions/894
     r = sqrt(x0^2 + y0^2 + z0^2 - dM15/dM11);
     printf('x0=%.3f y0=%.3f z0=%.3f r=%.3f\n', x0, y0, z0, r);
 
+*Result*:
+
+.. code::
+
+    octave sphere4p.m
+    x0=1.357 y0=0.214 z0=-2.214 r=6.840
+
 *Mathematical background*
 
 The circuscribed circle through the three points is a section of the sphere. There are two possible solutions.
