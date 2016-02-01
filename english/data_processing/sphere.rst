@@ -11,7 +11,7 @@ interest. Three points are enough if the rod length is known.
 
 *Program files*: sphere4p.m, sphere3p.m
 
-*Sample data (x, y, z), for sphere3p.m the first three points are used*
+*Sample data (sphere4.txt), (x, y, z), for sphere3p.m the first three points are used*
 
 .. code:: text
 
