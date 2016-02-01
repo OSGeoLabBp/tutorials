@@ -31,7 +31,7 @@ The solution details can be found at http://math.stackexchange.com/questions/894
 .. code:: octave
 
     % fit sphere through 4 non coplanar points
-    points = dlmread('sphere4p.txt',",");
+    points = dlmread('sphere4p.txt',',');
     % first four points are used
     M=[points(1,1)^2+points(1,2)^2+points(1,3)^2,points(1,1),points(1,2),points(1,3),1;
        points(2,1)^2+points(2,2)^2+points(2,3)^2,points(2,1),points(2,2),points(2,3),1;
@@ -46,7 +46,7 @@ The solution details can be found at http://math.stackexchange.com/questions/894
     y0 =-0.5 * dM13 / dM11;
     z0 = 0.5 * dM14 / dM11;
     r = sqrt(x0^2 + y0^2 + z0^2 – dM15/dM11);
-    printf("x0=%.3f y0=%.3f z0=%.3f r=%.3f\n", x0, y0, z0, r);
+    printf('x0=%.3f y0=%.3f z0=%.3f r=%.3f\n', x0, y0, z0, r);
 
 *Mathematical background*
 
@@ -58,7 +58,7 @@ The circuscribed circle through the three points is a section of the sphere. The
 
     % fit sphere through 3 points with known radius
     r = 6.840;    % fixed radius update as needed
-    points = dlmread("sphere4p.txt",',');   % separator is comma
+    points = dlmread('sphere4p.txt',',');   % separator is comma
     % first three points are used
     mp12 = (points(1,:) + points(2,:)) ./ 2;   % midpoint between point 1 and 2
     mp13 = (points(1,:) + points(3,:)) ./ 2;
@@ -83,6 +83,6 @@ The circuscribed circle through the three points is a section of the sphere. The
     % center of two spheres
     cs1 = cp + p123(1:3) .* dcc;
     cs2 = cp - p123(1:3) .* dcc;
-    printf("First solution: x0=%.3f y0=%.3f z0=%.3f\n", cs1);
-    printf("Second solution: x0=%.3f y0=%.3f z0=%.3f\n", cs2);
+    printf('First solution: x0=%.3f y0=%.3f z0=%.3f\n', cs1);
+    printf('Second solution: x0=%.3f y0=%.3f z0=%.3f\n', cs2);
 
