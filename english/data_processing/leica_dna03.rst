@@ -38,9 +38,9 @@ Solution in Octave (gsi.m)
 
     % Leica DNA03 GSI file loader
     % input file
-    f = fopen("test.gsi", "r");
+    f = fopen('test.gsi', 'r');
     lstart = '';
-    while ((line = fgetl(f)) != -1)
+    while ((line = fgetl(f)) ~= -1)
         line = strtrim(line);
         % remove leading/trailing spaces
         if (line(1) == '*')
