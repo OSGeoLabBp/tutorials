@@ -85,8 +85,8 @@ Write coordinates into simple text file using octave (gsi2coo.m)
     % input file
     f = fopen('labor.gsi', 'r');
     % output file
-    fo = fopen('labor.csv', "w");
-    while ((line = fgetl(f)) != -1)  % read input line by line
+    fo = fopen('labor.csv', 'w');
+    while ((line = fgetl(f)) ~= -1)  % read input line by line
         x = y = elev = 0;  % default coordinates
         line = strtrim(line);  % remove leading/trailing spaces
         if (line(1) == '*')  % remove * from line start
@@ -97,7 +97,7 @@ Write coordinates into simple text file using octave (gsi2coo.m)
         for i = 1:nrow
             field = fields{i};  % element from cell array
             switch (substr(field, 1, 2))
-            case "11"  % point number, leading zeros removed
+            case '11'  % point number, leading zeros removed
                 pid = regexprep(substr(field, 8), "^0+", '');
                 if (length(pid) == 0)
                 pid = '0';
