@@ -103,6 +103,7 @@ Table of contents
 #. `NMEA message processing and display <nmea.rst>`_
 #. `Processing observations for a moving point <one_point.rst>`_
 #. `Measure point with slope prism rod <sphere.rst>`_
+#. `Processing LiDAR data <lidar.rst>`_
 
 
 
