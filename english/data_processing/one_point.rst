@@ -34,9 +34,9 @@ sample data (date, time, bearing, zenith angle, distance):
 
     % process observation data for a point
     % input file format: yyyy-mm-dd hh:mm:ss.sss WCB VA SD
-    f = fopen("egyp.txt", 'r');
+    f = fopen('egyp.txt', 'r');
     % read data into a matrix
-    [data, n] = fscanf(f, "%d-%d-%d %d:%d:%f %f %f %f", [9, Inf]);
+    [data, n] = fscanf(f, '%d-%d-%d %d:%d:%f %f %f %f', [9, Inf]);
     fclose(f);
     data = data';   % transpose input matrix
     [rows, cols] = size(data);
@@ -66,26 +66,26 @@ sample data (date, time, bearing, zenith angle, distance):
     my = std(data(:, 2));   % standard deviation
     mx = std(data(:, 3));
     mz = std(data(:, 4));
-    printf(" Y[m] X[m] Z[m] my[mm] mx[mm] mz[mm] skew\n");
-    printf("%8.4f %8.4f %8.4f %6.2f %6.2f %6.2f %6.2f %6.2f %6.2f\n", \
+    printf(' Y[m] X[m] Z[m] my[mm] mx[mm] mz[mm] skew\n');
+    printf('%8.4f %8.4f %8.4f %6.2f %6.2f %6.2f %6.2f %6.2f %6.2f\n', \
     y, x, z, my * 1000, mx * 1000, mz * 1000, skewness(data(:,2)), \
     skewness(data(:,3)), skewness(data(:,4)));
     % normality
     figure();
     hist(data(:,2),500,1);
-    title("Y histogram");
-    xlabel("Y[m]");
-    ylabel("P");
+    title('Y histogram');
+    xlabel('Y[m]');
+    ylabel('P');
     figure();
     hist(data(:,3),500,1);
-    title("X histogram");
-    xlabel("X[m]");
-    ylabel("P");
+    title('X histogram');
+    xlabel('X[m]');
+    ylabel('P');
     figure();
     hist(data(:,4),500,1);
-    title("Z histogram");
-    xlabel("Z[m]");
-    ylabel("P");
+    title('Z histogram');
+    xlabel('Z[m]');
+    ylabel('P');
     % correlations
     cy = cov(data(:,1), data(:,2)) / std(data(:,1)) / std(data(:,2));
     cx = cov(data(:,1), data(:,3)) / std(data(:,1)) / std(data(:,3));
@@ -93,11 +93,11 @@ sample data (date, time, bearing, zenith angle, distance):
     cyx = cov(data(:,2), data(:,3)) / std(data(:,2)) / std(data(:,3));
     cyz = cov(data(:,2), data(:,4)) / std(data(:,2)) / std(data(:,4));
     cxz = cov(data(:,3), data(:,4)) / std(data(:,3)) / std(data(:,4));
-    printf("\nCorrelations\n");
-    printf(" Y X Z\n"); 
-    printf("time %5.3f %5.3f %5.3f\n", cy, cx, cz);
-    printf(" Y - %5.3f %5.3f\n", cyx, cyz);
-    printf(" X - - %5.3f\n", cxz);
+    printf('\nCorrelations\n');
+    printf(' Y X Z\n'); 
+    printf('time %5.3f %5.3f %5.3f\n', cy, cx, cz);
+    printf(' Y - %5.3f %5.3f\n', cyx, cyz);
+    printf(' X - - %5.3f\n', cxz);
     % looking for linear trend
     py = polyfit(data(:,1), data(:,2), 1);
     px = polyfit(data(:,1), data(:,3), 1);
@@ -109,17 +109,17 @@ sample data (date, time, bearing, zenith angle, distance):
     plot(data(:,1), ty);
     hold all;
     plot(data(:,1), data(:,2));
-    title ("time - Y");
+    title ('time - Y');
     figure();
     plot(data(:,1), tx);
     hold all;
     plot(data(:,1), data(:,3));
-    title ("time - X");
+    title ('time - X');
     figure();
     plot(data(:,1), tz);
     hold all;
     plot(data(:,1), data(:,4));
-    title ("time - Z");
+    title ('time - Z');
 
 .. note::
 
