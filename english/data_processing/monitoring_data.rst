@@ -88,7 +88,7 @@ Monitoring data processing
 
 |chart_png|
 
-.. note:: *Fejlesztési javaslat*:
+.. note:: *Development tipps*:
 
     Display all points measured at the same time in X-Z section .
 
