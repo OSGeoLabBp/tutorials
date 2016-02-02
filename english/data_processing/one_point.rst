@@ -2,7 +2,7 @@ Processing observations for a moving point
 ==========================================
 
 A automatic monitoring system collects observations to a text file.
-Let's draw a line chart and statistical analysis.
+Let's draw a line chart and make statistical analysis.
 
 
 *Keywords*: text file, statistical features, histogram, regression
