@@ -23,7 +23,7 @@ NMEA message processing and display
         for c = buf(3:end-3)
             cs = bitxor(cs, toascii(c));
         endfor
-        if (sprintf('%X', cs) != buf(end-1:end))
+        if (sprintf('%X', cs) ~= buf(end-1:end))
             printf('checksum error\n');
             continue;
         endif
