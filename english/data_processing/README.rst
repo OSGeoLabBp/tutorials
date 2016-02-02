@@ -106,5 +106,7 @@ Table of contents
 #. `Processing LiDAR data <lidar.rst>`_
 #. `Monitoring data processing <monitoring_data.rst>`_
 #. `Level network adjustment and data snooping <level_net.rst>`_
+#. `Propagation of errors for polar observations <propagation_of_error.rst>`_
+#. `Coordinate list processing with Unix text file utilities <coord_list.rst>`_
 
 
