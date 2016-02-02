@@ -65,7 +65,7 @@ Monitoring data processing
     j = 1;
     i1(j) = 1;
     for i = 2:n
-        if (actp != point_serie(i,1))
+        if (actp ~= point_serie(i,1))
             % point number changed
             i2(j) = i - 1;
             j++;
@@ -78,13 +78,13 @@ Monitoring data processing
         plot(point_serie(i1(i):i2(i),5),point_serie(i1(i):i2(i),4));
         hold all
     endfor
-    title("time - Z");
-    xlabel("time [sec]");
-    ylabel("Z [m]");
+    title('time - Z');
+    xlabel('time [sec]');
+    ylabel('Z [m]');
     % save figure to file
-    saveas(1, "img1.png");
+    saveas(1, 'img1.png');
     % cleate legend labels, point numbers as string
-    legend(strsplit(strtrim(sprintf("%d ", pnums(1:14))), " "));
+    legend(strsplit(strtrim(sprintf('%d ', pnums(1:14))), ' '));
 
 |chart_png|
 
