@@ -27,25 +27,23 @@ Processing LiDAR data
     % LiDAR data processing
     % load input data
     load lidar.txt;
-    % data stored in array "lidar"
-    %lidar = dlmread("lidar.txt", ",");
+    % data stored in array "lidar" same as lidar = dlmread("lidar.txt", ",");
     % set window for processing
     xmin = 548040;
     ymin = 5129010;
     xmax = 548300;
     ymax = 5129270;
-    dx = 10;
+    dx = 10;    % GRID step
     dy = 10;
     % generate x & y grid
    [x, y] = meshgrid(xmin:dx:xmax, ymin:dy:ymax);
     % grid interpolation for z
     z = griddata(lidar(:,1), lidar(:,2), lidar(:,3), x, y, "linear");
-    % 3D surface plot
-    figure();
-    mesh(x, y, z);
+    figure();    % 3D surface plot
+    mesh(x, y, z);    % display mesh in 3D
     title("3D GRID");
     figure();
-    meshc(x, y, z);
+    meshc(x, y, z);   % display contours
     title("3D GRID and Contours");
     % contour lines
     figure(); contour(x, y, z);
