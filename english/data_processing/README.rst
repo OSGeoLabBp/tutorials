@@ -104,6 +104,7 @@ Table of contents
 #. `Processing observations for a moving point <one_point.rst>`_
 #. `Measure point with slope prism rod <sphere.rst>`_
 #. `Processing LiDAR data <lidar.rst>`_
+#. `Monitoring data processing <monitoring_data.rst>`_
 
 
 
