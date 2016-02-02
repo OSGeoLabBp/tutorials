@@ -98,7 +98,7 @@ Write coordinates into simple text file using octave (gsi2coo.m)
             field = fields{i};  % element from cell array
             switch (substr(field, 1, 2))
             case '11'  % point number, leading zeros removed
-                pid = regexprep(substr(field, 8), "^0+", '');
+                pid = regexprep(substr(field, 8), '^0+', '');
                 if (length(pid) == 0)
                 pid = '0';
                 endif
