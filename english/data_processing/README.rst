@@ -105,6 +105,6 @@ Table of contents
 #. `Measure point with slope prism rod <sphere.rst>`_
 #. `Processing LiDAR data <lidar.rst>`_
 #. `Monitoring data processing <monitoring_data.rst>`_
-
+#. `Level network adjustment and data snooping <level_net.rst>`_
 
 
