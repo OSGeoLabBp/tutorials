@@ -41,7 +41,7 @@ one step.
 
 *Linux*
 
-..code:: bash
+.. code:: bash
 
     for i in *.gpx; do ogr2ogr -f KML ${i}.kml ${i}; done
 
