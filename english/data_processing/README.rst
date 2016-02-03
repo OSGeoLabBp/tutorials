@@ -19,7 +19,7 @@ Matlab.
 Samples mostly concern on observation data/file processing.
 
 Samples were tested on Linux but should run on a Windows box, too.
-Octave .m files may need some editing to run with Matlab. We some up some
+Octave .m files may need some editing to run with Matlab. We sum up some
 incompatibilities between Octave and Matlab in the following table.
 
 +--------------------------+---------------------+---------------------+
