@@ -108,6 +108,7 @@ Table of contents
 #. `Level network adjustment and data snooping <level_net.rst>`_
 #. `Propagation of errors for polar observations <propagation_of_error.rst>`_
 #. `Coordinate list processing with Unix text file utilities <coord_list.rst>`_
+#. `Statistics from NMEA file <nmea_stat.rst>`_
 #. `Polynom interpolation <polinom.rst>`_
 
 
