@@ -101,7 +101,7 @@ estimation for the parameters of the parabola.
     points = sortrows(fscanf(fp, '%f;%f', [2, Inf])');
     n = rows(points);
     if (n < 4 )
-        printf("Few points in input file\n");
+        printf('Few points in input file\n');
     else
         A = zeros(n, 3);
         l = zeros(n, 1);
