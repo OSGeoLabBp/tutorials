@@ -125,5 +125,5 @@ estimation for the parameters of the parabola.
 
 .. note:: *Development tipps*:
 
-    Use higher order polinom, the order be an input
+    Use higher order polynom, the order be an input
     Beautify plot, title, grid, etc.
