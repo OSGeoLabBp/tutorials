@@ -49,6 +49,7 @@ where the elements of S1 are the reciprocal value of element from S if it is not
 
 .. code:: octave
 
+    % SVD
     [U, S, V] = svd(N);
     S1 = zeros(rows(S), columns(S));
     for i=1:rows(S)
