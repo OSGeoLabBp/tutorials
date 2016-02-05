@@ -22,11 +22,11 @@ NMEA message processing and display
         cs = toascii(buf(2));
         for c = buf(3:end-3)
             cs = bitxor(cs, toascii(c));
-        endfor
+        end
         if (sprintf('%X', cs) ~= buf(end-1:end))
             printf('checksum error\n');
             continue;
-        endif
+        end
         switch (bufa{1})
             case '$GPGGA'
                 % GGA, time, lat, N/S, lon, E/W, fixq, sats, hdop, height, M, undulation,M,empty,empty,checksum
@@ -35,16 +35,16 @@ NMEA message processing and display
                     lat = nmea2deg(bufa{3});
                     if (bufa{4} == 'S')
                         lat = -lat;
-                    endif
+                    end
                     lon = nmea2deg(bufa{5});
                     if (bufa{6} == 'W')
                         lon = 360.0 - lon;
-                    endif
+                    end
                     height = str2num(bufa{10});
                     fprintf(fo, '%.6f,%.6f,%.2f\n', lat, lon, height);
-                endif
-        endswitch
-    endwhile
+                end
+        end
+    end
     fclose(f);
     fclose(fo);
 
@@ -56,7 +56,7 @@ NMEA message processing and display
         % convert NMEA dddmm.mmm angle to decimal degree
         p = index(w, '.');
         deg = sscanf(w(1:p-3),'%d') + sscanf(w(p-2:end), '%f') / 60.0;
-    endfunction
+    end
 
 *AWK megoldás*
 
