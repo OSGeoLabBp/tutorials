@@ -89,13 +89,13 @@ Solution in Octave (gsi.m)
                     % forward reading
                     sumf += val(field);
                 endif
-            endswitch
-        endfor
-    endwhile
+            end
+        end
+    end
     % save last line
     if (length(lstart))
         printf('%4s %4s %1d %9.5f %4.1f\n', lstart, pid, mode, (sumb - sumf) / mode, sumd / mode / 1000.0);
-    endif
+    end
     fclose(f);
 
 *val függvény* (val.m)
@@ -106,7 +106,7 @@ Solution in Octave (gsi.m)
         dd = [1000, 1000 * 3.28, 0, 0, 0, 0, 10000, 10000 * 3.28, 100000];
         d = dd(str2num(substr(f, 6, 1))+1);
         w = str2num(substr(f, 7)) / d;
-    endfunction
+    end
 
 *Használat* :
 
