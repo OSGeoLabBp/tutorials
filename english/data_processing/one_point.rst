@@ -50,7 +50,7 @@ sample data (date, time, bearing, zenith angle, distance):
         ts.sec = round(data(i, 6));
         if (i == 1)     % first observation
             st = mktime(ts);     % start epoch seconds
-        endif
+        end
         data(i, 1) = (mktime(ts) - st) / (3600 * 24);    % day units
         % calculate coordinates
         data(i, 2) = data(i, 9) * sin(data(i, 8)) * sin(data(i, 7));  % Easting
@@ -58,7 +58,7 @@ sample data (date, time, bearing, zenith angle, distance):
         data(i, 4) = data(i, 9) * cos(data(i, 8));                    % Elevation
         data(i, 5) = 0;
         data(i, 6) = 0;
-    endfor
+    end
     % basic statistics
     y = mean(data(:, 2));   % average
     x = mean(data(:, 3));
