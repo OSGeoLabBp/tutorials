@@ -3,7 +3,7 @@ Coordinate list processing with Unix text file utilities
 
 *Keywords*: text file processing, pipe, shell programing
 
-*Data file*: lidat.txt (x, y, z)
+*Data file*: lidar.txt (x, y, z)
 
 Tasks to solve
 
