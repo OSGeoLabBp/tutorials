@@ -43,7 +43,7 @@ Monitoring data processing
         fp = fopen(args{1}, 'r');
     else
         fp = fopen('monitoring.csv', 'r');
-    endif
+    end
     % read data in goups of ten values, nn total number of items read
     [points, nn]=fscanf(fp, '%d;%f;%f;%f;%d-%d-%d %d:%d:%d', [10, Inf]);
     fclose(fp);
@@ -71,13 +71,13 @@ Monitoring data processing
             j++;
             i1(j) = i;
             actp = point_serie(i,1);
-        endif
-    endfor
+        end
+    end
     i2(npnums) = n;
     for i = 1:14 %npnums-1
         plot(point_serie(i1(i):i2(i),5),point_serie(i1(i):i2(i),4));
         hold all
-    endfor
+    end
     title('time - Z');
     xlabel('time [sec]');
     ylabel('Z [m]');
