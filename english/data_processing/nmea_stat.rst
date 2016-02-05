@@ -12,7 +12,7 @@ From an NMEA file let's calculate statistical values:
 * number of different NMEA sentence types
 * minimal, maximal coordinates
 
-*AWK solution*:
+*AWK solution*: (nmea_stat.awk)
 
 .. code:: gawk
 
