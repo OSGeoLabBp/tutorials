@@ -110,6 +110,6 @@ Table of contents
 #. `Coordinate list processing with Unix text file utilities <coord_list.rst>`_
 #. `Statistics from NMEA file <nmea_stat.rst>`_
 #. `Polynom interpolation <polinom.rst>`_
-#. `Generalised Inverse <pseudo_inverse-m>`_
+#. `Generalised Inverse <pseudo_inverz.m>`_
 
 
