@@ -56,9 +56,9 @@ Processing LiDAR data
             p = z(ir, ic);
             if (p > 1000)
                 vol += dx * dy * (p - 1000);
-            endif
-        endfor
-    endfor
+            end
+        end
+    end
     printf('Volume above 1000m: %.0f m3\n', vol);
     % vectorized solution for volume calculation
     vol1 = sum(z(z > 1000) - 1000) * dx * dy;
