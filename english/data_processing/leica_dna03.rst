@@ -2,7 +2,7 @@ Processing GSI file got from Leica DNA03 digital level
 ======================================================
 
 
-*Keywords*: Leica GSI, szöveg fájl olvasás, feltételek, ciklusok, szabályos kifejezés, függvény
+*Keywords*: Leica GSI, text file reading, conditions, loops, regexp, function
 
 *Data file*: test.gsi
 
