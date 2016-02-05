@@ -38,7 +38,7 @@ N = V * S * U'
 where:
 
 * S is a diagonal matrix
-* U * U' = I (unit matrix)
+* U * U' = I (identity matrix)
 * V * V' = I
 
 The generalized inverse:
