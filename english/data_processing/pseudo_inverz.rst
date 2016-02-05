@@ -25,9 +25,9 @@ The pinv function of octave can be used to calculate pseudo iverse.
         -1.68663,  3.15898, -0.90703, -0.56532;
         -0.62988, -0.90703,  4.05644, -2.51953;
         -1.04123, -0.56532, -2.51953, 4.12608]
-   det(N)   % deteminant is zero
-   inv1 = pinv(N)  % pseudo inverse
-   N * pinv(N) * N   % should be N
+    det(N)   % deteminant is zero
+    inv1 = pinv(N)  % pseudo inverse
+    N * pinv(N) * N   % should be N
 
 #. Singular Value Decomposition (SVD)
 
