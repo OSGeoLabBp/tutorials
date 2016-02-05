@@ -91,7 +91,7 @@ Write coordinates into simple text file using octave (gsi2coo.m)
         line = strtrim(line);  % remove leading/trailing spaces
         if (line(1) == '*')  % remove * from line start
             line = substr(line, 2);
-        endif
+        end
         fields = strsplit(line, ' ');
         [ncol, nrow] = size(fields);  % number of columns and rows in cell array
         for i = 1:nrow
@@ -108,11 +108,11 @@ Write coordinates into simple text file using octave (gsi2coo.m)
                 y = val(field);
             case '83'  % elevation
                 elev = val(field);
-            endswitch
-        endfor
+            end
+        end
         % write coordinates to stadard output
         fprintf(fo, '%s,%.3f,%.3f,%.3f\n', pid, x, y, elev);
-    endwhile
+    end
     fclose(f);
     fclose(fo);
 
@@ -124,7 +124,7 @@ Octave function to convert GSI coordinates to real value (val.m)
         dd = [1000, 1000 * 3.28, 0, 0, 0, 0, 10000, 10000 * 3.28, 100000];
         d = dd(str2num(substr(f, 6, 1))+1);
         w = str2num(substr(f, 7)) / d;
-    endfunction
+    end
 
 Third step (A variant)
 ----------------------
