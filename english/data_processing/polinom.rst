@@ -85,7 +85,7 @@ we get more compact, faster and more readble program.
        0
 
 Let's extend our solution to read points from data file and use a least squares
-estimation for the parameters of the parabola.
+estimation for the parameters of the parabola. (parabola_lsm.m)
 
 .. code:: octave
 
@@ -96,7 +96,7 @@ estimation for the parameters of the parabola.
         fp = fopen(args{1}, 'r');
     else
         fp = fopen('parabola.csv', 'r');
-    endif
+    end
     % load all coordinates
     points = sortrows(fscanf(fp, '%f;%f', [2, Inf])');
     n = rows(points);
@@ -117,7 +117,7 @@ estimation for the parameters of the parabola.
         plot(points(1, 1):1:points(n, 1), polyval(flipud(x), points(1, 1):1:points(n, 1)), '-');
         legend('base points', 'approx. poly', 'location', 'southeast');
         hold off;
-    endif
+    end
 
 |parabola_png|
 
