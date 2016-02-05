@@ -26,7 +26,7 @@ r^2 = (x - x0)^2 + (y - y0)^2 + (z - z0)^2
 
 The solution details can be found at http://math.stackexchange.com/questions/894794/sphere-equation-given-4-points
 
-*Octave solution* (sphere4.m)
+*Octave solution* (sphere4p.m)
 
 .. code:: octave
 
