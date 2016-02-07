@@ -112,6 +112,6 @@ Table of contents
 #. `Polynom interpolation <polinom.rst>`_
 #. `Generalised inverse <pseudo_inverz.rst>`_
 
-Program codes and sample data are in the *code* folder.
+Program codes and sample data are in the `code <code>`_ folder.
 
 
