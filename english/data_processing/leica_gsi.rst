@@ -11,6 +11,8 @@ Load coordinates from Leica GSI into AutoCAD or QGIS (fix field widths)
 *Program files*
 : gsi2coo.awk, gsi2coo_2.awk, coo2dxf, coo2scr.awk, gsi2coo.m, val.m
 
+QGIS is not capable to load directly data from GSI format collected by Leica 
+totalstations. Alternative solutions are given in this recipe.
 
 Sample data (labor.gsi):
 
@@ -134,6 +136,10 @@ menu and *Save as...* from the layer's popup menu.
 
 |leica_gsi_1_png|
 
+AutoCAD has no direct function to load CSV files. There is a VBA extension 
+`here <http://www.geod.bme.hu/szakm/oop/vba/vba1.htm>`_ or use AutoCAD Civil 
+to load coordinate list.
+
 Third step (B variant)
 ----------------------
 
@@ -193,6 +199,18 @@ Using pipes to connect commands to do evething in one step.
     grep " 8[123].\{4\}\+" labor.gsi | gawk -f gsi3coo_2.awk labor.gsi | gawk -f coo2dxf.awk > labor.dxf
 
 |leica_gsi_2_png|
+
+One step solution using QGIS modul
+----------------------------------
+
+The SurveyingCalculation plugin of QGIS is able to load coordinates and 
+observations from Leica GSI files. The SurveyingCaclculation is not a 
+standard QGIS plugin first you have to install it using the *Plugins/Manage and 
+Install Plugins...* from the menu. Installing and activating 
+SurveyingCalculation a new menu and tollbar is displayed.
+Select *Surveying Calculation/New coordinate list...* from the menu to create
+a new layer for points. Then load the fieldbook using the menu or toolbar
+(Import fieldbook).
 
 .. note::
 
