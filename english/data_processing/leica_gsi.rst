@@ -204,7 +204,7 @@ One step solution using QGIS modul
 ----------------------------------
 
 The SurveyingCalculation plugin of QGIS is able to load coordinates and 
-observations from Leica GSI files. The SurveyingCaclculation is not a 
+observations from Leica GSI files. The SurveyingCalculation is not a 
 standard QGIS plugin first you have to install it using the *Plugins/Manage and 
 Install Plugins...* from the menu. Installing and activating 
 SurveyingCalculation a new menu and tollbar is displayed.
