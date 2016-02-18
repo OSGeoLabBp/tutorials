@@ -4,10 +4,10 @@ gawk for beginners
 gawk (GNU awk) is a programable unix text utility. It is one of the most complex
 of them. Several simple example will be introduced to teach you by examples.
 
-gawk processes the input text line by line. Each line is devided into fields
-using a set of field separators. The defaut field separators are TAB and space.
-We craen refere to a field in the actual line by $1 (first field), $2 (second
-field), etc. $0 gives the whole actual input line.
+gawk processes the input text file line by line. Each line is devided intos
+fields using a set of field separators. The default field separators are *TAB* 
+and *space*.  We can refere to a field in the actual line by $1 (first field),
+$2 (second field), etc. $0 gives the whole actual input line.
 
 There are some variables maintained by gawk. The most important ones are:
 
@@ -17,7 +17,7 @@ There are some variables maintained by gawk. The most important ones are:
 
 The gawk program can be given in the command line if it is very short or we
 can create a separate file for the program. The usual extension for gawk
-program files is *.awk*.
+program file is *.awk*.
 
 gawk reads data from the input file or from the standard input and prints
 output to the standard output.
@@ -65,7 +65,7 @@ Reverse the field order of the input lines
     }
 
 The *for* command is to count iterations. *i* is the loop variable and changed
-from the number of fields (*NF*) down to *1*. We can refere to the *i*th field
+from the number of fields (*NF*) down to *1*. We can refere to the *ith* field
 by *$i*. *printf* is for formatted print, it won't print new line at the end.
 *print "\n";* prints a new line character.
 
@@ -96,7 +96,8 @@ login shells from the password file (the last field in the row).
 
     gawk -F : '{ print $NF; }' /etc/passwd | sort | gawk -f unique.awk
 
-The sort command is used to sort the file before using *unique.awk*.
+First the login shell fields are extracted, then the sort command is used to 
+sort the file before using *unique.awk*.
 
 Word counts in a file
 ---------------------
@@ -117,7 +118,7 @@ Word counts in a file
 
 Copy the code above into *words.awk* file. The first part of the code (between
 the curly brackets) is executed for each input line of the file and fills an 
-array, the index of the array is the world, 
+array, the index of the array is the word, 
 the value of the array element is the count for that world. The second part
 of the program, after the *END* will be executed ones, after all input lines
 were processed.
