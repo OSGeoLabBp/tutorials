@@ -30,3 +30,8 @@ Bash basics
 
 * bash variables, set, use value, export
 * special substitutions: '...', "....", `...`, &, ;
+
+AWK basics
+..........
+
+See: `GAWK for beginners <https://github.com/OSGeoLabBp/tutorials/blob/master/english/gawk/gawk_for_beginners.rst>`_
