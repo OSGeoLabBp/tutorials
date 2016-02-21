@@ -1,9 +1,9 @@
 Regular expressions
 ===================
 
-By the help of regular expressions (regepx) diserve text patterns can be defined
-Regexp are used by most of the Linux text processing utilities (e.g. grep, awk,
-sed) and text editors (vi, emacs). Here is a vwry short and incomplete list
+By the help of regular expressions (regepx) diverse text patterns can be defined
+Regexp are used by the most Linux text processing utilities (e.g. grep, awk,
+sed) and text editors (vi, emacs). Here is a very short and incomplete list
 of special regexp characters:
 
 .. code:: text
@@ -23,7 +23,7 @@ of special regexp characters:
     p?        zero or one repetition of p pattern, equivalent to p{0,1}
     \         escape the special meaning of the next character (e.g. \. the dot character, not any character)
 
-Example regular expression
+Example regular expressions
  
 .. code:: text
 
