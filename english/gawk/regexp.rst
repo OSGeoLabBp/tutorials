@@ -1,8 +1,8 @@
 Regular expressions
 ===================
 
-By the help of regular expressions (regepx) diverse text patterns can be defined
-Regexp are used by the most Linux text processing utilities (e.g. grep, awk,
+By the help of regular expressions (regepx) diverse text patterns can be defined.
+Regexp are used by the most GNU text processing utilities (e.g. grep, gawk,
 sed) and text editors (vi, emacs). Here is a very short and incomplete list
 of special regexp characters:
 
