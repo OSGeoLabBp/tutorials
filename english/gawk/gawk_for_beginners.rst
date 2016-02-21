@@ -187,10 +187,11 @@ M5 is the data file format for Trimble M3 total stations. It looks like this:
     }
 
 A general block of a gawk program consists of two parts a pattern and a code
-block. Usually regular expressions are used in the pattern. The *BEGIN* 
-pattern is similar to the *END* pattern we used befire, but is is executed 
+block. Usually `regular expressions <regexp.rst>`_ are used in the pattern. 
+The *BEGIN* 
+pattern is similar to the *END* pattern we used before, but it is executed 
 once, before the processing starts. Copy the code above into the *m52coo.awk* 
-file. Lest's convert *sample.m5* file to a coordinate list.
+file. Let's convert *sample.m5* file to a coordinate list.
 
 .. code:: bash
 
