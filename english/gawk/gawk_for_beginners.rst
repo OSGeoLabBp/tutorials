@@ -132,13 +132,38 @@ Let's list the first ten most frequent words from the gawk manual page.
 Coordinate list from M5 electric fieldbook
 ------------------------------------------
 
+M5 is the data file format for Trimble M3 total stations. It looks like this:
+
+.. code:: text
+
+    For M5|Adr 00017|TI      EL STAT                |                      |                      |                      |
+    For M5|Adr 00018|PI1           !               2|                      |                      |Z           0.000 m   |
+    For M5|Adr 00019|PI1           A               2|SD          7.674 m   |Hz         7.5439 DMS |V1        89.1413 DMS |
+    For M5|Adr 00020|PI1           S               A|                      |                      |Z          -0.102 m   |
+    For M5|Adr 00021|TI      PR                     |th          0.000 m   |PC         -0.030 m   |A           0.005 m   |
+    For M5|Adr 00022|TI      POLAR                  |                      |                      |                      |
+    For M5|Adr 00023|PI1                           B|SD         40.701 m   |Hz       259.0155 DMS |V1        89.4419 DMS |
+    For M5|Adr 00024|PI1                           B|Y          60.043 m   |X         192.256 m   |Z           0.083 m   |
+    For M5|Adr 00025|PI1                           C|SD         42.898 m   |Hz       191.1129 DMS |V1        89.4510 DMS |
+    For M5|Adr 00026|PI1                           C|Y          91.674 m   |X         157.918 m   |Z           0.083 m   |
+    For M5|Adr 00027|PI1                           D|SD         37.521 m   |Hz        74.1237 DMS |V1        89.4334 DMS |
+    For M5|Adr 00028|PI1                           D|Y         136.105 m   |X         210.210 m   |Z           0.077 m   |
+    For M5|Adr 00029|TI      DR                     |th          0.000 m   |PC          0.000 m   |A           0.035 m   |
+    For M5|Adr 00030|TI      POLAR                  |                      |                      |                      |
+    For M5|Adr 00031|PI1                         A11|SD          8.702 m   |Hz       356.0147 DMS |V1        89.1228 DMS |
+    For M5|Adr 00032|PI1                         A11|Y          99.398 m   |X         208.680 m   |Z           0.018 m   |
+    For M5|Adr 00033|PI1                         A12|SD          8.131 m   |Hz       359.1339 DMS |V1        89.0730 DMS |
+    For M5|Adr 00034|PI1                         A12|Y          99.890 m   |X         208.130 m   |Z           0.022 m   |
+    For M5|Adr 00035|PI1                         A13|SD          7.699 m   |Hz         9.2341 DMS |V1        89.0933 DMS |
+    For M5|Adr 00036|PI1                         A13|Y         101.257 m   |X         207.595 m   |Z           0.011 m   |
+
 .. code:: gawk
 
     BEGIN {
         FS = "[\|]";    # field separator
     }
 
-    /\|Y / {            # y coordinate given in thi line
+    /\|Y / {            # y coordinate given in the input line
         y = x = z = 0;
         for (i = 1; i <= NF; i++) {         # check all fields
             if (match($i, /^PI1[ \t]+/)) {  # point id
@@ -162,11 +187,12 @@ Coordinate list from M5 electric fieldbook
     }
 
 A general block of a gawk program consists of two parts a pattern and a code
-block. Usually regular expressions is used in the pattern. The *BEGIN* 
-pattern is similar to the *END* pattern, but is is executed once, before the 
-processing starts. Copy the code above into the *m52coo.awk* file.
-Lest's convert *sample.m5* file to a coordinate list.
+block. Usually regular expressions are used in the pattern. The *BEGIN* 
+pattern is similar to the *END* pattern we used befire, but is is executed 
+once, before the processing starts. Copy the code above into the *m52coo.awk* 
+file. Lest's convert *sample.m5* file to a coordinate list.
 
 .. code:: bash
 
     gawk -f m52coo.awk sample.m5 > sample.txt
+
