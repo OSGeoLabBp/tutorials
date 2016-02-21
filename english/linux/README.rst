@@ -14,7 +14,7 @@ Files and directories
 .....................
 
 * home directory, access right (rwx)
-* travesing between directories: pwd, cd, mkdir, rmdir commands
+* traversing between directories: pwd, cd, mkdir, rmdir commands
 * working with files: cp, mv, rm, mc
 
 Text utilities
