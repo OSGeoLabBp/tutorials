@@ -111,6 +111,7 @@ Table of contents
 #. `Statistics from NMEA file <nmea_stat.rst>`_
 #. `Polynom interpolation <polinom.rst>`_
 #. `Generalised inverse <pseudo_inverz.rst>`_
+#. `Regression circle <circle.rst>`_
 
 Program codes and sample data are in the `code <code>`_ folder.
 
