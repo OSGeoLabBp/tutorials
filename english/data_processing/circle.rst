@@ -6,13 +6,13 @@ the best fitting circle (center point and radius) to these points.
 
 .. code::
 
-    (y - y0)^2 + (x - x0)^2 = r^2
-    y^2 - 2y y0 + y0^2 + x^2 - 2x x0 + x0^2 = r^2
-    y^2 + x^2 -2y0 y - 2x0 x + y0^2 + x0^2 - r^2 = 0
-    a1 = -2y0
-    a2 = -2x0
-    a3 = y0^2 + x0^2 - r^2
-    y^2 + x^2 + a1 y + a2 x + a3 = 0
+    (x - x0)^2 + (y - y0)^2 = r^2
+    x^2 - 2x x0 + x0^2 + y^2 - 2y y0 + y0^2 = r^2
+    y^2 + x^2 - 2x0 x - 2y0 y + x0^2 + y0^2 - r^2 = 0
+    a1 = -2x0
+    a2 = -2y0
+    a3 = x0^2 + y0^2 - r^2
+    y^2 + x^2 + a1 x + a2 y + a3 = 0
 
 Let's solve the last equation for the a1, a2, a3 unknowns in Octave.
 
