@@ -15,6 +15,7 @@ the best fitting circle (center point and radius) to these points.
     y^2 + x^2 + a1 x + a2 y + a3 = 0
 
 Let's solve the last equation for the a1, a2, a3 unknowns in Octave.
+Original code can be found at http://www.mathworks.com/matlabcentral/fileexchange/5557-circle-fit/content/circfit.m
 
 .. code::
 
