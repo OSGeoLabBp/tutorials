@@ -49,7 +49,7 @@ Write coordinates into simple text file using gawk (gsi2coo.awk).
 
 .. code:: gawk
 
-    BEGIN { FS="[ ]"; # field sparator is space
+    BEGIN { FS="[ ]"; # field separator is space
         # for units and decimals
         u[0] = 1000;
         u[1] = 1000 * 3.28;
