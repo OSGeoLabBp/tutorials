@@ -197,3 +197,48 @@ file. Let's convert *sample.m5* file to a coordinate list.
 
     gawk -f m52coo.awk sample.m5 > sample.txt
 
+Text positions and other data from a DXF file
+---------------------------------------------
+
+DXF (Drawing eXchange Format) is a very popular CAD data exchange format and
+several CAD/GIS software can read/write it. We'll collect information from
+such file about the TEXT entities (position, direction, size and the text 
+itself)
+
+.. code:: gawk
+    BEGIN {
+        print "EAST;NORTH;LAYER;DIRECTION;SIZE;TET";  # print header
+    }
+    /^ENTITIES/,/^EOF/ {
+        if ($0 == "  0") {                  # next entity reached
+            if (entity == "TEXT") {         # output text data
+                printf("%.2f;%.2f;%.5f;%.2f;%s\n", x, y, layer, angle, size,  txt);
+            }
+            entity = ""; txt = ""; angle = 0; size = 1; layer = ""
+            last = "";                      # initialize variables
+        }
+        if (last == "  0") { entity = $0; } # actual entity type
+        if (last == "  8") { layer = $0; }  # layer
+        if (last == " 10") { x = $0; }      # east  
+        if (last == " 20") { y = $0; }      # north
+        if (last == " 40") { size = $0; }   # text size
+        if (last == " 50") { angle = $0; }  # text direction
+        if (last == "  1") { txt = $0; }    # text
+        last = $0;                          # last input line
+    }
+
+The end of line (EOL) character(s) are different on Linux and Windows boxes.
+When you use gawk you have to convert the EOL to the standard of the used
+operating system. To convert Windows text files to Linux use dos2unix command.
+
+.. code:: bash
+
+    dos2unix your_text_file
+
+The different text files may use different code pages. You can convert text
+files between code pages (for example from UTF-8 to ISO8859-2) using iconv
+Linux utility.
+
+.. code:: bash
+
+    icov -f source_code_page -t target_code_page source_file > target_file
