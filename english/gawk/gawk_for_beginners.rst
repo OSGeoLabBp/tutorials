@@ -203,7 +203,9 @@ Text positions and other data from a DXF file
 DXF (Drawing eXchange Format) is a very popular CAD data exchange format and
 several CAD/GIS software can read/write it. We'll collect information from
 such file about the TEXT entities (position, direction, size and the text 
-itself)
+itself). 
+
+Sample DXF with TEXT entity:
 
 .. code:: text
 
