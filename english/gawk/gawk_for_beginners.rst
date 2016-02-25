@@ -205,7 +205,43 @@ several CAD/GIS software can read/write it. We'll collect information from
 such file about the TEXT entities (position, direction, size and the text 
 itself)
 
+.. code:: text
+
+    SECTION
+      2
+    ENTITIES
+      0
+    TEXT
+      5
+    2048C
+    330
+    1F
+    100
+    AcDbEntity
+      8
+    STREETNAMES
+      6
+    CONTINUOUS
+     62
+         8
+    100
+    AcDbText
+     10
+    90.964720896096
+     20
+    198.89131946725
+     30
+    0.0
+     40
+    3.0
+      1
+    Bihari utca
+     50
+    42.804
+
+
 .. code:: gawk
+
     BEGIN {
         print "EAST;NORTH;LAYER;DIRECTION;SIZE;TET";  # print header
     }
