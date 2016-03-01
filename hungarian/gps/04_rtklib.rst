@@ -12,6 +12,6 @@ A szoftver további beállításait egyelőre hagyjuk későbbre!
 
 Ugyanez a feldolgozás parancssorból is elvégezhető::
 
-  rnx2rtkp -p 0 -o but061.pos bute0060.16o brdc0060.16n
+  rnx2rtkp -p 0 -o bute1520.pos bute1520.15o brdc1520.15n
 
 Az rnx2rtkp programot kell a C:\\rtklib_2.4.2\\bin könyvtárból indítani, célszerű korábban a könyvtárat rátenni a windows elérési útjára.
