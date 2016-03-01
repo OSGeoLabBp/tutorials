@@ -122,3 +122,7 @@ A vízszintes pozíciók valódi hibáit bemutató grafikon a következő gnuplo
 A szkript futtatása::
 
   gnuplot pos_error.plt
+  
+Az eredményeket bemutató ábra::
+
+.. image:: images/pos_error.png
