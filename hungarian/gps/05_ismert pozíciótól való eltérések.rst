@@ -123,7 +123,7 @@ A szkript futtatása::
 
   gnuplot pos_error.plt
   
-Az eredményeket bemutató ábra::
+Az eredményeket bemutató ábra:
 
 .. image:: images/pos_error.png
 
