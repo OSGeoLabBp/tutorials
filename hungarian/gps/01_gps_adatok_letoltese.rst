@@ -1,6 +1,6 @@
 Permanens GPS állomás adatainak letöltése IGS ftp szerverről
 ============================================================
-*szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék. utolsó módosítás: 2015. június 10.*
+*szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék.*
 
 Példaként töltsük le a BME permamenens állomásának (BUTE) tegnap (2015. június 1-én) rögzített adatait.
 
