@@ -1,6 +1,6 @@
 GPS adatok feldolgozása RTKLIB szoftverrel
 ==========================================
-*szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék. *
+*szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék.*
 
 Az előzőekben permanens GPS állomás, illetve navigációs üzenetek adatait töltöttük le, tömörítettük ki. Most azt mutatjuk meg, hogyan lehet az ingyenes `RTKLIB <http://www.rtklib.com/>`_ szoftverrel az adatokat feldolgozni. Először a grafikus felületen történő feldolgozást, azután pedig a parancssorból végzett feldolgozást mutatjuk be.
 
