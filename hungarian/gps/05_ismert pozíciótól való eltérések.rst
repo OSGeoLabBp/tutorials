@@ -126,3 +126,4 @@ A szkript futtatása::
 Az eredményeket bemutató ábra::
 
 .. image:: images/pos_error.png
+
