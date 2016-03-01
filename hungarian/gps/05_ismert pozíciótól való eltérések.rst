@@ -105,3 +105,20 @@ Az eredményfájl első néhány sora a következő lesz::
   2016/01/06 00:01:30.000 -0.372 1.244 3.564
   2016/01/06 00:02:00.000 -0.469 0.850 2.938
 
+A vízszintes pozíciók valódi hibáit bemutató grafikon a következő gnuplot szkripttel állítható elő::
+
+  set grid lt 0
+  set yrange [-5:+5]
+  set ytics 1
+  set xrange [-5:+5]
+  set xtics 1
+  set xlabel "Delta-East [m]"
+  set ylabel "Delta-North [m]"
+  set title "Horizontal deviation from reference - standalone GPS" 
+  set terminal png small size 480,480 enhanced
+  set output 'pos_error.png'
+  plot 'pos_error.txt' using 4:3 notitle with points lc 'blue'
+
+A szkript futtatása::
+
+  gnuplot pos_error.plt
