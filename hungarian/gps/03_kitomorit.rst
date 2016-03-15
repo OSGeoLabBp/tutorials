@@ -1,6 +1,6 @@
 Compact rinex fájlok kitömörítése windows alatt
 ===============================================
-*szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék. utolsó módosítás: 2016. január 13.*
+*szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék.*
 
 Korábban arról írtunk, hogyan lehet egy permanens állomás nyers mérési adatait `letölteni <https://github.com/OSGeoLabBp/tutorials/blob/master/hungarian/gps/01_gps_adatok_letoltese.rst>`_.
 Rövid írásunk végén mutattunk egy shell scriptet, amelynek segítségével linux környezetben parancssorból letölthetünk és kitömöríthetünk mérési és navigációs állományokat. Ebben a rövid tanulmányban a compact rinex állományok windows operációs rendszer alatt, parancssorból történő kitömörítését mutatjuk be.
@@ -39,6 +39,10 @@ Egyben a python szkript, ami veszi a tegnapi nap dátumát és letölti a BME pe
   """ download and uncompress GPS data from IGS station
   
   """
+  import wget
+  import os
+  import gzip
+  
   #get date
   from datetime import date, timedelta
   yesterday = date.today() - timedelta(1)
@@ -50,17 +54,14 @@ Egyben a python szkript, ami veszi a tegnapi nap dátumát és letölti a BME pe
   station='bute'
   ftp_server='ftp://igs.bkg.bund.de/EUREF/obs/'
   url =  ftp_server + year + '/' + doy + '/' + station + doy + '0.' + year2 + 'd.Z'
-  import wget
   wget.download(url)
   
   #uncompress observation file
-  import os
   cmd = 'gzip -df ' + station + doy + '0.' + year2 + 'd.Z'
   os.system(cmd)
   cmd = 'CRZ2RNX ' + station + doy + '0.' + year2 + 'd'
   os.system(cmd)
-  cmd = 'del ' + station + doy + '0.' + year2 + 'd'
-  os.system(cmd)
+  os.remove(station + doy + '0.' + year2 + 'd')
   
   #get and uncompress GPS and GLONASS navigation files
   station='brdc'
@@ -73,6 +74,7 @@ Egyben a python szkript, ami veszi a tegnapi nap dátumát és letölti a BME pe
   wget.download(url)
   cmd = 'gzip -df ' + station + doy + '0.' + year2 + 'g.Z'
   os.system(cmd)
+  
 
 
 

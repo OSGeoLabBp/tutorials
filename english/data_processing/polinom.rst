@@ -11,7 +11,7 @@ Let's fit a parabola through three points. First we create a program using the
 traditional c/Java logic, in a second solution the more effective vetorization
 method is used.
 
-*Traditional solution* (parabola1.m):
+*Traditional solution* (parabola.m):
 
 .. code:: octave
 
@@ -48,7 +48,7 @@ method is used.
     ans =  1.4211e-14
 
 
-*Vectorized solution* (parabola.m):
+*Vectorized solution* (parabola1.m):
 
 .. code:: octave
 
@@ -56,11 +56,7 @@ method is used.
     xp = [0; 21; 30];
     yp = [0; 55; 75];
     % set up equations
-    A = zeros(3, 3);
-    l = zeros(3, 1);
-    A(:,1) = ones();
-    A(:,2) = xp;
-    A(:,3) = xp.^2;
+    A = [ones(3,1), xp, xp .^ 2];    
     l = yp;
     x = A \ l
     printf('Check\n')
@@ -103,11 +99,7 @@ estimation for the parameters of the parabola. (parabola_lsm.m)
     if (n < 4 )
         printf('Few points in input file\n');
     else
-        A = zeros(n, 3);
-        l = zeros(n, 1);
-        A(:, 1) = ones();
-        A(:, 2) = points(:, 1);
-        A(:, 3) = points(:, 1) .^ 2;
+        A = [ones(n,1), xp, xp .^ 2];
         l = points(:, 2);
         x = A \ l
         rms = sqrt(sum((polyval(flipud(x), points(:, 1)) - points(:, 2)) .^ 2) / n);

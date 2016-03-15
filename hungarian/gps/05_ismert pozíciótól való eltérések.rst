@@ -1,18 +1,16 @@
 RTKLIB programmal meghatározott pozíciók és a permanens állomás ismert pozíciójának eltérése
 ============================================================================================
-*szerző: Takács Bence (takacs.bence@epito.bme.hu),
-BME Általános- és Felsőgeodézia Tanszék, 
-utolsó módosítás: 2016. január 7.*
+*szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék.*
 
 Az `előzőekben <https://github.com/OSGeoLabBp/tutorials/blob/master/hungarian/gps/04_rtklib.rst>`_ permanens állomás nyers méréseit dolgoztuk fel RTKLIB szoftverrel, abszolút helymeghatározásként. Tekintettel arra, hogy a permanens állomások pontos pozíciója ismert, így kiszámolthatjuk az abszolút helymeghatározással meghatározott pozíciók valódi hibáit. Erre most egy awk szkriptet mutatunk be. Az awk linux operációs rendszer alatt elérhető. Windows operációs rendszer alá is telepíthető. Az egyik egyszerű megoldás `osgeo4w <https://trac.osgeo.org/osgeo4w/>`_ programcsomag telepítése, majd az awk programot ennek parancssorából tudjuk meghívni.
 
 Az RTKPOST programmal végzett feldolgozás eredményállománya fejlécből és adatokból áll. A fejléc sorok elején % jel található:: 
 
   % program   : RTKPOST ver.2.4.2
-  % inp file  : E:\kutat\rtklib\bute0060.16o
-  % inp file  : E:\kutat\rtklib\brdc0060.16n
-  % obs start : 2016/01/06 00:00:00.0 GPST (week1878 259200.0s)
-  % obs end   : 2016/01/06 23:59:30.0 GPST (week1878 345570.0s)
+  % inp file  : E:\tantargyak\alagutmeres\2016\bute1520.15o
+  % inp file  : E:\tantargyak\alagutmeres\2016\brdc1520.15n
+  % obs start : 2015/06/01 00:00:00.0 GPST (week1847  86400.0s)
+  % obs end   : 2015/06/01 23:59:30.0 GPST (week1847 172770.0s)
   % pos mode  : single
   % elev mask : 15.0 deg
   % ionos opt : broadcast
@@ -21,11 +19,12 @@ Az RTKPOST programmal végzett feldolgozás eredményállománya fejlécből és
   %
   % (lat/lon/height=WGS84/ellipsoidal,Q=1:fix,2:float,3:sbas,4:dgps,5:single,6:ppp,ns=# of satellites)
   %  GPST                  latitude(deg) longitude(deg)  height(m)   Q  ns   sdn(m)   sde(m)   sdu(m)  sdne(m)  sdeu(m)  sdun(m) age(s)  ratio
-  2016/01/06 00:00:00.000   47.480948244   19.056512467   177.0515   5   5   4.9465   2.9464   8.0844   2.3532   3.9166   4.0832   0.00    0.0
-  2016/01/06 00:00:30.000   47.480947993   19.056507472   176.6958   5   5   4.9220   2.9519   8.0474   2.3445   3.9147   4.0482   0.00    0.0
-  2016/01/06 00:01:00.000   47.480948162   19.056508639   176.8775   5   5   4.8975   2.9571   8.0103   2.3355   3.9125   4.0132   0.00    0.0
-  2016/01/06 00:01:30.000   47.480947143   19.056513251   177.2445   5   5   4.8729   2.9622   7.9733   2.3262   3.9099   3.9781   0.00    0.0
-  2016/01/06 00:02:00.000   47.480948018   19.056518484   177.8703   5   5   4.8482   2.9671   7.9363   2.3166   3.9070   3.9430   0.00    0.0
+  2015/06/01 00:00:00.000   47.480954411   19.056534073   181.7826   5   9   2.1245   1.9103   3.7333   0.1328   0.9211   1.1049   0.00    0.0
+  2015/06/01 00:00:30.000   47.480954070   19.056535216   181.9513   5   9   2.1242   1.9099   3.7485   0.1344   0.9274   1.1219   0.00    0.0
+  2015/06/01 00:01:00.000   47.480953632   19.056538036   182.0809   5   9   2.1240   1.9095   3.7639   0.1361   0.9338   1.1387   0.00    0.0
+  2015/06/01 00:01:30.000   47.480953699   19.056541652   182.2652   5   9   2.1238   1.9091   3.7793   0.1378   0.9403   1.1553   0.00    0.0
+  2015/06/01 00:02:00.000   47.480954424   19.056541015   182.3033   5   9   2.1236   1.9087   3.7949   0.1395   0.9468   1.1718   0.00    0.0
+
 
 Az adatrész könnyen olvasható, minden sorban egy mérési epochához tartozó eredmények, azaz dátum, idő, meghatározott koordináták, magasság, meghatározás módja, műholdak száma, középhibák található.
 
@@ -47,7 +46,7 @@ Awk szkriptünk elején adjuk meg permanens állomásunk ismert koordinátáit! 
 
 Tehát ezeket a sorokat másoljuk egy fájlba, a fájl kiterjesztése *.awk* legyen, majd az osgeo4w ablakból a futtatás a következő lesz::
 
-  awk -f pos_error.awk bute0060.pos
+  awk -f pos_error.awk bute1520.pos
 
 Ezután csak az adatszekció sorait fogjuk beolvasni, azaz minden olyan sort, ami nem '%' karakterrel kezdődik. Ezt a ^[^%] mintával adhatjuk meg::
 
@@ -97,13 +96,36 @@ Minden beolvasott sorból kivesszük a földrajzi koordinátákat, kiszámoljuk 
 
 A futtatás során a kimenenet érdemes egy fájlba átirányítani::
 
-  awk -f pos_error.awk bute0060.pos > pos_error.txt
+  awk -f pos_error.awk bute1520.pos > pos_error.txt
 
 Az eredményfájl első néhány sora a következő lesz::
 
-  2016/01/06 00:00:00.000 -0.495 1.303 3.756
-  2016/01/06 00:00:30.000 -0.467 1.678 4.112
-  2016/01/06 00:01:00.000 -0.485 1.591 3.930
-  2016/01/06 00:01:30.000 -0.372 1.244 3.564
-  2016/01/06 00:02:00.000 -0.469 0.850 2.938
+  2015/06/01 00:00:00.000 -1.181 -0.323 -0.975
+  2015/06/01 00:00:30.000 -1.143 -0.409 -1.143
+  2015/06/01 00:01:00.000 -1.095 -0.622 -1.273
+  2015/06/01 00:01:30.000 -1.102 -0.894 -1.457
+  2015/06/01 00:02:00.000 -1.183 -0.846 -1.495
+  2015/06/01 00:02:30.000 -1.248 -0.757 -1.503
+
+A vízszintes pozíciók valódi hibáit bemutató grafikon a következő gnuplot szkripttel állítható elő::
+
+  set grid lt 0
+  set yrange [-5:+5]
+  set ytics 1
+  set xrange [-5:+5]
+  set xtics 1
+  set xlabel "Delta-East [m]"
+  set ylabel "Delta-North [m]"
+  set title "Horizontal deviation from reference - standalone GPS" 
+  set terminal png small size 480,480 enhanced
+  set output 'pos_error.png'
+  plot 'pos_error.txt' using 4:3 notitle with points lc 'blue'
+
+A szkript futtatása::
+
+  gnuplot pos_error.plt
+  
+Az eredményeket bemutató ábra:
+
+.. image:: images/pos_error.png
 

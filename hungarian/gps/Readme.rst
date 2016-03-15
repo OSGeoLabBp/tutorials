@@ -1,0 +1,2 @@
+Ebben a könyvtárban permanens GNSS állomások RTKLIB szoftverrel végzett, automatatizált feldolgozására vonatkozó elektronikus oktató anyagokat találhat. Bemutatjuk az állományok letöltésének, kitömörítésének lehetőségeit linux és windows operációs rendszerek alatt, shell és python szkriptekkel. Valamint egy egyszerű példán keresztül feldolgozzuk egy permanens állomás nyers méréseit RTKLIB szoftverrel, majd a kapott pozíciók valódi hibáit gnuplot szkripttel felrajzoljuk.
+

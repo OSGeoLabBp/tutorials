@@ -1,6 +1,6 @@
 GPS adatok feldolgozása RTKLIB szoftverrel
 ==========================================
-*szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék. utolsó módosítás: 2016. január 7.*
+*szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék.*
 
 Az előzőekben permanens GPS állomás, illetve navigációs üzenetek adatait töltöttük le, tömörítettük ki. Most azt mutatjuk meg, hogyan lehet az ingyenes `RTKLIB <http://www.rtklib.com/>`_ szoftverrel az adatokat feldolgozni. Először a grafikus felületen történő feldolgozást, azután pedig a parancssorból végzett feldolgozást mutatjuk be.
 
@@ -12,6 +12,6 @@ A szoftver további beállításait egyelőre hagyjuk későbbre!
 
 Ugyanez a feldolgozás parancssorból is elvégezhető::
 
-  rnx2rtkp -p 0 -o but061.pos bute0060.16o brdc0060.16n
+  rnx2rtkp -p 0 -o bute1520.pos bute1520.15o brdc1520.15n
 
 Az rnx2rtkp programot kell a C:\\rtklib_2.4.2\\bin könyvtárból indítani, célszerű korábban a könyvtárat rátenni a windows elérési útjára.
