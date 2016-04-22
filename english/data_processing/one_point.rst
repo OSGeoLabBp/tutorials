@@ -40,25 +40,14 @@ sample data (date, time, bearing, zenith angle, distance):
     fclose(f);
     data = data';   % transpose input matrix
     [rows, cols] = size(data);
-    for i=1:rows
-        % convert date-time to unix seconds
-        ts.year = data(i, 1);
-        ts.mon = data(i, 2);
-        ts.mday = data(i, 3);
-        ts.hour = data(i, 4);
-        ts.min = data(i, 5);
-        ts.sec = round(data(i, 6));
-        if (i == 1)     % first observation
-            st = mktime(ts);     % start epoch seconds
-        end
-        data(i, 1) = (mktime(ts) - st) / (3600 * 24);    % day units
-        % calculate coordinates
-        data(i, 2) = data(i, 9) * sin(data(i, 8)) * sin(data(i, 7));  % Easting
-        data(i, 3) = data(i, 9) * sin(data(i, 8)) * cos(data(i, 7));  % Northing
-        data(i, 4) = data(i, 9) * cos(data(i, 8));                    % Elevation
-        data(i, 5) = 0;
-        data(i, 6) = 0;
-    end
+    % convert date-time to days
+    data(:,1) = datenum(data(:,1), data(:,2), data(:,3), data(:,4), data(:,5), data(:,6));
+    % calculate offset from start time
+    data(:,1) = data(:,1) .- data(1,1);
+    % calculate coordinates
+    data(:, 2) = data(:, 9) .* sin(data(:, 8)) .* sin(data(:, 7));  % Easting
+    data(:, 3) = data(:, 9) .* sin(data(:, 8)) .* cos(data(:, 7));  % Northing
+    data(:, 4) = data(:, 9) .* cos(data(:, 8));                     % Elevation
     % basic statistics
     y = mean(data(:, 2));   % average
     x = mean(data(:, 3));
@@ -66,7 +55,7 @@ sample data (date, time, bearing, zenith angle, distance):
     my = std(data(:, 2));   % standard deviation
     mx = std(data(:, 3));
     mz = std(data(:, 4));
-    printf(' Y[m] X[m] Z[m] my[mm] mx[mm] mz[mm] skew\n');
+    printf('  Y[m]     X[m]     Z[m]     my[mm] mx[mm] mz[mm] skew\n');
     printf('%8.4f %8.4f %8.4f %6.2f %6.2f %6.2f %6.2f %6.2f %6.2f\n', \
     y, x, z, my * 1000, mx * 1000, mz * 1000, skewness(data(:,2)), \
     skewness(data(:,3)), skewness(data(:,4)));
@@ -93,11 +82,11 @@ sample data (date, time, bearing, zenith angle, distance):
     cyx = cov(data(:,2), data(:,3)) / std(data(:,2)) / std(data(:,3));
     cyz = cov(data(:,2), data(:,4)) / std(data(:,2)) / std(data(:,4));
     cxz = cov(data(:,3), data(:,4)) / std(data(:,3)) / std(data(:,4));
-    printf('\nCorrelations\n');
-    printf(' Y X Z\n'); 
+    printf('\n     Correlations\n');
+    printf('      Y     X     Z\n');
     printf('time %5.3f %5.3f %5.3f\n', cy, cx, cz);
-    printf(' Y - %5.3f %5.3f\n', cyx, cyz);
-    printf(' X - - %5.3f\n', cxz);
+    printf('   Y  -    %5.3f %5.3f\n', cyx, cyz);
+    printf('   X  -     -    %5.3f\n', cxz);
     % looking for linear trend
     py = polyfit(data(:,1), data(:,2), 1);
     px = polyfit(data(:,1), data(:,3), 1);
