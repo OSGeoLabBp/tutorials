@@ -21,7 +21,7 @@ z = mean(data(:, 4));
 my = std(data(:, 2));   % standard deviation
 mx = std(data(:, 3));
 mz = std(data(:, 4));
-printf(' Y[m] X[m] Z[m] my[mm] mx[mm] mz[mm] skew\n');
+printf('  Y[m]     X[m]     Z[m]     my[mm] mx[mm] mz[mm] skew\n');
 printf('%8.4f %8.4f %8.4f %6.2f %6.2f %6.2f %6.2f %6.2f %6.2f\n', \
 y, x, z, my * 1000, mx * 1000, mz * 1000, skewness(data(:,2)), \
 skewness(data(:,3)), skewness(data(:,4)));
@@ -48,11 +48,11 @@ cz = cov(data(:,1), data(:,4)) / std(data(:,1)) / std(data(:,4));
 cyx = cov(data(:,2), data(:,3)) / std(data(:,2)) / std(data(:,3));
 cyz = cov(data(:,2), data(:,4)) / std(data(:,2)) / std(data(:,4));
 cxz = cov(data(:,3), data(:,4)) / std(data(:,3)) / std(data(:,4));
-printf('\nCorrelations\n');
-printf(' Y X Z\n');
+printf('\n     Correlations\n');
+printf('      Y     X     Z\n');
 printf('time %5.3f %5.3f %5.3f\n', cy, cx, cz);
-printf(' Y - %5.3f %5.3f\n', cyx, cyz);
-printf(' X - - %5.3f\n', cxz);
+printf('   Y  -    %5.3f %5.3f\n', cyx, cyz);
+printf('   X  -     -    %5.3f\n', cxz);
 % looking for linear trend
 py = polyfit(data(:,1), data(:,2), 1);
 px = polyfit(data(:,1), data(:,3), 1);
