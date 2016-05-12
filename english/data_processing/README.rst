@@ -112,6 +112,7 @@ Table of contents
 #. `Polynom interpolation <polinom.rst>`_
 #. `Generalised inverse <pseudo_inverz.rst>`_
 #. `Regression circle <circle.rst>`_
+#. `Generate report from a DXF file <dxfinfo.rst>`
 
 Program codes and sample data are in the `code <code>`_ folder.
 
