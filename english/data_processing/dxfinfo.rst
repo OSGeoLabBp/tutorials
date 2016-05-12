@@ -5,7 +5,7 @@ Generate report from a DXF file
 : text file processing, associative array
 
 *Data file*
-: ???.dxf
+: test.dxf
 
 *Program files*
 : dxfinfo.awk
