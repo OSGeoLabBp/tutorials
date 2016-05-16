@@ -17,7 +17,7 @@ the best fitting circle (center point and radius) to these points.
 Let's solve the last equation for the a1, a2, a3 unknowns in Octave.
 Original code can be found at http://www.mathworks.com/matlabcentral/fileexchange/5557-circle-fit/content/circfit.m
 
-.. code::
+.. code:: octave
 
     % circle fit
     % x^2+y^2+a(1)*x+a(2)*y+a(3)=0
@@ -27,4 +27,24 @@ Original code can be found at http://www.mathworks.com/matlabcentral/fileexchang
     xc = -0.5*a(1)
     yc = -0.5*a(2)
     r  =  sqrt((a(1)^2+a(2)^2)/4-a(3))
+
+Let's modify the code to read data from an input file, x and y coordinates in 
+a row. The file name can be given in the command line or use default 
+circletest.txt.
+
+.. code:: octave
+
+    % circle fit coordinate file
+    % read data from ascii file
+    args = argv();
+    if rows(args) == 0
+        fname = 'circletest.txt';
+        else
+            fname = args{1};
+            end
+            points = dlmread(fname);
+            a=[points(:,1) points(:,2) ones(rows(points),1)]\[-(points(:,1).^2+points(:,2).^2)];
+            xc = -.5*a(1)
+            yc = -.5*a(2)
+            R  =  sqrt((a(1)^2+a(2)^2)/4-a(3))
 
