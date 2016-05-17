@@ -91,7 +91,7 @@ Matlab incompatible structures.
 *   using file input/output
 *   using variables, expressions, decision control (conditional statement, loops), functions
 *   using regular expressions
-*   extending Octave/Matlab knowlage
+*   extending Octave/Matlab knowledge
 *   vectorization
 
 Table of contents
