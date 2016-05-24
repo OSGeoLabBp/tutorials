@@ -80,3 +80,8 @@ the result to sort to get a clearer output.
 .. code::
 
     ./dxfinfo test.dxf | sort
+
+.. note:: *Development tipps:*
+
+    Subentities are not handled correctly, e.g. VERTEX inside a POLYLINE or 
+    ATTRIBUTE inside a block INSERT. Change code to handle subentities, too.
