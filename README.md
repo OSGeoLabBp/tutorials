@@ -1,5 +1,5 @@
 # tutorials
 tutorials for FOSS4G software
 
-# `English tutorials <english>`_
-# `Hungarian tutorials <hungarian>`_
+- `English tutorials <english>`_
+- `Hungarian tutorials <hungarian>`_
