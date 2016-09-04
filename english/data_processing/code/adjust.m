@@ -16,9 +16,8 @@ format long
 % standard deviation of leveling [mm/km]
 mkm = 0.7;
 psz = [1, 2, 3, 4];   % point numbers
-% elozetes/vegeleges magassagok 1,2,3,4
-mag = [104.234; 103.487; 102.958; 101.345];  %preliminary coordinates
-% number of unknowns (at the beginning of point numbers)
+mag = [104.234; 103.487; 102.958; 101.345];  %preliminary elevations
+% number of unknowns (from the beginning of point numbers)
 n = 3;
 % observations: start  end height_difference length
 %               index index  [m]              [km]
