@@ -8,4 +8,6 @@ Felmerült a feladat, hogy egy 2.1 verziójú (amerikai) GPS-műholdak adatait t
 	endwhile
 	fclose (fid);
 
-Az első sorban olvasásra nyitjuk meg a brdc1520.15n állományunkat, a fájlt az 5. sorban zárjuk le. Megnyitán után a whlie ciklusban amíg a fájl vége jelet el nem érjük, a fgetl parancs segítségével soronként beolvassuk az állomány tartalmaát, az aktuális sor tartalmát a text_line változó tartalmazza. Egyelőre a beolvasott adatokkal semmit nem kezdünk.
+Az első sorban olvasásra nyitjuk meg a brdc1520.15n állományunkat, a fájlt az 5. sorban zárjuk le. Megnyitán után a while ciklusban amíg a fájl vége jelet el nem érjük, a fgetl parancs segítségével soronként beolvassuk az állomány tartalmát, az aktuális sor tartalmát a text_line változóba tesszük. Egyelőre a beolvasott adatokkal semmit nem kezdünk.
+
+Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = fgetl (fid); sorok végéről töröld ki a ;-t! 
