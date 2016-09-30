@@ -40,5 +40,22 @@ Akkor most bevezetünk egy d változót, aminek értéke a program indításakor
 	endwhile
 	fclose (fin);
 	
+Most tegyük hozzá, hogy a navigációs adatokat írja is ki egy állományba ("data.txt"). Ehhez az állományt írásra kell megnyitnunk, és persze a végén illik lezárni::
 
+fin = fopen ("brdc1520.15n", "r");
+d=0;
+while (! feof (fin) )
+        text_line = fgetl (fin);
+
+        if (d==1)
+            fprintf (fou, "%s\n", text_line);
+        endif
+
+        if strfind(text_line, "END OF HEADER")
+                d=1;
+        endif
+        
+endwhile
+fclose (fin);
+fclose (fou);
 
