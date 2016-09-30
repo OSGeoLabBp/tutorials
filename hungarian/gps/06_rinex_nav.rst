@@ -40,7 +40,7 @@ Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = 
 	endwhile
 	fclose (fin);
 	
-**4.** Most tegyük hozzá, hogy a navigációs adatokat írja is ki egy állományba ("data.txt"). Ehhez az állományt írásra kell megnyitnunk, és persze a végén illik lezárni::
+**4.** Most tegyük hozzá, hogy a navigációs adatokat írja is ki egy állományba ("data.txt"). Ehhez az állományt írásra kell megnyitnunk, és persze a végén illik lezárni. Fájlba íráshoz az fprintf parancsot használjuk. ::
 
 	fin = fopen ("brdc1520.15n", "r");
 	fou = fopen ("data.txt", "w");
@@ -60,3 +60,4 @@ Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = 
 	fclose (fin);
 	fclose (fou);
 
+**5.** Most alakítsuk át a programunkat olyanra, hogy egy navigációs adatcsomagot egy sorban írjon ki! 
