@@ -15,4 +15,16 @@ Az első sorban olvasásra nyitjuk meg a brdc1520.15n állományunkat, a fájlt 
 
 Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = fgetl (fid); sorok végéről töröld ki a ;-t! 
 
-**2.** Ezután alakítsuk át úgy a szkriptünket, hogy a fejléc ("header") sorainak tartalmát ne írja ki, csak az adatokat!
+**2.** Ezután alakítsuk át úgy a szkriptünket, hogy a fejléc ("header") sorainak tartalmát ne írja ki, csak a tényleges navigációs adatokat! Ehhez először nézzük meg, hogy az aktuális sor tartalmazza-e az "END OF HEADER" szavakat, ha igen, akkor írja ki az adott sor tartalmát. Ehhez a strfind beépített függvényt használjuk::
+
+	fid = fopen ("brdc1520.15n", "r");
+	while (! feof (fid) )
+		text_line = fgetl (fid);
+		if strfind(text_line, "END OF HEADER") 
+			disp(text_line);
+		endif
+	endwhile
+	fclose (fid);
+	
+
+
