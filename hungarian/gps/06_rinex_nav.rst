@@ -105,4 +105,6 @@ Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = 
 	fclose (fin);
 	fclose (fou);
 
-Egy adott műhold, adottidőszakra vonatkozó navigációs adatai most már könyebben kereshetők az output fájlban. Természetesen az is megoldható, hogy csak a keresett adatokat írjuk ki. Legközelebb azt is megírom, hogy hogyan.
+Annyi szépséghibája van az eredmény állománynak, hogy egy üres sorral kezdődik.
+
+Egy adott műhold, adott időszakra vonatkozó navigációs adatai most már könyebben kereshetők az output fájlban. Természetesen az is megoldható, hogy csak a keresett adatokat írjuk ki. Legközelebb azt is megírom, hogy hogyan.
