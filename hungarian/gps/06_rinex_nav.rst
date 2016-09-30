@@ -40,7 +40,7 @@ Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = 
 	endwhile
 	fclose (fin);
 	
-**4.** Most tegyük hozzá, hogy a navigációs adatokat írja is ki egy állományba ("data.txt"). Ehhez az állományt írásra kell megnyitnunk, és persze a végén illik lezárni. Fájlba íráshoz az fprintf parancsot használjuk. ::
+**4.** Most tegyük hozzá, hogy a navigációs adatokat írja is ki egy állományba ("data.txt"). Ehhez az állományt írásra kell megnyitnunk, és persze a végén illik lezárni. Fájlba íráshoz az fprintf parancsot használjuk::
 
 	fin = fopen ("brdc1520.15n", "r");
 	fou = fopen ("data.txt", "w");
@@ -60,7 +60,7 @@ Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = 
 	fclose (fin);
 	fclose (fou);
 
-**5.** Most alakítsuk át a programunkat olyanra, hogy minden navigációs adatot egy sorban írjon ki! Ehhez csak az fprintf parancssorból a sorvégjel (\n) kiírást kell eltávolíztani::
+**5.** Most alakítsuk át a programunkat olyanra, hogy minden navigációs adatot egy sorban írjon ki! Ehhez csak az fprintf parancssorból a sortörés (\n) kiírását kell eltávolítani::
 
 	fin = fopen ("brdc1520.15n", "r");
 	fou = fopen ("data.txt", "w");
@@ -80,7 +80,7 @@ Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = 
 	fclose (fin);
 	fclose (fou);
 
-**6.** Most alakítsuk át a programunkat olyanra, hogy egy navigációs adatcsomagot egy sorban írjon ki! Ehhez meg kell néznünk, hog mikor jön egy újabb adatcsomag. többféleképpen is vizsgákhatjuk ezt, kiindulhatunk abból, hogy egy adatcsomag 8 sorban szerepel a rinex állományban. Egy másik lehetőség, hogy megnézzük a szóközök számát az egyes sorokban, feltünhet, hogy egy adatcsomag első sorában jóval több a szóközök száma. A szóközök számát az n változó tartalmazza. Ha ez 8 feletti, akkor az output fájlba be kell tennünk egy sortörést::
+**6.** Most alakítsuk át a programunkat olyanra, hogy egy navigációs adatcsomagot egy sorban írjon ki! Ehhez meg kell néznünk, hog mikor jön egy újabb adatcsomag. Kiindulhatunk abból, hogy egy adatcsomag első sorában jóval több a szóközök száma, mint a többi sorban. Programunkban a szóközök számát az n változó tartalmazza. Ha ez 9 feletti, akkor az output fájlba be kell tennünk egy sortörést::
 
 	fin = fopen ("brdc1520.15n", "r");
 	fou = fopen ("data.txt", "w");
@@ -103,3 +103,4 @@ Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = 
 	endwhile
 	fclose (fin);
 	fclose (fou);
+
