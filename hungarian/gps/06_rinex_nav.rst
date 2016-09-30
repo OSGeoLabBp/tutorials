@@ -15,7 +15,7 @@ Az első sorban olvasásra nyitjuk meg a brdc1520.15n állományunkat, a fájlt 
 
 Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = fgetl (fid); sorok végéről töröld ki a ;-t! 
 
-**2.** Ezután alakítsuk át úgy a szkriptünket, hogy a fejléc ("header") sorainak tartalmát ne írja ki, csak a tényleges navigációs adatokat! Ehhez először nézzük meg, hogy az aktuális sor tartalmazza-e az "END OF HEADER" szavakat, ha igen, akkor írja ki az adott sor tartalmát. Ehhez a strfind beépített függvényt használjuk::
+**2.** Ezután alakítsuk át úgy a szkriptünket, hogy csak a fejléc ("header") utolsó sorának tartalmát írja ki! Ehhez nézzük meg, hogy az aktuális sor tartalmazza-e az "END OF HEADER" szavakat, ha igen, akkor írja ki az adott sor tartalmát. Ehhez a strfind beépített függvényt használjuk::
 
 	fin = fopen ("brdc1520.15n", "r");
 	while (! feof (fin) )
@@ -26,7 +26,7 @@ Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = 
 	endwhile
 	fclose (fin);
 	
-Akkor most bevezetünk egy d változót, aminek értéke a program indításakor 0, ha elértük a fejléc végét, akkor értéke 1-re vált::
+**3.** Akkor most bevezetünk egy d változót, aminek értéke a program indításakor 0, ha elértük a fejléc végét, akkor értéke 1-re vált::
 
 	fin = fopen ("brdc1520.15n", "r");
 	d=0;
@@ -40,22 +40,23 @@ Akkor most bevezetünk egy d változót, aminek értéke a program indításakor
 	endwhile
 	fclose (fin);
 	
-Most tegyük hozzá, hogy a navigációs adatokat írja is ki egy állományba ("data.txt"). Ehhez az állományt írásra kell megnyitnunk, és persze a végén illik lezárni::
+**4.** Most tegyük hozzá, hogy a navigációs adatokat írja is ki egy állományba ("data.txt"). Ehhez az állományt írásra kell megnyitnunk, és persze a végén illik lezárni::
 
-fin = fopen ("brdc1520.15n", "r");
-d=0;
-while (! feof (fin) )
-        text_line = fgetl (fin);
+	fin = fopen ("brdc1520.15n", "r");
+	fou = fopen ("data.txt", "w");
+	d=0;
+	while (! feof (fin) )
+		text_line = fgetl (fin);
 
-        if (d==1)
-            fprintf (fou, "%s\n", text_line);
-        endif
+		if (d==1)
+		    fprintf (fou, "%s\n", text_line);
+		endif
 
-        if strfind(text_line, "END OF HEADER")
-                d=1;
-        endif
-        
-endwhile
-fclose (fin);
-fclose (fou);
+		if strfind(text_line, "END OF HEADER")
+			d=1;
+		endif
+
+	endwhile
+	fclose (fin);
+	fclose (fou);
 
