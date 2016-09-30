@@ -1,5 +1,5 @@
-RINEX navigációs fájlból adatok keresése
-========================================
+RINEX navigációs fájl átalakítása
+=================================
 *szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék.*
 
 Felmerült a feladat, hogy egy 2.1 verziójú (amerikai) GPS-műholdak adatait tartalmazó RINEX navigációs állományból keressük ki egy adott műhold, adott időpontra vonatkozó navigációs adatait! Ebben a segédanyagban lépésről-lépésre bemutatjuk hogyan oldható meg a feladat octave programban. A segédletet teljesen kezdőknek is ajánljuk.
@@ -105,3 +105,4 @@ Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = 
 	fclose (fin);
 	fclose (fou);
 
+Egy adott műhold, adottidőszakra vonatkozó navigációs adatai most már könyebben kereshetők az output fájlban. Természetesen az is megoldható, hogy csak a keresett adatokat írjuk ki. Legközelebb azt is megírom, hogy hogyan.
