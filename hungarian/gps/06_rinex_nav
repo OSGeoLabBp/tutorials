@@ -1,2 +1,0 @@
-Felmerült a feladat, hogy egy 2.1 verziójú rinex navigációs állományból keressük ki egy adott műhold, adott időpontra vonatkozó navigációs adatait! Ebben a segédanyagban lépésről-lépésre bemutatjuk hogyan oldható meg a feladat octave szkripttel. A segédletet tlejesen kezdőknek is ajánljuk.
-
