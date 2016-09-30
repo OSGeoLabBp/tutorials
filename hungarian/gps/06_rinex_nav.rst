@@ -60,4 +60,46 @@ Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = 
 	fclose (fin);
 	fclose (fou);
 
-**5.** Most alakítsuk át a programunkat olyanra, hogy egy navigációs adatcsomagot egy sorban írjon ki! 
+**5.** Most alakítsuk át a programunkat olyanra, hogy minden navigációs adatot egy sorban írjon ki! Ehhez csak az fprintf parancssorból a sorvégjel (\n) kiírást kell eltávolíztani::
+
+	fin = fopen ("brdc1520.15n", "r");
+	fou = fopen ("data.txt", "w");
+	d=0;
+	while (! feof (fin) )
+		text_line = fgetl (fin);
+
+		if (d==1)
+		    fprintf (fou, "%s", text_line);
+		endif
+
+		if strfind(text_line, "END OF HEADER")
+			d=1;
+		endif
+
+	endwhile
+	fclose (fin);
+	fclose (fou);
+
+**6.** Most alakítsuk át a programunkat olyanra, hogy egy navigációs adatcsomagot egy sorban írjon ki! Ehhez meg kell néznünk, hog mikor jön egy újabb adatcsomag. többféleképpen is vizsgákhatjuk ezt, kiindulhatunk abból, hogy egy adatcsomag 8 sorban szerepel a rinex állományban. Egy másik lehetőség, hogy megnézzük a szóközök számát az egyes sorokban, feltünhet, hogy egy adatcsomag első sorában jóval több a szóközök száma. A szóközök számát az n változó tartalmazza. Ha ez 8 feletti, akkor az output fájlba be kell tennünk egy sortörést::
+
+	fin = fopen ("brdc1520.15n", "r");
+	fou = fopen ("data.txt", "w");
+	d=0;
+	while (! feof (fin) )
+		text_line = fgetl (fin);
+		n=length(strfind(text_line,' '));
+
+		if (d==1)
+		    if (n>9)
+			fprintf(fou, "\n");
+		    endif
+		    fprintf (fou, "%s", text_line);
+		endif
+
+		if strfind(text_line, "END OF HEADER")
+			d=1;
+		endif
+
+	endwhile
+	fclose (fin);
+	fclose (fou);
