@@ -135,6 +135,37 @@ Egy adott műhold, adott időszakra vonatkozó navigációs adatai most már kö
 	fclose (fin);
 	fclose (fou);
 
-**8.** Most alakítsuk át a programunkat úgy, hogy az adatcsomag első sorának első adatát, azaz a műhold azonosítóját beolvassa egy változóba és csak egy adott műhold adatait írjuk ki!
+**8.** Most alakítsuk át a programunkat úgy, hogy csak egy adott műhold adatait írjuk ki! Ehhz az első sor első adatát be kell olvassuk egy változóba (esetünkben prn) és a kiírásnál csak akkor írjuk ki az adatokat, ha a prn változó értéke megegyezik a program elején definiált prn0 értékkel. Vajon hogyan kell a programot átalakítani, ha pl. a 8 (vagy bármelyik 10-nél kisebb azonosítójú) műhold adatait szeretnénk kiíratni?::
+
+	fin = fopen ("brdc1520.15n", "r");
+	fou = fopen ("data.txt", "w");
+	d=0;
+	prn0="20";
+	while (! feof (fin) )
+		text_line = fgetl (fin);
+
+		if (d==1)
+		    prn=text_line(1:2);
+		    if strcmp(prn,prn0)
+			fprintf (fou, "%s", text_line);
+		    endif
+		    for i=1:7
+			text_line = fgetl (fin);
+			if strcmp(prn,prn0)
+			    fprintf(fou, "%s", text_line);
+			endif
+		    endfor
+		    if strcmp(prn,prn0)
+			fprintf(fou, "\n");
+		    endif
+		endif
+
+		if strfind(text_line, "END OF HEADER")
+			d=1;
+		endif
+
+	endwhile
+	fclose (fin);
+	fclose (fou);
 
 
