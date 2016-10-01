@@ -135,7 +135,7 @@ Egy adott műhold, adott időszakra vonatkozó navigációs adatai most már kö
 	fclose (fin);
 	fclose (fou);
 
-**8.** Most alakítsuk át a programunkat úgy, hogy csak egy adott műhold adatait írjuk ki! Ehhz az első sor első adatát be kell olvassuk egy változóba (esetünkben prn) és a kiírásnál csak akkor írjuk ki az adatokat, ha a prn változó értéke megegyezik a program elején definiált prn0 értékkel. A rinex fájlban fix hosszúságú egy adat értéke, a műholdak azonosítója két karakter hosszú, egész szám. Vajon hogyan kell a programot átalakítani, ha pl. a 8 (vagy bármelyik 10-nél kisebb azonosítójú) műhold adatait szeretnénk kiíratni?:
+**8.** Most alakítsuk át a programunkat úgy, hogy csak egy adott műhold adatait írjuk ki! Ehhez az első sor első adatát be kell olvassuk egy változóba (esetünkben prn) és a kiírásnál csak akkor írjuk ki az adatokat, ha a prn változó értéke megegyezik a program elején definiált prn0 értékkel. A `rinex <https://igscb.jpl.nasa.gov/igscb/data/format/rinex210.txt>_` fájlban fix hosszúságú egy adat értéke, a műholdak azonosítója két karakter hosszú, egész szám. Vajon hogyan kell a programot átalakítani, ha pl. a 8 (vagy bármelyik 10-nél kisebb azonosítójú) műhold adatait szeretnénk kiíratni?:
 
 	fin = fopen ("brdc1520.15n", "r");
 	fou = fopen ("data.txt", "w");
