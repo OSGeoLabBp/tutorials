@@ -1,5 +1,5 @@
-RINEX navigációs fájl átalakítása
-=================================
+RINEX navigációs fájl átalakítása, és egy adott műhold, adott időszakra vonatkozó adatainak leválogatása
+========================================================================================================
 *szerző: Takács Bence (takacs.bence@epito.bme.hu), BME Általános- és Felsőgeodézia Tanszék.*
 
 Felmerült a feladat, hogy egy 2.1 verziójú (amerikai) GPS-műholdak adatait tartalmazó RINEX navigációs állományból keressük ki egy adott műhold, adott időpontra vonatkozó navigációs adatait! Ebben a segédanyagban lépésről-lépésre bemutatjuk hogyan oldható meg a feladat octave programban. A segédletet teljesen kezdőknek is ajánljuk.
