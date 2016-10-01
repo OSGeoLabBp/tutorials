@@ -135,27 +135,27 @@ Egy adott műhold, adott időszakra vonatkozó navigációs adatai most már kö
 	fclose (fin);
 	fclose (fou);
 
-**8.** Most alakítsuk át a programunkat úgy, hogy csak egy adott műhold adatait írjuk ki! Ehhez az első sor első adatát be kell olvassuk egy változóba (esetünkben prn) és a kiírásnál csak akkor írjuk ki az adatokat, ha a prn változó értéke megegyezik a program elején definiált prn0 értékkel. A `rinex <https://igscb.jpl.nasa.gov/igscb/data/format/rinex210.txt>`_ fájlban fix hosszúságú egy adat értéke, a műholdak azonosítója két karakter hosszú, egész szám. Vajon hogyan kell a programot átalakítani, ha pl. a 8 (vagy bármelyik 10-nél kisebb azonosítójú) műhold adatait szeretnénk kiíratni?::
+**8.** Most alakítsuk át a programunkat úgy, hogy csak egy adott műhold adatait írjuk ki! Ehhez az első sor első adatát be kell olvassuk egy változóba (esetünkben *prn*) és a kiírásnál csak akkor írjuk ki az adatokat, ha a *prn* változó értéke megegyezik a program elején definiált *prn0* értékkel. A `rinex <https://igscb.jpl.nasa.gov/igscb/data/format/rinex210.txt>`_ fájlban fix hosszúságú egy adat értéke, a műholdak azonosítója két karakter hosszú, egész szám. A text_line(1:2) parancs az adott sor első két karakterét veszi ki, az eredmény maga is strin lesz. Ezért használjuk a *str2num* függvényt, ami a stringetszámmá alakítja::
 
 	fin = fopen ("brdc1520.15n", "r");
 	fou = fopen ("data.txt", "w");
 	d=0;
-	prn0="20";
+	prn0=8;
 	while (! feof (fin) )
 		text_line = fgetl (fin);
 
 		if (d==1)
-		    prn=text_line(1:2);
-		    if strcmp(prn,prn0)
+		    prn=str2num(text_line(1:2));
+		    if prn==prn0
 			fprintf (fou, "%s", text_line);
 		    endif
 		    for i=1:7
 			text_line = fgetl (fin);
-			if strcmp(prn,prn0)
+			if prn==prn0
 			    fprintf(fou, "%s", text_line);
 			endif
 		    endfor
-		    if strcmp(prn,prn0)
+		    if prn==prn0
 			fprintf(fou, "\n");
 		    endif
 		endif
@@ -168,4 +168,4 @@ Egy adott műhold, adott időszakra vonatkozó navigációs adatai most már kö
 	fclose (fin);
 	fclose (fou);
 
-
+**9.** A következő lépésben úgy alakítsuk át a programot, hogy az adatcsomag referencia idejét is nézi és csak egy adott időponthoz tartozó adacsomagot írjuk ki.
