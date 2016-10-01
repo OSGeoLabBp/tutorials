@@ -107,4 +107,34 @@ Ha szeretnéd kiíratni az egyes sorok tartalmát a lépernyőre, a text_line = 
 
 Annyi szépséghibája van az eredmény állománynak, hogy egy üres sorral kezdődik.
 
-Egy adott műhold, adott időszakra vonatkozó navigációs adatai most már könyebben kereshetők az output fájlban. Természetesen az is megoldható, hogy csak a keresett adatokat írjuk ki. Legközelebb azt is megírom, hogy hogyan.
+Egy adott műhold, adott időszakra vonatkozó navigációs adatai most már könyebben kereshetők az output fájlban. 
+
+**7.** Most úgy írjuk meg a programot, hogy a fejléc vége után 8 sort olvasunk be, hiszen egy műhold egy kétórás időszakra vonatkozó adatai, nevezzük adatcsomagnak 8 sorból állnak a rinex fájlban::
+
+	fin = fopen ("brdc1520.15n", "r");
+	fou = fopen ("data.txt", "w");
+	d=0;
+	while (! feof (fin) )
+		text_line = fgetl (fin);
+
+		if (d==1)
+		    fprintf (fou, "%s", text_line);
+
+		    for i=1:7
+			text_line = fgetl (fin);
+			fprintf(fou, "%s", text_line);
+		    endfor
+		    fprintf(fou, "\n");
+		endif
+
+		if strfind(text_line, "END OF HEADER")
+			d=1;
+		endif
+
+	endwhile
+	fclose (fin);
+	fclose (fou);
+
+**8.** Most alakítsuk át a programunkat úgy, hogy az adatcsomag első sorának első adatát, azaz a műhold azonosítóját beolvassa egy változóba és csak egy adott műhold adatait írjuk ki!
+
+
