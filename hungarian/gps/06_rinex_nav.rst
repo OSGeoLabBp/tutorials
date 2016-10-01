@@ -135,7 +135,7 @@ Egy adott műhold, adott időszakra vonatkozó navigációs adatai most már kö
 	fclose (fin);
 	fclose (fou);
 
-**8.** Most alakítsuk át a programunkat úgy, hogy csak egy adott műhold adatait írjuk ki! Ehhez az első sor első adatát be kell olvassuk egy változóba (esetünkben *prn*) és a kiírásnál csak akkor írjuk ki az adatokat, ha a *prn* változó értéke megegyezik a program elején definiált *prn0* értékkel. A `rinex <https://igscb.jpl.nasa.gov/igscb/data/format/rinex210.txt>`_ fájlban fix hosszúságú egy adat értéke, a műholdak azonosítója két karakter hosszú, egész szám. A text_line(1:2) parancs az adott sor első két karakterét veszi ki, az eredmény maga is strin lesz. Ezért használjuk a *str2num* függvényt, ami a stringetszámmá alakítja::
+**8.** Most alakítsuk át a programunkat úgy, hogy csak egy adott műhold adatait írjuk ki! Ehhez az első sor első adatát be kell olvassuk egy változóba (esetünkben *prn*) és a kiírásnál csak akkor írjuk ki az adatokat, ha a *prn* változó értéke megegyezik a program elején definiált *prn0* értékkel. A `rinex <https://igscb.jpl.nasa.gov/igscb/data/format/rinex210.txt>`_ fájlban fix hosszúságú egy adat értéke, a műholdak azonosítója két karakter hosszú, egész szám. A text_line(1:2) parancs az adott sor első két karakterét veszi ki, az eredmény maga is string lesz. Ezért használjuk a *str2num* függvényt, ami a stringet számmá alakítja::
 
 	fin = fopen ("brdc1520.15n", "r");
 	fou = fopen ("data.txt", "w");
