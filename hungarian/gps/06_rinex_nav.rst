@@ -168,4 +168,8 @@ Egy adott műhold, adott időszakra vonatkozó navigációs adatai most már kö
 	fclose (fin);
 	fclose (fou);
 
-**9.** A következő lépésben úgy alakítsuk át a programot, hogy az adatcsomag referencia idejét is nézi és csak egy adott időponthoz tartozó adacsomagot írjuk ki.
+**9.** A következő lépésben úgy alakítsuk át a programot, hogy az adatcsomag referencia idejét is nézi és csak egy adott időponthoz tartozó adacsomagot írjuk ki. Egy adatcsomag két óráig használható fel, olyan adatcsomagot keressünk, aminek referencia időpontja az adott időpontot megelőzi, és a két időpont különbsége kevesebb, mint 2 óra. A referencia időpont (*TOE = Time of Ephemeris*) a 4. sor első adata, a rinex navigációs fájlban az első kivételével minden adatsor 3 szóközzel kezdődik, utána 19 karakter hosszúságú egy szám.
+
+**10.** Most pedig arra lenne szükségünk, hogy a navigációs adatokat tároljuk pl. egy tömbben vagy más alkalmas változókban, hogy a későbbiekben számolni tudjunk az adatokkal.
+
+
