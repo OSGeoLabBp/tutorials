@@ -113,6 +113,7 @@ Table of contents
 #. `Generalised inverse <pseudo_inverz.rst>`_
 #. `Regression circle <circle.rst>`_
 #. `Generate report from a DXF file <dxfinfo.rst>`_
+#. `Find prime numbers <prime.rst>`_
 
 Program codes and sample data are in the `code <code>`_ folder.
 
