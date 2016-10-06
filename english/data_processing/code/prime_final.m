@@ -7,5 +7,5 @@ for i = 2:max
   p(2*i:i:max) = 0; % clear multipliers of i
 end
 prime = find(p);
-printf("%d\n", columns(prime));
+printf('%d\n', columns(prime));
 toc()

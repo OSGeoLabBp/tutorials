@@ -9,5 +9,5 @@ for i = 2:n   % check all dividers
   end
 end
 prime = find(p);  % find nonzeros in p
-printf("%d\n", columns(prime));
+printf('%d\n', columns(prime));
 toc() % write elapsed time
