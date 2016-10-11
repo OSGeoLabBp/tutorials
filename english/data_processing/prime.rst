@@ -167,7 +167,7 @@ into our code.
 
 .. code:: bash
 
-    octave prime_improved.m
+    octave prime_improved2.m
     1229
     Elapsed time is 0.0641479 seconds.
 
