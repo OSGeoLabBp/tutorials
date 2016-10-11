@@ -105,12 +105,12 @@ Do we need the second nested loop? No we can use array slicing instead.
     Elapsed time is 0.0636721 seconds.
 
 Again reasonable reduction in elapsed time. We used vectoriation to make the
-program faster. Examine again a loop body. If we can save a little time in
+program faster. Examine again the loop body. If we can save a little time in
 the loop body, it may reduce the elapsed time spectacularly.
 We clear the same even numers several times, after clearing all even numbers in
-the first run of the loop, no need to check any even number.
-Let's move the deletion of even numbers out from the loop and
-check only the odd number in the loop body.
+the first run of the loop, no need to check any even number again.
+Let's move the deletion of even numbers out of the loop and
+check only the odd numbers in the loop body.
 
 *Improved sieve of Erastohenes* (prime_improved.m)
 
@@ -139,7 +139,7 @@ check only the odd number in the loop body.
     Elapsed time is 0.051127 seconds.
 
 Should we run the loop till the maximal value? No, if all values are zero
-in the rest of the **p** vector we can stop looping. LEt's implement it
+in the rest of the **p** vector we can stop looping. Let's implement it
 into our code.
 
 *More impoved sive of Erasthotenes* (prime_improved2.m)
