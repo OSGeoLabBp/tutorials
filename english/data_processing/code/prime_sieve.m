@@ -1,4 +1,4 @@
-% first sieve of Erasthotenes version
+% sieve of Erasthotenes first version
 max = 10000; % limit for the max prime number
 if (nargin > 0)
   max = int64(str2num(argv(){1}));

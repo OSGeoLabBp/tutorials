@@ -1,7 +1,7 @@
 % naive solution to find prime numbers
 max = 10000; % limit for the max prime number
 if (nargin > 0)
-  max = int64(str2num(argv(){1}));
+  max = int64(str2num(argv(){1})); % get command line argument for max
 end
 tic();  % start timer
 p = [1:max];  % vector of integer numbers
