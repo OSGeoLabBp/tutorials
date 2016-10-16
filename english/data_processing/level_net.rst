@@ -30,7 +30,7 @@ Level network adjustment and data snooping
     % standard deviation of leveling [mm/km]
     mkm = 0.7;
     psz = [1, 2, 3, 4];   % point numbers
-    % elozetes/vegeleges magassagok 1,2,3,4
+    % prelimenary/final elevations 1,2,3,4
     mag = [104.234; 103.487; 102.958; 101.345];  %preliminary coordinates
     % number of unknowns (at the beginning of point numbers)
     n = 3;
