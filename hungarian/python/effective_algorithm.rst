@@ -1,0 +1,267 @@
+Esettanulmány
+=============
+
+Bevezetés
+---------
+
+A prím számok kikeresésére szolgáló algoritmus példáján a hatékony algoritmus 
+kialakítását és a Pythonic kód készítését mutatjuk be.
+
+Első naiv algoritmus
+--------------------
+
+Prím szám az a természtes szám melynek két osztója van (önmaga és egy). A legkisebb
+prím szám a kettő. Egy számról úgy dönthetjük el prím-e, hogy végig próbáljuk a kisebb
+számokkal mennyi lesz az osztási maradékuk. El kell el menni az oszthatóság vizsgálatával
+n-1-ig ha n a vizsgált szám? A szám gyökénél nagyobb számokra nemérdemes vizsgálnunk
+hiszen például a 24 esetén a négyes osztó megtalálása után nincs jelentősége, hogy
+négyeshez tartozó osztópárt (6) is megtaláljuk. 
+Ez Python-ban íg nézhet ki:
+
+.. code:: python
+
+    """
+        naive algorith to find prime numbers
+        version 1.0
+    """
+
+    import math
+    import time
+
+    start_time = time.time()
+    prims = []                   # list of prims
+    for p in range(2, 500001):   # find prims up to 50000
+        prime = True
+        for divider in range(2, int(math.sqrt(p))+1):
+        if p % divider == 0:     # remainder of division is zero
+            prime = False        # it is not a prime
+        if prime:
+            prims.append(p)      # store prime number
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+
+Az algoritmus hatékonyságánakmérésére az algoritmusunk futási idejét mérjük.
+A mai számítógépeken mindig több alkalmazás, szolgáltatás fut párhuzamosan, ezért az
+egyszeri időmérés nem ad mindig átlagos eredményt, Célszerű többször futtatni az 
+átlagos futási idő megtalálásához.
+
+Első hatékonyságnövelés
+-----------------------
+
+A fenti algoritmus 105 esetén 11-ig tart az osztók vizsgálata, azonban a 3-as osztó
+megtalálása után felesleges tovább folytatni a belső ciklust, már eldőlt nem prím
+számról van szó. Módosítsuk az algoritmus, hogy az első osztó megtalálása után 
+a belső ciklusból lépjen ki (break utasítás).
+
+.. code:: python
+
+    """
+        naive algorith to find prime numbers
+        version 1.1
+    """
+    
+    import math
+    import time
+    
+    start_time = time.time()
+    prims = []                   # list of prims
+    for p in range(2, 500001):   # find prims up to 50000
+        prime = True
+        for divider in range(2, int(math.sqrt(p))+1):
+            if p % divider == 0: # remainder of division is zero
+                prime = False    # it is not a prime
+                break            # divider found no need to continue
+        if prime:
+            prims.append(p)      # store prime number
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+    
+Python 2.7 verzióval futtatva a gépemenaz első változat több mint 20 másodpercig fut.
+A második változat már négy másodpercnél kevesebbet. Az egymásba ágyazott ciklusok
+esetén a belső ciklus futásának a legrövidítése nagyhatékonyság növekedéssel jár.
+
+.. note::
+
+    Érdekes,hogy Python 3 verzióban (3.5) futtás esetén a program futási ideje növekszik.
+    
+Tegyük Pythonikussá a kódot
+---------------------------
+
+A bevezetőben említettük, hogy nmcsaka hatékonyság,hanem a Pythonikus (Pythonic) kód
+kialakítása is a célunk. A Python nyelvben a ciklushoz is rendelhetünk egy **else** 
+utasítást, mely akkor hajtódik végre, ha nemléptünk ki a ciklus futtatásából **break**
+utsítással. Ennek felhasználásával rövidebbé tehetjük a kódunkat és ezzel talán
+könnyebben olvashatóvá. Feleslegessé válik a prím logikai változó használata.
+Emellett tegyük könnyebben felhasználhatóvá a kódunkat, hogy a parancssorban
+adhassuk meg a prím keresés felső korlátját. Erre a **sys** standard modult használjuk,
+a modul az **argv** listában a parancssorban megadott paramétereket szolgáltatja.
+
+.. code:: python
+
+    """
+        naive algorith to find prime numbers
+        version 1.2
+    """
+    
+    import math
+    import time
+    import sys
+    
+    max_num = 101
+    if len(sys.argv) > 1:        # check command line parameter
+        max_num = int(sys.argv[1]) + 1
+    start_time = time.time()
+    prims = []                   # list of prims
+    for p in range(2, max_num):  # find prims up to max_num
+        for divider in range(2, int(math.sqrt(p))+1):
+            if p % divider == 0: # remainder of division is zero
+                break            # divider found no need to continue
+        else:
+            prims.append(p)      # store prime number
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+    
+
+Ezzel a módosítással a kódunk nem vált hatékonyabbá, de akevesebb utasításból álló
+kód előnyösebb.
+
+Hatékonyabb algoritmus
+----------------------
+
+Az előzőekben az eredeti elképzelésünket megtartva módosítottuk a kódot a hatékonyság 
+érdekében. Lehet, hogy az eredeti elképzelésünk átértékelésével juthatunk hatékonyabb 
+megoldáshoz? Ez már Eraszthotenésznek is sikerült az eraszthotenészi szita 
+kitalálásával. Ennek alapgondolata, hogy ne az egyes vizsgált számok osztásával 
+keressük a prímeket, hanem állítsuk elő a természetes számok sorozatát és 
+ebből távolítsuk el az egyes számok többszöröseit. Ez valahogy így nézhet ki:
+
+.. code:: python
+
+    """
+        Sieve of Erasthotenes prim algorithm
+        version 2.0
+    """
+    
+    import math
+    import time
+    import sys
+    
+    max_num = 1001
+    if len(sys.argv) > 1:        # check command line parameter
+        max_num = int(sys.argv[1]) + 1
+    start_time = time.time()
+    numbers = range(max_num)     # list of natural numbers to check
+    for j in range(2, int(math.sqrt(max_num))):
+        numbers[j+j::j] = [0 for k in numbers[j+j::j]] # use sieve
+    
+    prims = sorted(list(set(numbers) - set([0, 1]))) # remove zeros from list
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+    
+A kódban a listaértelmezést (list comprehension) alkalmaztuk. Ez gyorsabb mint a lista
+**for** típusú ciklussal előállítása. A
+
+.. code:: python
+
+    [0 for k in numbers[j+j::j]]
+
+sor egy nullákat tartalmazó listát állít elő, melynek a hossza megfelel a *j* érték
+többszöröseinek számának. Az értékadással a száok listájában nullázzuk a *j* érték
+többszöröseit. Nem lehetett volna egyszerűen a következő értékadást írni?
+
+.. code:: python
+
+    numbers[j+j::j] = 0
+
+Sajnos ez nem működik, egy lista részének nem adhatunk értékül egy skalárt, de a [0] 
+sem űködik az értékadás jobb oldalán, mert az is csak folytonos részére működne az
+eredeti listára.
+
+Ez a változat fél millióig a prím számokat 3 tized másodperc alatt állítja elő. Az első
+algoritmusunkhoz képest százszoros gyorsulást értünk el.
+
+.. note::
+
+   A fenti kód Python 3 verzióban nem működik. Python 3-ban a range függvény nem egy
+   listát ad vissza, hanem egy generátort, ezt a **list** függvénnyel át kell
+   alakítanunk listává.
+
+Lehet még gyorsítani?
+---------------------
+
+Elemezzük egy kicsit a kódunkat. A *j* ciklusváltozó a 2, 3, 4, ... értékeket veszi 
+fel a futás során, így először 4-től nullázzuk az összes páros számot, majd 6-tól
+minden harmadik számot, majd 8-tól minden negyediket. Álljunk meg itt egy pillanatra!
+Minek nullázzuk a néggyel osztható számokat? Azokat már a kettővel oszthatóság miatt 
+nulláztuk. Hasonló a helyzet például a kilenccel osztható számokkal, azokat már a 
+hárommal oszthatóság miatt nulláztuk. Azaz nem kell minden *j*-re az elemek 
+nullázását végrehajtani, erre csak akkor van szükség, ha *j*-ik elemet még nem
+nulláztuk. Ez egy plusz feltétellel tehetjük meg, mellyel a kód hosszabb lesz, de
+hatékonyabb.
+
+.. code:: python
+
+    """
+        Sieve of Erasthotenes prim algorithm
+        version 2.1
+    """
+    
+    import math
+    import time
+    import sys
+    
+    max_num = 1001
+    if len(sys.argv) > 1:        # check command line parameter
+        max_num = int(sys.argv[1]) + 1
+    start_time = time.time()
+    numbers = range(max_num)     # list of natural numbers to check
+    for j in range(2, int(math.sqrt(max_num))):
+        if numbers[j]:
+            numbers[j+j::j] = [0 for k in numbers[j+j::j]] # use sieve
+    
+    prims = sorted(list(set(numbers) - set([0, 1]))) # remove zeros from list
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+    
+Ennek a módosításnak a hatékonyság növelő hatása fél millióig futtatva kevésbé
+jelentkezik. Ennek az is az oka, hogy az algoritmusunk futási ideje maximális
+prím szám növelésével nem lineárisan növekszik.
+
+A lista értelmezés hatékonyabb módszer a listák előállítására mint a "sima" **for**
+ciklus. Azonban az esetünkben az előállított lista minden eleme nulla. A lista
+értelmezést arra használjuk, hogy a lista hosszát be tudjuk állítani.
+Erre viszont létezik egy egyszerűbb (pythonikusabb) megoldás. Ha egy listát egy 
+egész számmal szorzunk, akkor az eredmény a lista többszörözése. A
+
+.. code:: python
+
+   [0] * 5
+
+utasítás egy öt hosszúságú nullákat tartalmazó listát eredményez.
+Nézzük meg, hogy egy ilyen átalakítás növeli-e a hatékonyságot!
+
+.. code:: python
+
+    """
+        Sieve of Erasthotenes prim algorithm
+        version 2.2
+    """
+    
+    import math
+    import time
+    import sys
+    
+    max_num = 1001
+    if len(sys.argv) > 1:        # check command line parameter
+        max_num = int(sys.argv[1]) + 1
+    start_time = time.time()
+    numbers = range(max_num)     # list of natural numbers to check
+    for j in range(2, int(math.sqrt(max_num))):
+        if numbers[j]:
+            numbers[j+j::j] = [0] * len(numbers[j+j::j]) # use sieve
+    prims = sorted(list(set(numbers) - set([0, 1]))) # remove zeros from list
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+ 
+Ezzel a módosítással öt millióig a prím számok kikeresése már kevesebb mint egy 
+másodpercbe telik a gépemen.
