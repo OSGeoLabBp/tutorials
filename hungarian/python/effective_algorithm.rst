@@ -12,8 +12,8 @@ Első naiv algoritmus
 
 Prím szám az a természtes szám melynek két osztója van (önmaga és egy). A legkisebb
 prím szám a kettő. Egy számról úgy dönthetjük el prím-e, hogy végig próbáljuk a kisebb
-számokkal mennyi lesz az osztási maradékuk. El kell el menni az oszthatóság vizsgálatával
-n-1-ig ha n a vizsgált szám? A szám gyökénél nagyobb számokra nemérdemes vizsgálnunk
+számokkal mennyi lesz az osztási maradékuk. El kell menni az oszthatóság vizsgálatával
+*n-1*-ig ha *n* a vizsgált szám? A szám gyökénél nagyobb számokra nem érdemes vizsgálnunk
 hiszen például a 24 esetén a négyes osztó megtalálása után nincs jelentősége, hogy
 négyeshez tartozó osztópárt (6) is megtaláljuk. 
 Ez Python-ban íg nézhet ki:
@@ -40,7 +40,7 @@ Ez Python-ban íg nézhet ki:
     print('ready')
     print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
 
-Az algoritmus hatékonyságánakmérésére az algoritmusunk futási idejét mérjük.
+Az algoritmus hatékonyságát az algoritmusunk futási idejével mérjük.
 A mai számítógépeken mindig több alkalmazás, szolgáltatás fut párhuzamosan, ezért az
 egyszeri időmérés nem ad mindig átlagos eredményt, Célszerű többször futtatni az 
 átlagos futási idő megtalálásához.
@@ -76,20 +76,20 @@ a belső ciklusból lépjen ki (break utasítás).
     print('ready')
     print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
     
-Python 2.7 verzióval futtatva a gépemenaz első változat több mint 20 másodpercig fut.
+Python 2.7 verzióval futtatva a gépemen az első változat több mint 20 másodpercig fut.
 A második változat már négy másodpercnél kevesebbet. Az egymásba ágyazott ciklusok
-esetén a belső ciklus futásának a legrövidítése nagyhatékonyság növekedéssel jár.
+esetén a belső ciklus futásának a legrövidítése nagy hatékonyság növekedéssel jár.
 
 .. note::
 
-    Érdekes,hogy Python 3 verzióban (3.5) futtás esetén a program futási ideje növekszik.
+    Érdekes, hogy Python 3 verzióban (3.5) futtiatás esetén a program futási ideje növekszik.
     
 Tegyük Pythonikussá a kódot
 ---------------------------
 
-A bevezetőben említettük, hogy nmcsaka hatékonyság,hanem a Pythonikus (Pythonic) kód
+A bevezetőben említettük, hogy nem csak a hatékonyság, hanem a Pythonikus (Pythonic) kód
 kialakítása is a célunk. A Python nyelvben a ciklushoz is rendelhetünk egy **else** 
-utasítást, mely akkor hajtódik végre, ha nemléptünk ki a ciklus futtatásából **break**
+utasítást, mely akkor hajtódik végre, ha nem léptünk ki a ciklus futtatásából **break**
 utsítással. Ennek felhasználásával rövidebbé tehetjük a kódunkat és ezzel talán
 könnyebben olvashatóvá. Feleslegessé válik a prím logikai változó használata.
 Emellett tegyük könnyebben felhasználhatóvá a kódunkat, hogy a parancssorban
@@ -122,7 +122,7 @@ a modul az **argv** listában a parancssorban megadott paramétereket szolgálta
     print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
     
 
-Ezzel a módosítással a kódunk nem vált hatékonyabbá, de akevesebb utasításból álló
+Ezzel a módosítással a kódunk nem vált hatékonyabbá, de a kevesebb utasításból álló
 kód előnyösebb.
 
 Hatékonyabb algoritmus
@@ -166,7 +166,7 @@ A kódban a listaértelmezést (list comprehension) alkalmaztuk. Ez gyorsabb min
     [0 for k in numbers[j+j::j]]
 
 sor egy nullákat tartalmazó listát állít elő, melynek a hossza megfelel a *j* érték
-többszöröseinek számának. Az értékadással a száok listájában nullázzuk a *j* érték
+többszöröseinek számának. Az értékadással a számok listájában nullázzuk a *j* érték
 többszöröseit. Nem lehetett volna egyszerűen a következő értékadást írni?
 
 .. code:: python
@@ -174,15 +174,15 @@ többszöröseit. Nem lehetett volna egyszerűen a következő értékadást ír
     numbers[j+j::j] = 0
 
 Sajnos ez nem működik, egy lista részének nem adhatunk értékül egy skalárt, de a [0] 
-sem űködik az értékadás jobb oldalán, mert az is csak folytonos részére működne az
-eredeti listára.
+sem működik az értékadás jobb oldalán, mert az is csak folytonos részére működne az
+eredeti listának.
 
 Ez a változat fél millióig a prím számokat 3 tized másodperc alatt állítja elő. Az első
 algoritmusunkhoz képest százszoros gyorsulást értünk el.
 
 .. note::
 
-   A fenti kód Python 3 verzióban nem működik. Python 3-ban a range függvény nem egy
+   A fenti kód Python 3 verzióban nem működik. Python 3-ban a **range** függvény nem egy
    listát ad vissza, hanem egy generátort, ezt a **list** függvénnyel át kell
    alakítanunk listává.
 
@@ -265,3 +265,5 @@ Nézzük meg, hogy egy ilyen átalakítás növeli-e a hatékonyságot!
  
 Ezzel a módosítással öt millióig a prím számok kikeresése már kevesebb mint egy 
 másodpercbe telik a gépemen.
+
+Itt kifogytam az ötletekből. Van ötlete a gyorsításra? Ossza meg velünk!
