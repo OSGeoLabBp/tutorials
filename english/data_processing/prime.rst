@@ -5,7 +5,7 @@ Prime numbers
 
 *Data file*: none
 
-*Program files:* prime_naive.m, prime_sieve.m, prime_final.m, prime_improved.m, prime_improved2.m prime_builtin.m
+*Program files:* prime_naive.m, prime_sieve.m, prime_final.m, prime_improved.m, prime_builtin.m
 
 Let's write a program to search for prime numbers upto a maximal value. 
 We'll make more and more affective solutions.
@@ -48,6 +48,11 @@ Let's try to implement sieve of Erasthotenes. Instead of calculating modulo,
 let's clear every second elemet above 2, let's clear every third element 
 above 3, etc. This way the if statement can be removed.
 
+.. note::
+
+   Timing is not exact. If you run the program twice you'll get slitely
+   different elapsed times.
+
 *Sieve of Erasthotenes, first version* (prime_sieve.m)
 
 .. code:: octave
@@ -77,7 +82,10 @@ above 3, etc. This way the if statement can be removed.
 
 Waw, the elapsed time was reduced nearly 100 times. Let's try to make it
 faster.
-Do we need the second nested loop? No we can use array slicing instead.
+Do we need the second nested loop? No, we can use array slicing instead.
+Do we need to remove multiplier of 4 after removing all multipliers of 2?
+No, we have to remove multipliers of numbers which are in the sieve (where p(i)
+is not zero).
 
 *Sieve of Erasthotenes, second version* (prime_final.m)
 
@@ -91,10 +99,12 @@ Do we need the second nested loop? No we can use array slicing instead.
     tic();
     p = [1:max];  % vector of integer numbers
     n = int64(sqrt(max)); % limit for dividers
-    for i = 2:max
-      p(2*i:i:max) = 0; % clear multipliers of i
+    for i = 2:n
+      if p(i) > 0
+        p(2*i:i:max) = 0; % clear multipliers of i
+      end
     end
-    prime = find(p(2:end));  % skip 1 it is not a prime
+    prime = find(p(2:end));  % skip 1 and clear zeros
     toc() % write elapsed time
     printf('%d\n', columns(prime));
 
@@ -102,47 +112,18 @@ Do we need the second nested loop? No we can use array slicing instead.
 
     octave prime_final.m
     1229
-    Elapsed time is 0.0636721 seconds.
+    Elapsed time is 0.000763893 seconds.
 
-Again reasonable reduction in elapsed time. We used vectoriation to make the
-program faster. Examine again the loop body. If we can save a little time in
-the loop body, it may reduce the elapsed time spectacularly.
-We clear the same even numers several times, after clearing all even numbers in
-the first run of the loop, no need to check any even number again.
-Let's move the deletion of even numbers out of the loop and
-check only the odd numbers in the loop body.
+Again huge reduction in elapsed time. We used vectoriation to make the
+program faster and we reduced the number of excution of the loop body. 
+Examine again the loop body. If we can save a little time in the loop body, 
+it may reduce the elapsed time spectacularly.
 
-*Improved sieve of Erastohenes* (prime_improved.m)
-
-.. code:: octave
-
-    % sieve of Erasthotenes third version
-    max = 10000; % limit for the max prime number
-    if (nargin > 0)
-      max = int64(str2num(argv(){1}));
-    end
-    tic();
-    p = [1:max];  % vector of integer numbers
-    n = int64(sqrt(max)); % limit for dividers
-    p(4:2:max) = 0;  % remove all even numbers
-    for i = 3:2:max   % remove multipliers of odd numbers
-      p(2*i:i:max) = 0;
-    end
-    prime = find(p(2:end));  % skip 1 it is not a prime
-    toc() % write elapsed time
-    printf('%d\n', columns(prime));
-
-.. code:: bash
-
-    octave prime_improved.m
-    1229
-    Elapsed time is 0.051127 seconds.
-
-Should we run the loop till the maximal value? No, if all values are zero
+Should we run the loop till the maximal value (n)? No, if all values are zero
 in the rest of the **p** vector we can stop looping. Let's implement it
 into our code.
 
-*More impoved sive of Erasthotenes* (prime_improved2.m)
+*More impoved sive of Erasthotenes* (prime_improved.m)
 
 .. code:: octave
 
@@ -154,12 +135,12 @@ into our code.
     tic();
     p = [1:max];  % vector of integer numbers
     n = int64(sqrt(max)); % limit for dividers
-    p(4:2:max) = 0;  % remove all even numbers
-    for i = 3:2:max   % remove multipliers of odd numbers
-      if (sum(p(2*i:max)) == 0)
+    for i = 2:n   % remove multipliers of odd numbers
+      if p(i) > 0
+        p(2*i:i:max) = 0;
+      elseif (sum(p(i:max)) == 0)
         break;  % no more numbers to test
       end
-      p(2*i:i:max) = 0;
     end
     prime = find(p(2:end));  % skip 1 it is not a prime
     toc() % write elapsed time
@@ -167,26 +148,13 @@ into our code.
 
 .. code:: bash
 
-    octave prime_improved2.m
+    octave prime_improved.m
     1229
-    Elapsed time is 0.0641479 seconds.
+    Elapsed time is 0.00265098 seconds.
 
-Oops, adding the conditional statement (if)
-to the body of loop increased the elapsed time. Let's try the two improved
-algorithms for greater primes, prime numbers till 1000000.
-
-.. code:: bash
-
-    octave prime_improved.m 100000
-    9592
-    Elapsed time is 0.314283 seconds.
-
-    octave prime_improved2.m 100000
-    9592
-    Elapsed time is 1.78913 seconds.
-
-Unfortunatelly increasing the maximal value the second improvement doesn't
-run faster.
+Oops, adding the else part to the conditional statement (elseif)
+to the body of loop increased the elapsed time. It may save time for larger
+limit, try to test it.
 
 There is a built in function for prime numbers in Octave. Did you know?
 
@@ -215,4 +183,4 @@ Huge improvement in elapsed time again. Built in functions are the fastest.
 .. note:: *Development tipps*:
 
 Make a line graph for the time and the maximal number for primes. Include all
-algorithms in the graph.
+algorithms in the graph, tocompare then visually.

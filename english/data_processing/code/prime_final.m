@@ -6,9 +6,11 @@ end
 tic();
 p = [1:max];  % vector of integer numbers
 n = int64(sqrt(max)); % limit for dividers
-for i = 2:max
-  p(2*i:i:max) = 0; % clear multipliers of i
+for i = 2:n
+  if p(i) > 0 % not cleared yet
+    p(2*i:i:max) = 0; % clear multipliers of i
+  end
 end
-prime = find(p(2:end));  % skip 1 it is not a prime
+prime = find(p(2:end));  % skip 1 and clear zeros
 toc() % write elapsed time
 printf('%d\n', columns(prime));
