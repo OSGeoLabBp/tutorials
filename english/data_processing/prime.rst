@@ -178,9 +178,9 @@ There is a built in function for prime numbers in Octave. Did you know?
     1229
     Elapsed time is 0.00162506 seconds.
 
-Elapsed time not reduced ompering to prime_final.m.
+Elapsed time not reduced compering to prime_final.m.
 Try to increase the maximal prime value from the command line, the elapsed time
-for built in prime function increases slower and beecomes faster.
+for built in prime function increases slower and becomes faster.
 Built in functions are usually the fastest.
 
 .. note:: *Development tipps*:
