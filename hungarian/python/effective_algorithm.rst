@@ -78,7 +78,7 @@ a belső ciklusból lépjen ki (break utasítás).
     
 Python 2.7 verzióval futtatva a gépemen az első változat több mint 20 másodpercig fut.
 A második változat már négy másodpercnél kevesebbet. Az egymásba ágyazott ciklusok
-esetén a belső ciklus futásának a legrövidítése nagy hatékonyság növekedéssel jár.
+esetén a belső ciklus futásának a lerövidítése nagy hatékonyság növekedéssel jár.
 
 .. note::
 
