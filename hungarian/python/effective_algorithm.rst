@@ -82,7 +82,7 @@ esetén a belső ciklus futásának a lerövidítése nagy hatékonyság növeke
 
 .. note::
 
-    Érdekes, hogy Python 3 verzióban (3.5) futtiatás esetén a program futási ideje növekszik.
+    Érdekes, hogy Python 3 verzióban (3.5) futtatás esetén a program futási ideje növekszik.
     
 Tegyük Pythonikussá a kódot
 ---------------------------
