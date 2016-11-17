@@ -1,5 +1,6 @@
 Esettanulmány 2
 ===============
+Összeállította Bánhidi Dávid
 
 Bevezetés
 ---------
@@ -25,9 +26,9 @@ Elsőként kezdjük egy egyszerű program megírásával, amely az általunk fok
         items = dms.split('-')
         return math.radians(float(items[0])+float(items[1])/60.0+float(items[2])/3600.0)
 
-Elsőként meghívjuk a math csomagot (a számítás során szükségünk lesz rá), majd deffiniáljuk a függvényünket, melynek neve dms2rad lesz, ezen a néven lehet majd meghívni. Emellett a név után zárójelben (vesszővel elválasztva) megadhatjuk, hogy hány paraméter tartozik a függvényhez és hogy azok milyen névvel kerüljenek tárolásra, mint változók. Majd rövid kommentben összefoglaljuk, hogy mire alkalmas a függvény, mik a bemenő és eredményként kapott értékei. Végezetül a számítást végző rész következik, ahol először "feldaraboljuk" a dms nevű változóban tárolt stringet, majd egy lépésben másodperc és radián értékké alakítjuk.
+Elsőként meghívjuk a math csomagot (a számítás során szükségünk lesz rá), majd deffiniáljuk a függvényünket, melynek neve dms2rad lesz, ezen a néven lehet majd meghívni. Emellett a név után zárójelben (vesszővel elválasztva) megadhatjuk, hogy hány paraméter tartozik a függvényhez és hogy azok milyen névvel kerüljenek tárolásra, mint változók. Majd rövid kommentben összefoglaljuk, hogy mire alkalmas a függvény, mik a bemenő és eredményként kapott értékei. Végezetül a számítást végző rész következik, ahol először "feldaraboljuk" a dms nevű változóban tárolt stringet (pl. '12-45-23'), majd egy lépésben másodperc és radián értékké alakítjuk.
 
-Ha elmentjük és kipróbáljuk a frissek készített kódunkat, mondjuk a 123-34-45 értékkel ( Shell-be írjuk be: dms2rad('123-34-45') majd ENTER ) akkor megkapjuk a szöget radiánban. De mivan ha azt írjuk be, hogy -22-13-45? És ha csak annyit, hogy 23-04? Mindkét alkalommal gondba ütközünk, hiszen a split függvény 3-nál több vagy kevesebb elemre bontja szét a dms változót, így nem megfelelő eredményt adba vissza, még ha hibamentesen le is fut a kód. Nézzünk egy javítás erre a problémára:
+Ha elmentjük és kipróbáljuk a frissen készített kódunkat, mondjuk a 123-34-45 értékkel ( Shell-be írjuk be: dms2rad('123-34-45') majd ENTER ) akkor megkapjuk a szöget radiánban. De mi van, ha azt írjuk be, hogy -22-13-45? És ha csak annyit, hogy 23-04? Mindkét alkalommal gondba ütközünk, hiszen a split függvény 3-nál több vagy kevesebb elemre bontja szét a dms változót, így nem megfelelő eredményt adba vissza, még ha hibamentesen le is fut a kód. Nézzünk egy javítás erre a problémára:
 
 .. code:: python
 
@@ -44,7 +45,7 @@ Ha elmentjük és kipróbáljuk a frissek készített kódunkat, mondjuk a 123-3
             items.append('0') 
         return math.radians(float(items[0])+float(items[1])/60.0+float(items[2])/3600.0)
 
-Láthatjuk, hogy beépítésre került egy ellenőrző vizsgálat, egy while ciklus segítségével addig pótoljuk ki 0 értékekkel az items változót, amíg az nem lesz 3 elemű. Ezzel kezeltük a túl rövid kezdeti paraméter hibáját. 
+Láthatjuk, hogy beépítésre került egy ellenőrző vizsgálat, egy while ciklus segítségével addig pótoljuk ki 0 értékekkel az items változót, amíg az nem lesz 3 elemű. Ezzel kezeltük a túl rövid input paraméter hibáját. 
 
 Szorgalmi feladat
 -----------------
@@ -132,4 +133,4 @@ Ne aggódjunk, ha ebből most nem értünk semmit! A lényeg számunkra az, hogy
         a = Angle('123-31-16')
         print(a)
 
-Az "a" változót deffiniáljuk stringként, emellett megadjuk, hogy ennek osztálya Angle. 
+Az "a" változó a szög osztáy egy példánya lesz, melynek megadjuk a kezdőértékét.
