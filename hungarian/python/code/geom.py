@@ -82,18 +82,38 @@ class Circle(Point):
         """
         return math.pi * self.r ** 2.0
 
-    def peri(self):
+    def perimeter(self):
         """ perimeter of circle
             :returns: perimeter of circle
         """
         return math.pi * self.r * 2.0
 
+    def center(self):
+        """ get center as a Point object
+            :returns: center of circle (Point)
+        """
+        return Point(self.e, self.n)
+
     def __mul__(self, c):
         """ intersections of circles using '*' operator
             :param c: another circle (Circle)
-            :returns: tuple if intersection point
+            :returns: tuple of intersection points (Point)
         """
-        pass		# TODO
+        p0 = self.center()
+        d = (p0 - c.center()).dist()
+        if d > self.r + c.r:
+            # no intersection empty tuple
+            return ()
+        a = (self.r ** 2 - c.r ** 2 + d ** 2) / 2.0 / d
+        h = math.sqrt(self.r ** 2 - a ** 2)
+        de = c.e - self.e
+        dn = c.n - self.n
+        p2 = p0 + Point(a * de / d, a * dn / d)
+        w1 = h * dn / d
+        w2 = h * de / d
+        pp1 = p2 + Point(w1, -w2)
+        pp2 = p2 + Point(-w1, w2)
+        return (pp1, pp2)
 
 class Line(Point):
     """ class to handle infinite lines
@@ -222,3 +242,13 @@ if __name__ == "__main__":
     print(l1 * l4)                       # intersection of lines
     print(l2 * l3)                       # intersection of lines
     print(l3 * l4)                       # intersection of lines
+    # test for circle
+    print("-------------------")
+    c1 = Circle(6, 8, 4)
+    print(c1)
+    print c1.area()
+    print c1.perimeter()
+    c2 = Circle(8, 5, 5)
+    print(c2)
+    for p in (c1 * c2):
+        print(p)
