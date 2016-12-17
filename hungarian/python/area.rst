@@ -50,9 +50,9 @@ A **range(n)** függvényhívás a egész számok listáját adja vissza nullát
 hogy az utosó pont után az első pontot használja a program. A listák 
 indexelése nullától indul (az első elem indexe nulla). A **coords[i]**
 egy pont koordinátáit jelenti (két elemű lista), a **coords[i][0]** az 
-i-edik pont első koordinátáját jelenti. Az így számított negatív is lehet,
-körüljárási iránytól függően, ezért használjuk az **abs** abszolút érték 
-függvényt.
+i-edik pont első koordinátáját jelenti. Az így számított terület negatív is 
+lehet, körüljárási iránytól függően, ezért használjuk az **abs** 
+(abszolútérték) függvényt.
 
 Második változat (area1.py)
 ---------------------------
@@ -119,8 +119,8 @@ A Python az objektum orientált programozást is támogatja. Készítsünk egy
 
 Az osztály definíciója a **class** alapszóval kezdődik. Az osztály neve
 (**Polygon**) után a zárójelek között annak az osztálynak a neve jelenik meg,
-melyből az aktuális osztály származtatjuk (örölődés). Az osztály két
-metódus (osztály tagfüggvényt) tartalmaz. A tagfüggvények első paramétere a
+melyből az aktuális osztályt származtatjuk (örölődés). Az osztály két
+metódust (osztály tagfüggvényt) tartalmaz. A tagfüggvények első paramétere a
 **self**, melyen keresztül az objektum példány tagváltozóit és tagfüggvényeit
 érhetjük el.
 Az **__init__** egy speciális 
