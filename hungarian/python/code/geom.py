@@ -246,8 +246,8 @@ if __name__ == "__main__":
     print("-------------------")
     c1 = Circle(6, 8, 4)
     print(c1)
-    print c1.area()
-    print c1.perimeter()
+    print(c1.area())
+    print(c1.perimeter())
     c2 = Circle(8, 5, 5)
     print(c2)
     for p in (c1 * c2):
