@@ -10,14 +10,15 @@ class Polygon(object):
     """
     def __init__(self, coords):
         self.coords = coords
+        self.n = len(coords)
 
     def area(self):
         """ Calculates the area of polygon from the coordinates
             :returns: area
         """
         w = 0.0
-        for i in range(len(self.coords)):
-            j = (i + 1) % len(self.coords)
+        for i in range(self.n):
+            j = (i + 1) % self.n
             w += (self.coords[j].e + self.coords[i].e) * \
                  (self.coords[j].n - self.coords[i].n)
         return abs(w) /2.0
@@ -27,8 +28,8 @@ class Polygon(object):
             :returns: perimeter
         """
         w = 0.0
-        for i in range(len(self.coords)):
-            j = (i + 1) % len(self.coords)
+        for i in range(self.n):
+            j = (i + 1) % self.n
             w += math.hypot((self.coords[j].e - self.coords[i].e), \
                  (self.coords[j].n - self.coords[i].n))
         return w

@@ -1,8 +1,12 @@
 def area(coords):
+    """ calculate area of a polygon
+
+        :param coords: vertexes of polygon e.g. [[1, 1], [3, 1], [2, 2]]
+        :returns: area of polygon
+    """
     w = 0.0
     for i in range(len(coords)):
         j = (i + 1) % len(coords)
-        #print("(%.1f + %.1f) * (%.1f - %.1f)" % (coords[j][0], coords[i][0], coords[j][1], coords[i][1]))
         w += (coords[j][0] + coords[i][0]) * (coords[j][1] - coords[i][1])
     return abs(w) /2.0
 

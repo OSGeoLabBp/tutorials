@@ -14,13 +14,14 @@ class Polygon(object):
             :returns: area
         """
         w = 0.0
-        for i in range(len(self.coords)):
-            j = (i + 1) % len(self.coords)
+        n = len(self.coords)
+        for i in range(n):
+            j = (i + 1) % n
             w += (self.coords[j][0] + self.coords[i][0]) * \
                  (self.coords[j][1] - self.coords[i][1])
         return abs(w) /2.0
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     p0 = Polygon([[1, 1], [3, 1], [2, 2]])
     p1 = Polygon([[634110.62 , 232422.09 ],
         [634108.23, 232365.96],
