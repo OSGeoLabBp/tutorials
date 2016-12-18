@@ -14,7 +14,7 @@ egyes oldalakhoz tartozó trapézok területének összegzésével számítjuk k
 
 .. math::
 
-	{ \sum(x_{i+1} - x_{i}) * (y_{i+1} + y_{i})} \over {2}
+	{ \\sum(x_{i+1} - x_{i}) * (y_{i+1} + y_{i})} \\over {2}
 
 A fenti képletben az utolsó pont esetén (**i = n**) az **i+1** az első pontra 
 vonatkozik.
