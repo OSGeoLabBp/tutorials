@@ -16,7 +16,7 @@ egyes oldalakhoz tartozó trapézok területének összegzésével számítjuk k
 
 	{sum(x_{i+1} - x_{i}) * (y_{i+1} + y_{i})} over {2}
 
-A fenti képletben az utolsó pont esetén (i = n) az i+1 az első pontra 
+A fenti képletben az utolsó pont esetén (**i = n**) az **i+1** az első pontra 
 vonatkozik.
 
 A töréspontok koordinátáit tároljuk egy összetett listában. Az egyes pontok 
@@ -146,4 +146,115 @@ osztályból egy példányt kell előállítanunk.
 
 A **Polygon(...)** szolgál az objektum példány létrehozására.
 
-Folyt. köv...
+Negyedik verzió (area3.py)
+--------------------------
+
+Ha már objektumot hoztunk létre a zárt sokszögünkre, akkor a töréspontokat
+is kezeljük objektumként. A **Point** objektum a *geom.py* fájlban már 
+elkészítettük. Ez több tagfüggvénnyel rendelkezik, ezeket itt nem
+részletezzük, csak annyit, hogy a pont koordinátáit **e** (east) és 
+**n** (north) tagváltozókban tároljuk.
+Egy másik forrás fájlban lévő függvény vagy objektum felhasználásához 
+importálnumk kell azt. Ezt többféleképpen megtehetjük.
+
+.. code:: python
+
+	import geom
+
+A fenti utasítás a fájlban lévő valamennyi osztályt és függvényt elérhetővé
+teszi a kódunkből oly módon, hogy a **geom** nevet elé kell írnunk, pl. 
+**geom.Point** (külön névtérbe kerülnek az importált fájl elemei). 
+Az **import** után a fájl neve áll kiterjesztés nélkül.
+Amennyiben nem a fájl nevét akarjuk használni a hivatkozásokban akkor egy 
+alias nevet is megadhatunk:
+
+.. code:: python
+
+	import geom as g
+
+Ez utóbbi esetben **g.Point** a hivatkozás a Point osztályra. Nagyobb
+modulok több almodulból állhatnak. Ilyen esetben több elválasztó pont
+szerepelhet a nevekben.
+Ha nem szükséges nem kell az adott forrás fájlból minden importálnunk.
+
+.. code:: python
+
+	from geom import Point
+
+A fenti alakkal csak a **Point** osztály definícióját vesszük át a *geom.py*
+fájlból és az az aktuális névtérbe kerül, nem kell eléírnunk a fájl nevét,
+**geom.Point** helyett elég a **Point**. Ennél az alaknál több betöltendő 
+elemet is megadhatunk vesszővel elválasztva.
+
+Végül az importálást során a
+forrás fájlból mindent betölthetünk az aktuális névterünkbe is.
+
+.. code:: python
+
+	from geom import *
+
+Ezt a megoldást általában célszerű kerülni, így nem derül ki milyen 
+nevű függvényeket, osztályokat töltünk be. Az aktuális fájlunkban 
+az importált elemmel azonos nevű lehet, ami kellemetlen következményekkel
+járhat.
+
+A **Point** osztály felhasználásával a zárt sokszöget leíró adatszerkezetünk 
+megváltozik. A két elemű lista helyett egy **Point** objektum szerepel a
+listában és a koordinátára hivatkozás nem index-szel, hanem a **.e** illetve
+**.n** tagváltozókra hivatkozással történik. A matematikai függvényeket is 
+importáljuk a programunkba, mert a kerület számítást is elkészítettük és
+ott a Pitagorasz tétel megoldására is szükség van (**hypot** függvény).
+A **Polygon** osztály inicializálásába (**__init__**) betettük a lista 
+hosszának kiszámítását, hogy ne kelljen azt többször végrehajtani.
+
+.. code:: python
+
+	import math
+	from geom import Point
+
+	class Polygon(object):
+		""" Polygon class to store border and calculate area
+			:param coords: list of Point instants
+		"""
+		def __init__(self, coords):
+			self.coords = coords
+			self.n = len(coords)
+
+		def area(self):
+			""" Calculates the area of polygon from the coordinates
+				:returns: area
+			"""
+			w = 0.0
+			for i in range(self.n):
+				j = (i + 1) % self.n
+				w += (self.coords[j].e + self.coords[i].e) * \
+					 (self.coords[j].n - self.coords[i].n)
+			return abs(w) /2.0
+
+		def perimeter(self):
+			""" Calculates the permeteer of polygon from the coordinates
+				:returns: perimeter
+			"""
+			w = 0.0
+			for i in range(self.n):
+				j = (i + 1) % self.n
+				w += math.hypot((self.coords[j].e - self.coords[i].e), \
+					 (self.coords[j].n - self.coords[i].n))
+			return w
+
+Az osztályunk kipróbálására a követjekező kódot használhatjuk.
+
+.. code:: python
+
+    p0 = Polygon([Point(1, 1), Point(3, 1), Point(2, 2)])
+    p1 = Polygon([Point(634110.62 , 232422.09),
+        Point(634108.23, 232365.96),
+        Point(634066.13, 232378.12),
+        Point(634062.95, 232457.58),
+        Point(634111.68, 232454.93),
+        Point(634110.62, 232422.09)])
+    print(p0.area())
+    print(p0.perimeter())
+    print(p1.area())
+    print(p1.perimeter())
+ 
