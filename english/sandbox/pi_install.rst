@@ -1,17 +1,24 @@
-SAR install on rasberry pi (rasbian/jessie)
-===========================================
+SAR install on rasberry pi (rasbian/jessie) or Ubuntu 16.04
+===========================================================
 
 .. code:: bash
 
     sudo apt-get update
     sudo apt-get upgrade
 
-Install libudev-dev and libusb 1.0.18
--------------------------------------
+Install libudev-dev
+-------------------
 
 .. code:: bash
 
     sudo apt-get install libudev-dev
+
+Install libjpeg-dev
+-------------------
+
+.. code:: bash
+
+	sudo apt-get install libjpeg-dev
 
 Install libusb 1.0.18 from source
 ---------------------------------
@@ -35,34 +42,46 @@ Install OpenGL
     sudo apt-get install mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev
     sudo apt-get install zlib1g-dev
     
-Install VRui-3.1-004 
+Install devel libries
+---------------------
+
+.. code:: bash
+
+	sudo apt-get install libjpeg-dev
+	sudo apt-get install libpng-dev
+
+
+Install VRui-4.2-006
 --------------------
 
 .. code:: bash
 
-    wget http://idav.ucdavis.edu/~okreylos/ResDev/Vrui/Vrui-3.1-004.tar.gz
-    tar xfz Vrui-3.1-004.tar.gz
-    cd Vrui-3.1-004
+    wget http://idav.ucdavis.edu/~okreylos/ResDev/Vrui/Vrui-4.2-006.tar.gz
+    tar xfz Vrui-4.2-006.tar.gz
+    cd Vrui-4.2-006
     make
-    make install
+    sudo make install
 
-Install Kinect-2.8-002
-----------------------
+Check make output if jpeg support is enabled before continue.
+
+Install Kinect-3.2
+------------------
 
 .. code:: bash
 
     wget http://idav.ucdavis.edu/...
-    tar xfz Kinect-2.8.tar.gz
-    cd Kinect-2.8-002
+    tar xfz Kinect-3.2.tar.gz
+    cd Kinect-3.2
     make
+	sudo make install
 
-Install SARndbox-1.6
+Install SARndbox-2.3
 --------------------
 
 .. code:: bash
 
-    wget http://idav.ucdavis.edu/~okreylos/ResDev/SARndbox/SARndbox-1.6.tar.gz
-    tar xfz SARndbox-1.6.tar.gz
-    cd SARndbox-1.6
+    wget http://idav.ucdavis.edu/~okreylos/ResDev/SARndbox/SARndbox-2.3.tar.gz
+    tar xfz SARndbox-2.3.tar.gz
+    cd SARndbox-2.3
     make
 
