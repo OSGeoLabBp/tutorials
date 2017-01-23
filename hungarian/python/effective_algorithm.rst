@@ -266,4 +266,41 @@ Nézzük meg, hogy egy ilyen átalakítás növeli-e a hatékonyságot!
 Ezzel a módosítással öt millióig a prím számok kikeresése már kevesebb mint egy 
 másodpercbe telik a gépemen.
 
+A numpy könyvtár még egy kicsit gyorsíthat
+------------------------------------------
+
+A numpy Python modul számos matemetikai probléma megoldásába kész megoldásokat 
+nyújt a programozóknak. Mi a numpy tömb kezelését és több tömb elemre 
+érték adást használjuk fel.
+
+.. code:: python
+
+    """
+        Sieve of Erasthotenes prim algorithm
+        version 2.2
+    """
+    
+    import math
+    import time
+    import sys
+    import numpy as np
+    
+    max_num = 1001
+    if len(sys.argv) > 1:        # check command line parameter
+        max_num = int(sys.argv[1]) + 1
+    start_time = time.time()
+    numbers = np.arange(max_num)     # list of natural numbers to check
+    for j in range(2, int(math.sqrt(max_num))):
+        if numbers[j]:
+            numbers[j+j::j] = 0 # use sieve
+    prims = sorted(list(set(numbers) - set([0, 1]))) # remove zeros from list
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+
+A numpy modul importlásán kívül csak két sor módosult. A számok előálltása 
+során egy numpy tömböt hozunk létre az *arange* függvénnyel. A gyorsítást a
+második módosítás jelenti, az elemek nullzásához nem kell előállítanunk 
+annyi nulla elemből álló listát, ahány elemet nullázni szeretnénk.
+Ezzel további 10% körüli gyorsulást érhetünk el, persze itt ebbe nem számítottukbe a numpy modul betöltésének idejét.
+
 Itt kifogytam az ötletekből. Van ötlete a gyorsításra? Ossza meg velünk!
