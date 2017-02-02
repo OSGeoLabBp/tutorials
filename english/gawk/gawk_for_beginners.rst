@@ -19,11 +19,24 @@ The gawk program can be given in the command line if it is very short or we
 can create a separate file for the program. The usual extension for gawk
 program file is *.awk*.
 
-gawk reads data from the input file or from the standard input and prints
-output to the standard output.
+gawk reads data from the input file or from the standard input line by line,
+processes the input and prints output to the standard output.
 
 The syntaxis of the gawk programs are very similiar to C programs. gawk can be 
 a good start point to learn C.
+
+A *gawk* program consists of pattern and action pairs. The pattern must match
+the actual input line to trigger the action. All matching actions are 
+evaluated, not only the first!
+
+There are some kinds of action:
+
+* Regexp pattern: a regular expression e.g. /^[0-9]+/
+* Expression pattern: any expression e.g. NF > 4
+* Range: pairs of patterns specif record range e.g. /^ENTITIES/, /^ENDSEC/
+* BEGIN: special pattern to initialize
+* END: special pattern to clean up
+* empty: the empty pattern mathes every input line
 
 Add row numbers to a text file
 ------------------------------
