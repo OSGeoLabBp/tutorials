@@ -61,13 +61,13 @@ Reverse the field order of the input lines
 .. code:: gawk
 
     { for (i = NF; i > 0; i--) { printf "%s:", $i; }
-      print "\n";
+      printf "\n";
     }
 
 The *for* command is to count iterations. *i* is the loop variable and changed
 from the number of fields (*NF*) down to *1*. We can refere to the *ith* field
 by *$i*. *printf* is for formatted print, it won't print new line at the end.
-*print "\n";* prints a new line character.
+*printf "\\n";* prints a new line character (*print ""* would be good too).
 
 This case we create a separate file for the gawk program. Copy the program
 above into a file called *reverse.awk*. Then use the following commad to run
