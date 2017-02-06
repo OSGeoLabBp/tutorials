@@ -58,7 +58,7 @@ Remove columns from input file
 
 .. code:: bash
 
-   gawk -F : '{ print $1, $3, $5 }' /etc/passwd
+   gawk -F: '{ print $1, $3, $5 }' /etc/passwd
 
 The example above will print out the Linux user names, user ID and full name.
 After the -F switch a custom field separator can be defined. The *cut* command
@@ -66,7 +66,7 @@ can be used to generate the same output.
 
 .. code:: bash
 
-    cut -d : -f 1,3,5 /etc/passwd
+    cut -d: -f 1,3,5 /etc/passwd
 
 Reverse the field order of the input lines
 ------------------------------------------
@@ -141,6 +141,49 @@ Let's list the first ten most frequent words from the gawk manual page.
 .. code:: bash
 
     man gawk | gawk -f words.awk | sort -nr | head -10
+
+Simple examples to handle coordinate list
+-----------------------------------------
+
+*sample.txt* file will be used during the following examles, you can find this file in
+the code subdirectory. Each row in the file contains point ID, easting, northing and
+optional elevation. Let's find all the point numbers starting by 3.
+
+.. code:: gawk
+
+    gawk '/^3/' sample.txt
+
+Let's print out lines between the 15th and 21th lines.
+
+.. code:: gawk
+
+    gawk 'NR >= 15 && NR <= 21' sample.txt
+
+Let's find rows having no eleveation.
+
+.. code:: gawk
+
+    gawk 'NF < 4' sample.txt
+
+Lets's find rows having point ID between 305 and 316.
+
+.. code:: gawk
+
+    gawk '$1 >= 305 && $1 <= 316' sample.txt
+
+Let's create a new coordinate list file where only easting and northing coordinates
+are listed with two decimals. Let's skip lines where there are only figures in 
+the point ID.
+
+.. code:: gawk
+
+    $1 ~ /^[0-9]+$/ { printf("%d,%.2f,%.2f\n", $1, $2, $3) }
+
+Input the code above into the *twod.awk* file.
+
+.. code:: bash
+
+    gawk -f twod.awk sample.txt
 
 Coordinate list from M5 electric fieldbook
 ------------------------------------------

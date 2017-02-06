@@ -28,7 +28,7 @@ Example regular expressions
 .. code:: text
 
     contains the word "apple"  
-    regexp: alma
+    regexp: apple
     matching text: an apple on the table
 
     begins with the word "apple"
@@ -39,7 +39,7 @@ Example regular expressions
     regexp: ^apple$
     matching text: apple
 
-    begins with the word "apple" and ionly any number of spaces after
+    begins with the word "apple" and any number of spaces after
     regexp: ^apple *$
     matching text: apple    
 
@@ -68,8 +68,8 @@ Example regular expressions
    matching text: -1.234E-5
   
    angle in DMS (e.g. 23-34-45)
-   regexp: ^[0-9]([0-9]){0,2}(-[0-9][0-9]?){0,2}$
-   matching text: 102-02-31
+   regexp: ^[0-9]([0-9]){0,2}(-[0-5][0-9]?){0,2}$
+   matching text: 102-92-31
 
    valid email address
    regexp: ^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*$
