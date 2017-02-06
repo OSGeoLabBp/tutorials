@@ -2,7 +2,7 @@ gawk for beginners
 ==================
 
 gawk (GNU awk) is a programable unix text utility. It is one of the most complex
-of them. Several simple example will be introduced to teach you by examples.
+of them. Several simple examples will be introduced to teach you by examples.
 
 gawk processes the input text file line by line. Each line is devided intos
 fields using a set of field separators. The default field separators are *TAB* 
