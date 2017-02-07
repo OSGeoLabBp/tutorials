@@ -185,6 +185,39 @@ Input the code above into the *twod.awk* file.
 
     gawk -f twod.awk sample.txt
 
+Let's calculate the average of the horizontal co-ordinates for point 
+number groups (1st group 100-199, second group 200-299, etc.).
+
+.. code:: gawk
+
+	/^1[0-9]{2} / { sum_x[1] += $2; sum_y[1] += $3; n[1]++; }
+	/^2[0-9]{2} / { sum_x[2] += $2; sum_y[2] += $3; n[2]++; }
+	/^3[0-9]{2} / { sum_x[3] += $2; sum_y[3] += $3; n[3]++; }
+	/^4[0-9]{2} / { sum_x[4] += $2; sum_y[4] += $3; n[4]++; }
+	/^5[0-9]{2} / { sum_x[5] += $2; sum_y[5] += $3; n[5]++; }
+	/^6[0-9]{2} / { sum_x[6] += $2; sum_y[6] += $3; n[6]++; }
+	END { for (i = 1; i < 7; i++) {
+			printf("%d00-%d99: %.3f, %.3f\n", i, i, sum_x[i] / n[i], sum_y[i] / n[i]);
+		}
+	}
+
+Enter the code into *average.awk* file.
+
+.. code:: bash
+
+	gawk -f average.awk sample.txt
+
+A shorter version for all 3 digit point numbers:
+
+.. code:: gawk
+
+	/^[1-9][0-9]{2} / { i = int($1 / 100);  # array index
+						sum_x[i] += $2; sum_y[i] += $3; n[i]++; }
+	END { for (i in n) {
+			printf("%d00-%d99: %.3f, %.3f\n", i, i, sum_x[i] / n[i], sum_y[i] / n[i]);
+		}
+	}
+
 Coordinate list from M5 electric fieldbook
 ------------------------------------------
 
