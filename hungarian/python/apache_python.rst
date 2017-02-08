@@ -71,9 +71,9 @@ Próbáljuk ki a következő Python fájlal (*test.psp*).
 
 Források:
 
-#https://bhou.wordpress.com/2011/11/28/how-to-install-and-configure-mod_python-in-apache-2-server/
-#http://modpython.org/live/current/doc-html/installation.html
-#https://www.howtoforge.com/embedding-python-in-apache2-with-mod_python-debian-etch
+#. https://bhou.wordpress.com/2011/11/28/how-to-install-and-configure-mod_python-in-apache-2-server/
+#. http://modpython.org/live/current/doc-html/installation.html
+#. https://www.howtoforge.com/embedding-python-in-apache2-with-mod_python-debian-etch
 
 Apache Python CGI használat
 ===========================
@@ -120,6 +120,6 @@ A böngészőben írja be a *localhost/cgi-bin/testpy* URL-t. A *Hello CGI*
 
 Hivatkozások:
 
-#https://bdhacker.wordpress.com/2011/05/21/running-your-first-cgi-program-with-apache2/
-#https://bdhacker.wordpress.com/2011/05/21/running-your-first-cgi-program-with-apache2/
+#. https://bdhacker.wordpress.com/2011/05/21/running-your-first-cgi-program-with-apache2/
+#. https://bdhacker.wordpress.com/2011/05/21/running-your-first-cgi-program-with-apache2/
 
