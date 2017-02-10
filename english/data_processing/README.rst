@@ -114,6 +114,7 @@ Table of contents
 #. `Regression circle <circle.rst>`_
 #. `Generate report from a DXF file <dxfinfo.rst>`_
 #. `Find prime numbers <prime.rst>`_
+#. `Section from point cloud <lidar_section.rst>`_
 
 Program codes and sample data are in the `code <code>`_ folder.
 
