@@ -2,9 +2,10 @@
 # 
 # statistics about entities and layers in a DXF file
 # Zoltan Siki siki.zoltan@epito.bme.hu
-# usage: leltar.awk your_file.dxf
+# usage: dxfinfo.awk your_file.dxf
 #		or
-#        gawk -f leltar.awk your_file.dxf > statistics.txt
+#        gawk -f dxfinfo.awk your_file.dxf > statistics.txt
+#        gawk -f dxfinfo.awk your_file.dxf | sort > statistics.txt
 
 BEGIN { # initialize variables
 	last = ""; entity = ""; layer = "";
