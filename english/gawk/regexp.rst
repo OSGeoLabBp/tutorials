@@ -40,7 +40,7 @@ Example regular expressions
     matching text: apple
 
     begins with the word "apple" and any number of spaces after
-    regexp: ^apple *$
+    regexp: ^apple \*$
     matching text: apple    
 
     begins with character "a" and contains 5 characters
@@ -74,3 +74,8 @@ Example regular expressions
    valid email address
    regexp: ^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*$
    matching text: siki.zoltan@epito.bme.hu
+
+   line starts with adam or eva
+   regexp: ^(adam|eva)
+   matching text: adam and eva in the paradise
+   matching text: eva and adam in the paradise
