@@ -123,3 +123,104 @@ Hivatkozások:
 #. https://bdhacker.wordpress.com/2011/05/21/running-your-first-cgi-program-with-apache2/
 #. https://bdhacker.wordpress.com/2011/05/21/running-your-first-cgi-program-with-apache2/
 
+PostgreSQL telepítése
+=====================
+
+Linux
+-----
+
+.. code:: bash
+
+	sudo apt-get install postgresql postgresql-client-common postgis pgadmin3
+
+PostgreSQL felhasználó és adatbázis létrehozása, PostGIS engedélyezése.
+
+.. code:: bash
+
+	sudo su - postgres
+	psql -c "create user név"
+	psql -c "create database db_név"
+	psql -c "alter database db_név owner to név"
+	psql -d db_név -c "create extension postgis"
+
+psycopg2 és SQLAlchemy telepítése
+=================================
+
+Linux
+-----
+
+.. code:: bash
+
+	# python 2.x
+	sudo apt-get install python-psycopg2
+	pip install sqlalchemy
+	# python 3.x
+	sudo apt-get install python3-psycopg2
+	pip3 install sqlalchemy
+
+Adatbázis tábla létrehozása, feltöltése
+=======================================
+
+.. code:: SQL
+
+	CREATE TABLE pdata (
+		id varchar(20) NOT NULL,
+		easting double precision,
+		northing double precision,
+		elev double precision,
+		d timestamp NOT NULL,
+		PRIMARY KEY(id, d));
+
+.. code:: SQL
+
+	INSERT INTO pdata VALUES ('1', 100.012, 200.016, NULL, '2017-02-10 9:30');
+	INSERT INTO pdata VALUES ('1', 100.018, 200.012, NULL, '2017-02-11 12:25');
+	INSERT INTO pdata VALUES ('2', 105.621, 300.165, NULL, '2017-02-10 9:31');
+	INSERT INTO pdata VALUES ('2', 105.617, 300.162, NULL, '2017-02-11 12:26');
+
+psycopg2 használata
+===================
+
+.. code:: python
+
+	import psycopg2
+	conn = psycopg2.connect("dbname=siki user=siki")
+	cur = conn.cursor()
+	cur.execute("SELECT * FROM pdata")
+	for row in cur:
+		print row
+	cur.close()
+	conn.close()
+
+SQLAlchemy használata
+=====================
+
+.. code:: python
+
+	from sqlalchemy import create_engine
+	from sqlalchemy import MetaData, Column, Table, PrimaryKeyConstraint
+	from sqlalchemy import String, DateTime, Float
+	from sqlalchemy.sql import select
+	import datetime
+
+	metadata = Metadata()
+	engine = create_engine('postgresql:///siki', echo=True)
+	conn = engine.connect()
+	pdata = Table('pdata', metadata,
+		Column('id', String(20)),
+		Column('easting', Float),
+		Column('northing', Float),
+		Column('elev', Float),
+		Column('d', DateTime),
+		PrimaryKeyConstraint('id', 'd'))
+	metadata.create_all(engine)
+	s = select([pdata])
+	result = conn.execute(s)
+
+	for row in result:
+		print row
+
+ORM (object relation model) használata:
+
+.. code:: python
+
