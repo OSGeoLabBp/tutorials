@@ -152,7 +152,7 @@ octave solution (slide.m)
 
 The Octave solution above does not work for huge files as the whole file is
 processed in memory. Let's rewrite the code to process huge files in
-chunks.
+chunks (*slide1.m*).
 
 .. code:: octave
 
