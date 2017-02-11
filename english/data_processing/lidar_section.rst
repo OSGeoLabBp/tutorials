@@ -21,7 +21,7 @@ gawk solution (*minmax.awk*)
         if ($col > ma) { ma = $col; }
       }
     } 
-    END { print mi, ma; }
+    END { printf("%.3f %.3f\n", mi, ma; }
 
 .. code:: bash
 
