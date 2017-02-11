@@ -60,6 +60,8 @@ octave solution (minmax.m)
 	lidar = dlmread(fname, sep);
 	printf('%.3f %.3f\n', min(lidar(:, col)), max(lidar(:, col)));
 
+Example of running in a terminal:
+
 .. code:: bash
 
 	octave -qf minmax.m 1.txt 2 " "
