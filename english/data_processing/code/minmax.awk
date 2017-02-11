@@ -8,5 +8,4 @@ BEGIN { mi = 1e10; ma = -1e10;
     if ($col > ma) { ma = $col; }
   }
 } 
-END { print mi, ma; }
-
+END { printf("%.3f %.3f", mi, ma); }
