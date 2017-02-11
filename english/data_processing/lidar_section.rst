@@ -131,7 +131,7 @@ octave solution (slide.m)
 	  tol = 0.2;
 	end
 	if nargin > 4
-	  sep = args{4};
+	  sep = args{5};
 	else
 	  sep = ',';
 	end
