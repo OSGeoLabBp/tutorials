@@ -60,6 +60,10 @@ octave solution (minmax.m)
 	lidar = dlmread(fname, sep);
 	printf('%.3f %.3f\n', min(lidar(:, col)), max(lidar(:, col)));
 
+.. code:: bash
+
+	octave -qf minmax.m 1.txt 2 " "
+
 Let's find points at a horizontal or vertical plan (perpendicular to the axis
  of the co-ordinate system with a tolerance.
 
