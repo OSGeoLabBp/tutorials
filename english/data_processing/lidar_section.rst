@@ -88,7 +88,7 @@ gawk solution (*slide.awk*)
 .. code::
 
     gawk -F, -f slide.awk lidar.txt > elev1000.txt
-    gawk -f slide.awk -F, -v elev=1000 -v tol=0.5 -v col=3 lidar.txt > e1000.txt
+    gawk -f slide.awk -F, -v coo=1000 -v tol=0.5 -v col=3 lidar.txt > e1000.txt
 
 octave solution (slide.m)
 -------------------------
