@@ -22,6 +22,6 @@ BEGIN { # initialize variables
 END {	# print out result
 	for (i in dxf) {	# for each layer,entity pairs
 		split(i, w, SUBSEP);	# separate layer and entity in index into w array
-		print w[1], w[2], dxf[i];	# print layer, entity anc count
+		print w[1], w[2], dxf[i];	# print layer, entity and count
 	}
 }
