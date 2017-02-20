@@ -1,8 +1,8 @@
 Apache Python modul használata
 ==============================
 
-Ubuntu
-------
+Ubuntu Linux
+------------
 
 Apache2 installálása
 
@@ -78,8 +78,8 @@ Források:
 Apache Python CGI használat
 ===========================
 
-Ubuntu
-------
+Ubuntu Linux
+------------
 
 Apache2 installálása, ha előzőleg nem történt meg
 
@@ -126,8 +126,8 @@ Hivatkozások:
 PostgreSQL telepítése
 =====================
 
-Linux
------
+Ubuntu Linux
+------------
 
 .. code:: bash
 
@@ -146,17 +146,17 @@ PostgreSQL felhasználó és adatbázis létrehozása, PostGIS engedélyezése.
 psycopg2 és SQLAlchemy telepítése
 =================================
 
-Linux
------
+Ubuntu Linux
+------------
 
 .. code:: bash
 
 	# python 2.x
 	sudo apt-get install python-psycopg2
-	pip install sqlalchemy
+	sudo pip install sqlalchemy
 	# python 3.x
 	sudo apt-get install python3-psycopg2
-	pip3 install sqlalchemy
+	sudo pip3 install sqlalchemy
 
 Adatbázis tábla létrehozása, feltöltése
 =======================================
@@ -181,6 +181,8 @@ Adatbázis tábla létrehozása, feltöltése
 psycopg2 használata
 ===================
 
+Csatlakozás az adatbázishoz és tábla tartalom listázása.
+
 .. code:: python
 
 	import psycopg2
@@ -192,8 +194,29 @@ psycopg2 használata
 	cur.close()
 	conn.close()
 
+A fenti szkriptet az apache szerver cgi interfészén keresztül is lefuttathatjuk.
+Másoljuk át a python fájlt a cgi-bin könyvtárba. Helyezzük el az elején a
+python szkriptek indításához szükséges shebang sort (az operációs rendszernek) 
+és a tartalom típust (a böngészőnek) valamint tegyük futtathatóvá a fájlt.
+
+.. code:: python
+
+	#!/usr/bin/env python
+	print "Content-type: text/plain\n\n"
+	import psycopg2
+	conn = psycopg2.connect("host=localhost dbname=siki user=siki password=qwerty")
+	cur = conn.cursor()
+	cur.execute("SELECT * FROM pdata")
+	for row in cur:
+		print row
+	cur.close()
+	conn.close()
+
+
 SQLAlchemy használata
 =====================
+
+Séma létrehozása, ha a tábla nem létezik és a tábla tartalom listázása.
 
 .. code:: python
 
@@ -213,14 +236,88 @@ SQLAlchemy használata
 		Column('elev', Float),
 		Column('d', DateTime),
 		PrimaryKeyConstraint('id', 'd'))
-	metadata.create_all(engine)
+	metadata.create_all(engine) # table will be created if not exists
 	s = select([pdata])
 	result = conn.execute(s)
 
 	for row in result:
 		print row
 
+Séma lekérdezése az adatbázisból és tábla tartalom listázása.
+
+.. code:: python
+
+	from sqlalchemy import create_engine
+	from sqlalchemy import MetaData, Table
+	from sqlalchemy.sql import select
+
+	metadata = MetaData()
+	engine = create_engine('postgresql:///siki', echo=True)
+	conn = engine.connect()
+	pdata = Table('pdata', metadata, autoload=True, autoload_with=engine)
+
+	s = select([pdata])
+	result = conn.execute(s)
+
+	for row in result:
+		print row
+
+A *create_engine* első paramétere az aktuális felhasználó *ident* azonosítással
+történő bejelentkezését kezdeményezi.
+
 ORM (object relation model) használata:
 
 .. code:: python
 
+	from sqlalchemy import create_engine
+	from sqlalchemy import MetaData, Column, Table, PrimaryKeyConstraint
+	from sqlalchemy import String, DateTime, Float
+	from sqlalchemy.orm import sessionmaker
+	from sqlalchemy.ext.declarative import declarative_base
+	import datetime
+
+	Base = declarative_base()
+	metadata = MetaData()
+	engine = create_engine('postgresql:///siki', echo=False)
+
+	class pdata(Base):
+		__table__ = Table('pdata', Base.metadata, autoload=True,
+	        autoload_with=engine)
+
+	session = sessionmaker()
+	session.configure(bind=engine)
+
+	# session and ORM
+	s = session()
+	rec = pdata(id='3', easting=-1.012, northing=3.153, d=datetime.datetime.now())
+	s.add(rec)
+	s.commit()
+	print s.query(pdata).count()
+	for row in s.query(pdata).filter(pdata.id.in_(['1', '2'])).order_by(pdata.id).all():
+		print "%s, %.3f %.3f, %s" % (row.id, row.easting, row.northing, row.d.strftime('%Y-%m-%d %H:%m'))
+	s.close()
+
+PySQLAlchemy használata CGI-n keresztül
+---------------------------------------
+
+CGI szkripként közvetlenül nem tudjuk futtatni az előző példákat, mert a web 
+szerver által indított szkript a web szerver felhasználó jogaival fut.
+Az előt példákban használt *'postgresql:///siki'* csatlakozás csak akkor 
+használható ha a *www-data* felhasználó létezik a postgresql-ben és joga van
+a *siki* adatbázishoz csatlakozni. Ezeket a psql-ben vagy a pgadmin programban
+állíthatjuk be.
+
+.. code:: sql
+
+	sudo su - postgres
+    psql -c "CREATE USER www-data PASSWORD 'titok'"
+	psql -c "GRANT CONNECT ON DATABASE siki TO www-data"
+	exit
+	psql -c "GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE pdata TO www-data"
+
+Másik megoldás lehet, ha a bejelentkezésnél megadjuk egy létező felhasználó 
+nevét és jelszavát.
+
+.. code:: 
+
+	create_engine('postgresql://siki:jelszo@localhost/siki')
