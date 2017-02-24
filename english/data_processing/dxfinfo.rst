@@ -72,14 +72,14 @@ entering the script name at the commnd promp. For example:
 .. code::
 
     chmod +x dxfinfo.awk   # do it only ones
-    ./dxfinfo test.dxf
+    ./dxfinfo.awk test.dxf
 
 The result is sent to the standard output in arbitrary order. We should send 
 the result to sort to get a clearer output.
 
 .. code::
 
-    ./dxfinfo test.dxf | sort
+    ./dxfinfo.awk test.dxf | sort
 
 .. note:: *Development tipps:*
 
