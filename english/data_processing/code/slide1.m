@@ -46,10 +46,7 @@ while (1)
 		break;
 	end
 	if c >= col
-		for i = 1:r
-			if lidar(i, col) > mi && lidar(i, col) < ma
-				printf('%.3f,%.3f,%.3f\n', lidar(i, 1), lidar(i, 2), lidar(i, 3));
-			end
-		end
+		i = find(lidar(:, col) > mi & lidar(:, col) < ma);
+		printf('%.3f,%.3f,%.3f\n', lidar(i, 1:3)');
 	end
 end
