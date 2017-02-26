@@ -16,7 +16,7 @@ számokkal mennyi lesz az osztási maradékuk. El kell menni az oszthatóság vi
 *n-1*-ig ha *n* a vizsgált szám? A szám gyökénél nagyobb számokra nem érdemes vizsgálnunk
 hiszen például a 24 esetén a négyes osztó megtalálása után nincs jelentősége, hogy
 négyeshez tartozó osztópárt (6) is megtaláljuk. 
-Ez Python-ban íg nézhet ki:
+Ez Python-ban így nézhet ki:
 
 .. code:: python
 
@@ -124,6 +124,38 @@ a modul az **argv** listában a parancssorban megadott paramétereket szolgálta
 
 Ezzel a módosítással a kódunk nem vált hatékonyabbá, de a kevesebb utasításból álló
 kód előnyösebb.
+
+Minden szám felbontható prím számok szorzatára. Így az oszthatóság vizsgálatot
+elég az előzőleg megtalált prím számokra végrehajtani. Módosítsuk az algoritmusunkat.
+
+.. code:: python
+
+	"""
+		naive algorith to find prime numbers
+		version 1.3
+	"""
+
+	import math
+	import time
+	import sys
+
+	max_num = 101
+	if len(sys.argv) > 1:        # check command line parameter
+		max_num = int(sys.argv[1]) + 1
+	start_time = time.time()
+	prims = []                   # list of prims
+	for p in range(2, max_num):  # find prims up to max_num
+		maxp = int(math.sqrt(p))+1
+		for divider in prims:    # enough to check prims!
+			if p % divider == 0: # remainder of division is zero
+				break            # divider found no need to continue
+			if maxp < divider:
+				prims.append(p)
+				break
+		else:
+			prims.append(p)      # store prime number
+	print('ready')
+	print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
 
 Hatékonyabb algoritmus
 ----------------------
@@ -302,5 +334,31 @@ során egy numpy tömböt hozunk létre az *arange* függvénnyel. A gyorsítás
 második módosítás jelenti, az elemek nullzásához nem kell előállítanunk 
 annyi nulla elemből álló listát, ahány elemet nullázni szeretnénk.
 Ezzel további 10% körüli gyorsulást érhetünk el, persze itt ebbe nem számítottukbe a numpy modul betöltésének idejét.
+
+Az egyes algoritmusokat a 100000-nél és 1000000-nál kisebb prím számok kikeresére
+futtattuk. Az alábbi táblázat tartalmazza a futási időket:
+
++--------+----------------+----------------+----------------+
+| Verzió | Futási idő [s] | Futási idő [s] | Futási idő [s] |
+|        |    100000      |   1000000      |  10000000      |
++--------+----------------+----------------+----------------+
+|   1.0  |       1.90     |      60        |       -        |
++--------+----------------+----------------+----------------+
+|   1.1  |       0.45     |      10        |     326        |
++--------+----------------+----------------+----------------+
+|   1.2  |       0.44     |      11        |     333        |
++--------+----------------+----------------+----------------+
+|   1.3  |       0.21     |       2.62     |      50        |
++--------+----------------+----------------+----------------+
+|   2.0  |       0.07     |       0.58     |       6.41     |
++--------+----------------+----------------+----------------+
+|   2.1  |       0.04     |       0.32     |       2.99     |
++--------+----------------+----------------+----------------+
+|   2.2  |       0.02     |       0.19     |       1.73     |
++--------+----------------+----------------+----------------+
+|   2.3  |       0.03     |       0.17     |       1.61     |
++--------+----------------+----------------+----------------+
+
+
 
 Itt kifogytam az ötletekből. Van ötlete a gyorsításra? Ossza meg velünk!
