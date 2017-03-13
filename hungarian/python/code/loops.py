@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # search for loop using connected points of a levelling network
-# input file format: startp endp height_diff distance
+# input file format: startp endp distance height_diff 
 
 import sys
 
@@ -30,8 +30,11 @@ else:
     fname = sys.argv[1]
 f = open(fname, "r")
 obs = []
+obs_dic = {}
 for line in f:
-    obs.append(line.split())
+    l = line.split()
+    obs.append(tuple(l))
+    obs_dic[l[0] + l[1]] = (float(l[2]), float(l[3]))
 loops = []
 for ob in obs:
     loop = [ob[0], ob[1]]
@@ -51,6 +54,7 @@ for ob in obs:
                 break
 n = 0
 m = 0
+print (obs_dic)
 for i in range(len(loops)):
     # remove duplicates
     loop1 = loops[i]
@@ -64,5 +68,15 @@ for i in range(len(loops)):
         n += 1
         if m < len(loop1):
             m = len(loop1)
-        print (loop1)
+        # calculate height difference & sum distance
+        sdist = 0
+        sdm = 0
+        for i in range(1, len(loop1)):
+            if loop1[i-1] + loop1[i] in obs_dic:
+                sdist += obs_dic[loop1[i-1] + loop1[i]][0]
+                sdm += obs_dic[loop1[i-1] + loop1[i]][1]
+            else:
+                sdist += obs_dic[loop1[i] + loop1[i-1]][0]
+                sdm -= obs_dic[loop1[i] + loop1[i-1]][1]
+        print ("%.4f,%7.1f,%s" % (sdm, sdist, loop1))
 print (n, m)
