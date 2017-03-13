@@ -29,7 +29,7 @@ Az */etc/apache2* könyvtárban az *apache2.conf* fájl végére tegyük be a k�
         PythonDebug On
     </Directory>
 
-Ezzel az web szerver dokumentumok könyvtárában lévő *.py* fájlokat a python 
+Ezzel a web szerver dokumentumok könyvtárában lévő *.py* fájlokat a python 
 modullal fogja értelmezni.
 
 Készítsünk egy kis teszt fájlt a */var/www/html* könyvtárba *test.py* névvel.
