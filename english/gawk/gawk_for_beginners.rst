@@ -362,6 +362,12 @@ Sample DXF with TEXT entity:
         last = $0;                          # last input line
     }
 
+Let's convert texts from sample.dxf into a text file (texts.txt).
+
+.. code:: bash
+
+	gawk -f dxf_txt2csv.awk sample.dxf > texts.txt
+
 The end of line (EOL) character(s) are different on Linux and Windows boxes.
 When you use gawk you have to convert the EOL to the standard of the used
 operating system. To convert Windows text files to Linux use dos2unix command.
