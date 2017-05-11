@@ -143,11 +143,8 @@ octave solution (slide.m)
 	lidar = dlmread(fname, sep);
 	[r, c] = size(lidar);
 	if c >= col
-	  for i = 1:r
-		if lidar(i, col) > mi && lidar(i, col) < ma
-		  printf('%.3f,%.3f,%.3f\n', lidar(i, 1), lidar(i, 2), lidar(i, 3));
-		end
-	  end
+	  res = find(lidar(:, col) > mi & lidar(:, col) < ma);
+	  printf('%.3f,%.3f,%.3f\n', [lidar(:, 1)(res), lidar(:, 2)(res), lidar(:, 3)(res)]');
 	end
 
 The Octave solution above does not work for huge files as the whole file is
@@ -204,11 +201,8 @@ chunks (*slide1.m*).
 			break;
 		end
 		if c >= col
-			for i = 1:r
-				if lidar(i, col) > mi && lidar(i, col) < ma
-					printf('%.3f,%.3f,%.3f\n', lidar(i, 1), lidar(i, 2), lidar(i, 3));
-				end
-			end
+		    i = find(lidar(:, col) > mi & lidar(:, col) < ma);
+			printf('%.3f,%.3f,%.3f\n', lidar(i, 1:3)');
 		end
 	end
 
