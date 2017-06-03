@@ -18,8 +18,8 @@ Install devel libries
 
 .. code:: bash
 
-	sudo apt-get install libjpeg-dev
-	sudo apt-get install libpng-dev
+    sudo apt-get install libjpeg-dev
+    sudo apt-get install libpng-dev
 
 Install libusb 1.0.18 from source
 ---------------------------------
@@ -27,7 +27,7 @@ Install libusb 1.0.18 from source
 .. code:: bash
 
     wget  http://downloads.sourceforge.net/libusb/libusb-1.0.18.tar.bz2
-	tar xvjf libusb-1.0.18.tar.bz2
+    tar xvjf libusb-1.0.18.tar.bz2
     cd libusb-1.0.18
     ./configure
     make 
@@ -61,11 +61,11 @@ Install Kinect-3.2
 
 .. code:: bash
 
-    wget http://idav.ucdavis.edu/...
+    wget http://idav.ucdavis.edu/~okreylos/ResDev/Kinect/Kinect-3.2.tar.gz
     tar xfz Kinect-3.2.tar.gz
     cd Kinect-3.2
     make
-	sudo make install
+    sudo make install
 
 Install SARndbox-2.3
 --------------------
