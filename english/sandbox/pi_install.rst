@@ -13,12 +13,13 @@ Install libudev-dev
 
     sudo apt-get install libudev-dev
 
-Install libjpeg-dev
--------------------
+Install devel libries
+---------------------
 
 .. code:: bash
 
 	sudo apt-get install libjpeg-dev
+	sudo apt-get install libpng-dev
 
 Install libusb 1.0.18 from source
 ---------------------------------
@@ -41,15 +42,6 @@ Install OpenGL
     sudo apt-get install mesa-utils
     sudo apt-get install mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev
     sudo apt-get install zlib1g-dev
-    
-Install devel libries
----------------------
-
-.. code:: bash
-
-	sudo apt-get install libjpeg-dev
-	sudo apt-get install libpng-dev
-
 
 Install VRui-4.2-006
 --------------------
