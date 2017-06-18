@@ -1,23 +1,37 @@
 #! /usr/bin/env python
 
-# search for loop using connected points of a levelling network
-# input file format: startp endp distance height_diff 
+"""
+    Search for loops using connected points of a levelling network
+    and sum up distances and height differences in each loop.
+
+    Usage: loops.py input_file
+
+    ascii input file format for a line (space separated):
+    startp endp distance height_diff 
+"""
 
 import sys
 
 def addp(obs, loop, indx):
+    """ find and add a point to the loop
+        :param obs: observations
+        :param loop: actual loop
+        :param indx: observation indeces
+
+        :returns: extended loop and new indx as a tuple
+    """
     for i in range(indx[-1], len(obs)):
         ob1 = obs[i]
         if ob1[0] == loop[-1] and ob1[1] != loop[-2] and not ob1[1] in loop[1:]:
             # connection to end point
             loop.append(ob1[1])
-            indx[-1] = i + 1
+            indx[-1] = i
             indx.append(0)
             return loop, indx
         if ob1[1] == loop[-1] and ob1[0] != loop[-2] and not ob1[0] in loop[1:]:
             # connection to end point
             loop.append(ob1[0])
-            indx[-1] = i + 1
+            indx[-1] = i
             indx.append(0)
             return loop, indx
     return loop, indx
@@ -25,7 +39,7 @@ def addp(obs, loop, indx):
 if len(sys.argv) < 2:
     print ("Usage loops input_file")
     #sys.exit()
-    fname = "loops.txt"
+    fname = "test.csv"
 else:
     fname = sys.argv[1]
 f = open(fname, "r")
@@ -50,11 +64,14 @@ for ob in obs:
             loop.pop()
             indx.pop()
             indx[-1] += 1
-            if len(loop) < 3:
+            if len(loop) < 2:
                 break
+            if loop[0] == "P" and loop[1] == "S" and len(loop) == 2:
+                pass # bebug break
 n = 0
 m = 0
 print (obs_dic)
+loops.sort(key=len)
 for i in range(len(loops)):
     # remove duplicates
     loop1 = loops[i]
@@ -78,5 +95,5 @@ for i in range(len(loops)):
             else:
                 sdist += obs_dic[loop1[i] + loop1[i-1]][0]
                 sdm -= obs_dic[loop1[i] + loop1[i-1]][1]
-        print ("%.4f,%7.1f,%s" % (sdm, sdist, loop1))
+        print ("%.5f,%7.0f,%s" % (sdm, sdist, loop1))
 print (n, m)
