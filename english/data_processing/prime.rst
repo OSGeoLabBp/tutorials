@@ -186,4 +186,4 @@ Built in functions are usually the fastest.
 .. note:: *Development tipps*:
 
 Make a line graph for the time and the maximal number for primes. Include all
-algorithms in the graph, tocompare then visually.
+algorithms in the graph, to compare them visually.
