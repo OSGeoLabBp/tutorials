@@ -309,7 +309,7 @@ nyújt a programozóknak. Mi a numpy tömb kezelését és több tömb elemre
 
     """
         Sieve of Erasthotenes prim algorithm
-        version 2.2
+        version 2.3
     """
     
     import math
@@ -331,12 +331,12 @@ nyújt a programozóknak. Mi a numpy tömb kezelését és több tömb elemre
 
 A numpy modul importlásán kívül csak két sor módosult. A számok előálltása 
 során egy numpy tömböt hozunk létre az *arange* függvénnyel. A gyorsítást a
-második módosítás jelenti, az elemek nullzásához nem kell előállítanunk 
+második módosítás jelenti, az elemek nullázásához nem kell előállítanunk 
 annyi nulla elemből álló listát, ahány elemet nullázni szeretnénk.
 Ezzel további 10% körüli gyorsulást érhetünk el, persze itt ebbe nem számítottukbe a numpy modul betöltésének idejét.
 
-Az egyes algoritmusokat a 100000-nél és 1000000-nál kisebb prím számok kikeresére
-futtattuk. Az alábbi táblázat tartalmazza a futási időket:
+Az egyes algoritmusokat a 100000-nél, 1000000-nál és 10000000-nál kisebb prím 
+számok kikeresére futtattuk. Az alábbi táblázat tartalmazza a futási időket:
 
 +--------+----------------+----------------+----------------+
 | Verzió | Futási idő [s] | Futási idő [s] | Futási idő [s] |
