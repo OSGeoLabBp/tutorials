@@ -1,3 +1,10 @@
+#!/usr/bin/gawk -f
+#
+# create dxf file from space separated coordinate list
+# Zoltan Siki siki.zoltan@epito.bme.hu
+# usage:
+#        gawk -f coo2dxf.awk coodinate_list > dxf_file
+
 BEGIN { FS="[ ]";
     # minimal DXF header
     print "  0";
