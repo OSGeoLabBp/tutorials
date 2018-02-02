@@ -4,9 +4,10 @@ gawk for beginners
 gawk (GNU awk) is a programable unix text utility. It is one of the most complex
 of them. Several simple examples will be introduced to teach you by examples.
 
-gawk processes the input text file line by line. Each line is devided intos
+gawk processes the input text file line by line. Each line is divided into
 fields using a set of field separators. The default field separators are *TAB* 
-and *space*.  We can refere to a field in the actual line by $1 (first field),
+and *space*.  We can refere to a field in the actual line by its ordinal
+number e.g. $1 (first field),
 $2 (second field), etc. $0 gives the whole actual input line.
 
 There are some variables maintained by gawk. The most important ones are:
@@ -29,7 +30,7 @@ A *gawk* program consists of pattern and action pairs. The pattern must match
 the actual input line to trigger the action. All matching actions are 
 evaluated, not only the first!
 
-There are some kinds of action:
+There are some kinds of patterns:
 
 * Regexp pattern: a regular expression e.g. /^[0-9]+/
 * Expression pattern: any expression e.g. NF > 4
@@ -37,6 +38,9 @@ There are some kinds of action:
 * BEGIN: special pattern to initialize
 * END: special pattern to clean up
 * empty: the empty pattern mathes every input line
+
+After the pattern the action have to be put into a code block. Code blocks are 
+delimited by curly bracket "{" and "}".
 
 Add row numbers to a text file
 ------------------------------
@@ -52,6 +56,11 @@ the a file e.g.
 .. code:: gawk
 
     gawk '{ print NR, $0 }' /etc/passwd > row_num_passwd
+
+.. note::
+
+    In the command line single quotes have to be used to hide $ for bash
+    to interprete
 
 Remove columns from input file
 ------------------------------
@@ -90,6 +99,8 @@ this gawk program.
 
     gawk -F : -f reverse.awk /etc/passwd
 
+-F switch to define field separator and -f to give the name of the program file.
+
 Print only unique lines from the file
 -------------------------------------
 
@@ -110,7 +121,13 @@ login shells from the password file (the last field in the row).
     gawk -F : '{ print $NF; }' /etc/passwd | sort | gawk -f unique.awk
 
 First the login shell fields are extracted, then the sort command is used to 
-sort the file before using *unique.awk*.
+sort the file before using *unique.awk*. The pipe character ("|") redirects
+the output of the left side command to the input of the right side one.
+
+.. note::
+
+    The sort Linux command has -u switch to output unique values.
+	e.g. gawk -F : '{ print $NF; }' /etc/passwd | sort -u
 
 Word counts in a file
 ---------------------
@@ -153,11 +170,21 @@ optional elevation. Let's find all the point numbers starting by 3.
 
     gawk '/^3/' sample.txt
 
+.. note::
+
+    The Linux grep utility can also be used to filter lines.
+    e.g. grep '^3' sample.txt
+
 Let's print out lines between the 15th and 21th lines.
 
 .. code:: gawk
 
     gawk 'NR >= 15 && NR <= 21' sample.txt
+
+.. note::
+
+    Linux head and tail command can solve the same question.
+	e.g. tail -n +15 sample.txt | head -n 7
 
 Let's find rows having no eleveation.
 
@@ -171,9 +198,9 @@ Lets's find rows having point ID between 305 and 316.
 
     gawk '$1 >= 305 && $1 <= 316' sample.txt
 
-Let's create a new coordinate list file where only easting and northing coordinates
-are listed with two decimals. Let's skip lines where there are only figures in 
-the point ID.
+Let's create a new coordinate list file where only easting and northing
+coordinates are listed with two decimals. Let's skip lines if point ID
+is non mumerical.
 
 .. code:: gawk
 
@@ -207,7 +234,7 @@ Enter the code into *average.awk* file.
 
 	gawk -f average.awk sample.txt
 
-A shorter version for all 3 digit point numbers:
+A shorter and more general version for all 3 digit point numbers:
 
 .. code:: gawk
 
@@ -377,7 +404,7 @@ operating system. To convert Windows text files to Linux use dos2unix command.
     dos2unix your_text_file
 
 The different text files may use different code pages. You can convert text
-files between code pages (for example from UTF-8 to ISO8859-2) using iconv
+files between code pages (for example from UTF-8 to ISO-8859-2) using iconv
 Linux utility.
 
 .. code:: bash
