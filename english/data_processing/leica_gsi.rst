@@ -16,7 +16,7 @@ totalstations. Alternative solutions are given in this recipe.
 
 Sample data (labor.gsi):
 
-.. code::
+.. code:: txt
 
     *110001+0000000000000101 81..10+0000000000119197 82..10+0000000000118827 83..10+0000000000120014
     *110002+0000000000000102 81..10+0000000000119192 82..10+0000000000123834 83..10+0000000000120019
@@ -120,7 +120,7 @@ Write coordinates into simple text file using octave (gsi2coo.m)
 
 Octave function to convert GSI coordinates to real value (val.m)
 
-.. code::
+.. code:: octave
 
     function w = val(f)
         dd = [1000, 1000 * 3.28, 0, 0, 0, 0, 10000, 10000 * 3.28, 100000];
