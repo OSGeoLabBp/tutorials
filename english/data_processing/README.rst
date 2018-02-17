@@ -117,6 +117,7 @@ Table of contents
 #. `Section from point cloud <lidar_section.rst>`_
 #. `Regression sphere <reg_sphere.rst>`_
 #. `Bulk extract GPS positions from images <exif.rst>`_
+#. `Bulk image convert to GeoTiff <image2geotiff.rst>`_
 
 Program codes and sample data are in the `code <code>`_ folder.
 
