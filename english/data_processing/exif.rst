@@ -193,7 +193,7 @@ Let's see the action in QGIS.
 
 .. image:: images/qgis_image.png
 
-.. mote::
+.. note::
 
 	*Development tipps*:
 	Create a pure bash solution to generate the CSV file.
