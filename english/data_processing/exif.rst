@@ -5,6 +5,8 @@ Bulk extract GPS position from images
 
 *Program files:* exif.sh exif.awk
 
+*Data files:* https://github.com/ianare/exif-samples/tree/master/jpg/gps
+
 Our aim is to extract location information from several photos automaticly.
 There are many on-line tools on the Internet to view EXIF data but these can
 be used for a single image and the exif data is shown in the browser
