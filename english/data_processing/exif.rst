@@ -71,7 +71,7 @@ Install ImageMagic on your Ubuntu box:
 
 	sudo apt-get install imagemagic
 
-The **indentify** command extract meta information from image. The simplest 
+The **indentify** command extracts meta information from image. The simplest 
 usage:
 
 .. code:: bash
@@ -121,8 +121,8 @@ integer values and a divider. So in the previous example the latitude is
 Writing scripts
 ---------------
 
-In our solution ImageMagic **identify**, a bash and a gawk script will be 
-created.
+In our solution ImageMagic **identify** will be used, a bash and a gawk script
+will be created.
 In the output we would like to get a record for each JPEG image with filename,
 latitute and longitude in degrees, date and time.
 
@@ -137,8 +137,8 @@ The shell (bash) script (exif.sh in the code folder):
 	done
 
 The first line is the shebang, it will send the script to bash to evaluate.
-The second line is the start which will be executed for each command line 
-parameters. In the loop body the ASCII EXIF information is created by
+The second line is the start of a loop which will be executed for each command
+line parameters. In the loop body the ASCII EXIF information is extracted by
 **identify** for the JPEG file. It is piped to a gawk script.
 In the gawk command line a variable is set with the actual image file name
 (-v switch). It is necessary to be able to write filename with the coordinates
@@ -160,7 +160,7 @@ The gawk script (exif.awk in code folder):
 			fn, plon, lon, plat, lat, idate, ihour, imin, isec; }
 
 Latitute and longitude is change to degrees and a negative sign is set for
-longitudes towest and latitutes to south. The collected data printed to the 
+longitudes to west and latitutes to south. The collected data printed to the 
 standard output.
 
 Sample use of the scripts:
