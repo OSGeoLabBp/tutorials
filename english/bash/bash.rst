@@ -227,3 +227,16 @@ The $\* means all the command line parameters. Let's try the script.
 	55
 	210
 	465
+	./sum3.sh `seq 1 10`
+	1
+	3
+	6
+	10
+	15
+	21
+	28
+	36
+	45
+	55
+
+What happens if non numerical parameters are given to the script?
