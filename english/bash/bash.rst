@@ -56,7 +56,7 @@ name.
 	Hello world
 
 The *hello* variable is local to this shell. To create global variables (which
-are accessible in the subshells) use export infron of the assignment.
+are accessible in the subshells) use export in front of the assignment.
 Double and single quotes are different in shells. Between double quotes
 variable substitution is done.
 
@@ -67,7 +67,7 @@ variable substitution is done.
 	~$ echo '$hello, I am Jack'
 	$hello, I am Jack
 
-Curly races are used to separate variable name if neccessary.
+Curly braces are used to separate variable name if neccessary.
 
 .. code:: bash
 
@@ -76,7 +76,7 @@ Curly races are used to separate variable name if neccessary.
 	~$ echo "${hello}s"
 	Hello worlds
 
-The use of double quotes in the echo command is not obligtory.
+The use of double quotes in the echo command is not obligatory.
 
 .. note::
 
@@ -98,7 +98,7 @@ Let's write script to list file names in the current directory
 
 In the shell scripts the bash wild card characters (* and ?) are substituted as
 in any bash command at the command prompt. Instead of "*" we could use
-$(ls) or `ls` as it is mentioned in the comment (after # till the end of
+$(ls) or \`ls\` as it is mentioned in the comment (after # till the end of
 line you can write comments).
 
 Using the *seq* command a counter can be used in the loop variable. Let's
@@ -126,7 +126,7 @@ can make integer aritmetics after *let*. Let's try our script.
 
 	There are *while* and *until* loops in bash, too.
 
-Let'S make our sum script more fexible, get the upper limit of the sum from the
+Let's make our sum script more fexible, get the upper limit of the sum from the
 command line. Create sum1.sh file and insert the following script.
 
 .. code:: bash
@@ -149,11 +149,11 @@ Let's test our script.
 	1275
 	~$ ./sum1.sh
 	1
-    ~$ ./sum1.sh 10 20 30
+	~$ ./sum1.sh 10 20 30
 	55
 
-Note that the result is flase if no parameter is given and if more parameters
-are given, onlythe first is considered.
+Note that the result is false if no parameter is given and if more parameters
+are given, only the first is considered.
 
 Conditionals
 ------------
@@ -174,7 +174,7 @@ Let's extend the previous sum example to check the number of parameters.
 	done
 	echo $s
 
-The *$#* substituted by the number of prameters. IN the *if* command add a
+The *$#* substituted by the number of parameters. In the *if* command add a
 space before and after square brackets.
 
 .. note::
@@ -214,6 +214,8 @@ command line parameters (sum3.sh).
 		done
 		echo $s
 	done
+
+The $\* means all the command line parameters. Let's try the script.
 
 .. code:: bash
 
