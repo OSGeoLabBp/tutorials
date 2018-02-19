@@ -43,3 +43,14 @@ Let's add a loop to our command to convert more files.
 		fi
 	done
 
+.. note::
+
+	To get the file name and extesion without path use: *$(basename $i)*.
+	To get the extension use: *${i##\*.}*.
+
+.. note::
+
+	If you would like change the resolution of the image too, use
+	*-outsize xsize[%] ysize[%]* and *-r* for resampling method.
+	The imgemagick *convert* commad can also be used to resize images,
+	but that won't preserve georeference.
