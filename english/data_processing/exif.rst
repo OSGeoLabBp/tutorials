@@ -75,7 +75,7 @@ Install ImageMagic on your Ubuntu box:
 
 .. code:: bask
 
-	sudo apt-get install imagemagic
+	sudo apt-get install imagemagick
 
 The **indentify** command extracts meta information from image. The simplest 
 usage:
@@ -89,7 +89,7 @@ To extract EXIF information more parameters have to be specified:
 
 .. code:: bash
 
-	identify -format '%[EXIF:\*]' DSCN0010.jpg
+	identify -format '%[EXIF:*]' DSCN0010.jpg
 	exif:ColorSpace=1
 	exif:ComponentsConfiguration=1, 2, 3, 0
 	exif:Contrast=0
