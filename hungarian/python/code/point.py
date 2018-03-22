@@ -10,7 +10,7 @@ class Point(object):
 
         self.x = x
         self.y = y
-        self.p = 2
+        self.p = p
 
     def __str__(self):
         """ for print """
