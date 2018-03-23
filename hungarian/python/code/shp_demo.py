@@ -26,7 +26,7 @@ else:
         bufdist = float(sys.argv[2])
     except ValueError:
         print "Illegal buffer distance parameter"
-        exir(1)
+        exit(1)
 driver = ogr.GetDriverByName("ESRI Shapefile")
 
 outshp = os.path.splitext(shapename)[0] + "_buf.shp"
