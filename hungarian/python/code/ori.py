@@ -11,11 +11,11 @@ for i in range(df.shape[0]):
 # read station target and mean direction from csv file
 df = pd.read_csv('ori.csv')
 # calculate orientation angles
-o = []
-for i in range(df.shape[0]):
-    o.append((pnts[df['target'][i]] - pnts[df['station'][i]]).bearing() -
-             df['direction'][i])
-print sum(o) / len(o)
+o = [(pnts[df['target'][i]] - pnts[df['station'][i]]).bearing() -
+         df['direction'][i] for i in range(df.shape[0])]
+d = [abs(pnts[df['target'][i]] - pnts[df['station'][i]])
+         for i in range(df.shape[0])]
+print sum([o1 * d1 for (o1, d1) in zip(o, d)]) / sum(d)
 
 
 
