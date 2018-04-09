@@ -32,7 +32,7 @@ Starting the script at the bash prompt:
 
 The first and second line start bash and the parmeter is the name of the script.
 In the third line the executable flag is added to the file. After it the script
-name is enough (and the sheband) to run the script.
+name is enough (and the shebang) to run the script.
 
 .. note::
 
