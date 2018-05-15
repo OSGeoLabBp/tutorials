@@ -1,149 +1,258 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+"""
+.. module:: angle.py 
+  :platform: Unix, Windows
+  :synopsis: Ulyxes - an open source project to drive total stations and
+      publish observation results.
+      GPL v2.0 license
+      Copyright (C) 2010-2013 Zoltan Siki <siki@agt.bme.hu>
+.. moduleauthor:: dr. Zoltan Siki <siki@agt.bme.hu>
+"""
+
 import math
 import re
 
+RO = 180 * 60 * 60 / math.pi
+PI2 = 2 * math.pi
+
+def _deg2rad(angle):
+    """ Convert DEG to RAD
+    """
+    return math.radians(angle)
+
+def _gon2rad(angle):
+    """ Convert GON to RAD
+    """
+    return angle / 200.0 * math.pi
+
+def _dms2rad(dms):
+    """ Convert DMS to RAD
+    """
+    if re.search('^[0-9]{1,3}(-[0-9]{1,2}){0,2}$', dms):
+        items = [float(item) for item in dms.split('-')]
+        div = 1.0
+        a = 0.0
+        for val in items:
+            a += val / div
+            div *= 60.0
+        a = math.radians(a)
+    else:
+        raise ValueError("Angle invalid argument", dms)
+    return a
+
+def _dm2rad(angle):
+    """ Convert DDMM.nnnnnn NMEA angle to radian"
+    """
+    w = angle / 100.0
+    d = int(w)
+    return math.radians(d + (w - d) * 100.0 / 60.0)
+
+def _pdeg2rad(angle):
+    """ Convert dd.mmss to radian
+    """
+    d = math.floor(angle)
+    angle = round((angle - d) * 100, 10)
+    m = math.floor(angle)
+    s = round((angle - m) * 100, 10)
+    return math.radians(d + m / 60.0 + s / 3600.0)
+
+def _sec2rad(angle):
+    """ Convert seconds to radian
+    """
+    return angle / RO
+
+def _mil2rad(angle):
+    """ Convert mills to radian
+    """
+    return angle / 6400.0 * 2.0 * math.pi
+
+def _rad2gon(value):
+    """ Convert radian to GON
+    """
+    return value / math.pi * 200.0
+
+def _rad2sec(value):
+    """ Convert radian to seconds
+    """
+    return value * RO
+
+def _rad2deg(value):
+    """ Convert radian to decimal degrees
+    """
+    return math.degrees(value)
+
+def _dms(value):
+    """ Convert radian to DMS
+    """
+    signum = "-" if value < 0 else ""
+    secs = round(_rad2sec(abs(value)))
+    mi, sec = divmod(secs, 60)
+    deg, mi = divmod(mi, 60)
+    deg = int(deg)
+    return "%s%d-%02d-%02d" % (signum, deg, mi, sec)
+
+def _rad2dm(value):
+    """ Convert radian to NMEA DDDMM.nnnnn
+    """
+    w = value / math.pi * 180.0
+    d = int(w)
+    return d * 100 + (w - d) * 60
+
+def _rad2pdeg(value):
+    """ Convert radian to pseudo DMS ddd.mmss
+    """
+    secs = round(_rad2sec(value))
+    mi, sec = divmod(secs, 60)
+    deg, mi = divmod(mi, 60)
+    deg = int(deg)
+    return deg + mi / 100.0 + sec / 10000.0
+
+def _rad2mil(value):
+    """ Convert radian to mills
+    """
+    return value / math.pi / 2.0 * 6400.0
+
 class Angle(object):
-    """ class to operate angles
+    """ Angle class, value stored in radian internally. Angle units supported:
+* RAD  radians (e.g. 1.54678432)
+* DMS sexagesimal (Degree-Minit-Second, e.g. 123-54-24)
+* DEG decimal degree (e.g. 25.87659)
+* GON gradian whole circle is 400g (e.g. 387.7857)
+* NMEA ddmm.mmmm used in NMEA sentences (e.g. 47.338765)
+* PDEG pseudo sexagesimal (e.g. 156.2745 = 156-27-45)
+* SEC sexagesimal seconds
+* MIL mills the whole circle is 6400 mills
+Operators supported:
+* \+ add two angles (e.g. c = Angle(180, 'DEG') + Angle('12-34-56', 'DMS'))
+* \- substract two angles (e.g. d = Angle(180, 'DEG') - Angle('12-34-56', 'DMS'))
+* += increment angle (e.g. c += Angle(1, 'GON'))
+* -= decrement angle (e.g. d -= Angle(1, 'GON'))
+* str() convert angle to GON string, used in print
+:param value: angle value
+:param unit: angle unit (available units RAD/DMS/DEG/GON/NMEA/PDEG/SEC/MIL)
     """
 
-    def __init__(self, v = 0):
-        self.val = v
+    # jump table to import from
+    im = {'DMS': _dms2rad, 'DEG': _deg2rad,
+        'GON': _gon2rad, 'NMEA': _dm2rad,
+        'PDEG': _pdeg2rad, 'SEC': _sec2rad,
+        'MIL': _mil2rad}
+    # jump table for convert to
+    ex = {'DMS': _dms, 'DEG': _rad2deg,
+        'GON': _rad2gon, 'NMEA': _rad2dm,
+        'PDEG': _rad2pdeg, 'SEC': _rad2sec,
+        'MIL': _rad2mil}
 
-    @staticmethod
-    def dms2rad(dms):
+    def __init__(self, value, unit='RAD'):
+        """ Constructor for an angle instance.
         """
-            Convert DMS angle (in the form ddd-mm-ss) to radians
-            retuns angle in radians
-            This static method can be called by the class
-            e.g Angle.dms2rad('12-12-12')
-        """
-        dms = dms.strip()         # remove whitespace
-        sign = 1                  # assume positive dms value
-        if dms[0] == "-":
-            sign = -1
-            dms = dms[1:]         # remove sign
-        items = re.split('[-/:]', dms, maxsplit=3)  # get list of [ddd, mm, ss]
-        while len(items) < 3:     # add missing mins/secs
-            items.append('0')
-        # change to decimal degree with sign
-        return sign * math.radians(float(items[0]) + float(items[1]) / 60.0 +
-                            float(items[2]) / 3600.0)
+        self.value = None
+        self.SetAngle(value, unit)
 
-    @staticmethod
-    def rad2dms(rad):
+    def GetAngle(self, out='RAD'):
+        """ Get angle value in different units
+            :param out: output unit (str RAD/DMS/DEG/GON/NMEA/PDEG/SEC/MIL)
+            :returns: value (float or string)
         """
-            Convert angle in radians to DMS string
-            returns dms string e.g '12-12-12'
-            This static method can be called by the class
-            e.g Angle.rad2dms(3.12345)
+        if out == 'RAD' or self.value is None:
+            output = self.value  # no conversion
+        elif out in self.ex:
+            output = self.ex[out](self.value)  # call converter based on output format
+        else:
+            output = None  # unsupported output format
+        return output
+
+    def SetAngle(self, value, unit='RAD'):
+        """ Set or change value of angle.
+            :param value: new value for angle (str or float)
+            :param unit: unit for the new value (str)
         """
-        secs = round(abs(rad) * 180.0 / math.pi * 3600)
-        mi, sec = divmod(secs, 60)
-        deg, mi = divmod(mi, 60)
-        deg = int(deg)
-        return "%s%d-%02d-%02d" % ("-" if rad < 0 else "", deg, mi, sec)
+        if unit == 'RAD' or value is None:
+            self.value = value
+        elif unit in self.im:
+            self.value = self.im[unit](value)
+        else:
+            # unknown unit
+            self.value = None
+        # move angle to -2*PI : 2*PI interval
+        if self.value is not None:
+            while self.value >= PI2:
+                self.value -= PI2
+            while self.value < -PI2:
+                self.value += PI2
+
+    def Positive(self):
+        """ Change stored value to positive
+        """
+        if self.value < 0:
+            self.value += PI2
+        return self
+
+    def Normalize(self):
+        """ Normalize angle between 0-360 DEG
+        """
+        while self.value < 0:
+            self.value += PI2
+        while self.value >= PI2:
+            self.value -= PI2
+        return self
 
     def __str__(self):
+        """ GON string representation of angle
+            :returns: GON string
         """
-            convert angle to dms string
-            this method is called by print
-        """
-        return self.rad2dms(self.val)
+        return "{0:.4f}".format(self.GetAngle('GON'))
 
     def __add__(self, a):
+        """ add angles
+            :param a: Angle to add
+            :returns: sum of the two angles (Angle)
         """
-            add two angles
-            this method is called by the '+' operator
-            __class__ is used to get an instance of the actual class
-        """
-        return self.__class__(self.val + a.val)
+        return Angle(self.value + a.GetAngle('RAD'), 'RAD')
 
     def __iadd__(self, a):
+        """ add an angle to current
+            :param a: Angle to add
         """
-            increment an angle
-            this method is called ba the += operator
-        """
-        self.val += a.val
+        self.value += a.GetAngle('RAD')
         return self
 
     def __sub__(self, a):
+        """ substract angles
+            :param a: Angle to substract
+            :returns: difference of the two angles (Angle)
         """
-            substract angles
-            this method is called by the '-' operator
-            __class__ is used to get an instance of the actual class
-        """
-        return self.__class__(self.val - a.val)
+        return Angle(self.value - a.GetAngle('RAD'), 'RAD')
 
     def __isub__(self, a):
+        """ substract an agle from current
+            :param a: Angle to substract
         """
-            decrement angle
-            this method is called ba the -= operator
-        """
-        self.val -= a.val
-        return self
-        
-    @property
-    def val(self):
-        """
-            get hidden value of object
-        """
-        return self._val
-    
-    @val.setter
-    def val(self, v = 0):
-        """ set hidden value given in dms or radians
-        """
-        if isinstance(v, str):
-            v = self.dms2rad(v)     # convert dms to radian
-        self._val = v               # save value in radian
+        self.value -= a.GetAngle('RAD')
         return self
 
-    def normalize(self):
-        """ shift angle into the 0-2pi interval
-        """
-        while self.val < 0:
-            self.val += 2 * math.pi
-        while self.val >= 2 * math.pi:
-            self.val -= 2 * math.pi
-        return self
-
-class NormalizedAngle(Angle):
-    """ normalized angle always in 0, 2pi interval
-    """
-
-    @property
-    def val(self):
-        return self._val
-
-    def __init__(self, val):
-        super(NormalizedAngle, self).__init__(val)    # call constructor of parent class
-
-    @val.setter
-    def val(self, v = 0):
-        """ set value given in dms or radians and shift it into 0,2pi interval
-        """
-        if isinstance(v, str):
-            v = self.dms2rad(v)     # convert dms to radian
-        while v < 0:
-            v += 2 * math.pi
-        while v >= 2 * math.pi:
-            v -= 2 * math.pi
-        self._val = v
-        return self
-
-    def normalize(self):
-        """ just overload parent's method
-        """
-        return self
-
-if __name__ == '__main__':
-
-    a1 = Angle('-12-23-34').normalize()
-    print(a1)
-    a2 = Angle(math.pi)
-    a3 = a1 + a2
-    print(a3)
-    a1 += Angle('11-11-11')
-    print(a1)
-    b1 = NormalizedAngle('-12-23-34')
-    print(a1-a1)
-    print(Angle.rad2dms(0.11111))
+if __name__ == "__main__":
+    a = Angle(-0.01112, "DEG")
+    print(a.GetAngle("DMS"))
+    a1 = Angle("204-55-28", "DMS")
+    print(a1.GetAngle('DMS'))
+    a1 += Angle(180, 'DEG')
+    print(a1.Normalize().GetAngle('DMS'))
+    a2 = Angle('280-03-24', 'DMS')
+    print(a2.GetAngle('DMS'))
+    a3 = Angle(360, 'DEG')
+    print(a3.GetAngle('DMS'))
+    a2 = a3 - a2
+    print(a2.Normalize().GetAngle('DMS'))
+    for u in ['RAD', 'DMS', 'GON', 'NMEA', 'DEG', 'PDEG', 'MIL']:
+        print(a1.GetAngle(u))
+    b1 = Angle(1.1111, 'PDEG')
+    print(b1.GetAngle("DMS"))
+    c1 = a1 + b1
+    print(c1.GetAngle("DMS"))
+    print(c1)
+    print((a1-b1).GetAngle("DMS"))
+    a2 = Angle(-90, 'DEG')
+    a2.Positive()
+    print(a2)
