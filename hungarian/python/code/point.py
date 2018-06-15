@@ -68,24 +68,22 @@ class Point(object):
         self.x = dist * math.cos(ang)
         self.y = dist * math.sin(ang)
 
-if __name__ == "__main__":
+def PolarP(dist, ang):
+    """ polar to rectangular coordinates returning Point """
+    return Point(dist * math.cos(ang), dist * math.sin(ang))
 
-    import pandas as pd
-    # orientation
-    # read coordinates
-    df = pd.read_csv('coo.csv')
-    pnts = {}                   # new dictionary for points
-    # convert data to dictionary of Point objects
-    for i in range(df.shape[0]):
-        pnts[df['id'][i]] = Point(df['x'][i], df['y'][i])
-    # read station target and mean direction from csv file
-    df = pd.read_csv('ori.csv')
-    # calculate orientation angles
-    o = []
-    for i in range(df.shape[0]):
-        o.append((pnts[df['target'][i]] - pnts[df['station'][i]]).bearing() -
-                 df['direction'][i])
-    print sum(o) / len(o)
-    
-    
-    
+if __name__ == "__main__":
+    # tests
+    v = 0.1
+    A = Point(-100.4627, 52.5957)
+    B = Point(11.0532, 52.5956)
+    dist, bea = (B - A).polar()
+    P1 = A + PolarP(v, bea + math.pi * 3 / 2) 
+    P2 = P1 + PolarP(dist, bea)
+    P3 = P2 + PolarP(v, bea + math.pi / 2)
+    P4 = A + PolarP(v, bea +math.pi / 2)
+    print P1
+    print P2
+    print P3
+    print P4
+
