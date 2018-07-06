@@ -118,6 +118,8 @@ Table of contents
 #. `Regression sphere <reg_sphere.rst>`_
 #. `Bulk extract GPS positions from images <exif.rst>`_
 #. `Bulk image convert to GeoTiff <image2geotiff.rst>`_
+#. `3D ortogonal transformation <3dtr.rst>`_
+#. `Processing bridge deflection data <deflection.rst>`_
 
 Program codes and sample data are in the `code <code>`_ folder.
 
