@@ -106,3 +106,7 @@ Result:
 	   97.800
 
 	RMSE: 0.007440
+
+.. note:: *Development tipps*:
+
+    Add scale difference calculation (the average ratio of the point distances from the weight points).
