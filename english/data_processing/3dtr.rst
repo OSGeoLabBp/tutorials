@@ -28,6 +28,8 @@ GCPs in the source reference system
     26.7044   40.0221   16.5392
     27.9647   38.2493   13.2022
 
+GCPs in the target reference system
+
 .. code::
 
     133.101   140.589    83.295
