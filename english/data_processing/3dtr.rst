@@ -49,7 +49,9 @@ are unknowns.
 
 During the solution first the weight point of GCPs are generated in both 
 reference systems and the points are translated. Then the rotational parameters 
-are calculated by SVD.
+are calculated by SVD. Let's create H matrix as the sum of diad product of 
+relative coordinates to the weight point in the two reference systems.
+
 Finally the translations are calculated by the weight points and the known
 rotational matrix..
 If more than 3 GCPs are given a least square approximation will be calculated.
