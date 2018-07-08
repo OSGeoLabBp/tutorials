@@ -44,9 +44,11 @@ GCPs in the target reference system
     121.269   141.009    91.106
 
 The trick in the solution is to move the origin of the reference systems to 
-the weight points to eliminate translation. Then the rotational matrix 
+the weight points to eliminate translation. Then the elements of the rotational matrix
+are unknowns.
+
 During the solution first the weight point of GCPs are generated in both 
-reference systems and points are translated. Then the rotational parameters 
+reference systems and the points are translated. Then the rotational parameters 
 are calculated by SVD.
 Finally the translations are calculated by the weight points and the known
 rotational matrix..
@@ -111,4 +113,5 @@ Result:
 
 .. note:: *Development tipps*:
 
-    Add scale difference calculation (the average ratio of the point distances from the weight points).
+    Add scale difference calculation (the average ratio of the point distances from the 
+    weight points in the two reference systems).
