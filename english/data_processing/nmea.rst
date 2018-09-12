@@ -7,7 +7,7 @@ NMEA message processing and display
 
 *Program files*: nmea.m, nmea2deg.m, nmea.awk
 
-*Octave megoldás* (nmea.m)
+*Octave solution* (nmea.m)
 
 .. code:: octave
 
@@ -58,7 +58,7 @@ NMEA message processing and display
         deg = sscanf(w(1:p-3),'%d') + sscanf(w(p-2:end), '%f') / 60.0;
     end
 
-*AWK megoldás* (nmea.awk)
+*AWK solution* (nmea.awk)
 
 .. code:: awk
 
