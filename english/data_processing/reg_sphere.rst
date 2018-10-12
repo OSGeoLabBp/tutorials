@@ -13,7 +13,7 @@ the best fitting sphere (center point and radius) to these points.
     a2 = -2y0
     a3 = -2z0
     a4 = x0^2 + y0^2 + z0^2 - r^2
-    y^2 + x^2 + z+2 + a1 x + a2 y + a3 z + a4 = 0
+    y^2 + x^2 + z^2 + a1 x + a2 y + a3 z + a4 = 0
 
 This solution is similar to the method used for circle fitting. Substitutions
 were used to have linear equation system for a1, a2, a3, a4, from these the
