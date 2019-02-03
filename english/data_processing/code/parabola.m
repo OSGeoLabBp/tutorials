@@ -2,7 +2,7 @@
 xp = [0; 21; 30];
 yp = [0; 55; 75];
 % set up equations
-A = zeros(3, 3);
+A = zeros(3);
 l = zeros(3, 1);
 for i=1:3
 	A(i,1) = 1;
