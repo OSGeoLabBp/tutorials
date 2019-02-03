@@ -26,6 +26,9 @@ processes the input and prints output to the standard output.
 The syntaxis of the gawk programs are very similiar to C programs. gawk can be 
 a good start point to learn C.
 
+.. note::
+	Names,reserved words in *gawk* programs are case sensitive!
+
 A *gawk* program consists of pattern and action pairs. The pattern must match
 the actual input line to trigger the action. All matching actions are 
 evaluated, not only the first!
@@ -41,6 +44,11 @@ There are some kinds of patterns:
 
 After the pattern the action have to be put into a code block. Code blocks are 
 delimited by curly bracket "{" and "}".
+
+.. note::
+
+    For a complete reference on gawk see https://www.gnu.org/software/gawk/manual/gawk.pdf
+    or https://www.tutorialspoint.com/awk/index.htm
 
 Add row numbers to a text file
 ------------------------------
@@ -97,7 +105,7 @@ this gawk program.
 
 .. code:: bash
 
-    gawk -F : -f reverse.awk /etc/passwd
+    gawk -F: -f reverse.awk /etc/passwd
 
 -F switch to define field separator and -f to give the name of the program file.
 
