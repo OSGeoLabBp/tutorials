@@ -409,4 +409,4 @@ Linux utility.
 
 .. code:: bash
 
-    icov -f source_code_page -t target_code_page source_file > target_file
+    iconv -f source_code_page -t target_code_page source_file > target_file
