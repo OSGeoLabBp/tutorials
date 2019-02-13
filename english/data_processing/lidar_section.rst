@@ -92,8 +92,17 @@ from a shell script.
 	fi
 	for i in {1..3}
 	do
-		./minmax.awk -v col=$i $1
+		./minmax.awk -F, -v col=$i $1
 	done
+
+To use the shell script above, use the following command:
+
+.. code:: bash
+
+	./box.sh lidar.txt
+	548025.890 550424.100
+	5128996.490 5129293.080
+	933.310 1139.110
 
 
 Let's find points at a horizontal or vertical plan (perpendicular to the axis
@@ -125,6 +134,21 @@ gawk solution (*slide.awk*)
 
     gawk -F, -f slide.awk lidar.txt > elev1000.txt
     gawk -f slide.awk -F, -v coo=1000 -v tol=0.5 -v col=3 lidar.txt > e1000.txt
+
+Let's use GNUplot to display the section.
+
+.. code::
+
+	#!/usr/bin/gnuplot
+	set xlabel "x"
+	set ylabel "y"
+	set grid xtics lt 1 lw 1 lc rgb "#bbbbbb"
+	set grid ytics lt 1 lw 1 lc rgb "#bbbbbb"
+	set autoscale
+	set terminal postscript portrait enhanced mono dashed lw 1 'Helvetica' 14
+	set style line 1 lt 1 lw 3 pt 3 linecolor rgb "red"
+	set output 'out.eps'
+	plot 'e1000.txt' using 1:2 w points title "section"
 
 octave solution (slide.m)
 -------------------------

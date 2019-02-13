@@ -11,5 +11,5 @@ then
 fi
 for i in {1..3}
 do
-	./minmax.awk -v col=$i $1
+	./minmax.awk -F, -v col=$i $1
 done
