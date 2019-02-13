@@ -67,7 +67,7 @@ Example of running in a terminal:
 
 	octave -qf minmax.m 1.txt 2 " "
 
-Let's find points at a horizontal or vertical plan (perpendicular to the axiss
+Let's find points at a horizontal or vertical plan (perpendicular to the axis
 of the co-ordinate system with a tolerance.
 
 gawk solution (*slide.awk*)
