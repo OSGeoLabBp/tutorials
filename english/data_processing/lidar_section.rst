@@ -12,6 +12,7 @@ gawk solution (*minmax.awk*)
 
 .. code:: gawk
 
+	#! /usr/bin/gawk -f
     # find minimal and maximal values in a column
     # column number can be set from command line: -v col=2
     BEGIN { mi = 1e10; ma = -1e10;
@@ -28,6 +29,12 @@ gawk solution (*minmax.awk*)
 
 	gawk -F, -v col=3 -f minmax.awk lidar.txt
 	933.31 1139.11
+
+.. note::
+
+	The first line called shebang, it is useful on Linux if you make the
+	gawk program file executable (e.g. chmod +x minmax.awk).
+	To run the program input: ./minmax.awk -F, -v col=3 lidar.txt
 
 octave solution (minmax.m)
 --------------------------
@@ -67,8 +74,30 @@ Example of running in a terminal:
 
 	octave -qf minmax.m 1.txt 2 " "
 
+Let's find the 3D bounding box of the pointcloud calling minmax.awk three times
+from a shell script.
+
+.. code:: bash
+
+	#! /bin/bash
+	if [ $# -ne 1 ]
+	then
+		echo "usage? $0 <file>"
+		exit 1
+	fi
+	if [ ! -f $1 ]
+	then
+		echo "$1 file not found"
+		exit 2
+	fi
+	for i in {1..3}
+	do
+		./minmax.awk -v col=$i $1
+	done
+
+
 Let's find points at a horizontal or vertical plan (perpendicular to the axis
-of the co-ordinate system with a tolerance.
+of the co-ordinate system) with a tolerance.
 
 gawk solution (*slide.awk*)
 ---------------------------
