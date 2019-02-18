@@ -8,7 +8,7 @@ Download and process RINEX navigation files
 *Program files*: get_nav.sh, numephem.awk, numephem.sh
 
 Download daily RINEX navigation files in version 3 for a specific period.
-Then count the number of ephemeris broadcasted by different satellite systems, like GPS, Glonass, Galileo, Beidou...
+Then count the number of ephemerides broadcasted by different satellite systems, like GPS, Glonass, Galileo, Beidou...
 
 download data (*get_nav.sh*)
 ----------------------------
@@ -48,6 +48,8 @@ download data (*get_nav.sh*)
 count ephemeris (*numephem.awk*)
 --------------------------------
 
+The basic idea is that a new ephemeris starts by a letter, abbreviation of the satellite system then come two characters to identify a specific satellite. The letter 'G' corresponds to GPS (=NAVSTAR), R to Glonass, E to Galielo and C to Beidou. e.g. G01 means the 01 GPS satellite. Hence we have to count just the lines starts by the system id plus two integer numbers.
+
 .. code:: awk
 
 	/^G[0-9][0-9]/ {
@@ -69,6 +71,8 @@ count ephemeris (*numephem.awk*)
 process navigation files (*numephem.sh*)
 ----------------------------------------
 
+Loop over all files in the current directory with RINEX naming conventions.
+
 .. code:: shell
 
 	#!/bin/bash
@@ -84,10 +88,10 @@ example
 Download RINEX navigation files the first 5 days in 2019
 	./get_nav.sh 2019 1 5
 	
-Count the ephemeris of the different satellite system
+Count the ephemerides of the different satellite systems
 	./numephem.sh
 
-And the results
+And the results:
 	brdm0010.19p 402 1191 4637 750
 	
 	brdm0020.19p 394 1185 4671 733
