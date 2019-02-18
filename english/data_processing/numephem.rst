@@ -12,11 +12,11 @@ Then count the number of ephemeris broadcasted by different satellite systems, l
 
 .. code:: shell
 
-	#!/bin/sh
+	#!/bin/bash
 	host="ftp://ftp.cddis.eosdis.nasa.gov/pub/gps/data/campaign/mgex/daily/rinex3/"
 	if [ "$#" -ne 3 ]	#three arguments are obligatory to give
 	then
-		echo "usage $0 <year> <doy1> <doy2>
+		echo "usage $0 <year> <doy1> <doy2>"
 		exit 1
 	fi
 	#the first argument is the year
@@ -36,6 +36,6 @@ Then count the number of ephemeris broadcasted by different satellite systems, l
 	#loop over the days of the period
 	for (( i=$doy1; i<=$doy2; i++ ))
 	do
-		printf -v doy "%03d" $if	#format for having always three characters and leading zeros
-		wget -N $host$year"/"$doy"/"$year2"p"brdm"$doy"0."$year2"p.Z"
+		printf -v doy "%03d" $i	#format for having always three characters and leading zeros
+		wget -N $host$year"/"$doy"/"$year2"p/brdm"$doy"0."$year2"p.Z"
 	done
