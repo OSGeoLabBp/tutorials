@@ -120,6 +120,8 @@ Table of contents
 #. `Bulk image convert to GeoTiff <image2geotiff.rst>`_
 #. `3D ortogonal transformation <3dtr.rst>`_
 #. `Processing bridge deflection data <deflection.rst>`_
+#. `Download RINEX navigation files and count ephemeris of different satellite systems <numephem.rst>`_
+
 
 Program codes and sample data are in the `code <code>`_ folder.
 
