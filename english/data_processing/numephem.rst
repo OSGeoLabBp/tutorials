@@ -89,8 +89,12 @@ Count the ephemeris of the different satellite system
 
 And the results
 	brdm0010.19p 402 1191 4637 750
+	
 	brdm0020.19p 394 1185 4671 733
+	
 	brdm0030.19p 390 1170 4720 739
+	
 	brdm0040.19p 391 1207 4457 733
+	
 	brdm0050.19p 397 1217 4654 731
 	
