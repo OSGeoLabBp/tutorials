@@ -48,7 +48,7 @@ download data (*get_nav.sh*)
 count ephemeris (*numephem.awk*)
 --------------------------------
 
-The basic idea is that a new ephemeris starts by a letter, abbreviation of the satellite system then come two characters to identify a specific satellite. The letter 'G' corresponds to GPS (=NAVSTAR), R to Glonass, E to Galielo and C to Beidou. e.g. G01 means the 01 GPS satellite. Hence we have to count just the lines starts by the system id plus two integer numbers.
+The basic idea is that a new ephemeris starts by a letter, abbreviation of the satellite system which is followed by two characters to identify the specific satellite. The letter 'G' corresponds to GPS (=NAVSTAR), R to Glonass, E to Galielo and C to Beidou. e.g. G01 means the 01 GPS satellite. Hence we have to count just the lines starts by the system id plus two integer numbers.
 
 .. code:: awk
 
