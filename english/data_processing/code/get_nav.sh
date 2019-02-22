@@ -17,7 +17,7 @@ year2=${year:(-2)}
 for (( i=$doy1; i<=$doy2; i++ ))
 do
 	printf -v doy "%03d" $i	#format for having always three characters and leading zeros
-	rm "brdm"$doy"0."$year2"p" "brdm"$doy"0."$year2"p.Z" # remove previous
+	rm -f "brdm"$doy"0."$year2"p" "brdm"$doy"0."$year2"p.Z" # remove previous
 	wget -N $host$year"/"$doy"/"$year2"p/brdm"$doy"0."$year2"p.Z"	#download
 	uncompress "brdm"$doy"0."$year2"p"	#uncompress
 done
