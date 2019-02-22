@@ -1,15 +1,11 @@
-/^G[0-9][0-9]/ {
-	numGPS++;
+/^[GREC][0-9][0-9]/ {
+	# increment satelite specific array elements 
+	# G - GPS, R - Glonass, E - Galielo, C - Beidou
+	numsat[substr($0, 1, 1)]++;
 }
-/^R[0-9][0-9]/ {
-	numGLO++;
-}
-/^E[0-9][0-9]/ {
-	numGAL++;
-}
-/^C[0-9][0-9]/ {
-	numBDS++;
-}
-END {
-	print FILENAME, numGPS, numGLO, numGAL, numBDS;
+END { printf "%s: ", FILENAME;
+	name["G"] = "GPS"; name["R"] = "Glonass"; name["E"] = "Galileo";
+	name["C"] = "Beidou";
+	for (i in numsat) { printf "%s %d ", name[i], numsat[i]};
+	printf "\n";
 }
