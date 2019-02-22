@@ -13,7 +13,7 @@ Then count the number of ephemerides broadcasted by different satellite systems,
 download data (*get_nav.sh*)
 ----------------------------
 
-.. code:: shell
+.. code:: bash
 
 	#!/bin/bash
 	host="ftp://ftp.cddis.eosdis.nasa.gov/pub/gps/data/campaign/mgex/daily/rinex3/"
@@ -29,14 +29,7 @@ download data (*get_nav.sh*)
 	#the third one is the last day of year in the period
 	doy2=$3
 	#get the last two characters of the year
-	if [ $year -gt 2000 ]
-	then
-		let year2=$year-2000
-	else
-		let year2=$year-1900
-	fi
-	#leading zero is obligatory, e.g. 2005->05
-	printf -v year2 "%02d" $year2
+	year2=${year:(-2)}
 	#loop over the days of the period
 	for (( i=$doy1; i<=$doy2; i++ ))
 	do
@@ -52,53 +45,72 @@ The basic idea is that a new ephemeris starts by a letter, abbreviation of the s
 
 .. code:: awk
 
-	/^G[0-9][0-9]/ {
-		numGPS++;
+	/^[GREC][0-9][0-9]/ {
+		# increment satelite specific array elements
+		# G - GPS, R - Glonass, E - Galielo, C - Beidou
+		numsat[substr($0, 1, 1)]++;
 	}
-	/^R[0-9][0-9]/ {
-		numGLO++;
-	}
-	/^E[0-9][0-9]/ {
-		numGAL++;
-	}
-	/^C[0-9][0-9]/ {
-		numBDS++;
-	}
-	END {
-		print FILENAME, numGPS, numGLO, numGAL, numBDS;
+	END { printf "%s: ", FILENAME;
+		name["G"] = "GPS"; name["R"] = "Glonass"; name["E"] = "Galileo";
+		name["C"] = "Beidou";
+		for (i in numsat) { printf "%s %d ", name[i], numsat[i]};
+		printf "\n";
 	}
 
 process navigation files (*numephem.sh*)
 ----------------------------------------
 
-Loop over all files in the current directory with RINEX naming conventions.
+Loop over all files in the current directory with RINEX naming conventions 
+if no command line parameters are given or process files given in the command 
+line.
 
-.. code:: shell
+.. code:: bash
 
 	#!/bin/bash
+	# process all files in current directory or files given by parameters
+	if [ $# -eq 0 ]
+	then
+		# process all rinex file in current directory
+		for file in brdm[0-3][0-9][0-9]0.[0-9][0-9]p
+		do
+			awk -f numephem.awk $file
+		done
+	else
+		# process rinex files given in the command line
+		for file in "$@"
+		do
+			awk -f numephem.awk $file
+		done
+	fi
 
-	for file in "brdm"[0-3][0-9][0-9]"0."[0-9][0-9]"p"
-	do
-		awk -f numephem.awk $file
-	done
-	
-example
--------
+examples
+--------
 
 Download RINEX navigation files the first 5 days in 2019
+
+.. code:: bash
+
 	./get_nav.sh 2019 1 5
 	
 Count the ephemerides of the different satellite systems
+
+.. code:: bash
+
 	./numephem.sh
 
 And the results:
-	brdm0010.19p 402 1191 4637 750
-	
-	brdm0020.19p 394 1185 4671 733
-	
-	brdm0030.19p 390 1170 4720 739
-	
-	brdm0040.19p 391 1207 4457 733
-	
-	brdm0050.19p 397 1217 4654 731
-	
+
+.. code:: bash
+
+	brdm0010.19p: Beidou 750 Galileo 4637 Glonass 1191 GPS 402 
+	brdm0020.19p: Beidou 733 Galileo 4671 Glonass 1185 GPS 394 
+	brdm0030.19p: Beidou 739 Galileo 4720 Glonass 1170 GPS 390 
+	brdm0040.19p: Beidou 733 Galileo 4457 Glonass 1207 GPS 391 
+	brdm0050.19p: Beidou 731 Galileo 4654 Glonass 1217 GPS 397 
+
+*Development tipps*:
+
+Improve *get_nav.sh* to handle invalid command line parameters and
+if doy2 is not given download a single day (doy1).
+
+
