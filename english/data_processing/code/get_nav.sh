@@ -12,18 +12,12 @@ doy1=$2
 #the third one is the last day of year in the period
 doy2=$3
 #get the last two characters of the year
-if [ $year -gt 2000 ]
-then
-	let year2=$year-2000
-else
-	let year2=$year-1900
-fi
-#leading zero is obligatory, e.g. 2005->05
-printf -v year2 "%02d" $year2
+year2=${year:(-2)}
 #loop over the days of the period
 for (( i=$doy1; i<=$doy2; i++ ))
 do
 	printf -v doy "%03d" $i	#format for having always three characters and leading zeros
+	rm "brdm"$doy"0."$year2"p" "brdm"$doy"0."$year2"p.Z" # remove previous
 	wget -N $host$year"/"$doy"/"$year2"p/brdm"$doy"0."$year2"p.Z"	#download
 	uncompress "brdm"$doy"0."$year2"p"	#uncompress
 done
