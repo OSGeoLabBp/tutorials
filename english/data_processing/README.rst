@@ -97,30 +97,30 @@ Matlab incompatible structures.
 Table of contents
 -----------------
 
-#. `Load coordinates from Leica GSI into QGIS or AutoCAD <leica_gsi.rst>`_
-#. `Processing GSI file got from Leica DNA03 digital level <leica_dna03.rst>`_
-#. `Converting GPX to KML <gpx.rst>`_
-#. `NMEA message processing and display <nmea.rst>`_
-#. `Processing observations for a moving point <one_point.rst>`_
-#. `Measure point with slope prism rod <sphere.rst>`_
-#. `Processing LiDAR data <lidar.rst>`_
-#. `Monitoring data processing <monitoring_data.rst>`_
-#. `Level network adjustment and data snooping <level_net.rst>`_
-#. `Propagation of errors for polar observations <propagation_of_error.rst>`_
-#. `Coordinate list processing with Unix text file utilities <coord_list.rst>`_
-#. `Statistics from NMEA file <nmea_stat.rst>`_
-#. `Polynom interpolation <polinom.rst>`_
-#. `Generalised inverse <pseudo_inverz.rst>`_
-#. `Regression circle <circle.rst>`_
-#. `Generate report from a DXF file <dxfinfo.rst>`_
-#. `Find prime numbers <prime.rst>`_
-#. `Section from point cloud <lidar_section.rst>`_
-#. `Regression sphere <reg_sphere.rst>`_
-#. `Bulk extract GPS positions from images <exif.rst>`_
-#. `Bulk image convert to GeoTiff <image2geotiff.rst>`_
-#. `3D ortogonal transformation <3dtr.rst>`_
-#. `Processing bridge deflection data <deflection.rst>`_
-#. `Download RINEX navigation files and count ephemeris of different satellite systems <numephem.rst>`_
+#. `Load coordinates from Leica GSI into QGIS or AutoCAD <lessons/leica_gsi.rst>`_
+#. `Processing GSI file got from Leica DNA03 digital level <lessons/leica_dna03.rst>`_
+#. `Converting GPX to KML <lessons/gpx.rst>`_
+#. `NMEA message processing and display <lessons/nmea.rst>`_
+#. `Processing observations for a moving point <lessons/one_point.rst>`_
+#. `Measure point with slope prism rod <lessons/sphere.rst>`_
+#. `Processing LiDAR data <lessons/lidar.rst>`_
+#. `Monitoring data processing <lessons/monitoring_data.rst>`_
+#. `Level network adjustment and data snooping <lessons/level_net.rst>`_
+#. `Propagation of errors for polar observations <lessons/propagation_of_error.rst>`_
+#. `Coordinate list processing with Unix text file utilities <lessons/coord_list.rst>`_
+#. `Statistics from NMEA file <lessons/nmea_stat.rst>`_
+#. `Polynom interpolation <lessons/polinom.rst>`_
+#. `Generalised inverse <lessons/pseudo_inverz.rst>`_
+#. `Regression circle <lessons/circle.rst>`_
+#. `Generate report from a DXF file <lessons/dxfinfo.rst>`_
+#. `Find prime numbers <lessons/prime.rst>`_
+#. `Section from point cloud <lessons/lidar_section.rst>`_
+#. `Regression sphere <lessons/reg_sphere.rst>`_
+#. `Bulk extract GPS positions from images <lessons/exif.rst>`_
+#. `Bulk image convert to GeoTiff <lessons/image2geotiff.rst>`_
+#. `3D ortogonal transformation <lessons/3dtr.rst>`_
+#. `Processing bridge deflection data <lessons/deflection.rst>`_
+#. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_
 
 
 Program codes and sample data are in the `code <code>`_ folder.
