@@ -8,7 +8,8 @@ Download and process RINEX navigation files
 *Program files*: get_nav.sh, numephem.awk, numephem.sh
 
 Download daily RINEX navigation files in version 3 for a specific period.
-Then count the number of ephemerides broadcasted by different satellite systems, like GPS, Glonass, Galileo, Beidou...
+Then count the number of ephemerides broadcasted by different satellite systems,
+like GPS, Glonass, Galileo, Beidou...
 
 download data (*get_nav.sh*)
 ----------------------------
@@ -35,7 +36,7 @@ download data (*get_nav.sh*)
 	do
 		printf -v doy "%03d" $i	#format for having always three characters and leading zeros
 		wget -N $host$year"/"$doy"/"$year2"p/brdm"$doy"0."$year2"p.Z"	#download
-		uncompress "brdm"$doy"0."$year2"p"	#uncompress
+		uncompress "brdm"$doy"0."$year2"p"	#uncompress downloaded file
 	done
 	
 count ephemeris (*numephem.awk*)
@@ -53,8 +54,9 @@ The basic idea is that a new ephemeris starts by a letter, abbreviation of the s
 	END { printf "%s: ", FILENAME;
 		name["G"] = "GPS"; name["R"] = "Glonass"; name["E"] = "Galileo";
 		name["C"] = "Beidou";
+		# print all elements from the array with the name of the satelite system
 		for (i in numsat) { printf "%s %d ", name[i], numsat[i]};
-		printf "\n";
+		printf "\n";    # print new line to output
 	}
 
 process navigation files (*numephem.sh*)
@@ -86,27 +88,27 @@ line.
 examples
 --------
 
-Download RINEX navigation files the first 5 days in 2019
+Download RINEX navigation files the first 5 days in 2019 and
+count the ephemerides of the different satellite systems:
 
 .. code:: bash
 
 	./get_nav.sh 2019 1 5
-	
-Count the ephemerides of the different satellite systems
-
-.. code:: bash
-
 	./numephem.sh
-
-And the results:
-
-.. code:: bash
-
 	brdm0010.19p: Beidou 750 Galileo 4637 Glonass 1191 GPS 402 
 	brdm0020.19p: Beidou 733 Galileo 4671 Glonass 1185 GPS 394 
 	brdm0030.19p: Beidou 739 Galileo 4720 Glonass 1170 GPS 390 
 	brdm0040.19p: Beidou 733 Galileo 4457 Glonass 1207 GPS 391 
 	brdm0050.19p: Beidou 731 Galileo 4654 Glonass 1217 GPS 397 
+
+The code above will count ephemerides in all files in the current directory.
+Let's change our code to process the newly downloaded files and redirect 
+output to a file (res.txt):
+
+.. code:: bash
+
+	./get_nav.sh 2019 1 5
+	./numephem.sh brdm00[1-5]0.19p > res.txt
 
 *Development tipps*:
 
