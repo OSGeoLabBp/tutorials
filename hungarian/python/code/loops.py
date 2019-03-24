@@ -70,7 +70,7 @@ for ob in obs:
                 pass # bebug break
 n = 0
 m = 0
-print (obs_dic)
+#print (obs_dic)
 loops.sort(key=len)
 for i in range(len(loops)):
     # remove duplicates
@@ -95,5 +95,5 @@ for i in range(len(loops)):
             else:
                 sdist += obs_dic[loop1[i] + loop1[i-1]][0]
                 sdm -= obs_dic[loop1[i] + loop1[i-1]][1]
-        print ("%.5f,%7.0f,%s" % (sdm, sdist, loop1))
+        print ("%.5f;%.0f;%s" % (sdm, sdist, loop1))
 print (n, m)
