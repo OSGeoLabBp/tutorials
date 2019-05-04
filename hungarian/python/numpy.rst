@@ -5,7 +5,7 @@ A numpy a Python nyelv vektorok és mátrixok kezelésére specializált
 modulja. 
 
 A Python nyelvben a vektorok és mátrixok kezelését a listák segítségével is 
-megoldhatjuk, de az kevésbé hatékony (mivel tetszőleges Python adattípusok
+megoldhatjuk, de az kevésbé hatékony (mivel eltérő Python adattípusok
 lehetnek ugyanannak a listának az elemei). A numpy további előnye, hogy 
 számos vektorokkal, mátrixokkal kapcsolatos műveletet készen tartalmaz.
 
@@ -121,7 +121,8 @@ Magassági hálózat kiegyenlítés
 Készítsünk egy szintezési hálózat kiegyenlítésére alkalmas programot.
 Két bemenő állománnyal dolgozunk. Az egyikben a pontok 
 magassága, a másikban a szintetési vonalak adatai (kezdő sorszám, záró sorszám,
-magasságkülönbség, hossz) találhatók.
+magasságkülönbség, hossz) találhatók. Program szabad magassági hálózat 
+kiegyenlítést számít.
 
 .. code:: text
 
@@ -141,4 +142,21 @@ magasságkülönbség, hossz) találhatók.
 
 .. code:: python
 
-	
+	import numpy as np
+
+	elev = np.genfromtxt('elev.txt', delimiter=' ')
+	obs = np.genfromtxt('obs.txt', delimiter=' ')
+
+	mkm = 0.7                       # 0.7 mm/km
+	n = elev.size                   # ismeretlenek száma
+	m = obs.shape[0]                # egyenletek száma
+	A = np.zeros((m, n))            # alakmátrix
+	P = np.zeros((m, m))            # súlymátrix
+	P[[np.arange(m), np.arange(m)]] = 1 / (obs[:, -1] * mkm)**2
+	A[[np.arange(m), obs[:,0].astype(int)]] = -1
+	A[[np.arange(m), obs[:,1].astype(int)]] = 1
+	l = obs[:,-2] - A.dot(elev)     # tisztatagok
+	Ninv = np.linalg.pinv(A.T.dot(P).dot(A))
+	x = Ninv.dot(A.T).dot(P).dot(l) # magasság változások
+	v = A.dot(x) - l                # javítások
+	X = elev + x                    # kiegyenlített magasságok
