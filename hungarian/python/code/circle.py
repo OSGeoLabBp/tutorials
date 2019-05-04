@@ -24,3 +24,14 @@ class Circle(Point):
     def perimeter(self):
         """ perimeter of circle """
         return 2 * self.r * math.pi
+
+if __name__ == "__main__":
+    # test
+    c1 = Circle()
+    print(c1)
+    print("area: {}".format(c1.area()))
+    print("perimeter: {}".format(c1.perimeter()))
+    c1 += Point(10,20)
+    print(c1)
+    c1 = c1 + Point(10,20)
+    print(c1)

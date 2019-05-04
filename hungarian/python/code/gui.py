@@ -7,7 +7,7 @@ from angle import Angle
 
 class App(tk.Tk, object):
     def __init__(self):
-        super().__init__()
+        super(App, self).__init__()
         # variables assigned to widgets
         self.filename = tk.StringVar()
         self.sp = tk.StringVar()
@@ -16,7 +16,7 @@ class App(tk.Tk, object):
         self.dist = tk.StringVar()
         self.pnts = {}
         # size and position of window
-        self.geometry("280x150+10+10")
+        self.geometry("280x160+10+10")
         self.title("Bearing & distance")
         self.resizable(False, False)   # no resize of window
         # widgets

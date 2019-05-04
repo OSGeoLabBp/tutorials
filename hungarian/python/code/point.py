@@ -4,8 +4,10 @@
 import math
 
 class Point(object):
-    """ class for 2D points """
-
+    """ class for 2D points
+        x, y - position of point, default 0,0
+        p - decimals in coordinate output, default 2
+    """
     def __init__(self, x=0, y=0, p=2):
 
         self.x = x
@@ -46,7 +48,7 @@ class Point(object):
         return self
 
     def __mul__(self, c):
-        """ multiply point ba scalar """
+        """ multiply point by scalar """
         return Point(self.x * c, self.y * c)
 
     def __imul__(self, c):
@@ -82,8 +84,7 @@ if __name__ == "__main__":
     P2 = P1 + PolarP(dist, bea)
     P3 = P2 + PolarP(v, bea + math.pi / 2)
     P4 = A + PolarP(v, bea +math.pi / 2)
-    print P1
-    print P2
-    print P3
-    print P4
-
+    print(P1)
+    print(P2)
+    print(P3)
+    print(P4)

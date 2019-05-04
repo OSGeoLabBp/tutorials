@@ -37,7 +37,7 @@ disp("If RMSE is near zero, the function is correct!");
 %}
 
 % expects row data
-function [R,t] = rigid_transform_3D_mod(A, B)
+function [R,t,sc] = rigid_transform_3D_mod(A, B)
     if nargin != 2
 	    error("Missing parameters");
     end
@@ -48,9 +48,13 @@ function [R,t] = rigid_transform_3D_mod(A, B)
     N = rows(A);
     H = (A - centroid_A)' * (B - centroid_B);
     [U,S,V] = svd(H);
+    % rotation matrix
     R = V*U';
     if det(R) < 0
         R(:,3) *= -1;
     end
+    % translation
     t = -R * centroid_A' + centroid_B';
+    % scale
+    sc = norm(B - centroid_B, 2) / norm(A - centroid_A, 2);
 end

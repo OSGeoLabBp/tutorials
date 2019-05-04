@@ -150,4 +150,5 @@ Level network adjustment and data snooping
 
 .. note:: *Developing tipps*:
 
-    Input from file, Automatic blunder detection and removal
+    Input from file, Automatic blunder detection and removal.
+	More vectorization, more compact code.
