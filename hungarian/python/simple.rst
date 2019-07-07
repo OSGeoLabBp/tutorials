@@ -89,15 +89,15 @@ Próbálja ki a fenti kódot a fractions modulból:
 	from fractions import gcd
 	gcd(32, 80)
 
-Apéldához tartozó Python kódot a *gcd.py* fájlban találja a *code* 
+A példához tartozó Python kódot a *gcd.py* fájlban találja a *code* 
 alkönyvtárban.
 
 Egész számok átváltása római számmá
 -----------------------------------
 
 A következő példában a római és arab számokra közötti átváltást oldjuk meg.
-Itt arra törekszünk, hogy a lehető legkevesebb feltételes utasítssal oldjuk meg
-a feladatot. Először az arabszámok rómaivá alakításával foglalkozzunk.
+Itt arra törekszünk, hogy a lehető legkevesebb feltételes utasítással oldjuk meg
+a feladatot. Először az arab számok rómaivá alakításával foglalkozzunk.
 A feladat megoldásához egy segédlistát hozunk létre, mely egyrészt az
 egy jegyű (egy-három között ismételhető) római számok értékét illetve a
 speciális két betűből állókat tartalmazza (amikor az első szám kisebb mint az
@@ -134,9 +134,9 @@ Ennyi az egész.
 	Ezen számok ábrázolása nem lehetséges római számokkal.
 
 Próbáljuk meg megoldani az átváltást visszafelé is. Itt a logikánk az lesz, hogy
-először váltsuk át a speciális két betűbőlálló részeket, ahol az első betű
+először váltsuk át a speciális két betűből álló részeket, ahol az első betű
 számértéke kisebb mint az őt követő (pl. XC, CM, stb.). A római számoknál
-nem létezik helyiérték így nek kell az elején vagya végén kezdeni az átváltást.
+nem létezik helyiérték így nem kell az elején vagy a végén kezdeni az átváltást.
 Ismét egy segéd listát és egy segéd szótárat hozunk létre az algoritmus
 egyszerűsítésére:
 
@@ -150,9 +150,8 @@ egyszerűsítésére:
 Vegyük észre, hogy a *keys* listában elől vannak a kétbetűből álló speciális 
 esetek (a *keys* lista az *arabic* szótárból is előállítható lenne:
 *list(arabic.keys())*, ha megfelelő a szótárban az elemek sorrendje).
-Ezek után a key értékeket a megadott sorrendben mg kell keresnünk az
+Ezek után a key értékeket a megadott sorrendben meg kell keresnünk az
 átalakítandó római számban és az arab értékeiket összegezni egy változóban.
-Ehhez 
 
 .. code:: python
 
