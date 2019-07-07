@@ -16,7 +16,7 @@ egyes oldalakhoz tartozó trapézok területének összegzésével számítjuk k
 
 	{ \\sum(x_{i+1} - x_{i}) * (y_{i+1} + y_{i})} \\over {2}
 
-A fenti képletben az utolsó pont esetén (**i = n**) az **i+1** az első pontra 
+A fenti képletben az utolsó pont esetén (*i = n*) az *i+1* az első pontra 
 vonatkozik.
 
 A töréspontok koordinátáit tároljuk egy összetett listában. Az egyes pontok 
@@ -46,7 +46,7 @@ egy változóban összegezzük (area).
 
 A **len** függvény a lista hosszát adja vissza (azaz a töréspontok számát).
 A **range(n)** függvényhívás a egész számok listáját adja vissza nullától
-**n-1**-ig. A **%** operátor az osztási maradékot adja, ezzel álítjuk elő,
+**n-1**-ig. A **%** operátor az osztási maradékot adja, ezzel állítjuk elő,
 hogy az utosó pont után az első pontot használja a program. A listák 
 indexelése nullától indul (az első elem indexe nulla). A **coords[i]**
 egy pont koordinátáit jelenti (két elemű lista), a **coords[i][0]** az 
@@ -119,7 +119,7 @@ A Python az objektum orientált programozást is támogatja. Készítsünk egy
 
 Az osztály definíciója a **class** alapszóval kezdődik. Az osztály neve
 (**Polygon**) után a zárójelek között annak az osztálynak a neve jelenik meg,
-melyből az aktuális osztályt származtatjuk (örölődés). Az osztály két
+melyből az aktuális osztályt származtatjuk (öröklődés). Az osztály két
 metódust (osztály tagfüggvényt) tartalmaz. A tagfüggvények első paramétere a
 **self**, melyen keresztül az objektum példány tagváltozóit és tagfüggvényeit
 érhetjük el.
