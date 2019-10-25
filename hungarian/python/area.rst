@@ -13,8 +13,8 @@ Adott egy zárt sokszög töréspontjainak koordinátáival. Az idom területét
 egyes oldalakhoz tartozó trapézok területének összegzésével számítjuk ki.
 
 .. math::
-
-	{ \\sum(x_{i+1} - x_{i}) * (y_{i+1} + y_{i})} \\over {2}
+	
+	sum (x :sub:`i+1` - x :sub:`i`) * (y :sub:`i+1` + y :sub:`i`) / 2
 
 A fenti képletben az utolsó pont esetén (*i = n*) az *i+1* az első pontra 
 vonatkozik.
@@ -258,3 +258,57 @@ Az osztályunk kipróbálására a követjekező kódot használhatjuk.
     print(p1.area())
     print(p1.perimeter())
  
+Ötödik verzió (area4.py)
+--------------------------
+
+Az előzmények után most más készítsünk egy mások számára is használható 
+programot. Számítsuk ki egy fájlban soronként megadott sokszögek területét.
+A fáljban a koordináták szóközzel elválasztott értékék:
+
+.. code::
+
+	2 1 5 2 3 6
+	634110.62 232422.09 634108.23 232365.96 634066.13 232378.12 634062.95 232457.58 634111.68 232454.93 634110.62 232422.09
+
+Egészítsük ki a programunkat egy olyan függvénnyel, mely a fájl egy sorából
+létrehozza a Polygon objektum létrehozásához szükséges Point objektumok
+listáját:
+
+.. code:: python
+
+	def Txt2PntList(txt):
+		""" Convert a string to list of points
+			e.g. "1 2 4 6 -1 2" -> [Point(1,2), Point(4, 6), Point(-1, 2)]
+		"""
+		# change string to list of floats
+		fl = [float(item) for item in txt.strip().split()]
+		# generate easting, northing list
+		return [Point(*i) for i in zip(fl[::2], fl[1::2])]
+
+A fenti függvény első sora a paraméterként kapott szöveglánc elejéről és
+végéről levágja a szóköz, tabulátor, újsor karaktereket (strip), majd
+feldarabolja a szóközöknél és egy listát hoz létre belőle (split).
+A lista feldolgozás a szöveg elemeket számmá alakítja át.
+A második sor az előb előállított listát sétválasztja a páros és páratlan 
+indexű elemeket tartalmazó két listára (fl[::2] és fl[1::2]), majd ezt a két
+listát egyesíti (zip) kételemű listák listájává. Ezután már csak ennek a
+listának az elemeit kell Point objektumokat tartalmazó listává.
+A \*i a listát felbontja az elemeire és Point onjektum konstruktora már
+két számot kap.
+
+A kódunk kipróbálásához használjuk a következő kódot:
+
+.. code:: python
+
+	from geom import Point
+	from area4 import Polygon
+
+    # read polygons from file and calculate areas
+    fn = "polys.txt"
+    if len(sys.argv) > 1:
+        fn = sys.argv[1]
+    i = 0
+    with open(fn, "r") as lines:
+        for line in lines:
+            i += 1
+            print("{:4d} {:12.2f}".format(i, Polygon(Txt2PntList(line)).area()))
