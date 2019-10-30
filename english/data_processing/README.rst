@@ -1,5 +1,5 @@
-Observation processing using GAWK and Octave
-============================================
+Observation processing using GAWK, Octave and Python/numpy
+==========================================================
 
     :Authors: **Zoltan Siki** <siki.zoltan@epito.bme.hu>
     :Version: 1.0
@@ -15,6 +15,9 @@ GNU Octave is an open source high-level interpreted language, primarily
 intended for numerical computations. The syntax of the Octave program is 
 quite similiar to Matlab, you can easy port programs between GNU Octave and
 Matlab.
+
+Python is nowadays one of the most popular programming languages.
+Numpy modul adds Python the power to numeric processing.
 
 Samples mostly concern on observation data/file processing.
 
@@ -93,6 +96,7 @@ Matlab incompatible structures.
 *   using regular expressions
 *   extending Octave/Matlab knowledge
 *   vectorization
+*	extending Python/numpy knowledge
 
 Table of contents
 -----------------
