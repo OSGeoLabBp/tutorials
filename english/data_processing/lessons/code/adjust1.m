@@ -1,5 +1,6 @@
 % sample calculation of a level network ajustment
-% (c) Zoltan Siki 2012 siki.zoltan at epito.bme.hu
+% vectorized version
+% (c) Zoltan Siki 2019 siki.zoltan at epito.bme.hu
 % point numbers are the ordinal number for simplicity
 % 1 o------o 2
 %   |\    /|
@@ -42,9 +43,9 @@ for i = 1:m             % set up matrices
 	if (dm(i,2) <= n)
 		A(i, dm(i, 2)) = 1;
 	end
-	P(i, i) = 1 / (dm(i, 4) * mkm)^2; % [mm^-2]
-	l(i) = -((mag(dm(i, 2)) - mag(dm(i, 1))) - dm(i, 3)) * 1000; % [mm]
 end
+P(1:1+size(P,1):end) = 1.0 ./ (dm(:, 4) .* mkm).^2      % wights
+l = -(mag(dm(:,2)) .- mag(dm(:,1)) - dm(:,3)) * 1000.0; % pure terms
 N = A' * P * A;
 if (n > rank(N))    % singular matrix?
 	Ninv = pinv(N);
@@ -60,22 +61,13 @@ mz = m0 * sqrt(diag(Ninv));  % standard deviation of elevations
 U = dm(:, 3) .+ (v / 1000);  % adjusted observations [m]
 %Qll = inv(P);               % variance/covariance matrix
 Qll = zeros(m,m);
-for i=1:m
-	Qll(i,i) = 1 / P(i,i);
-end
+Qll(1:1+size(Qll,1):end) = 1.0 ./ diag(P)
 Quu = A * Ninv * A'; % a posteriori variance/covariance of observations
 mu = m0 * sqrt(diag(Quu)); % standard deviations of height differences
 Qvv = Qll - Quu; % variance/covariance matrix of corrections
-s = zeros(m,1); % statistics for probe
-sn = zeros(m,1);
-r = zeros(m,1);
-for i = 1:m
-	s(i) = abs(v(i)) / (m0 * sqrt(Qvv(i,i)));
-	% t distribution
-	sn(i) = abs(v(i)) / sqrt(Qvv(i,i));
-	% normal distribution
-	r(i) = 1 - Quu(i,i) * P(i,i);
-end
+s = abs(v) ./ (m0 * sqrt(diag(Qvv)));	% statistics for t probe
+sn = abs(v) ./ sqrt(diag(Qvv));			% statistics for U probe
+r = 1 - diag(Quu) .* diag(P);			% relative redundant observations
 % check for calculation w1 == w2?
 w1 = v' * P * v;
 w2 = -l' * P * v;
@@ -96,8 +88,8 @@ printf(' Sp  Ep    Obs.  Cor.  Adjust.  StDev. Stat. Stat.  r\n')
 printf('           [m]   [mm]    [m]     [mm]    t    U\n')
 printf('------------------------------------------------------\n')
 for i = 1:m
-	printf('%3d %3d %7.4f %5.2f %7.4f %6.2f %5.1f %5.1f %5.1f\n', \
-	psz(dm(i, 1)), psz(dm(i, 2)), dm(i, 3), v(i), U(i), \
+	printf('%3d %3d %7.4f %5.2f %7.4f %6.2f %5.1f %5.1f %5.1f\n', ...
+	psz(dm(i, 1)), psz(dm(i, 2)), dm(i, 3), v(i), U(i), ...
 	mu(i), s(i), sn(i), r(i))
 end
 printf('------------------------------------------------------\n\n')
