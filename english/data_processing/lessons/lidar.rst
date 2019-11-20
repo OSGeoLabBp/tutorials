@@ -7,6 +7,7 @@ Processing LiDAR data
 
 *Program file*: lidarp.m
 
+Let's calculate the volume above 1000 m from a ASCII point cloud file.
 
 *Sample data* (x, y, z)
 
@@ -36,7 +37,7 @@ Processing LiDAR data
     dx = 10;    % GRID step
     dy = 10;
     % generate x & y grid
-   [x, y] = meshgrid(xmin:dx:xmax, ymin:dy:ymax);
+	[x, y] = meshgrid(xmin:dx:xmax, ymin:dy:ymax);
     % grid interpolation for z
     z = griddata(lidar(:,1), lidar(:,2), lidar(:,3), x, y, 'linear');
     figure();    % 3D surface plot
@@ -60,12 +61,13 @@ Processing LiDAR data
         end
     end
     printf('Volume above 1000m: %.0f m3\n', vol);
-    % vectorized solution for volume calculation
+    % vectorized solution for volume calculation (much faster)
     vol1 = sum(z(z > 1000) - 1000) * dx * dy;
     printf('Volume above 1000m: %.0f m3 (vectorized)\n', vol1);
 
 .. note:: *Development tipp*
    
+	load chunks from the ASCII point cloud file to process huge files
     search for extreme values
 
 |lidar1_png|
