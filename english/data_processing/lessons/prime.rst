@@ -5,12 +5,15 @@ Prime numbers
 
 *Data file*: none
 
-*Program files:* prime_naive.m, prime_sieve.m, prime_final.m, prime_improved.m, prime_builtin.m
+*Program files:* prime_naive.m, prime_sieve.m, prime_final.m, prime_improved.m, prime_builtin.m, prim1.py, prim2.py, prim3.py, prim3_5.py, prim4.py, prim5.py, prim6.py, prim7.py
 
 Let's write a program to search for prime numbers upto a maximal value. 
 We'll make more and more affective solutions.
 An integer number is prime if it is only divideable by one and itself.
 So the reminder after division should be examined, we need some loops to do it.
+
+Octave solutions
+----------------
 
 *Our naive solution* (prime_naive.m)
 
@@ -182,6 +185,287 @@ Elapsed time not reduced compering to prime_final.m.
 Try to increase the maximal prime value from the command line, the elapsed time
 for built in prime function increases slower and becomes faster.
 Built in functions are usually the fastest.
+
+Python solutions
+----------------
+
+*First very naive algorithm*
+
+Let's examine the reminder of the division of integer numbers. It is enough to 
+examine dividers till the square root of the largest value.
+
+.. code:: python
+
+    """
+        naive algorith to find prime numbers
+        version 1.0
+    """
+    import math
+    import time
+
+    start_time = time.time()
+    prims = []                   # list of prims
+    for p in range(2, 500001):   # find prims up to 50000
+        prime = True
+        for divider in range(2, int(math.sqrt(p))+1):
+	        if p % divider == 0:     # remainder of division is zero
+		        prime = False        # it is not a prime
+			if prime:
+				prims.append(p)      # store prime number
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+
+*Second naive algorithm*
+
+In the internal loop (for divider) no need to continue with the dividers if a
+integer divider found. Exit from the loop with *break* command.
+
+.. code:: python
+
+    """
+        naive algorith to find prime numbers
+        version 1.1
+    """
+    import math
+    import time
+
+    start_time = time.time()
+    prims = []                   # list of prims
+    for p in range(2, 500001):   # find prims up to 50000
+        prime = True
+        for divider in range(2, int(math.sqrt(p))+1):
+            if p % divider == 0: # remainder of division is zero
+                prime = False    # it is not a prime
+                break            # divider found no need to continue
+        if prime:
+            prims.append(p)      # store prime number
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+
+Adding this *break* to the code it runs 5 times faster on my machine.
+
+*Let's make the code more Pythonic*
+
+There is an *else* for *for* loops in Python and this code block is executed 
+if we did not jump out the loop before reaching the last value. Let's make the 
+code more more flexible, let's read the upper limit for primes from the
+command line instead of the hard coded 50000.
+
+.. code:: python
+
+    """
+        naive algorith to find prime numbers
+        version 1.2
+    """
+    import math
+    import time
+    import sys
+
+    max_num = 101
+    if len(sys.argv) > 1:        # check command line parameter
+        max_num = int(sys.argv[1]) + 1
+    start_time = time.time()
+    prims = []                   # list of prims
+    for p in range(2, max_num):  # find prims up to max_num
+        for divider in range(2, int(math.sqrt(p))+1):
+            if p % divider == 0: # remainder of division is zero
+                break            # divider found no need to continue
+        else:
+            prims.append(p)      # store prime number
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+
+This change did not make the code more effective but it is more Pythonic and 
+more readable.
+
+*A better naive solution*
+
+Each number can be written as the multiplication of prime numbers, so no need
+to check the reminder for all values.
+
+.. code:: python
+
+    """
+        naive algorith to find prime numbers
+        version 1.3
+    """
+    import math
+    import time
+    import sys
+
+    max_num = 101
+    if len(sys.argv) > 1:        # check command line parameter
+        max_num = int(sys.argv[1]) + 1
+    start_time = time.time()
+    prims = []                   # list of prims
+    for p in range(2, max_num):  # find prims up to max_num
+        maxp = int(math.sqrt(p))+1
+        for divider in prims:    # enough to check prims!
+            if p % divider == 0: # remainder of division is zero
+                break            # divider found no need to continue
+            if maxp < divider:
+                prims.append(p)
+                break
+        else:
+            prims.append(p)      # store prime number
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+
+*Effective algorithm*
+
+So far the original idea was improved. There may be a better aproache, idea?
+There was a scientist Erastotenes in the achient age who had better idea, the
+sieve of Erastotenes. He did not try to divide, but removed the multipliers
+of found primes from the list of the possible prime numbers.
+Here is the basic solution:
+
+.. code:: python
+
+    """
+        Sieve of Erasthotenes prim algorithm
+        version 2.0
+    """
+    import math
+    import time
+    import sys
+
+    max_num = 1001
+    if len(sys.argv) > 1:        # check command line parameter
+        max_num = int(sys.argv[1]) + 1
+    start_time = time.time()
+    numbers = list(range(max_num)) # list of natural numbers to check
+    for j in range(2, int(math.sqrt(max_num))):
+        numbers[j+j::j] = [0 for k in numbers[j+j::j]] # use sieve
+    prims = sorted(list(set(numbers) - set([0, 1]))) # remove zeros from list
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+
+List comprehension is used to set multiplyers to zero. It faster and more 
+Pythonic then a **for** loop.
+
+.. code:: python
+
+    numbers[j+j::j] = [0 for k in numbers[j+j::j]]
+
+This code is hundred times faster than the firt naive algorithm.
+
+Can it be faster?
+-----------------
+
+Let's analyze our code. The *j* loop variable will have the values 2, 3, 4, ...
+First we set even numbert from four, then every third numbers from 6, then
+every fourth number from 8. Wait, why set we 8, 12, 16 to zero? Those were set 
+to zero at the first step. We have to set to zero the multipliers of prims. 
+Let's add a condition to the code, clear the list elements only if the *j* th
+item was not set ot zero before.
+
+.. code:: python
+
+    """
+        Sieve of Erasthotenes prim algorithm
+        version 2.1
+    """
+
+    import math
+    import time
+    import sys
+
+    max_num = 1001
+    if len(sys.argv) > 1:        # check command line parameter
+        max_num = int(sys.argv[1]) + 1
+    start_time = time.time()
+    numbers = range(max_num)     # list of natural numbers to check
+    for j in range(2, int(math.sqrt(max_num))):
+        if numbers[j]:
+            numbers[j+j::j] = [0 for k in numbers[j+j::j]] # use sieve
+
+    prims = sorted(list(set(numbers) - set([0, 1]))) # remove zeros from list
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+
+Below half million there is no difference in the elapsed time.
+
+Instead of the list comprehension we could use list multiplied integer value
+to generate list of zeros, which is faster.
+
+.. code:: python
+
+    """
+        Sieve of Erasthotenes prim algorithm
+        version 2.2
+    """
+
+    import math
+    import time
+    import sys
+
+    max_num = 1001
+    if len(sys.argv) > 1:        # check command line parameter
+        max_num = int(sys.argv[1]) + 1
+    start_time = time.time()
+    numbers = range(max_num)     # list of natural numbers to check
+    for j in range(2, int(math.sqrt(max_num))):
+        if numbers[j]:
+            numbers[j+j::j] = [0] * len(numbers[j+j::j]) # use sieve
+    prims = sorted(list(set(numbers) - set([0, 1]))) # remove zeros from list
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+
+numpy library can make is faster
+--------------------------------
+
+numpy provides a lot of algorithms to solve mathematical problems.
+We will use numpy arrays which are more compact than Python lists.
+In numpy we can assign one value to a non-continuous range of numpy elements.
+
+.. code:: python
+
+    """
+        Sieve of Erasthotenes prim algorithm
+        version 2.3
+    """
+
+    import math
+    import time
+    import sys
+    import numpy as np
+
+    max_num = 1001
+    if len(sys.argv) > 1:        # check command line parameter
+        max_num = int(sys.argv[1]) + 1
+    start_time = time.time()
+    numbers = np.arange(max_num)     # list of natural numbers to check
+    for j in range(2, int(math.sqrt(max_num))):
+        if numbers[j]:
+            numbers[j+j::j] = 0 # use sieve
+    prims = sorted(list(set(numbers) - set([0, 1]))) # remove zeros from list
+    print('ready')
+    print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
+
+Table of elapsed time of different algorithms for prims upto 100.000, 1.000.000 
+and 10.000.000:
+
++--------+----------------+----------------+----------------+
+| Version| Elapsed time [s] | Elapsed time [s] | Elapsed time [s] |
+|        |    100000      |   1000000      |  10000000      |
++--------+----------------+----------------+----------------+
+|   1.0  |       1.90     |      60        |       -        |
++--------+----------------+----------------+----------------+
+|   1.1  |       0.45     |      10        |     326        |
++--------+----------------+----------------+----------------+
+|   1.2  |       0.44     |      11        |     333        |
++--------+----------------+----------------+----------------+
+|   1.3  |       0.21     |       2.62     |      50        |
++--------+----------------+----------------+----------------+
+|   2.0  |       0.07     |       0.58     |       6.41     |
++--------+----------------+----------------+----------------+
+|   2.1  |       0.04     |       0.32     |       2.99     |
++--------+----------------+----------------+----------------+
+|   2.2  |       0.02     |       0.19     |       1.73     |
++--------+----------------+----------------+----------------+
+|   2.3  |       0.03     |       0.17     |       1.61     |
++--------+----------------+----------------+----------------+
+
 
 .. note:: *Development tipps*:
 
