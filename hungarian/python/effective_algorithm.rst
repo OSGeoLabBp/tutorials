@@ -33,8 +33,8 @@ Ez Python-ban így nézhet ki:
     for p in range(2, 500001):   # find prims up to 50000
         prime = True
         for divider in range(2, int(math.sqrt(p))+1):
-        if p % divider == 0:     # remainder of division is zero
-            prime = False        # it is not a prime
+            if p % divider == 0:     # remainder of division is zero
+                prime = False        # it is not a prime
         if prime:
             prims.append(p)      # store prime number
     print('ready')
@@ -358,7 +358,5 @@ számok kikeresére futtattuk. Az alábbi táblázat tartalmazza a futási idők
 +--------+----------------+----------------+----------------+
 |   2.3  |       0.03     |       0.17     |       1.61     |
 +--------+----------------+----------------+----------------+
-
-
 
 Itt kifogytam az ötletekből. Van ötlete a gyorsításra? Ossza meg velünk!
