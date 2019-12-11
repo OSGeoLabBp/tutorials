@@ -411,7 +411,7 @@ to generate list of zeros, which is faster.
     print('ready')
     print('%d prims in %f seconds' % (len(prims), time.time() - start_time))
 
-numpy library can make is faster
+numpy library can make it faster
 --------------------------------
 
 numpy provides a lot of algorithms to solve mathematical problems.
