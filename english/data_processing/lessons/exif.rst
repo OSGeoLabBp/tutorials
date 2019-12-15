@@ -3,7 +3,7 @@ Bulk extract GPS position from images
 
 *Keywords:* exif, JPEG, bash, QGIS
 
-*Program files:* exif.sh exif.awk
+*Program files:* exif.sh exif.awk exif_pos.py
 
 *Data files:* https://github.com/ianare/exif-samples/tree/master/jpg/gps
 
