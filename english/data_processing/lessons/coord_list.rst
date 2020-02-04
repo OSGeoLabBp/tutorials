@@ -135,4 +135,4 @@ column change, too.
 
 .. note:: *Development tipps*:
 
-    Select point in a rectangular area
+    Select points in a rectangular area

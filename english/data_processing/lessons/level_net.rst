@@ -5,7 +5,7 @@ Level network adjustment and data snooping
 
 *Data file*: None
 
-*Program file*: adjust.m, adjust1.m
+*Program file*: adjust.m, adjust1.m, adjust.py
 
 
 *Octave solution*:

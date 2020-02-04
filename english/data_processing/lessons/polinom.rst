@@ -5,7 +5,7 @@ Polynom interpolation
 
 *Data file*: parabola.csv
 
-*Program files*: parabola.m, parabola1.m, parabola_lsm.m
+*Program files*: parabola.m, parabola1.m, parabola_lsm.m, parabola.py
 
 Let's fit a parabola through three points. First we create a program using the
 traditional c/Java logic, in a second solution the more effective vetorization

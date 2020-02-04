@@ -5,7 +5,7 @@ NMEA message processing and display
 
 *Data files*: nmea1.txt, nmea2.txt
 
-*Program files*: nmea.m, nmea2deg.m, nmea.awk
+*Program files*: nmea.m, nmea2deg.m, nmea.awk, nmea.py
 
 *Octave solution* (nmea.m)
 
@@ -137,6 +137,7 @@ NMEA message processing and display
 .. note:: *Development tipps*:
 
     Get more columns from GGA sentences. Process more MNEA sentence types.
+	Modify Octave and gawk code to read not only GPS satellite GGA sentences.
 
 .. |nmea_png| image:: images/nmea.png
     :width: 170mm

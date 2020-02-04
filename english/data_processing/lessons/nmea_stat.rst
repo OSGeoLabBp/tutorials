@@ -5,7 +5,7 @@ Statistics from NMEA file
 
 *Data file*: nmea2.txt
 
-*Program file*: nmea_stat.awk
+*Program file*: nmea_stat.awk, nmea_stat.py
 
 From an NMEA file let's calculate statistical values:
 

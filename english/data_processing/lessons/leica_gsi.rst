@@ -200,8 +200,8 @@ Using pipes to connect commands to do evething in one step.
 
 |leica_gsi_2_png|
 
-One step solution using QGIS modul
-----------------------------------
+One step solution using QGIS modul or GeoEasy
+---------------------------------------------
 
 The SurveyingCalculation plugin of QGIS is able to load coordinates and 
 observations from Leica GSI files. The SurveyingCalculation is not a 
@@ -210,7 +210,11 @@ Install Plugins...* from the menu. Installing and activating
 SurveyingCalculation a new menu and tollbar is displayed.
 Select *Surveying Calculation/New coordinate list...* from the menu to create
 a new layer for points. Then load the fieldbook using the menu or toolbar
-(Import fieldbook).
+(Import fieldbook). This plugin is available only for QGIS 2.
+
+GeoEasy is an open source software for surveying calculations. It is capable to 
+read several different data formats of total stations, among others it can read
+Leica GSI files and export coordinates to CSV.
 
 .. note::
 
