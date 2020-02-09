@@ -16,7 +16,7 @@ intended for numerical computations. The syntax of the Octave program is
 quite similiar to Matlab, you can easy port programs between GNU Octave and
 Matlab.
 
-Python is nowadays one of the most popular programming languages.
+Python is nowadays one of the most popular programming language.
 Numpy modul adds Python the power to numeric processing.
 
 Samples mostly concern on observation data/file processing.
