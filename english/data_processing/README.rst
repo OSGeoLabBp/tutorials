@@ -7,7 +7,7 @@ Observation processing using GAWK, Octave and Python/numpy
 Preface
 -------
 
-GNU AWK (named after the creators Aho, Kernighan, and Weinberger) is a 
+GNU AWK (named after the creators Aho, Weinberger and Kernighan) is a 
 Unix/Linux programable text utility what is compiled for Windows platforms, too.
 The GAWK program syntax is similiar to C language.
 
@@ -16,8 +16,9 @@ intended for numerical computations. The syntax of the Octave program is
 quite similiar to Matlab, you can easy port programs between GNU Octave and
 Matlab.
 
-Python is nowadays one of the most popular programming language.
-Numpy modul adds Python the power to numeric processing.
+Python is nowadays one of the most popular programming languages. It has several
+extension modules.
+Numpy modul adds the power to numeric processing to Python.
 
 Samples mostly concern on observation data/file processing.
 
@@ -103,7 +104,7 @@ Table of contents
 
 #. `Load coordinates from Leica GSI into QGIS or AutoCAD <lessons/leica_gsi.rst>`_ (gawk, Octave)
 #. `Processing GSI file got from Leica DNA03 digital level <lessons/leica_dna03.rst>`_ (Octave)
-#. `Converting GPX to KML <lessons/gpx.rst>`_ (QGIS)
+#. `Converting GPX to KML <lessons/gpx.rst>`_ (QGIS, ogr2ogr, Python)
 #. `NMEA message processing and display <lessons/nmea.rst>`_ (gawk, Octave, Python)
 #. `Processing observations for a moving point <lessons/one_point.rst>`_ (Octave)
 #. `Measure point with slope prism rod <lessons/sphere.rst>`_ (Octave)
