@@ -3,10 +3,10 @@ Bulk image convert to GeoTiff
 
 *Keywords:* bash, gdal, GeoTiff
 
-*Program file:* img2tif.sh
+*Program file:* img2tif.sh, img2tif.py
 
 Our aim is to convert different georeferenced image files (e.g. .png & .pgw)
-into a single georeferenced tiff file. GDAL utilities will be used.
+into a single georeferenced tiff file. GDAL utilities and Python will be used.
 
 GDAL utilities
 --------------
@@ -54,3 +54,26 @@ Let's add a loop to our command to convert more files.
 	*-outsize xsize[%] ysize[%]* and *-r* for resampling method.
 	The imgemagick *convert* commad can also be used to resize images,
 	but that won't preserve georeference.
+
+Python solution (img2tif.py)
+
+.. code:: Python
+
+	#!/usr/bin/env python
+	# -*- coding: utf-8 -*-
+	"""
+		convert input gereferenced images to geotif
+		usage: python img2tif sample.png
+			   python img2tif *.jpg 
+	"""
+	import sys
+	from os import path
+	from osgeo import gdal
+
+	for inName in sys.argv[1:]:             # go through input files
+		outName = path.splitext(inName)[0] + '.tif'
+		if path.exists(outName):
+			print("{} file exists, skipped".format(outName))
+		src = gdal.Open(inName)
+		dst = gdal.Warp(outName, src)
+		dst = None

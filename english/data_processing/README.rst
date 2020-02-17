@@ -122,7 +122,7 @@ Table of contents
 #. `Section from point cloud <lessons/lidar_section.rst>`_ (gawk, Octave)
 #. `Regression sphere <lessons/reg_sphere.rst>`_ (Octave)
 #. `Bulk extract GPS positions from images <lessons/exif.rst>`_ (shell script, gawk, Python)
-#. `Bulk image convert to GeoTiff <lessons/image2geotiff.rst>`_ (shell script, gdal)
+#. `Bulk image convert to GeoTiff <lessons/image2geotiff.rst>`_ (shell script, gdal, Python)
 #. `3D ortogonal transformation <lessons/3dtr.rst>`_ (Octave)
 #. `Processing bridge deflection data <lessons/deflection.rst>`_ (Octave)
 #. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_ (shell script, gawk)
