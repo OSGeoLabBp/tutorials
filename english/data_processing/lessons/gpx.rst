@@ -58,7 +58,7 @@ First version step-by-step (gpx2kml0.py).
 		dst = None  # save and close dataset
 		scr = None
 
-Second compact version
+Second compact version (gpx2kml.py)
 
 .. code:: Python
 
