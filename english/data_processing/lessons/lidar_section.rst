@@ -1,7 +1,16 @@
 Find sections from lidar data
 =============================
 
-The task will be solved in gawk and octave, too.
+*keywords*: point cloud, section
+
+*Data file*: lidar.txt
+
+*Program files*: minmax.awk, minmax.m, minmax.py, slide.awk, slide.m, slide.py, section.m
+
+The task will be solved in gawk, octave and Python, too.
+
+Find min and max coordinates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's find first minimum and maximum values in a lidar text file to 
 get the range for possible sections.
@@ -12,7 +21,7 @@ gawk solution (*minmax.awk*)
 
 .. code:: gawk
 
-	#! /usr/bin/gawk -f
+    #! /usr/bin/gawk -f
     # find minimal and maximal values in a column
     # column number can be set from command line: -v col=2
     BEGIN { mi = 1e10; ma = -1e10;
@@ -74,6 +83,32 @@ Example of running in a terminal:
 
 	octave -qf minmax.m 1.txt 2 " "
 
+Python solution (minmax.py)
+---------------------------
+
+.. code:: python
+
+	#!/usr/bin/env python
+	# -*- coding: utf-8 -*-
+	""" find min and max values in a column of an ascii pointcloud file
+		command line parameters: column_number input_file
+	"""
+	import sys
+
+	if len(sys.argv) < 3:
+		print("usage: {} column_number file\n".format(sys.argv[0]))
+		sys.exit()
+	min = 1e38
+	max = -min
+	col = int(sys.argv[1]) - 1  # shift column number to zero based
+	with open(sys.argv[2]) as fp:
+		for line in fp:
+			fields = [float(c) for c in line.strip().split(",")]
+			if fields[col] < min: min = fields[col] 
+			if fields[col] > max: max = fields[col]
+
+	print("{:.3f} {:.3f}".format(min, max))
+
 Let's find the 3D bounding box of the pointcloud calling minmax.awk three times
 from a shell script.
 
@@ -104,6 +139,8 @@ To use the shell script above, use the following command:
 	5128996.490 5129293.080
 	933.310 1139.110
 
+Horizontal section
+~~~~~~~~~~~~~~~~~~
 
 Let's find points at a horizontal or vertical plan (perpendicular to the axis
 of the co-ordinate system) with a tolerance.
@@ -111,7 +148,7 @@ of the co-ordinate system) with a tolerance.
 gawk solution (*slide.awk*)
 ---------------------------
 
-.. code::
+.. code:: awk
 
 	# get a slide from point cloud perpendicular to one of the axis
 	# of the co-ordinate system with a tolerance
@@ -130,14 +167,14 @@ gawk solution (*slide.awk*)
        }
     }
  
-.. code::
+.. code:: bash
 
     gawk -F, -f slide.awk lidar.txt > elev1000.txt
     gawk -f slide.awk -F, -v coo=1000 -v tol=0.5 -v col=3 lidar.txt > e1000.txt
 
 Let's use GNUplot to display the section.
 
-.. code::
+.. code:: gnuplot
 
 	#!/usr/bin/gnuplot
 	set xlabel "x"
@@ -259,14 +296,42 @@ chunks (*slide1.m*).
 		end
 	end
 
-General solution for sections (section.m)
------------------------------------------
+Python solution (slide.py)
+--------------------------
+
+.. code:: python
+
+	#!/usr/bin/env python
+	# -*- coding: utf-8 -*-
+	""" filterr point on a section perpendicular to an axis
+		command line parameters: input_file, section_coordinate, column, tolerance 
+	"""
+	import sys
+
+	if len(sys.argv) < 5:
+		print("usage: {} file section column tolerance\n".format(sys.argv[0]))
+		sys.exit()
+	coo = float(sys.argv[2])
+	col = int(sys.argv[3]) - 1  # shift column number to zero based
+	tol = float(sys.argv[4])
+
+	with open(sys.argv[1]) as fp:
+		for line in fp:
+			fields = [float(c) for c in line.strip().split(",")]
+			if abs(fields[col] - coo) < tol:
+				print("{:.3f},{:.3f},{:.3f}".format(fields[0], fields[1], fields[2]))
+
+General solution for sections
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Octave solution (section.m)
+---------------------------
 
 An other general solution for sections on point cloud was made by Timea Varga 
 (MSc student). It is able to filter points near to a horizontal, vertical or
 general section.
 
-.. code::
+.. code:: Octave
 
 
 	% Section of a point cloud
