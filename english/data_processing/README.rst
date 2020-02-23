@@ -115,7 +115,7 @@ Table of contents
 #. `Coordinate list processing with Unix text file utilities <lessons/coord_list.rst>`_
 #. `Statistics from NMEA file <lessons/nmea_stat.rst>`_ (OCtave, Python)
 #. `Polynom interpolation <lessons/polinom.rst>`_ (Octave, Python)
-#. `Generalised inverse <lessons/pseudo_inverz.rst>`_ (Octave)
+#. `Generalised inverse <lessons/pseudo_inverz.rst>`_ (Octave, Python)
 #. `Regression circle <lessons/circle.rst>`_ (Octave)
 #. `Generate report from a DXF file <lessons/dxfinfo.rst>`_ (gawk)
 #. `Find prime numbers <lessons/prime.rst>`_ (Octave, Python)
