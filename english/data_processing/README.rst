@@ -129,6 +129,6 @@ Table of contents
 #. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_ (shell script, gawk)
 
 
-Program codes and sample data are in the `code <code>`_ folder.
+Program codes and sample data are in the `code <lessons/code>`_ folder.
 
 
