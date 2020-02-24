@@ -1,7 +1,7 @@
 Filter point cloud
 ==================
 
-*keywords*: point cloud, commandline parameters
+*keywords*: point cloud, command line parameters
 
 *Data file*: lidar.txt
 
@@ -25,7 +25,7 @@ Sample lines from input text file:
 Simple solution in gawk
 -----------------------
 
-Our program is so short we can input in the command line. It will write 
+Our program is so short we can input it in the command line. It will write 
 every 10th line to the output.
 
 .. code:: awk
@@ -58,7 +58,7 @@ If no input file given it reads the standard input.
 	"""
 	import sys
 
-	i = j = 0
+	i = 0
 	n = 10
 	if len(sys.argv) > 1:
 		try:
@@ -84,9 +84,9 @@ Let's make our code more flexible. To create a more useful tool
 * optionally add row id to output
 
 This means we have to use more and more command line options, the previous
-positional approache is not accepable. Let's use command line switches.
+positional approache is not acceptable. Let's use command line switches.
 There is a standard module in Python for that purpose called *argparse*.
-To tell you the truth there is a module for nearly everything in Python.
+To tell you the truth, there is a module for nearly everything in Python.
 
 Here is the code:
 
@@ -167,11 +167,13 @@ CloudCompare
 ------------
 
 The open source CloudCompare can be a premium solution to solve point cloud
-filtering. It has a command line interface, it supports several text and
+filtering. It has a command line interface, too, it supports several text and
 binary data formats, it has more intelligent filtering (random, space, octree).
+The next command reads silently the lidar.txt and uses octree method to reduce
+the number of points and saves to a binary file.
 
 .. code:: bash
 
-	CloudCompare -SILENT -O lidar.txt -SS OCTREE 4 -AUTO_SAVE ON
+	CloudCompare -SILENT -O lidar.txt -SS OCTREE 8 -AUTO_SAVE ON
 
 You can read more about command line usage of CloudCompare `here <https://www.cloudcompare.org/doc/wiki/index.php?title=Command_line_mode>`_.
