@@ -119,6 +119,7 @@ Table of contents
 #. `Regression circle <lessons/circle.rst>`_ (Octave)
 #. `Generate report from a DXF file <lessons/dxfinfo.rst>`_ (gawk)
 #. `Find prime numbers <lessons/prime.rst>`_ (Octave, Python)
+#. `Filter point cloud <lessons/pc_filter.rst>`_ (gawk, Python, CloudCompare)
 #. `Section from point cloud <lessons/lidar_section.rst>`_ (gawk, Octave, Python)
 #. `Regression sphere <lessons/reg_sphere.rst>`_ (Octave)
 #. `Bulk extract GPS positions from images <lessons/exif.rst>`_ (shell script, gawk, Python)
