@@ -1,5 +1,5 @@
-Different tutorial releated to open source software
-===================================================
+Different tutorials releated to open source software
+====================================================
 
 * `Data processing examples solved with Octave and Gawk and Python <data_processing/README.rst>`_
 * `Image processing examples solved with OpenCV and Python <img_processing/README.rst>`_
