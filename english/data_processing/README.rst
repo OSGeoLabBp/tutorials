@@ -116,7 +116,7 @@ Table of contents
 #. `Statistics from NMEA file <lessons/nmea_stat.rst>`_ (OCtave, Python)
 #. `Polynom interpolation <lessons/polinom.rst>`_ (Octave, Python)
 #. `Generalised inverse <lessons/pseudo_inverz.rst>`_ (Octave, Python)
-#. `Regression circle <lessons/circle.rst>`_ (Octave)
+#. `Regression circle <lessons/circle.rst>`_ (Octave, Python)
 #. `Generate report from a DXF file <lessons/dxfinfo.rst>`_ (gawk)
 #. `Find prime numbers <lessons/prime.rst>`_ (Octave, Python)
 #. `Filter point cloud <lessons/pc_filter.rst>`_ (gawk, Python, CloudCompare)
