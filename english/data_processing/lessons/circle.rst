@@ -3,7 +3,7 @@ Regression circle
 
 *Keywords*: regression
 
-*Data files*: circletest.txt
+*Data files*: circletest.txt, circletest1.txt
 
 *Program files*: circle.m, circle1.m circle.py
 
