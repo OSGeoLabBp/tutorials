@@ -8,21 +8,27 @@ import re
 
 def GetNext(fp, separator=';'):
     """ get next line from file and parse """
-    buf = fp.readline().strip()
+    buf = fp.readline()
+    res = tuple()   # empty tuple marks invalid input line
     if buf:     # None returned on end of file
-        fields = [f.strip() for f in buf.split(separator) if len(f)]
+        fields = [f.strip() for f in buf.strip().split(separator) if len(f)]
         if len(fields) > 2:
-            return fields[0], [float(f) for f in fields[1:]]
+            try:
+                res = fields[0], [float(f) for f in fields[1:]]
+            except:
+                pass
+        return res
     return None
 
 def GetCoo(fn, sep=';'):
-    """ load coordinates int oa dictionary
+    """ load coordinates into a dictionary
     """
     fp = open(fn, 'r')
     plist = {}
     l = GetNext(fp, sep)
-    while l:
-        plist[l[0]] = l[1]
+    while l is not None:
+        if len(l):
+            plist[l[0]] = l[1]
         l = GetNext(fp, sep)
     return plist
 
@@ -48,6 +54,8 @@ def Area(pl, ps):
            are += (pl[ps[i]][0] + pl[ps[j]][0]) * (pl[ps[i]][1] - pl[ps[j]][1])
     return are / 2
 
-pp = GetCoo('labor.csv', ';')
-print(Filter(pp, '^1'))
-print(Area(pp, ['501', '507', '509', '515']))
+if __name__ == '__main__'
+    """ simple test """
+    pp = GetCoo('labor.csv', ';')
+    print(Filter(pp, '^1'))
+    print(Area(pp, ['501', '507', '509', '515']))
