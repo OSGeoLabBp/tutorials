@@ -5,7 +5,7 @@
 
 *Data files*: gcp.txt, gcp_photo.txt
 
-*Program files*: rigid_transform_3D_mod.m, rigid_test_mod.m
+*Program files*: rigid_transform_3D.m, rigid_test.m, rigi_transform_3D.py
 
 This solution is based on http://nghiaho.com/?page_id=671
 
@@ -56,11 +56,15 @@ Finally the translations are calculated by the weight points and the known
 rotational matrix..
 If more than 3 GCPs are given a least square approximation will be calculated.
 
+Octave solution
+---------------
+
 Octave function:
 
 .. code:: octave
 
-	function [R,t] = rigid_transform_3D_mod(A, B)
+	% expects row data
+	function [R,t,sc] = rigid_transform_3D_mod(A, B)
 		if nargin != 2
 			error("Missing parameters");
 		end
@@ -69,13 +73,17 @@ Octave function:
 		centroid_A = mean(A);
 		centroid_B = mean(B);
 		N = rows(A);
-		H = (A - centroid_A)' * (B - centroid_B);
-		[U,S,V] = svd(H);
-		R = V*U';
-		if det(R) < 0
-			R(:,3) \*= -1;
-		end
-		t = -R * centroid_A' + centroid_B';
+    H = (A - centroid_A)' * (B - centroid_B);
+    [U,S,V] = svd(H);
+    % rotation matrix
+    R = V*U';
+    if det(R) < 0
+        R(:,3) \*= -1;
+    end
+    % translation
+    t = -R * centroid_A' + centroid_B';
+    % scale
+    sc = norm(B - centroid_B, 2) / norm(A - centroid_A, 2);
 	end
 
 Test program for the function:
@@ -84,15 +92,19 @@ Test program for the function:
 
 	B = dlmread('gcp.txt');
 	A = dlmread('gcp_photo.txt');
-	[ret_R, ret_t] = rigid_transform_3D(A, B);
+
+	[ret_R, ret_t, ret_s] = rigid_transform_3D_mod(A, B);
 	ret_R
 	ret_t
-	A2 = ((ret_R*A') + ret_t)';
+	ret_s
+	A2 = ((ret_R*((A-mean(A))*1.0 + mean(A))') + ret_t)';
+
 	% Find the error
 	err = A2 - B;
-	err = err .* err;
-	err = sum(err(:));
-	rmse = sqrt(err/rows(B));
+	err2 = err .* err;
+	serr2 = sum(err(:));
+	rmse = sqrt(serr2/rows(B));
+
 	disp(sprintf("RMSE: %f", rmse));
 
 Result:
@@ -100,20 +112,65 @@ Result:
 .. code::
 
 	ret_R =
-
 	   0.65980   0.39121  -0.64158
 	   0.37871   0.56432   0.73357
 	   0.64903  -0.72698   0.22418
-
 	ret_t =
-
 	   96.316
 	   99.146
 	   97.800
+	ret_s =  1.0000
 
-	RMSE: 0.007440
+Python solution
+---------------
 
-.. note:: *Development tipps*:
 
-    Add scale difference calculation (the average ratio of the point distances from the 
-    weight points in the two reference systems).
+Python solution
+---------------
+
+
+Python solution
+---------------
+
+.. code:: python
+
+	import math
+	import numpy as np
+
+	def rigid_transform_3D(A, B):
+		""" given the coordinates of GCPs in source system in array A
+			and the coordinates in the destination system in array B
+		"""
+		centroid_A = np.mean(A, 0)
+		centroid_B = np.mean(B, 0)
+		N = A.shape[0]
+		H = (A - centroid_A).T.dot(B - centroid_B)
+		U, S, V = np.linalg.svd(H)
+		# rotation matrix
+		R = V.T.dot(U.T)
+		if np.linalg.det(R) < 0:
+			R[:,3] *= -1
+		# translation
+		t = -R.dot(centroid_A.T) + centroid_B.T
+		# scale
+		sc = np.linalg.norm(B - centroid_B, 2) / np.linalg.norm(A - centroid_A, 2)
+		return R, t, sc
+
+	if __name__ == "__main__":
+
+		A = np.loadtxt('gcp.txt', delimiter=' ')
+		B = np.loadtxt('gcp_photo.txt', delimiter=' ')
+		R, t, sc = rigid_transform_3D(A, B)
+		print(R)
+		print(t)
+		print(sc)
+		# check
+		A2 = (R.dot(A.T)).T
+		for i in range(A2.shape[0]):
+			A2[i,:] = A2[i,:] + t
+		err = A2 - B
+		err = err * err
+		err = np.sum(err)
+		rmse = math.sqrt(err / A.shape[0])
+		print("RMSE: {:.3f}".format(err))
+		print("If RMSE is near zero, the function is correct!")
