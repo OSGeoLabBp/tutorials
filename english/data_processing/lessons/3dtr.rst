@@ -124,14 +124,6 @@ Result:
 Python solution
 ---------------
 
-
-Python solution
----------------
-
-
-Python solution
----------------
-
 .. code:: python
 
 	import math

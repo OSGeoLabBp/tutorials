@@ -108,7 +108,7 @@ Table of contents
 #. `NMEA message processing and display <lessons/nmea.rst>`_ (gawk, Octave, Python)
 #. `Processing observations for a moving point <lessons/one_point.rst>`_ (Octave)
 #. `Measure point with slope prism rod <lessons/sphere.rst>`_ (Octave)
-#. `Processing LiDAR data <lessons/lidar.rst>`_ (Octave)
+#. `Processing LiDAR data <lessons/lidar.rst>`_ (Octave, Python)
 #. `Monitoring data processing <lessons/monitoring_data.rst>`_ (Octave)
 #. `Level network adjustment and data snooping <lessons/level_net.rst>`_ (Octave, Python)
 #. `Propagation of errors for polar observations <lessons/propagation_of_error.rst>`_ (OCtave)
@@ -124,7 +124,7 @@ Table of contents
 #. `Regression sphere <lessons/reg_sphere.rst>`_ (Octave)
 #. `Bulk extract GPS positions from images <lessons/exif.rst>`_ (shell script, gawk, Python)
 #. `Bulk image convert to GeoTiff <lessons/image2geotiff.rst>`_ (shell script, gdal, Python)
-#. `3D ortogonal transformation <lessons/3dtr.rst>`_ (Octave)
+#. `3D ortogonal transformation <lessons/3dtr.rst>`_ (Octave, Python)
 #. `Processing bridge deflection data <lessons/deflection.rst>`_ (Octave)
 #. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_ (shell script, gawk)
 
