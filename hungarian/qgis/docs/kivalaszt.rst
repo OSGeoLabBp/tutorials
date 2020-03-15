@@ -70,7 +70,7 @@ az érintett terület százalékos arányát is kiszámítjuk.
 #.  A telek rétegben hozzunk létre egy *terulet*
     nevű oszlopot, mely négyzetméter élességgel tartalmazza az elemek területét.
     Ehhez tegyük szerkeszthetővé a telek réteget. Nyissuk meg a réteg
-	attribútum tábláját és az eszközsorból válasszuk ki az abakusz ikont
+    attribútum tábláját és az eszközsorból válasszuk ki az abakusz ikont
     |kivalaszt51_png|
     (6. ábra). A megjelenő párbeszédablakban a 7. ábrán látható beállításokat végezzük el.
 
@@ -109,6 +109,7 @@ az érintett terület százalékos arányát is kiszámítjuk.
 
 
 |kivalaszt9_png|
+
 *9. ábra Százalékszámítás*
 
 
