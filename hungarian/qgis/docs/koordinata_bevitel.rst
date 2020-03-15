@@ -11,33 +11,33 @@ A QGIS-ben új elemek bevitele során legegyszerűbben az egérrel kattintva adh
 I.  Adatbevitel pontos koordinátákkal a Bővített digitalizálás eszköztárral
 ---------------------------------------------------------------------------
 
-#.  Kapcsoljuk be a Bővített digitalizálás eszköztárat (jobb gomb kattintás egy üres helyen az eszköztárak vagy a menü sorában és a felugró menüből kiválasztani).
+1.  Kapcsoljuk be a Bővített digitalizálás eszköztárat (jobb gomb kattintás egy üres helyen az eszköztárak vagy a menü sorában és a felugró menüből kiválasztani).
 
 |koordinata_bevitel1_png|
 
-#.    Tegyük szerkeszthetővé egy pontok tárolására alkalmas réteget vagy hozzunk létre egy újat.
+2.    Tegyük szerkeszthetővé egy pontok tárolására alkalmas réteget vagy hozzunk létre egy újat.
 
 |koordinata_bevitel2_png|
 
-#.    Válasszuk ki a pont elem hozzáadása eszközt
+3.  Válasszuk ki a pont elem hozzáadása eszközt
     a digitalizálás eszköztárból
 
-#.  A Bővített digitalizálás eszköztárban kapcsoljuk be az első vonalzót mutató ikont (Bővített digitalizálás eszközök engedélyezése). Ennek hatására megjelenik a bal oldalon egy új panel (Bővített digitalizálás)
+4.  A Bővített digitalizálás eszköztárban kapcsoljuk be az első vonalzót mutató ikont (Bővített digitalizálás eszközök engedélyezése). Ennek hatására megjelenik a bal oldalon egy új panel (Bővített digitalizálás)
 
-#.  Kézzel írjuk be az ismert koordinátákat az x mezőbe és nyomjuk meg a mező melletti lakatot (vigyázat, ne húzza az egeret a térkép ablakba, mert akkor az egér aktuális koordinátájára vált az x mező tartalma, h még nem nyomta meg a lakatot). Majd vigye be az y koordinátát és nyomja meg a mellette lévő lakatot. A térképvásznon két segédvonal jelenik meg. A segédvonalak metszésének közelébe kattintva pontosan a megadott koordinátára kerül a pont.
+5.  Kézzel írjuk be az ismert koordinátákat az x mezőbe és nyomjuk meg a mező melletti lakatot (vigyázat, ne húzza az egeret a térkép ablakba, mert akkor az egér aktuális koordinátájára vált az x mező tartalma, h még nem nyomta meg a lakatot). Majd vigye be az y koordinátát és nyomja meg a mellette lévő lakatot. A térképvásznon két segédvonal jelenik meg. A segédvonalak metszésének közelébe kattintva pontosan a megadott koordinátára kerül a pont.
 
 |koordinata_bevitel3_png|
 
 II. Már bevitt pontok koordinátájának pontosítása kézzel bevitt koordinátákkal
 ------------------------------------------------------------------------------
 
-#.  Tegyük szerkeszthetővé a módosítandó rétegünket.
+1.  Tegyük szerkeszthetővé a módosítandó rétegünket.
 
-#.  Válassza ki a *Töréspont eszközt* a Digitalizálás eszköztárból
+2.  Válassza ki a *Töréspont eszközt* a Digitalizálás eszköztárból
 
 |koordinata_bevitel4_png|
 
-#.    Jobb egérgombbal kattintsunk a módosítandó pontra a térképvásznon. A bal oldalon a Töréspont szerkesztő panelen megjelennek a koordináták, melyeket módosítani tudunk. Duplán kell kattintani a koordináta mezőbe a tartalom módoításához.
+3.  Jobb egérgombbal kattintsunk a módosítandó pontra a térképvásznon. A bal oldalon a Töréspont szerkesztő panelen megjelennek a koordináták, melyeket módosítani tudunk. Duplán kell kattintani a koordináta mezőbe a tartalom módoításához.
 
 III. Pontok tömeges bevitele szövegfájlból
 ------------------------------------------
@@ -57,12 +57,9 @@ IV.  Geometria mező módosítása a mezőkalkulátorral
 Lásd a leírást:
 `http://www.agt.bme.hu/gis/qgis/geometry_calc.pdf <http://www.agt.bme.hu/gis/qgis/geometry_calc.pdf>`_
 
-
-
-
 Budapest, 2020.  március 1.
 
-.. |kooridnata_bevitel1_png| image:: images/koordinata_bevitel1.png
+.. |koordinata_bevitel1_png| image:: images/koordinata_bevitel1.png
     :width: 16.365cm
     :height: 1.005cm
 
@@ -75,7 +72,7 @@ Budapest, 2020.  március 1.
     :height: 9.439cm
 
 
-.. |koordinata_beviel4_png| image:: images/koordinata_bevitel4.png
+.. |koordinata_bevitel4_png| image:: images/koordinata_bevitel4.png
     :width: 11.218cm
     :height: 1.032cm
 
