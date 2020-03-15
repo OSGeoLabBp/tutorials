@@ -20,8 +20,8 @@ Mindkét réteg felület típusú és hierarchikus kapcsolat van köztük, az eg
 ilyenek a településhatárok és a megyehatárok.
 A példában építési övezeteket és földrészleteket használunk (a használt adatállományban nincs telken belüli övezethatár, különben a II. esetet kell alkalmazni). Egy helyrajzi szám lista előállítása a cél.
 
-#.  Szelektáljuk azokat az építési övezeteket, melyekbe eső telkeket szeretnénk kiválasztani. A QGIS bármelyik szelektálási módszerét használjuk,
-a 2. ábrán manuálisan választottunk ki hat övezet felületet.
+#.  Szelektáljuk azokat az építési övezeteket, melyekbe eső telkeket szeretnénk kiválasztani. A QGIS bármelyik szelektálási
+    módszerét használjuk, a 2. ábrán manuálisan választottunk ki hat övezet felületet.
 
 #.  A feldolgozás eszköztárból keressük ki a *Kiválasztás pozíció alapján*
     algoritmust
@@ -33,25 +33,26 @@ a 2. ábrán manuálisan választottunk ki hat övezet felületet.
 #.  A telkek réteg kiválasztott elemeit exportáljuk CSV fájlba, melyet más
     nem térinformatikai programokban (pl. Libre Office Calc, Excel)
     is használhatunk. A telek rétegere kattintsunk jobb egérgombbal a
-	réteglistában és a felbukkanó menüből válasszuk az
+    réteglistában és a felbukkanó menüből válasszuk az
     **Export/Elemek mentése másként…**
     menüpontot. A megjelenő párbeszédablakban (4. ábra) állítsuk be a formátumot
     *Vesszővel elválasztott értékek [CSV]*-re, a fájl elérési útját, ahová
-	mentjük az adatokat.  Jelöljük be a
+    mentjük az adatokat.  Jelöljük be a
     *Csak a kiválasztott elemek mentése*
     opciót. Az exportálandó mezők közül csak a HRSZ-t jelöljük meg, ha a többire
-	nincs szükség. A további beállításoknál elfogadhatjuk az alapértelmezetteket.
+    nincs szükség. A további beállításoknál elfogadhatjuk az alapértelmezetteket.
 
 |kivalaszt2_png|
+
 *2. ábra Szelekció és a feldolgozás eszköztár*
 
-
 |kivalaszt3_png|
+
 *3. ábra Az algoritmus paraméterezése*
 
 |kivalaszt4_png|
-*4. ábra Export paraméterezése*
 
+*4. ábra Export paraméterezése*
 
 II. eset
 --------
@@ -63,6 +64,7 @@ A példában egy alábányászott területtel érintett telkeket listázzuk, tel
 az érintett terület százalékos arányát is kiszámítjuk.
 
 |kivalaszt5_png|
+
 *5. ábra Kiinduló helyzet*
 
 #.  A telek rétegben hozzunk létre egy *terulet*
@@ -92,14 +94,17 @@ az érintett terület százalékos arányát is kiszámítjuk.
     A virtuális oszlop tartalma nem kerül be a háttértáron őrzött rétegadatok közé, az attribútum tábla minden megnyitásakor a program automatikusan kiszámítja az értékeket a beállított képlet alapján.
 
 |kivalaszt6_png|
+
 *6. ábra*
 
 
 |kivalaszt7_png|
+
 *7. ábra Területszámítás a telkekre*
 
 
 |kivalaszt8_png|
+
 *8. ábra Rétegek metszete*
 
 
@@ -108,6 +113,7 @@ az érintett terület százalékos arányát is kiszámítjuk.
 
 
 |kivalaszt10_png|
+
 *10. ábra Eredmény tábla*
 
 
