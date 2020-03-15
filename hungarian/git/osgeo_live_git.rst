@@ -5,6 +5,13 @@
 Segédlet az OSGeo Live DVD magyar fordításához
 *******************************************************************************
 
+Az OSGeoLive fordítási környezet megváltozott, a fordításra jelentkezőknek a https://www.transifex.com oldalon kell regisztrálniuk és ott az OSGeoLive Documentation projekthez csatlakozni.
+
+
+*******************************************************************************
+A következő információk elavultak
+*******************************************************************************
+
 Kezdő lépések
 ~~~~~~~~~~~~~
 

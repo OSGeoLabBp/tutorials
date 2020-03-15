@@ -1,2 +1,2 @@
 # tutorials
-Hungarian tutorials for FOSS4G software
+Hungarian tutorials for FOSS/FOSS4G software and programming
