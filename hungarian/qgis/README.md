@@ -6,6 +6,7 @@ Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 * [3D nézet](docs/3dview.rst)
 * [Egyik réteg felületeibe eső elemek szelektálása egy másik rétegből](docs/kivalaszt.rst)
 * [Fényképek megjelenítése a térképi elemekhez](docs/foto.rst)
+* [Nyilvános térképek elérése QGIS-ből](docs/wms_szolg.rst)
 
 További oktatóanyagok:
 http://www.agt.bme.hu/gis/qgis
