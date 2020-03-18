@@ -102,7 +102,8 @@ Természeti környezet     http://gis.teir.hu/arcgis/services/TeIR_GIS/teirgis_t
 Ivóvízminőség            http://gis.teir.hu/arcgis/services/TeIR_GIS/teirgis_ivoviz/MapServer/WMSServer
 Kőolaj- és gázvezetékek  http://gis.teir.hu/arcgis/services/TeIR_GIS/teirgis_koolaj_foldgaz_banyaterulet/MapServer/WMSServer
 Budaörs szab. terv.2016  http://gis.lechnerkozpont.hu/publiclayers/wms?MAPFILE=ATADAS20180405/Budaors/03_Szabalyozasi_terv/Budaors_SZT_terv_20160226_v01_tr_eov.map
-budaörsi szab.tervek     http://gis.lechnerkozpont.hu/publiclayersOrszágos területrendezési tervhttps://oeny.e-epites.hu/geoserver/otrt-4tr/ows?service=wms&version=1.3.0
+budaörsi szab.tervek     http://gis.lechnerkozpont.hu/publiclayers
+Országos területrend.    https://oeny.e-epites.hu/geoserver/otrt-4tr/ows?service=wms&version=1.3.0
 Budapest aggl. terve     https://oeny.e-epites.hu/geoserver/ba-4tr/ows?service=wms&version=1.3.0
 Balaton kiemelt körzet   https://oeny.e-epites.hu/geoserver/bku-4tr/ows?service=wms&version=1.3.0
 ======================== ===================================================================================================
