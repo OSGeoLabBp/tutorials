@@ -127,7 +127,25 @@ Google utak              https://mt1.google.com/vt/lyrs=h&x={x}&y={y}&z={z}
 GeoJSON fájlok használata internetes forrásból
 ----------------------------------------------
 
-A WMS szolgáltatáshoz valakinek üzemeltetnie kell egy térkép szolgáltatás, a csempe szogáltatáshoz a csempéket elő kell állítani az eredeti adatállományokból. Ez egy hétköznapi GIS felhasználó számára nem feltétlenül egyszerű feladat. Ha csak kisebb vektoros állományokat szeretnénk megosztani másokkal, akkor elég lehet egy GeoGJON fájlt az interneten elérhető helyre másolnunk. Ezen állományok betöltését a QGIS Adatforrás kezelőből a vektoros állományok közül kezdeményezhetjük.
+A WMS szolgáltatáshoz valakinek üzemeltetnie kell egy térkép szolgáltatás, a
+csempe szogáltatáshoz a csempéket elő kell állítani az eredeti
+adatállományokból. Ez egy hétköznapi GIS felhasználó számára nem feltétlenül
+egyszerű feladat. Ha csak kisebb vektoros állományokat szeretnénk megosztani
+másokkal, akkor elég lehet egy GeoGJON fájlt az interneten elérhető helyre
+másolnunk. Ezen állományok betöltését a QGIS Adatforrás kezelőből a vektoros
+állományok közül kezdeményezhetjük.
+
+Jelenítsük meg a www.agt.bme.hu szerverre feltöltött *megye.geojson* fájlt.
+Nyissuk meg az **Adatforrás kezelőt** a **Réteg** menüből vagy a megfelelő
+ikonnal.
+
+|wms_szolg11_png|
+
+Felül válasszuk a *Protokoll* a forrás típusok közül, a protokol típusa legyen
+*GeoJSON*, az állomány URL-je pedig: http:://www.agt.bme.hu/siki/megye.geojson.
+A **Hozzáadás** gombbal adjuk az aktuális projektünkhöz egy rétegként, majd
+nyomjuk meg *Bezár* gombot.
+
 
 Katalógus szolgáltatások használata
 -----------------------------------
@@ -206,3 +224,7 @@ Budapest, 2020. január 30.
 .. |wms_szolg10_png| image:: images/wms_szolg10.png
     :width: 15.875cm
     :height: 11.377cm
+
+.. |wms_szolg11_png| image:: images/wms_szolg11.png
+    :width: 15cm
+    :height: 8.6cm
