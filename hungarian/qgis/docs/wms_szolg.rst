@@ -7,6 +7,8 @@ Nyilvános térképek elérése QGIS-ből
 
 A nyilvános térképeket az interneten általában szabványos WMS vagy WMTS (csempe)
 szolgáltatásként publikálják. A QGIS mindkét szolgáltatás használatára alkalmas.
+Emellett térkép szerver nélkül is használhatunk távoli gépeken például GeoGJON 
+formátumú állományokat.
 Sőt katalógus szolgáltatásokat is használhatunk a térképek metaadatainak böngészésére.
 
 WMS szerver beállítása a QGIS-ben
@@ -121,6 +123,11 @@ Bing                     http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=
 Google satellit          http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}
 Google utak              https://mt1.google.com/vt/lyrs=h&x={x}&y={y}&z={z}
 ======================== ===================================================================================================
+
+GeoJSON fájlok használata internetes forrásból
+----------------------------------------------
+
+A WMS szolgáltatáshoz valakinek üzemeltetnie kell egy térkép szolgáltatás, a csempe szogáltatáshoz a csempéket elő kell állítani az eredeti adatállományokból. Ez egy hétköznapi GIS felhasználó számára nem feltétlenül egyszerű feladat. Ha csak kisebb vektoros állományokat szeretnénk megosztani másokkal, akkor elég lehet egy GeoGJON fájlt az interneten elérhető helyre másolnunk. Ezen állományok betöltését a QGIS Adatforrás kezelőből a vektoros állományok közül kezdeményezhetjük.
 
 Katalógus szolgáltatások használata
 -----------------------------------
