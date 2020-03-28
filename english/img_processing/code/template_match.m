@@ -1,8 +1,16 @@
-% image template matching
+#! /bin/octave
+% image template matching minimizing absolute difference
 pkg load image
-img = rgb2gray(imread("monalisa.jpg"));
-temp = rgb2gray(imread("mona_temp4.png"));
-%temp = img(5:6,10:12);
+args = argv();        % command line params into a cell array
+if nargin > 1
+  tnam = args{1};     % first parameter the template image
+  inam = args{2};     % second parameter the image
+else
+  tnam = "mona_temp4.png";
+  inam = "monalisa.jpg";
+end
+img = rgb2gray(imread(inam));   % read and convert to grayscale
+temp = rgb2gray(imread(tnam));  % read and convert to grayscale
 [n, m] = size(img);
 [nt, mt] = size(temp);
 min_dif = nt * mt * 255;
@@ -16,4 +24,4 @@ for i = 1:n - nt
     end
   end
 end
-pos
+printf("%d %d %d\n", pos(1), pos(2), pos(3));
