@@ -127,9 +127,9 @@ Google utak              https://mt1.google.com/vt/lyrs=h&x={x}&y={y}&z={z}
 MWS/WMTS szolgáltatások
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Az EOX IT SErvices GmbH WMS és WMTS szolgáltatásokat nyújt, de csak nem 
+Az EOX IT Services GmbH WMS és WMTS szolgáltatásokat nyújt, de csak nem 
 üzleti célokra ingyenes minden szolgáltatás. Többek között egy 2019-es
-felhő mentes összeállítás érhetünk el az egész Földre.
+felhő mentes Sentinel 2 összeállítás érhetünk el az egész Földre.
 Tájékozódjon az egyes szolgáltatások licencéről.
 
 A WMS/WMTS szolgáltatások közé vegyen fel egy újat a https://tiles.maps-eox.at/wms URL-el. A szolgáltatáshoz kapcsolódás után kattintson a **Mozaik** fülre és
