@@ -124,6 +124,20 @@ Google satellit          http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={
 Google utak              https://mt1.google.com/vt/lyrs=h&x={x}&y={y}&z={z}
 ======================== ===================================================================================================
 
+MWS/WMTS szolgáltatások
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Az EOX IT SErvices GmbH WMS és WMTS szolgáltatásokat nyújt, de csak nem 
+üzleti célokra ingyenes minden szolgáltatás. Többek között egy 2019-es
+felhő mentes összeállítás érhetünk el az egész Földre.
+Tájékozódjon az egyes szolgáltatások licencéről.
+
+A WMS/WMTS szolgáltatások közé vegyen fel egy újat a https://tiles.maps-eox.at/wms URL-el. A szolgáltatáshoz kapcsolódás után kattintson a **Mozaik** fülre és
+számos csempe szolgáltatás közül választhat, mint például a s2cloudless-2019.
+
+|wms_szolg12_png|
+
+
 GeoJSON fájlok használata internetes forrásból
 ----------------------------------------------
 
@@ -228,3 +242,7 @@ Budapest, 2020. január 30.
 .. |wms_szolg11_png| image:: images/wms_szolg11.png
     :width: 15cm
     :height: 8.6cm
+
+.. |wms_szolg12_png| image:: images/wms_szolg12.png
+    :width: 15cm
+    :height: 15.9cm
