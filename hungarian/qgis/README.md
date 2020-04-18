@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [Aggregator kifejezések alkalmazása a kifejezés szerkesztőben](docs/aggregator.rst)
 * [Pontok bevitele koordináták alapján](docs/koordinata_bevitel.rst)
 * [Rétegek automatikus frissítése](docs/reteg_frissites.rst)
 * [3D nézet](docs/3dview.rst)
