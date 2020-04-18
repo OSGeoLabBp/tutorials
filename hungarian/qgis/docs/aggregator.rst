@@ -3,7 +3,7 @@ Aggregátor függvények alkalmazása a kifejezés szerkesztőben
 
 **QGIS 3.x**
 
-**Öszeállította: **dr. Siki Zoltán**
+**Öszeállította: dr. Siki Zoltán**
 
 Az aggregátor függvények több adatrekordból összegyűjtött adatokból
 származtatnak egy újabb adatot, ilyen például a darabszám, összeg, minimum,
