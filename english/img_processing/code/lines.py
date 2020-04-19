@@ -17,7 +17,7 @@ for fn in argv[1:]:
     lines = cv2.HoughLinesP(edges, 1, np.pi/180, 10, minLineLength, maxLineGap)
     for line in lines:
         for x1, y1, x2, y2 in line:
-            print x1, y1, x2, y2
+            print(x1, y1, x2, y2)
             cv2.line(img, (x1,y1), (x2,y2), (0, 255, 0), 8)
     fn1 = os.path.split(fn)
     fn2 = os.path.join(fn1[0], "e_" + fn1[1])

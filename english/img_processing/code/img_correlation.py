@@ -9,11 +9,12 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: %s method_id template image" % sys.argv[0])
+    if len(sys.argv) < 4:
+        print("Usage: %s method_id template image gui" % sys.argv[0])
         print("    method_id - 0/1/2/3 CV_TM_SQDIFF_NORMED/CV_TM_CCORR_NORMED/CV_TM_CCOEFF/CV_TM_CCOEFF_NORMED")
         print("    template  - template image to find in the video frames")
         print("    image     - image to process")
+        print("    gui       - draw image mark meatch")
         exit(1)
     # selected method
     minv = 2    # index of min value
@@ -33,10 +34,11 @@ if __name__ == "__main__":
     y = min_max[method[1]][1]
     w, h = templ.shape[:2]
     print(min_max[method[1]][1],min_max[method[1]][0])
-    plt.figure()
-    plt.title("template maching")
-    plt.imshow(img)
-    plt.plot(x, y, "o")
-    rect = patches.Rectangle((x,y), h, w, linewidth=3, edgecolor='r', facecolor='none')
-    plt.gca().add_patch(rect)
-    plt.show()
+    if len(sys.argv) == 5:
+        plt.figure()
+        plt.title("template maching")
+        plt.imshow(img)
+        plt.plot(x, y, "o")
+        rect = patches.Rectangle((x,y), h, w, linewidth=3, edgecolor='r', facecolor='none')
+        plt.gca().add_patch(rect)
+        plt.show()
