@@ -17,7 +17,7 @@ n2 = n * n                  # items in kernel
 n1 = np.sum(kernel)         # number of 1s in kernel
 bord = n // 2               # skipped border area
 bord1 = n // 2 + 1
-res = np.empty(img.shape, dtype='uint8')   # empty byte array for standard deviations
+res = np.empty(img.shape, dtype='uint8')   # empty byte array for stdev
 res1 = np.empty(img.shape, dtype='uint8')  # empty byte array for means
 for band in range(bands):
    for y in range(bord, rows - bord):
