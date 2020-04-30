@@ -115,8 +115,8 @@ ez a *public* séma).
 
 	DB kezelő ablaka
 
-A DB kezelőzuk ki az **SQL ablak** ikont (balról a második az eszközsorban) és
-írjuk be a következő lekérdezést:
+A **DB kezelő**-ben válasszuk ki az **SQL ablak** ikont (balról a második az
+eszközsorban) és írjuk be a következő lekérdezést:
 
 .. code:: sql
 
@@ -127,6 +127,11 @@ A DB kezelőzuk ki az **SQL ablak** ikont (balról a második az eszközsorban) 
 	AND chainage.end_chainage >= trackpoint.chainage
 	AND chainage.r_id = trackpoint.r_id)
 	GROUP BY chainage.r_id, start_chainage, end_chainage, condition;
+
+.. figure:: images/pg_pontok2.png
+	:align: center
+
+	Lekérdezés a DB kezelő ablakában
 
 Elemezzük egy kicsit a fenti lekérdezést. Először a *FROM* és *INNER JOIN* részt
 nézzük meg. Ez a rész hozza létre a kapcsolatot a két tábla között. A *chainage*
@@ -140,11 +145,6 @@ lekérdezést:
     INNER JOIN trackpoint ON (chainage.start_chainage <= trackpoint.chainage
     AND chainage.end_chainage >= trackpoint.chainage
     AND chainage.r_id = trackpoint.r_id);
-
-.. figure:: images/pg_pontok2.png
-	:align: center
-
-	Lekérdezés a DB kezelő ablakában
 
 A fenti lekérdezés eredmény táblájának néhány sora:
 
@@ -194,13 +194,16 @@ ez a felsorolás, hiszen az oszlopok egy része (*r_id*, *start_chainage*) is
 elegendő lenne a csoportok egyértelmű kialakításához. A többi oszlopot azért
 szükséges felsorolni, mert a lekérdezés eredményében szerepelnek. Ha egy 
 lekérdezés *GROUP BY* klauzulát tartalmaz, akkor a lekérdezés eredménye
-oszlopaiban csak a csoport képző oszlopok vagy aggregátor függvénnyel 
-előállított érték szerepelhet.
+oszlopaiban csak a csoport képző oszlopok (ezeket soroljuk fel a GROUP BY után)
+vagy aggregátor függvénnyel előállított érték szerepelhet.
 
 .. figure:: images/pg_pontok3.png
 	:align: center
 
 	Megjelenítés a QGIS-ben
+
+SQL szkript
+-----------
 
 A PostgreSQL tablák létrehozását és az adatok betöltéséet megvalósító SQL 
 skript:
@@ -260,4 +263,4 @@ skript:
 		  (5246,230,500,'Poor'),
 		  (5246,500,627,'Good');
 
-  2020. április 30.
+2020. április 30.
