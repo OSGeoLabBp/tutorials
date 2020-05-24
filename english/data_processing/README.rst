@@ -121,6 +121,7 @@ Table of contents
 #. `Find prime numbers <lessons/prime.rst>`_ (Octave, Python)
 #. `Filter point cloud <lessons/pc_filter.rst>`_ (gawk, Python, CloudCompare)
 #. `Section from point cloud <lessons/lidar_section.rst>`_ (gawk, Octave, Python)
+#. `DTM GRID from point cloud <lessons/pc2grid.rst>`_ (Python)
 #. `Regression sphere <lessons/reg_sphere.rst>`_ (Octave)
 #. `Bulk extract GPS positions from images <lessons/exif.rst>`_ (shell script, gawk, Python)
 #. `Bulk image convert to GeoTiff <lessons/image2geotiff.rst>`_ (shell script, gdal, Python)
