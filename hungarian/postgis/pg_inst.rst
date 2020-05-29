@@ -257,7 +257,13 @@ A PostGIS telepítése következhet ezután.
 
 .. code:: bash
 
-        sudo apt install postgis postgresql-12-postgis-3
+        sudo apt install postgis
+
+pgAdmin3 telepítése.
+
+.. code:: bash
+
+        sudo apt install pgadmin3
 
 Első lépések
 ------------
