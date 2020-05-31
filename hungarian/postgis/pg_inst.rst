@@ -242,6 +242,42 @@ Végül a Stack Builder ablakát zárjuk a le a Finish gombbal.
 
         Kilépés a Stack Builder-ből
 
+Telepítés utáni hasznos beállítások
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A PostgreSQL parancssori eszközei a telepítési könyvtár *bin* alkönyvtárába 
+kerülnek (pl. *C:\Program Files\PostgrSQL\12\bin*). Ezt a könyvtárat célszerű 
+hozzáadni a *PATH*-hoz. Ezt a rendszer környezeti változók vagy a felhasználói
+környezeti változók módosításával adhatjuk meg. Adjuk a *PATH* változó
+tartalmához a PostgreSQL *bin* könyvtárát. Ezután egy parancs (cmd) ablakból is 
+használhatjuk a *psql*, *pg_dump*, stb. parancsokat. FIGYELEM a *PATH* 
+módosítása csak egy újbóli bejelentkezés után lép életbe. Jelentkezzen ki és
+jelentkezzen be a módosítás után vagy indítsa újra a gépet.
+
+Ha nem napi rendszerességgel használja a PostgreSQL-t, akkor nem célszerű,
+hogy állandóan fusson és a gépünk erőforrásait használja. A parancssorból
+leállíthatja az adatbázis-kezelőt:
+
+.. code:: bash
+
+        pg_ctl -D "C:\Program Files\PostgreSQL\12\data" stop
+
+Elindíthatja azt:
+
+.. code:: bash
+
+        pg_ctl -D "C:\Program Files\PostgreSQL\12\data" start
+
+Vagy újraindíthatja:
+
+.. code:: bash
+
+        pg_ctl -D "C:\Program Files\PostgreSQL\12\data" restart
+
+Alternatív megoldásként használhatja a *services.msc* programot a leállításra,
+elindításra. Itt az telepítéskor beállított automatikus indítást is átállíthatja
+manuálisra.
+
 Telepítés Ubuntu/Debian operációs rendszeren
 --------------------------------------------
 
@@ -264,6 +300,14 @@ pgAdmin3 telepítése.
 .. code:: bash
 
         sudo apt install pgadmin3
+
+Az adatbázis-kezelő leállítása, indítása és újraindítása_
+
+.. code:: bash
+
+        sudo services postgresql stop
+        sudo services postgresql start
+        sudo services postgresql restart
 
 Első lépések
 ------------
