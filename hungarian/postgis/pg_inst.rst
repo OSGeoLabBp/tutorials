@@ -301,7 +301,7 @@ pgAdmin3 telepítése.
 
         sudo apt install pgadmin3
 
-Az adatbázis-kezelő leállítása, indítása és újraindítása_
+Az adatbázis-kezelő leállítása, indítása és újraindítása
 
 .. code:: bash
 
