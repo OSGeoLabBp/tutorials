@@ -124,7 +124,7 @@ Google satellit          http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={
 Google utak              https://mt1.google.com/vt/lyrs=h&x={x}&y={y}&z={z}
 ======================== ===================================================================================================
 
-MWS/WMTS szolgáltatások
+WMS/WMTS szolgáltatások
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Az EOX IT Services GmbH WMS és WMTS szolgáltatásokat nyújt, de csak nem 
