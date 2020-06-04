@@ -17,8 +17,8 @@ maxp = max(points, [], 1);    % get max coords
 minp = floor(minp ./ d) .* d;
 maxp = ceil(maxp ./d) .* d;
 n = uint16((maxp .- minp) ./ d);% grid sizes
-% TODO some indexes are incorrect
-indexes = uint16((points .- minp) ./ d) .+ 1;
+% calculate row and column index to points
+indexes = uint16(floor((points .- minp) ./ d)) .+ 1;
 indexes = [indexes (1:1:rows(points))']
 for i = 1:n[2]
   idx = (indexes(:, 2) == i);
