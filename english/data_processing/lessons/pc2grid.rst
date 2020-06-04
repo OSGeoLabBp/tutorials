@@ -5,7 +5,7 @@ Converting point cloud to ASCII grid
 *Data files*: pc_sample.txt
 *Program files*: pc2grid.py
 
-In this tutorial we shell demostrate three different approache to
+In this tutorial we demostrate three different approaches to
 generate ASCII grid from an ASCII point cloud file.
 Depending on the number of points and the GRID resolution different
 algorithms are the most effective.
@@ -20,7 +20,7 @@ Data structures used:
 
 The input is a whitespace separated ASCII point cloud file. The X, Y, Z 
 coordinates have to be in the first three columns, what extra columns can follow
-(e.g. colour, normat etc.).
+(e.g. colour, normal etc.).
 
 The output is an ESRI ASCII grid file what several GIS programs can load, among
 others QGIS, GRASS GIS, SAGA GIS.
@@ -29,7 +29,7 @@ The solutions are heavely based on numpy functionality.
 Now we disscuss some interesting parts of the code.
 
 At the beginning some command line parameters are processed. The third
-parameter is a name for the function to calculate the grid cell value from
+parameter is the name for the function to calculate the grid cell value from
 the points inside it. Here we assign the address of the function to variable
 *fu* and later this is used to call the necessary function. We suppose the
 parameter of these functions is a numpy vector (vector of Z coordinates).
@@ -54,15 +54,15 @@ using numpy operation on array.
                   dtype='int32').reshape(points.shape[0], 1), axis=1)
 
 All the operations are vectorized in the code above (instead of loops array
-operartions are used). First we get the extent of the point cloud along the
+operartions). First we get the extent of the point cloud along the
 three axes, minp and maxp are vectors of three values. Than the extent is 
 enlarged to be on grid border (grid step is *d*).
-In the next row the sizes of the grid is calculated (in Z direction also,
+In the next row the sizes of the grid are calculated (in Z direction also,
 which will not be used later). We create an extra array with the 
-grid indices for each points. The indexec are integer values that is the
+grid indices for each point. The indexes are integer values that is the
 reason to have a new array with integer elements beside the points array of
-float elements. Finally the the point indexes are added to this array, which is
-used in the 1st and 2nd algorithm to refer back o the correcponding points.
+float elements. Finally the point indexes are added to this array, which is
+used in the 1st and 2nd algorithm to refer back to the correcponding points.
 
 1st variant
 -----------
@@ -90,7 +90,7 @@ grid file the first row is the top most row of the grid (in our grid indexing
 schema the first row is the bottom most). Then we select from the index array
 the points in the *ith* row (*ii* array). In the internal loop we go through 
 columns and select the points in *jth* column from the points in the row.
-We get the point indices using the 3rd column of index, which his the 
+We get the point indices using the 3rd column of index, which is the 
 point index in the *points* array. So *pp* is the array of points inside the
 *ith* row and *jth* column cell of grid. Finally the selected function (min,
 max, mean, etc.) is used for Z coordinates to get the cell value (*gr*) if
@@ -107,7 +107,7 @@ sign to sort rows in decreasing order because in the ASCII
 grid file the first row is the top most row of the grid (in our grid indexing
 schema the first row is the bottom most).
 
-The GRID output is generated row by row, one row is buffered before write, to
+The GRID output is generated row by row, one row is buffered before writing to
 handle empty cells.
 
 .. code:: python
@@ -153,8 +153,8 @@ point in the index. If the grid distance is zero (point is in the actual cell)
 nothing is done. Otherwise the cell value is calcuted from the range of points
 from start to actual index (*k*) but one. The loop for *ii* is necessary if 
 there are empty grid rows to write more rows into the output. 
-At the and of this part the actual cell indices and *start* index is updated.
-After this loop the last row is in the buffer, so we write that out, too.
+At the end of this part the actual cell indices and *start* index are updated.
+After closing this loop the last row is in the buffer, so we write that out, too.
 
 3rd variant
 -----------
@@ -162,7 +162,7 @@ After this loop the last row is in the buffer, so we write that out, too.
 In this variant the points are scanned only once.
 The whole GRID output is generated in memory using unsorted index. 
 As the append values to a numpy array is not effective enough a dictionary is
-created where the indices are tuples of row and column indises the grid and
+created where the indices are tuples of row and column indices of the grid and
 the stored value in the dictionary members is the list of Z values in that cell.
 
 .. code:: python
@@ -178,7 +178,7 @@ the stored value in the dictionary members is the list of Z values in that cell.
             except:
                 pass
 
-At the beginning we initialize the dictionary with emply list, so we can
+At the beginning we initialize the dictionary with empty list, so we can
 append values later. Then in the loop for *k* we simply append Z coordinate
 of the actual point to the corresponding grid cell. While the points are 
 unsorted we can output the grid after processing all points in an extra 
@@ -189,8 +189,8 @@ Performance
 
 The performance of the algorithms were tested on two moderate size point cloud.
 
-First test with a point cloud of 1.1 M points created from drone images.
-Average distance among points is 2 cm. The test war run with five different
+First test was done on a point cloud of 1.1 M points created from drone images.
+Average distance among points is 2 cm. The test was run with five different
 resolutions.
 
 +------------+------+------+-------+-------+--------+
@@ -203,7 +203,7 @@ resolutions.
 | 3rd        | 2.95 | 2.97 |  2.96 | 3.84  | 7.70   |
 +------------+------+------+-------+-------+--------+
 
-Second test with a 4 M pointi cloudr, 1 point / sq m.
+Second test was done on a 4M point cloude with about 1 point / sq m.
 
 +------------+-------+-------+-------+-------+
 | resolution |  20 m |  10 m |   5 m |   1 m |
@@ -215,9 +215,9 @@ Second test with a 4 M pointi cloudr, 1 point / sq m.
 | 3rd        | 14.77 | 14.98 | 16.70 | 38.15 |
 +------------+-------+-------+-------+-------+
 
-*Development tipp*
+*Development tipps*
 
 Try to speed up the algorithms demostrated or try to find faster algorithms.
 
-Create Octave/Matlab script for the algorithms and compare the speed to 
+Create Octave/Matlab scripts for the algorithms and compare their speed to 
 Python.
