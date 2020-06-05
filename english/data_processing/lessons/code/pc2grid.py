@@ -96,6 +96,7 @@ f.write("xllcorner {:.3f}\n".format(minp[0]))
 f.write("yllcorner {:.3f}\n".format(minp[1]))
 f.write("cellsize {:.3f}\n".format(d[0]))
 f.write("nodata_value {:.3f}\n".format(no_data))
+# buffer for a row of grid
 grid = np.empty((n[0]))
 grid.fill(no_data)
 i = sorted_indexes[0, 1]
@@ -115,7 +116,7 @@ for k in range(m):
             for jj in range(n[0]):
                 f.write("{:.3f} ".format(grid[jj]))
             f.write("\n")
-            grid.fill(no_data)
+            grid.fill(no_data)      # initialize row buffer
         j = sorted_indexes[k, 0]
         i = sorted_indexes[k, 1]
         start = k
@@ -124,7 +125,7 @@ try:
     grid[j] = fu(points[sorted_indexes[start:m, 3], 2])
 except IndexError:
     pass
-for jj in range(n[0]):
+for jj in range(n[0]):              # output a row to grid
     f.write("{:.3f} ".format(grid[jj]))
 f.write("\n")
 f.close()
