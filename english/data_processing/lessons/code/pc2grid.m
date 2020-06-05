@@ -1,24 +1,34 @@
 #! /usr/bin/octave -qf
 format long;
 % process command line arguments
-if (nargin == 3)
+if (nargin > 0)
   arg_list = argv();
   pcfile = arg_list{1};       % point cloud
-  dx = str2num(arg_list{2});  % grid step
-  fname = arg_list{3};        % function to use
-  if (fname == "min")
+  if (nargin > 1)
+    dx = str2num(arg_list{2});  % grid step
+  else
+    dx = 1;                   % default cell size
+  end
+  if (nargin > 2)
+    fname = arg_list{3};        % function to use
+  else
+    fname = "min";
+  end
+  if (strncmp(fname, "min", 2))
     fu = @min;
-  elseif (fname == "max")
+  elseif (strncmp(fname, "max", 2))
     fu = @max;
-  elseif (fname == "mean")
+  elseif (strncmp(fname, "mean", 3))
     fu = @mean;
-  elseif (fname == "median")
+  elseif (strncmp(fname, "median", 3))
     fu = @median;
+  elseif (strncmp(fname, "numel", 2))
+    fu = @numel;
   end
 else  %just for testing
-  pcfile='pc_sample.txt'; 
-  dx = 1;
-  fu = @min;
+  pcfile='test32.csv'; 
+  dx = 25;
+  fu = @numel;
 end
 no_data = -9999.0;
 start_time = time();
@@ -50,7 +60,7 @@ for i = n(2):-1:1             % row from top to down
   ii = indexes(idx, :);
   ppi = points(idx, :);
   for j = 1:n(1)
-    idy = (ii(:, 1) == j);    % select points in jth cell
+   idy = (ii(:, 1) == j);    % select points in jth cell
     ppj = ppi(idy, :);
     if (rows(ppj))
       gr = fu(ppj(:, 3));
