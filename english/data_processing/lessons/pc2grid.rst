@@ -187,7 +187,7 @@ double loop.
 Performance
 -----------
 
-The performance of the algorithms was tested on two moderate size point cloud.
+The performance of the algorithms was tested on two moderate size point clouds.
 
 The first test was done on a point cloud of 1.1 M points created from drone images.
 The average distance among points is 2 cm. The test was run with five different
