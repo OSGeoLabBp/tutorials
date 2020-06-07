@@ -3,12 +3,15 @@ Converting point cloud to ASCII grid
 
 *Keywords*: point cloud, effective algorithm, spatial indexing
 *Data files*: pc_sample.txt
-*Program files*: pc2grid.py
+*Program files*: pc2grid.py pc2grid.m
 
 In this tutorial, we demonstrate three different approaches to
 generate ASCII grid from an ASCII point cloud file.
 Depending on the number of points and the GRID resolution different
 algorithms are the most effective.
+
+Python solution
+~~~~~~~~~~~~~~~
 
 After loading the points, an index list is generated, the zero-based grid row and
 column number is calculated for each point.
@@ -39,6 +42,7 @@ using numpy operation on arrays.
 
 .. code:: python
 
+        points = np.loadtxt(fname)
         # get extent
         minp = np.amin(points, axis=0)
         maxp = np.amax(points, axis=0)
@@ -184,15 +188,119 @@ of the actual point to the corresponding grid cell. While the points are
 unsorted we can output the grid after processing all points in an extra 
 double loop.
 
-Performance
+Octave solution
+~~~~~~~~~~~~~~~
+
+In the Octave code the same algorithms were implemented. The array indexing
+is different. While the indexing in Python is zero based, in Octave indexing
+starts with one. The same data structures are used in Octave as in Python.
+
+.. code:: octave
+
+        % load point cloud and remove extra columns
+        points = load(pcfile)(:,1:3);
+        printf("--- reading %.2f seconds ---\n", time() - start_time);
+        start_time1 = time();
+        d = [dx, dx, dx];
+        minp = min(points, [], 1);         % get min coords
+        maxp = max(points, [], 1);         % get max coords
+        minp = floor(minp ./ d) .* d;
+        maxp = ceil(maxp ./d) .* d;
+        n = uint16((maxp .- minp) ./ d);   % grid sizes
+        % calculate row and column index to points
+        indexes = uint16(floor((points .- minp) ./ d)) .+ 1;
+        indexes = [indexes (1:1:rows(points))'];
+
+
+1st variant
 -----------
 
-The performance of the algorithms was tested on two moderate size point cloud.
+.. code:: octave
+
+        for i = n(2):-1:1             % rows from top to down
+          idx = (indexes(:, 2) == i); % select points in ith row
+          ii = indexes(idx, :);
+          ppi = points(idx, :);
+          for j = 1:n(1)
+           idy = (ii(:, 1) == j);    % select points in jth cell
+            ppj = ppi(idy, :);
+            if (rows(ppj))
+              gr = fu(ppj(:, 3));
+              fprintf(f, "%.3f ", gr);
+            else
+              fprintf(f, "%.3f ", no_data);
+            end
+          end
+          fprintf(f, "\n");
+        end
+
+2nd variant
+-----------
+
+.. code:: octave
+
+        % buffer for a row of grid
+        grid = ones(n(1), 1) * no_data;
+        i = sorted_indexes(1,2);
+        j = sorted_indexes(1,1);
+        start = 1;
+        m = rows(sorted_indexes);
+        for k = 1:m
+          % grid distance in row order of cells
+          gd = (i - sorted_indexes(k, 2)) * n(1) + sorted_indexes(k, 1) - j;
+          if gd
+            grid(j) = fu(points(sorted_indexes(start:k-1, 4), 3));
+            for ii = sorted_indexes(k, 2):i-1
+              for jj = 1:n(1)
+                  fprintf(f, "%.3f ", grid(jj));
+              end
+              fprintf(f, "\n");
+              grid = ones(n(1), 1) * no_data;
+            end
+            j = sorted_indexes(k,1);
+            i = sorted_indexes(k, 2);
+            start = k;
+          end
+        end
+        % set last bucket
+        grid(j) = fu(points(sorted_indexes(start:m, 4), 3));
+        for jj = 1:n(1)
+          fprintf(f, "%.3f ", grid(jj));
+        end
+
+3rd variant
+-----------
+
+In this variant Octave cell array is used to collect points in cells.
+
+.. code:: octave
+
+        grid = cell(n(2),n(1));
+        for k = 1:m
+          grid{indexes(k, 2), indexes(k, 1)} = [grid{indexes(k,2), indexes(k, 1)}, points(k, 3)];
+        end
+        for i = n(2):-1:1             % rows from top to down
+          for j = 1:n(1)
+            if columns(grid{i, j})
+              fprintf(f, "%.3f ", fu(grid{i, j}));
+            else
+              fprintf(f, "%.3f ", no_data);
+            end
+          end
+          fprintf(f, "\n");
+        end
+
+Performance
+~~~~~~~~~~~
+
+The performance of the algorithms was tested on two moderate size point clouds.
 
 The first test was done on a point cloud of 1.1 M points created from drone images.
 The average distance among points is 2 cm. The test was run with five different
-resolutions.
+resolutions. In the table you can find the elapsed time in seconds.
 
++------------+--------------------------------------+
+|            |          Python                      |
 +------------+------+------+-------+-------+--------+
 | resolution | 10 m |  5 m |   1 m | 0.1 m | 0.05 m |
 +------------+------+------+-------+-------+--------+
@@ -202,6 +310,17 @@ resolutions.
 +------------+------+------+-------+-------+--------+
 | 3rd        | 2.95 | 2.97 |  2.96 | 3.84  | 7.70   |
 +------------+------+------+-------+-------+--------+
+|            |          Octave                      |
++------------+------+------+-------+-------+--------+
+| resolution | 10 m |  5 m |   1 m | 0.1 m | 0.05 m |
++------------+------+------+-------+-------+--------+
+| 1st        | 0.07 | 0.11 |  0.24 | 7.06  | 23.7   |
++------------+------+------+-------+-------+--------+
+| 2nd        | 11.1 | 10.8 |  12.0 | 17.3  | 32.0   |
++------------+------+------+-------+-------+--------+
+| 3rd        | 47.7 | 34.3 |  29.0 | 32.1  | 42.8   |
++------------+------+------+-------+-------+--------+
+
 
 The second test was done on a 4M point cloud with about 1 point / sq m.
 
@@ -219,5 +338,3 @@ The second test was done on a 4M point cloud with about 1 point / sq m.
 
 Try to speed up the algorithms demonstrated or try to find faster algorithms.
 
-Create Octave/Matlab scripts for the algorithms and compare their speed to 
-Python.
