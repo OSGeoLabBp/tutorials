@@ -105,7 +105,7 @@ start = 0
 m = sorted_indexes.shape[0]        # number of points
 for k in range(m):
     # grid distance in row order of cells
-    gd = -sorted_indexes[k, 1] * n[0] + sorted_indexes[k, 0] + i * n[0] - j
+    gd = (i - sorted_indexes[k, 1]) * n[0] + sorted_indexes[k, 0] - j
     if gd:
         # new bucket reached
         try:                    # TODO index out of range error
