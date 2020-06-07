@@ -1,6 +1,5 @@
 #! /usr/bin/octave -qf
 format long;
-nargin = 0
 % process command line arguments
 if (nargin > 0)
   arg_list = argv();
@@ -26,10 +25,9 @@ if (nargin > 0)
   elseif (strncmp(fname, "numel", 2))
     fu = @numel;
   end
-else  %just for testing
-  pcfile='pc_sample.txt'; 
-  dx = 10;
-  fu = @min;
+else
+  printf("Usage pc2grid.m point_cloud_file [resolution] [min/max/mean/median/num]\n");
+  exit(1)
 end
 no_data = -9999.0;
 start_time = time();
