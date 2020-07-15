@@ -47,12 +47,12 @@ mellyek aktívvá tehetjük a modult
 
 Ezután néhány modul ismertetése következik.
 
-mapswipe
---------
+Map Swipe Tool
+--------------
 
 Akinek rendszeresen űrfelvételeket, ortofotókat kell összehasonlítania, nagyon
-hasznos lehet ez a modul. Vízszintesen vagy függőlegesen mozgathatunk egy 
-vonalat a felső réteg eltkarásához vagy megjelenítéséhez.
+hasznos lehet a **MapSwipe** modul. Vízszintesen vagy függőlegesen mozgathatunk
+egy vonalat a felső réteg eltakarásához vagy megjelenítéséhez.
 
 A modul telepítése után a modulok menüből illetve eszközsorból érhető el a 
 modul. Először a felső ortofotó/űrfelvétel legyen az aktív réteg és nyomjuk be a
@@ -62,12 +62,36 @@ egér gombbal kezdjük belra-jobbra vagy le-fel húzni az egeret. Az egér gomb
 elengedése után újra kattintva módosíthatjuk a húzás irányát.
 
 Nem csak rétegekre, hanem réteg csoportokra is lehet alkalmazni. Az alábbi
-képen két WMS réteg esetét mutatja.
+képen két WMS réteg esetét mutatja. A modul vektor réteghez is használható.
 
 .. figure:: images/hasznos_modulok1.png
 		:align: center
 
+
 StreetView
 ----------
 
+A **StreetView** modul segítségével a QGIS-ből jeleníthetjük meg a Google 
+StreetView képeket. A térképünk tetszőleges vetületi rendszerben lehet. 
+A SteertView  modult a *Modulok* menüben találjuk illetve az ikonját a *Modulok*
+eszköztárban. Válasszuk ki az emberke ikont, kattintsunk a térképbe és az
+egérgomb nyomvatartása mellett húzzunk ki egy vonalat. A kattintás pozíciója
+adja meg a nézőpontunkat, a kihúzott egyenes pedig azt, hogy merre nézünk.
+A modul egy új böngésző ablakot nyít, melyben a Google StreetView megfelelő 
+részlete látszódik. A megnyiló böngésző ablakban a szokásos módon használhatjuk
+a Google StreetView alkalmazást.
 
+.. figure:: images/hasznos_modulok4.png
+		:align: center
+
+.. figure:: images/hasznos_modulok5.png
+        :align: center
+
+Profile tool
+------------
+
+A **Profile tool** modullal szabályos négyzetrácsban elrendezett magasságok
+(vagy egyéb adatok) metszetét készíthetjük el. A telepítés után a modult a
+Raszter menüben illetve a Modulok eszköztárban találhatjuk meg.
+.. figure:: images/hasznos_modulok6.png
+        :align: center
