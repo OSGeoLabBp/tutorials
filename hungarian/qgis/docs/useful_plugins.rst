@@ -97,3 +97,39 @@ Raszter menüben illetve a Modulok eszköztárban találhatjuk meg.
 
 .. figure:: images/hasznos_modulok6.png
         :align: center
+
+A modul ikonjának megnyomása után a térkép alatt egy új panel jelenik meg.
+A panel három fület tartalmaz: *Profile* (metszet), *Table* (táblázat),
+*Settings* (beállítások).
+A modul felhasználói felülete angol nyelvű. 
+
+Fedezzük fel először a *Profile* fület.
+Először a jobb oldalon az **Add layer gomb** megnyomásával az aktuális réteget
+adhatja a listához. Ez egy domborzatot tartalmazó réteg legyen. 
+A piros téglalap a metszetvonal színét mutatja.
+A piros téglalapba kattintva módosíthatjuk a színt. A metszetet egy törvonallal
+adhatja meg a térképablakban az egérrel kattintva. A metszet utolsó pontjában
+dupla kattintással zárhatja le a rajzolást. A metszet rajzolás az előző 
+metszetet automatikusan törli. A réteglista alatti beállítások (**Options**)
+részben a Selection utáni listából választva egy rétegből kiválasztott 
+törtvonal mentén (**Selected polyline**) vagy egy réteg összes vonala mentén
+(**Selected layer**) készít metszetet a modul. A **Show cursor** jelölő
+négyzet kiválasztása azt jelenti, hogy a bal oldali metszetben mozgatva az
+egeret, az egérrel jelölt pont távolságát a metszet kezdetétől (X) és a 
+magasságot (Y) kiírja a modul. A **Link mouse position on graph
+with canvas** opció kiválasztása esetén a metszeten mozgatott egérrel együtt
+mozog egy kis négyzet a metszet mentén a térkép ablakban.
+A metszet alatt a **Heigth** (magasság) melett a lejtő meredekségének 
+százalékos (Slope %) vagy fokokban (Slope\ :sup:`o`). Az **Interpolated 
+profile** (interpolált metszet) kikapcsolása esetén csak a megadott 
+törtvonal végpontjai jelennek meg a metszetben. A **Save as** gombbal a
+metszetet különböző formátumokba menthetjük el (Graph - PNG, Graph - SVG,
+3D Line - DXF, 2D profile - DXF). A **maximum** és **minimum** mezőkkel a
+metszet függőleges terjedelmét módosíthatjuk. Az eredeti értékeket a 
+**Reset view** gombbal állíthatjuk vissza.
+
+A *Table* fülön a metszet prontjait táblázatos formában láthatjuk. Emellett
+különböző formátumban a vágólapra vagy ideiglenes rétegbe (pontok)
+tehetjük át a metszet adatait.
+
+
