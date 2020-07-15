@@ -2,7 +2,8 @@ Hasznos modulok
 ===============
 
 Ebben a leírásban néhány hasznos modult ismertetünk, a teljesség igénye nélkül.
-A QGIS modulok gyűjtőhelyén jelenleg 443 modul találhatói, melyeket a QGIS
+A QGIS modulok gyűjtőhelyén jelenleg 543 modul található a QGIS 3 verzióhoz, 
+melyeket a QGIS
 felhasználók készítettek és töltöttek fel a http://plugins.qgis.org oldalra.
 Ezek közül választottam néhányat. De először a kezdőknek egy kis segítség a
 modulok telepítésével kapcsolatban.
@@ -56,7 +57,7 @@ egy vonalat a felső réteg eltakarásához vagy megjelenítéséhez.
 
 A modul telepítése után a modulok menüből illetve eszközsorból érhető el a 
 modul. Először a felső ortofotó/űrfelvétel legyen az aktív réteg és nyomjuk be a
-modul ikonját az eszközsorban vagy a menübőé válasszuk ki. Az aktív réteg 
+modul ikonját az eszközsorban vagy a menüből válasszuk ki. Az aktív réteg 
 láthatóságát kikapcsolja a modul. Kattintsunk a térképre és nyomva tartott 
 egér gombbal kezdjük belra-jobbra vagy le-fel húzni az egeret. Az egér gomb 
 elengedése után újra kattintva módosíthatjuk a húzás irányát.
@@ -93,5 +94,6 @@ Profile tool
 A **Profile tool** modullal szabályos négyzetrácsban elrendezett magasságok
 (vagy egyéb adatok) metszetét készíthetjük el. A telepítés után a modult a
 Raszter menüben illetve a Modulok eszköztárban találhatjuk meg.
+
 .. figure:: images/hasznos_modulok6.png
         :align: center
