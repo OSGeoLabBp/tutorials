@@ -128,7 +128,7 @@ metszetet különböző formátumokba menthetjük el (Graph - PNG, Graph - SVG,
 metszet függőleges terjedelmét módosíthatjuk. Az eredeti értékeket a 
 **Reset view** gombbal állíthatjuk vissza.
 
-A *Table* fülön a metszet prontjait táblázatos formában láthatjuk. Emellett
+A *Table* fülön a metszet pontjait táblázatos formában láthatjuk. Emellett
 különböző formátumban a vágólapra vagy ideiglenes rétegbe (pontok)
 tehetjük át a metszet adatait.
 
