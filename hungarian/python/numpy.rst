@@ -20,8 +20,8 @@ Egy példa a mátrix szorzás megvalósítására listák használatával.
 A fenti függvény három egymásba ágyazott lista feldolgozást tartalmaz.
 Kezdjük a végéről a *for r in a* az a mátrix sorait állítja elő az r 
 változóban. A *for c in zip(\*b)* kicsit trükkösebb, ez a b mátrix oszlopait
-állítj elő. A zip függván paraméter listáján a b előtti \* karakter azt
-eredmányezi, hogy a függvény b lista elemeit kapja meg (azaz a b sorait).
+állítj elő. A zip függvény paraméter listáján a b előtti \* karakter azt
+eredményezi, hogy a függvény b lista elemeit kapja meg (azaz a b sorait).
 A zip függvény a paraméterként megkapott listákból olyan listát állít elő,
 melynek elemei az eredeti listák azonos indexű elemeit tartalmazói egyszerű
 listákból (tuple) állnak. Az így előállítot sorok és oszlop vektorok
