@@ -9,6 +9,34 @@ megoldhatjuk, de az kevésbé hatékony (mivel eltérő Python adattípusok
 lehetnek ugyanannak a listának az elemei). A numpy további előnye, hogy 
 számos vektorokkal, mátrixokkal kapcsolatos műveletet készen tartalmaz.
 
+Egy példa a mátrix szorzás megvalósítására listák használatával.
+
+.. code:: python
+
+	def mmul(a, b):
+		return [[sum(i * j for i, j in zip(r, c)) for c in zip(*b)]
+				for r in a]
+
+A fenti függvény három egymásba ágyazott lista feldolgozást tartalmaz.
+Kezdjük a végéről a *for r in a* az a mátrix sorait állítja elő az r 
+változóban. A *for c in zip(\*b)* kicsit trükkösebb, ez a b mátrix oszlopait
+állítj elő. A zip függván paraméter listáján a b előtti \* karakter azt
+eredmányezi, hogy a függvény b lista elemeit kapja meg (azaz a b sorait).
+A zip függvény a paraméterként megkapott listákból olyan listát állít elő,
+melynek elemei az eredeti listák azonos indexű elemeit tartalmazói egyszerű
+listákból (tuple) állnak. Az így előállítot sorok és oszlop vektorok
+skaláris szorzatát a sum függvény állítja elő a harmadik ciklussal.
+
+Egy példa:
+
+.. code:: python
+
+	c = [[ 1, 2, 3], [4, 5, 6]]		# 2 x 3
+	d = [[1, 2], [3, 4], [5, 6]]	# 3 x 2
+	mmul(c, d)
+	[[22, 28], [49, 64]]
+
+
 Tömbök létrehozása
 ------------------
 
