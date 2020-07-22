@@ -179,7 +179,7 @@ kiegyenlítést számít.
 
 .. note:: Figyelem!
 
-	A pontszámoknak egytől kezdődő sorszámoknak kell lenniük! 
+	A pontszámoknak nullától kezdődő sorszámoknak kell lenniük! 
 	Mindig szabad magassági hálózat kiegyenlítés történik!
 
 .. code:: text
@@ -191,12 +191,12 @@ kiegyenlítést számít.
 
 .. code:: text
 
-	1 2 -0.749 1.1
-	1 3 -1.274 1.8
-	1 4 -2.890 1.4
-	2 3 -0.530 1.5
-	2 4 -2.141 1.9
-	3 4 -1.614 0.9
+	0 1 -0.749 1.1
+	0 2 -1.274 1.8
+	0 3 -2.890 1.4
+	1 2 -0.530 1.5
+	1 3 -2.141 1.9
+	2 3 -1.614 0.9
 
 .. code:: python
 
