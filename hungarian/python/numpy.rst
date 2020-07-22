@@ -177,6 +177,11 @@ magassága, a másikban a szintetési vonalak adatai (kezdő sorszám, záró so
 magasságkülönbség, hossz) találhatók. Program szabad magassági hálózat 
 kiegyenlítést számít.
 
+.. note:: Figyelem!
+
+	A pontszámoknak egytől kezdődő sorszámoknak kell lenniük! 
+	Mindig szabad magassági hálózat kiegyenlítés történik!
+
 .. code:: text
 
 	104.234
