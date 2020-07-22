@@ -9,20 +9,45 @@ megoldhatjuk, de az kevésbé hatékony (mivel eltérő Python adattípusok
 lehetnek ugyanannak a listának az elemei). A numpy további előnye, hogy 
 számos vektorokkal, mátrixokkal kapcsolatos műveletet készen tartalmaz.
 
-Egy példa a mátrix szorzás megvalósítására listák használatával.
+Egy példa a mátrix szorzás megvalósítására listák használatával. A mátrixot listák
+listájaként tároljuk.
+
+Naiv, nem pythonic megoldás:
+
+-- code:: python
+
+	def naiv_mmul(a, b):
+		n = len(a)      # number of rows of result
+		m = len(b[0])   # number of columns of result
+		k = len(b)
+		res = [[0] * m for i in range(n)]   # fill result with zeros
+		for i in range(n):
+			for j in range(m):
+				s = 0
+				for l in range(k):
+					s += a[i][l] * b[l][j]
+				res[i][j] = s
+		return res
+
+.. note::
+
+	Miért kell az eredmény mátrixot feltölteni?
+	Miért nem lenne helyes a **res = [[0] \* m] * n** feltöltés?
+
+Nézzünk meg egy másik megoldást, mely a Python adta lehetőségeket jobban kihasználja
+(Pythonic megoldás).
 
 .. code:: python
 
 	def mmul(a, b):
-		return [[sum(i * j for i, j in zip(r, c)) for c in zip(*b)]
-				for r in a]
+		return [[sum(i * j for i, j in zip(r, c)) for c in zip(*b)] for r in a]
 
 A fenti függvény három egymásba ágyazott lista feldolgozást tartalmaz.
-Kezdjük a végéről a *for r in a* az a mátrix sorait állítja elő az r 
-változóban. A *for c in zip(\*b)* kicsit trükkösebb, ez a b mátrix oszlopait
-állítj elő. A zip függvény paraméter listáján a b előtti \* karakter azt
-eredményezi, hogy a függvény b lista elemeit kapja meg (azaz a b sorait).
-A zip függvény a paraméterként megkapott listákból olyan listát állít elő,
+Kezdjük a végéről a *for r in a* az **a** mátrix sorait állítja elő az **r** 
+változóban. A *for c in zip(\*b)* kicsit trükkösebb, ez a **b** mátrix oszlopait
+állítj elő. A *zip* függvény paraméter listáján a **b** előtti \* karakter azt
+eredményezi, hogy a függvény b lista elemeit kapja meg (azaz a **b** sorait).
+A *zip* függvény a paraméterként megkapott listákból olyan listát állít elő,
 melynek elemei az eredeti listák azonos indexű elemeit tartalmazói egyszerű
 listákból (tuple) állnak. Az így előállítot sorok és oszlop vektorok
 skaláris szorzatát a sum függvény állítja elő a harmadik ciklussal.
@@ -31,7 +56,7 @@ Egy példa:
 
 .. code:: python
 
-	c = [[ 1, 2, 3], [4, 5, 6]]		# 2 x 3
+	c = [[ 1, 2, 3], [4, 5, 6]]	# 2 x 3
 	d = [[1, 2], [3, 4], [5, 6]]	# 3 x 2
 	mmul(c, d)
 	[[22, 28], [49, 64]]
