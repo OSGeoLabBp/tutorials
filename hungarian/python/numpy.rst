@@ -14,7 +14,7 @@ listájaként tároljuk.
 
 Naiv, nem pythonic megoldás:
 
--- code:: python
+.. code:: python
 
 	def naiv_mmul(a, b):
 		n = len(a)      # number of rows of result
