@@ -50,7 +50,7 @@ eredményezi, hogy a függvény b lista elemeit kapja meg (azaz a **b** sorait).
 A *zip* függvény a paraméterként megkapott listákból olyan listát állít elő,
 melynek elemei az eredeti listák azonos indexű elemeit tartalmazói egyszerű
 listákból (tuple) állnak. Az így előállítot sorok és oszlop vektorok
-skaláris szorzatát a sum függvény állítja elő a harmadik ciklussal.
+skaláris szorzatát a *sum* függvény állítja elő a harmadik ciklussal.
 
 Egy példa:
 
@@ -118,7 +118,7 @@ azaz két tömb szorzata elemenkénti szorzatot jelent.
 	print(a2**2)				# minden elem négyzete!
 	print(np.sqrt(a2))
 
-A numpy a mátrix szorzásra a dot függvényt biztosítja. a linalg modulban
+A numpy a mátrix szorzásra a *dot* függvényt biztosítja. a **linalg** modulban
 több hasznos függvényt találhatunk, mintpéldául *inv, pinv, svd, eig, det,
 solve*.
 
