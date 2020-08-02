@@ -1,5 +1,6 @@
 Python oktatóanyagok Python 2.7 és 3.x verziókhoz
 
+- `Python3 mogyoróhélyban <python3_oktato.rst>`_
 - `Egyszerű problémák Python megoldása <simple.rst>`_
 - `Hatékony algoritmus készítése <effective_algorithm.rst>`_ (prim számok)
 - `Egyszerű objektum létrehozása <angle_algorithms.rst>`_ (Szög osztály)
