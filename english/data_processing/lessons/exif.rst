@@ -148,7 +148,7 @@ line parameters. In the loop body the ASCII EXIF information is extracted by
 **identify** for the JPEG file. It is piped to a gawk script.
 In the gawk command line a variable is set with the actual image file name
 (-v switch). It is necessary to be able to write filename with the coordinates
-to the output. gawk has no inforation about the image file, it gets data
+to the output. gawk has no information about the image file, it gets data
 from the pipe.
 
 The gawk script (exif.awk in code folder):
@@ -165,7 +165,7 @@ The gawk script (exif.awk in code folder):
 	END { printf "%s;%s%.6f;%s%.6f;%s %d:%d:%.1f\n",
 			fn, plon, lon, plat, lat, idate, ihour, imin, isec; }
 
-Latitute and longitude is change to degrees and a negative sign is set for
+Latitute and longitude is changed to degrees and a negative sign is set for
 longitudes to west and latitutes to south. The collected data printed to the 
 standard output.
 
@@ -234,6 +234,7 @@ Let's create a list (CSV) using Python Image Library (PIL).
 	def img_pos(name):
 		"""
 		get GPS position from image
+		
 		:param name: image path
 		:returns: tuple of (lat, lon)
 		""" 
