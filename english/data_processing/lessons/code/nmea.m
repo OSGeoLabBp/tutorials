@@ -5,10 +5,10 @@ while (! feof(f))
     buf = fgetl(f);
     bufa = strsplit(buf, ',');
     %checksum bitxor(a,b)
-    bufascii = toascii(buf(2:strmatch(buf, '*')));
-    cs = toascii(buf(2));
+    bufascii = double(buf(2:strcmp(buf, '*')));
+    cs = double(buf(2));
     for c = buf(3:end-3)
-        cs = bitxor(cs, toascii(c));
+        cs = bitxor(cs, double(c));
     end
     if (sprintf('%X', cs) ~= buf(end-1:end))
         printf('checksum error\n');
@@ -16,7 +16,7 @@ while (! feof(f))
     end
     switch (bufa{1})
         case '$GPGGA'
-            % GGA, time, lat, N/S, lon, E/W, fixq, sats, hdop, height, M, undulation,M,empty,empty,checksum
+            % GGA, time, latitude, N/S, longitude, E/W, solution type, number of satellitess, hdop, height, M, undulation,M,empty,empty,checksum
             if (str2num(bufa{7}) == 1)
                 % use only GPS fix
                 lat = nmea2deg(bufa{3});
