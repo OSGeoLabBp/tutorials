@@ -18,17 +18,17 @@ NMEA message processing and display
         buf = fgetl(f);
         bufa = strsplit(buf, ',');
         %checksum bitxor(a,b)
-        bufascii = toascii(buf(2:strmatch(buf, '*')));
-        cs = toascii(buf(2));
+        bufascii = double(buf(2:strcmp(buf, '*')));
+        cs = double(buf(2));
         for c = buf(3:end-3)
-            cs = bitxor(cs, toascii(c));
+            cs = bitxor(cs, double(c));
         end
         if (sprintf('%X', cs) ~= buf(end-1:end))
             printf('checksum error\n');
             continue;
         end
         switch (bufa{1})
-            case '$GPGGA'
+            case {'$GPGGA','$GNGGA'}
                 % GGA, time, lat, N/S, lon, E/W, fixq, sats, hdop, height, M, undulation,M,empty,empty,checksum
                 if (str2num(bufa{7}) == 1)
                     % use only GPS fix
