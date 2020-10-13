@@ -15,7 +15,7 @@ while (! feof(f))
         continue;
     end
     switch (bufa{1})
-        case '$GPGGA'
+        case {'$GPGGA','$GNGGA'}
             % GGA, time, latitude, N/S, longitude, E/W, solution type, number of satellitess, hdop, height, M, undulation,M,empty,empty,checksum
             if (str2num(bufa{7}) == 1)
                 % use only GPS fix
