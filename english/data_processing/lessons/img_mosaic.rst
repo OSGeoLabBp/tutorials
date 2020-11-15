@@ -58,7 +58,7 @@ command a virtual raster can be created.
 
 .. code::
 
-    gdalbuild mosaic.vrt ./mosaic*.tif
+    gdalbuildvrt mosaic.vrt ./mosaic*.tif
 
 Virtual rasters are supported by several GIS programs (e.g. QGIS, MapServer,
 GDAL). To improve the preformance more, pyramids can be created for the
