@@ -50,7 +50,7 @@ Here is the bash script:
         done
     done
 
-The Python script uses only gdal PYthon package and loads the input image
+The Python script uses only gdal Python package and loads the input image
 into memory at the beginning. 
 
 .. code:: python
