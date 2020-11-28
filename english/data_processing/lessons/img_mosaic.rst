@@ -131,4 +131,3 @@ tiles are transformed to web mercator CRS.
 
     *Development tipps:*
     Extend the scripts to create virtual raster and overview, too.
-    Compare the speed of the two solutions.
