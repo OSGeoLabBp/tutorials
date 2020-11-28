@@ -92,9 +92,12 @@ where *n* and *m* are the upper left corner pixel positions of the mosaic.
 Depending on the used hardware 50-300MB mosaic parts can be optimal.
 
 I tested the performance of the two scripts with a georeferenced jpg file with 22747 x 18185 pixels.
+The increasing run time difference is caused by the loading of input image for each mosaic in case of bash script.
 
 +---------+------------+--------------+
 | mosaic  | bash       | Python       |
++---------+------------+--------------+
+| 2 x 2   |   8 sec    |  6 sec       |
 +---------+------------+--------------+
 | 4 x 4   |  24 sec    | 10 sec       |
 +---------+------------+--------------+
