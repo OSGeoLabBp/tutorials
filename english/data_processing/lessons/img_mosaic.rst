@@ -88,8 +88,20 @@ into memory at the beginning.
             gdal.Translate(name, DS, options=options)
 
 After running one of the scripts on a georeferenced image, we get mosaic_n_m.tif files
-where n and m are the upper left corner pixel position of the mosaic.
+where *n* and *m* are the upper left corner pixel positions of the mosaic.
 Depending on the used hardware 50-300MB mosaic parts can be optimal.
+
+I tested the performance of the two scripts with a georeferenced jpg file with 22747 x 18185 pixels.
+
++---------+------------+--------------+
+| mosaic  | bash       | Python       |
++---------+------------+--------------+
+| 4 x 4   |  24 sec    | 10 sec       |
++---------+------------+--------------+
+| 8 x 8   |  90 sec    | 18 sec       |
++---------+------------+--------------+
+| 16 x 16 | 330 sec    | 39 sec       |
++---------+------------+--------------+
 
 Having several images instead of one is not comfortable. Using *gdalbuildvrt*
 command a virtual raster can be created.
