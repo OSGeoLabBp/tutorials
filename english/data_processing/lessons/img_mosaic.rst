@@ -127,6 +127,31 @@ If you would like to publish ortophoto on the internet, the most effective
 solution is the XYZ tile. XYZ tiles can be created using *gdal2tiles*, but 
 tiles are transformed to web mercator CRS.
 
+
+An extended version of mosaic.py is also avalilable called mosaicplus.py.
+
+.. code::
+
+    usage: mosaicplus.py [-h] [--rows ROWS] [--cols COLS] [--width WIDTH]
+                         [--height HEIGHT] [--minx MINX] [--miny MINY]
+                         [--maxx MAXX] [--maxy MAXY] [--over OVER]
+                         [file_names [file_names ...]]
+
+    positional arguments:
+      file_names       image files to process
+
+    optional arguments:
+      -h, --help       show this help message and exit
+      --rows ROWS      number of mosaic rows, default 4
+      --cols COLS      number of mosaic cols, default 4
+      --width WIDTH    width of mosaic tiles
+      --height HEIGHT  height of mosaic tiles
+      --minx MINX      minimal x coordinate of extent to clip from image
+      --miny MINY      minimal y coordinate of extent to clip from image
+      --maxx MAXX      maximal x coordinate of extent to clip from image
+      --maxy MAXY      maximal y coordinate of extent to clip from image
+      --over OVER      overlap between rows and columns in pixels, default 1
+
 .. note::
 
     *Development tipps:*
