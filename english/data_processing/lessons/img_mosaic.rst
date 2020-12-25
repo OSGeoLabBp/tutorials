@@ -8,7 +8,7 @@ Create image mosaic
 Let's imagine we have a large orthophoto image created from UAV images
 (~500 MB compressed jpeg image file). If you used it in QGIS on
 an average computer, zoom in/out would be slow. We will cut the image into
-uncompressed tiles to make the rendering faster.
+uncompressed tiles to make the rendering faster when zooming in.
 
 GDAL utilities will be used from bash script and python. We shall create tiles with one
 pixel overlap to avoid white lines between the mosaic items because of rounding 
@@ -128,7 +128,13 @@ solution is the XYZ tile. XYZ tiles can be created using *gdal2tiles*, but
 tiles are transformed to web mercator CRS.
 
 
-An extended version of mosaic.py is also avalilable called mosaicplus.py.
+An extended version of mosaic.py is also avalilable called **mosaicplus.py**.
+Not only the number of row and columns can be set, but am alternative 
+dolution available to set the size of mosaic tiles in pixels. If both are
+given tile width and height are considered. A new extent can also be set from 
+the command line with coordinates in the used coordinate reference system (CRS).
+All the command line parameters are considered for one or more images given 
+also in the command line.
 
 .. code::
 
