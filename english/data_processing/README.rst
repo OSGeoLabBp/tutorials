@@ -1,5 +1,5 @@
-Observation processing using GAWK, Octave and Python/numpy
-==========================================================
+Geodata processing using GAWK, Octave and Python/numpy
+======================================================
 
     :Authors: **Zoltan Siki** <siki.zoltan@epito.bme.hu>
     :Version: 1.0
