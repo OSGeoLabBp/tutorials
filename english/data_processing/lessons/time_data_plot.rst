@@ -69,7 +69,7 @@ Here is a simple example with three input files and two subplots
     g = GraphPlot(titles, units, data_series)
     g.draw()
 
-..code:: python
+.. code:: python
 
     #! /usr/bin/env python3
     # -*- coding: utf-8 -*-
