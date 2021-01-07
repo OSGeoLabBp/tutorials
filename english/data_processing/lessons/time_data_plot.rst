@@ -69,6 +69,8 @@ Here is a simple example with three input files and two subplots
     g = GraphPlot(titles, units, data_series)
     g.draw()
 
+The source code
+
 .. code:: python
 
     #! /usr/bin/env python3
