@@ -43,7 +43,7 @@ The data series are given by a list with maximum 6 elements
 
 Here is a simple example with three input files and two subplots
 
-..code::
+.. code::
 
     first.csv:
     1;0.34;2.56
