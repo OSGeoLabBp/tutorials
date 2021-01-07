@@ -128,7 +128,8 @@ Table of contents
 #. `3D ortogonal transformation <lessons/3dtr.rst>`_ (Octave, Python)
 #. `Processing bridge deflection data <lessons/deflection.rst>`_ (Octave)
 #. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_ (shell script, gawk)
-#. `Create image mosaic <lessons/img_mosaic.rst>`_ (shell script, python)
+#. `Create image mosaic <lessons/img_mosaic.rst>`_ (shell script, Python)
+#. `Create time/data plot <lessons/time_data_plot.rst>`_ (Python)
 
 
 Program codes and sample data are in the `code <lessons/code>`_ folder.
