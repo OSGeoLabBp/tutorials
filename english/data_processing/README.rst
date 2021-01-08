@@ -130,7 +130,7 @@ Table of contents
 #. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_ (shell script, gawk)
 #. `Create image mosaic <lessons/img_mosaic.rst>`_ (shell script, Python)
 #. `Create time/data plot <lessons/time_data_plot.rst>`_ (Python)
-
+#. `Find circles in an image <lessons/find_circle.rst>`_ (Python)
 
 Program codes and sample data are in the `code <lessons/code>`_ folder.
 
