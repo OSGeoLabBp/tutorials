@@ -3,7 +3,7 @@ Create image mosaic
 
 *Keywords:* bash, gdal, imagemagic, python
 
-*Program file:* mosaic.sh, mosaic.py
+*Program files:* mosaic.sh, mosaic.py
 
 Let's imagine we have a large orthophoto image created from UAV images
 (~500 MB compressed jpeg image file). If you used it in QGIS on
@@ -140,7 +140,7 @@ also in the command line.
 
     usage: mosaicplus.py [-h] [--rows ROWS] [--cols COLS] [--width WIDTH]
                          [--height HEIGHT] [--minx MINX] [--miny MINY]
-                         [--maxx MAXX] [--maxy MAXY] [--over OVER]
+                         [--maxx MAXX] [--maxy MAXY] [--over OVER] [--extend]
                          [file_names [file_names ...]]
 
     positional arguments:
@@ -157,8 +157,9 @@ also in the command line.
       --maxx MAXX      maximal x coordinate of extent to clip from image
       --maxy MAXY      maximal y coordinate of extent to clip from image
       --over OVER      overlap between rows and columns in pixels, default 1
+      --extend         create last patial row and column
 
 .. note::
 
     *Development tipps:*
-    Extend the scripts to create virtual raster and overview, too.
+    Extend the scripts to create virtual raster and overviews, too.
