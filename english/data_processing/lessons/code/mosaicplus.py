@@ -29,6 +29,9 @@ parser.add_argument('--maxy', type=float,
                     help='maximal y coordinate of extent to clip from image')
 parser.add_argument('--over', type=int, default=1,
                     help='overlap between rows and columns in pixels, default 1')
+parser.add_argument('--extend', action="store_true",
+                    help='create last patial row and column')
+
 args = parser.parse_args()
 if not args.names:
     print("no input image(s) given")
@@ -74,8 +77,10 @@ for name in args.names:
     ROW_STEP1 = ROW_STEP + PIXEL_OVER   # some pixel overlap between rows
     COL_STEP1 = COL_STEP + PIXEL_OVER   # some pixel overlap between rows
     OUT, _ = os.path.splitext(name)
-    for j in range(0, WIDTH - COL_STEP + 1, COL_STEP):
-        for i in range(0, HEIGHT - ROW_STEP + 1, ROW_STEP):
+    MAXJ = WIDTH - PIXEL_OVER if args.extend else WIDTH - COL_STEP + 1
+    MAXI = HEIGHT - PIXEL_OVER if args.extend else WIDTH - COL_STEP + 1
+    for j in range(0, MAXJ, COL_STEP):
+        for i in range(0, MAXI, ROW_STEP):
             name = "{}_{}_{}.tif".format(OUT, j, i)
             options = "-srcwin {} {} {} {}".format(j, i, COL_STEP1, ROW_STEP1)
             gdal.Translate(name, DS, options=options)
