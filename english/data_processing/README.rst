@@ -131,6 +131,7 @@ Table of contents
 #. `Create image mosaic <lessons/img_mosaic.rst>`_ (shell script, Python)
 #. `Create time/data plot <lessons/time_data_plot.rst>`_ (Python)
 #. `Find circles in an image <lessons/find_circle.rst>`_ (Python)
+#. `Principal Component Analysis (PCA) <lessosons/pca.rst>`_ (Python)
 
 Program codes and sample data are in the `code <lessons/code>`_ folder.
 
