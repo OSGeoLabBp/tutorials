@@ -63,28 +63,27 @@ Octave function:
 
 .. code:: octave
 
-	% expects row data
-	function [R,t,sc] = rigid_transform_3D_mod(A, B)
-		if nargin != 2
-			error("Missing parameters");
-		end
-		assert(size(A) == size(B))
-
-		centroid_A = mean(A);
-		centroid_B = mean(B);
-		N = rows(A);
-    H = (A - centroid_A)' * (B - centroid_B);
-    [U,S,V] = svd(H);
-    % rotation matrix
-    R = V*U';
-    if det(R) < 0
-        R(:,3) \*= -1;
+    % expects row data
+    function [R,t,sc] = rigid_transform_3D_mod(A, B)
+	if nargin != 2
+            error("Missing parameters");
+        end
+        assert(size(A) == size(B))
+        centroid_A = mean(A);
+        centroid_B = mean(B);
+        N = rows(A);
+        H = (A - centroid_A)' * (B - centroid_B);
+        [U,S,V] = svd(H);
+        % rotation matrix
+        R = V*U';
+        if det(R) < 0
+            R(:,3) \*= -1;
+        end
+        % translation
+        t = -R * centroid_A' + centroid_B';
+        % scale
+        sc = norm(B - centroid_B, 2) / norm(A - centroid_A, 2);
     end
-    % translation
-    t = -R * centroid_A' + centroid_B';
-    % scale
-    sc = norm(B - centroid_B, 2) / norm(A - centroid_A, 2);
-	end
 
 Test program for the function:
 
