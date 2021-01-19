@@ -72,6 +72,7 @@ Egy ilyen stílust összerakni elég bonyolult, célszerű egy .qml fájlba elme
 Ezt a réteg felbukkanó menüjének az Export menüpontjában találhatjuk.
 
 `Az elkészített qml file <data/meretezes.qml>`_
+
 .. |meretezes1_png| image:: images/meretezes1.png
 
 .. |meretezes2_png| image:: images/meretezes2.png
