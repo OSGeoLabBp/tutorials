@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [Méretezés](docs/meretezes.rst)
 * [Hasznos modulok](docs/useful_plugins.rst)
 * [PostGIS-ben tárolt pontok összeláncolása törtvonalakká](docs/pg_pontok.rst)
 * [Aggregator kifejezések alkalmazása a kifejezés szerkesztőben](docs/aggregator.rst)
