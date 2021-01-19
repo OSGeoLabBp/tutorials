@@ -1,14 +1,20 @@
 Principal Componenet Analysis (PCA)
 ===================================
 
-*Keywords:* Python, numpy, matplotlib
+*Keywords:* Python, numpy, matplotlib, Octave
 
 *Program file:* pca.py
 
-How can we find the main axis of 2D polygon or a set of 2D points? The PCA can help.
+How can we find the main axis of a 2D polygon or a set of 2D points?
+The PCA can help.
 
-The principal orthogonal directions will be the eigenvectors of the variance-covariance matrix
-to the weight point of the point set. Numpy has all the basic functions for PCA.
+The principal orthogonal directions will be the eigenvectors of the
+variance-covariance matrix
+to the weight point of the point set. Numpy has all the basic functions for PCA
+calculations.
+
+Python solution
+---------------
 
 .. code:: python
 
@@ -42,7 +48,7 @@ to the weight point of the point set. Numpy has all the basic functions for PCA.
 
 |pca_png|
 
-The scikit-learn modul has direct PCA solution.
+The scikit-learn modul has direct PCA solution and has extra functionalities.
 
 .. code:: python
 
@@ -52,10 +58,56 @@ The scikit-learn modul has direct PCA solution.
     print(pca.mean_)        # weightpoint
     print(pca.components_)  # eigenvectors
 
+Octave solution
+---------------
+
+GNU Octave has also the necessary mathematical functions to make the calculation
+step by step.
+
+.. code:: octave
+
+    % find principal components
+    points = dlmread('pca.txt');
+    % step by step solution
+    means = mean(points);
+    Xd = points - means;
+    cov = Xd' * Xd;
+    [eig_vectors, eig_values] = eig(cov);
+    direction = atan2(eig_vectors[0][0], eig_vectors[1][0]) * 180 / pi;
+    printf("weight point: %.2f, %.2f\n", means(1), means(2))
+    printf("direction: %.1f\n", direction)
+
+The statistical module of Octave has a direct function for PCA.
+The statistical module have to be installed separetly.
+
+.. code:: bash
+
+    sudo apt-get install octave-statistics
+
+.. code:: octave
+
+    % find principal components
+    pkg load statistics
+    points = dlmread('pca.txt');
+    % eigen vectors & rotated, shifted points (b)
+    [eig_vectors, b, eig_values] = princomp(points);
+    % shift of points
+    x0 = mean(points(:, 1)) - mean(b(:, 1));
+    y0 = mean(points(:, 2)) - mean(b(:, 2));
+    % rotational angle
+    direction = atan2(eig_vectors(1, 1), eig_vectors(2, 1)) * 180. / pi();
+    printf("weight point: %.2f, %.2f\n", x0, y0)
+    printf("direction: %.1f\n", direction)
+    plot(points(:,1), points(:, 2), 'o');
+    hold on
+    plot(x0, y0, 'x')
+    plot([x0-eig_vectors(1,1)*10; x0; x0+eig_vectors(1,1)*10], ...
+         [y0-eig_vectors(2,1)*10; y0; y0+eig_vectors(2,1)*10])
+
 .. note::
 
     *Develeopment tips:*
-    Extend the solution to 3D point clouds
+    Extend the solution to 3D point clouds.
 
 .. |pca_png| image:: images/pca.png
 
