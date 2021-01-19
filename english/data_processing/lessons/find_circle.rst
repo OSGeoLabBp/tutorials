@@ -5,6 +5,8 @@ Find circles in an image
 
 *Program file:* hsv.py
 
+*Data file:* circle1.png
+
 Let's try to find red circles in an image. First we mask out everything what is not red.
 We can do it if the image is converted to HSV color-space. OpenCV has a *cvtColor*
 function to change color-space. 
