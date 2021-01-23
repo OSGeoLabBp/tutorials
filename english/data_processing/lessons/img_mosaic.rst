@@ -15,7 +15,7 @@ pixel overlap to avoid white lines between the mosaic items because of rounding
 errors. The script queries the size of the image and divides it pieces.
 The number of rows and columns can be given from the command line.
 
-THe bash script uses image magic to get image size (identify).
+The bash script uses image magic to get image size (*identify*).
 Here is the bash script:
 
 .. code:: bash
@@ -50,7 +50,7 @@ Here is the bash script:
         done
     done
 
-The Python script uses only gdal Python package and loads the input image
+The Python script uses only *gdal* Python package and loads the input image
 into memory at the beginning. 
 
 .. code:: python
@@ -88,7 +88,8 @@ into memory at the beginning.
             gdal.Translate(name, DS, options=options)
 
 After running one of the scripts on a georeferenced image, we get mosaic_n_m.tif files
-where *n* and *m* are the upper left corner pixel positions of the mosaic.
+where *n* and *m* are the upper left corner pixel positions of the mosaic in
+the original image.
 Depending on the used hardware 50-300MB mosaic parts can be optimal.
 
 I tested the performance of the two scripts with a georeferenced jpg file with 22747 x 18185 pixels.
@@ -121,17 +122,17 @@ individual tif files using *gdaladdo*.
 
     for i in ./mosaic*.tif; do gdaladdo -ro -r cubic $i 2 4 8; done
 
-The command above creates .ovr files (overviews).
+The command above creates .ovr files (external overviews).
 
 If you would like to publish ortophoto on the internet, the most effective 
-solution is the XYZ tile. XYZ tiles can be created using *gdal2tiles*, but 
+solution is the XYZ tile format. XYZ tiles can be created using *gdal2tiles*, but 
 tiles are transformed to web mercator CRS.
 
-
 An extended version of mosaic.py is also avalilable called **mosaicplus.py**.
-Not only the number of row and columns can be set, but am alternative 
-dolution available to set the size of mosaic tiles in pixels. If both are
-given tile width and height are considered. A new extent can also be set from 
+Not only the number of row and columns can be set, but an alternative 
+solution available to set the size of mosaic tiles in pixels. If both are
+given tile width and height are considered. A new extent for the output can
+also be set from 
 the command line with coordinates in the used coordinate reference system (CRS).
 All the command line parameters are considered for one or more images given 
 also in the command line.
@@ -157,7 +158,7 @@ also in the command line.
       --maxx MAXX      maximal x coordinate of extent to clip from image
       --maxy MAXY      maximal y coordinate of extent to clip from image
       --over OVER      overlap between rows and columns in pixels, default 1
-      --extend         create last patial row and column
+      --extend         create last pairtial row and column, too
 
 .. note::
 
