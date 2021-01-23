@@ -10,7 +10,8 @@ Az index a geometria minimális befoglaló téglalapja (MBR) alapján épül fel
 Sok PostGIS függvény automatikusan használja a térbeli indexet az elemek gyors 
 szűrésére (pl. ST_Contains, ST_Intersects, ST_DWithin, stb.). Bizonyos esetekben
 amikor nem használná a PostGIS függvény a térbeli indexet (ilyen például az
-ST_Relate), akkor az && operátorral kikényszeríthetjük azt.
+ST_Relate), akkor a befoglaló téglalappal dolgozó operátorokkal (pl. &&)
+kikényszeríthetjük azt.
 
 A térbeli indexek hatékonyság növelő hatását két táblával mutatjuk be.
 
