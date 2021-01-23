@@ -30,7 +30,7 @@ parser.add_argument('--maxy', type=float,
 parser.add_argument('--over', type=int, default=1,
                     help='overlap between rows and columns in pixels, default 1')
 parser.add_argument('--extend', action="store_true",
-                    help='create last patial row and column')
+                    help='create last partial row and column, too')
 
 args = parser.parse_args()
 if not args.names:
