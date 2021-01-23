@@ -69,7 +69,7 @@ lépéseit és az azok végrehajtásának becsült idejét tartalmazza.
 
 A fenti végrehajtási tervből láthatjuk, hogy közel 30 másodpercig tart majd a 
 lekérdezés végrehajtása. Egymásba ágyazott ciklusokkal (Nested Loop) dolgozik
-az adatbázis-kezelő és a *randp* táblán szekvenciálisan meg végig a belső
+az adatbázis-kezelő és a *randp* táblán szekvenciálisan megy végig a belső
 ciklusban. Ez az ami nagyon megnöveli a végrehajtási időt. Vegyük észre azt
 is, hogy a két tábla összekapcsolása során több mint 50 milliószor az 
 összekapcsolási feltétel nem teljesül (Rows Removed by Join Filter).
@@ -113,7 +113,7 @@ A lekérdezés futási ideje kevesebb mint tizedére esett vissza. Vegyük észr
 hogy a *randp* táblában a szekvenciális keresés helyett a térbeli index
 alapján történik a keresés. Mi történne, ha az *ST\_Intersects* (metsződik) függvény helyett 
 az *ST\_Contains* (tartalmaz) függvényt használnánk? Hasonlóan hatékony megoldást
-kapnánk. Próbálja ki!
+kapnánk? Próbálja ki!
 
 .. note::
 
@@ -133,7 +133,7 @@ a két geometria vizsgálatára.
 Milyen változást jelent ez? A két egymásba ágyazott ciklust felcseréljük, nem az
 vizsgáljuk mindel felületre, hogy a pont beleesik-e, hanem minden
 pontra megnézzük, hogy melyik felületbe esik. Azt várhatjuk, hogy a
-lekérdezés végrehajtása lelassul.
+lekérdezés végrehajtása lelassul mivel a felületekre nincs térbeli indexünk.
 
 .. code:: 
 
