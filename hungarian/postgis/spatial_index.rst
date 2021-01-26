@@ -130,8 +130,8 @@ a két geometria vizsgálatára.
           FROM admin8 a INNER JOIN randp b ON ST_Within(b.geom, a.geom)
           GROUP by a.id;
 
-Milyen változást jelent ez? A két egymásba ágyazott ciklust felcseréljük, nem az
-vizsgáljuk mindel felületre, hogy a pont beleesik-e, hanem minden
+Milyen változást jelent ez? A két egymásba ágyazott ciklust felcseréljük, nem
+azt vizsgáljuk mindel felületre, hogy a pont beleesik-e, hanem minden
 pontra megnézzük, hogy melyik felületbe esik. Azt várhatjuk, hogy a
 lekérdezés végrehajtása lelassul mivel a felületekre nincs térbeli indexünk.
 
