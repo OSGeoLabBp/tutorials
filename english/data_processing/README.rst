@@ -38,7 +38,7 @@ Samples were tested on Linux but should run on a Windows box, too.
 Table of contents
 -----------------
 
-#. `Load coordinates from Leica GSI into QGIS or AutoCAD <lessons/leica_gsi.rst>`_ (gawk, Octave)
+#. `Load coordinates from Leica GSI into QGIS or AutoCAD <lessons/leica_gsi.rst>`_ (gawk, Octave, Python)
 #. `Processing GSI file got from Leica DNA03 digital level <lessons/leica_dna03.rst>`_ (Octave)
 #. `Converting GPX to KML <lessons/gpx.rst>`_ (QGIS, ogr2ogr, Python)
 #. `NMEA message processing and display <lessons/nmea.rst>`_ (gawk, Octave, Python)
