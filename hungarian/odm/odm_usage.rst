@@ -148,7 +148,7 @@ el akarjuk készíteni az összes állományt, akkor a *--rerun-all* kapcsolót
 adjuk meg.
 
 Az ODM feldolgozás menetét több tucat kapcsolóval befolyásolhatjuk. Ezekről 
-részletesebb információt az `ODM dokumentációban <https://docs.opendronemap.org/arguments.html>_` találhatunk.
+részletesebb információt az `ODM dokumentációban <https://docs.opendronemap.org/arguments.html>`_ találhatunk.
 
 Az ODM-el előállított állományok megtekintésére, kezelésére más nyílt
 forráskódú szoftvereket használhatunk:
@@ -158,9 +158,11 @@ forráskódú szoftvereket használhatunk:
 +-----------------+----------------------------+
 | tif             | QGIS, GRASS GIS, SAGA      |
 +-----------------+----------------------------+
-| laz, ply        | CloudCompare               |
+| laz             | CloudCompare               |
 +-----------------+----------------------------+
-| obj, ply        | MeshLab                    |
+| obj             | MeshLab                    |
++-----------------+----------------------------+
+| ply             | MeshLab, CloudCompare      |
 +-----------------+----------------------------+
 
 WebODM
