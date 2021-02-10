@@ -78,7 +78,7 @@ for name in args.names:
     COL_STEP1 = COL_STEP + PIXEL_OVER   # some pixel overlap between rows
     OUT, _ = os.path.splitext(name)
     MAXJ = WIDTH - PIXEL_OVER if args.extend else WIDTH - COL_STEP + 1
-    MAXI = HEIGHT - PIXEL_OVER if args.extend else WIDTH - COL_STEP + 1
+    MAXI = HEIGHT - PIXEL_OVER if args.extend else HEIGHT - ROW_STEP + 1
     for j in range(0, MAXJ, COL_STEP):
         for i in range(0, MAXI, ROW_STEP):
             name = "{}_{}_{}.tif".format(OUT, j, i)
