@@ -59,7 +59,6 @@ From an NMEA file let's calculate statistical values:
 
 .. code:: python
 
-
 	""" NMEA statistics
 	"""
 
@@ -71,17 +70,19 @@ From an NMEA file let's calculate statistical values:
 		cs = ord(buf[1])
 		for ch in buf[2:-3]:
 			cs ^= ord(ch)
-		return cs
+        ch = '0' + re.sub('^0x', '', hex(cs))
+		return ch[-2:].upper()
 
 	def nmea2deg(nmea):
 		""" convert nmea angle (dddmm.ss) to degree """
 		w = nmea.rstrip('0').split('.')
 		return int(w[0][:-2]) + int(w[0][-2:]) / 60.0 + int(w[1]) / 3600.0
 		
-	fin = 'nmea2.txt'
 	if len(sys.argv) > 1:
 		fin = sys.argv[1]   # get input file from command line
-	fi = open(fin, 'r') # input file
+        fi = open(fin, 'r') # input file
+    else:
+        fi = sys.stdin
 	token = {}
 	minlat = 90
 	minlon = 180
