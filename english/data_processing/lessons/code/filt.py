@@ -21,7 +21,7 @@ def pc_filter(row_num, r_skip, n_dec, i_sep, o_sep, i_fp):
         n_dec (int) - number of decimals in output
         i_sep (char) - input separator
         o_sep (char) - output separator
-        i_fp (file) - hndle to input file
+        i_fp (file) - handle to input file
     """
     i = j = 0   # initialize input and output row numbers
     # set up format for required decimals
