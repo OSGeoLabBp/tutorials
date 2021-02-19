@@ -38,36 +38,58 @@ Samples were tested on Linux but should run on a Windows box, too.
 Table of contents
 -----------------
 
+Text file processing
+
 #. `Load coordinates from Leica GSI into QGIS or AutoCAD <lessons/leica_gsi.rst>`_ (gawk, Octave, Python)
 #. `Processing GSI file got from Leica DNA03 digital level <lessons/leica_dna03.rst>`_ (Octave)
 #. `Converting GPX to KML <lessons/gpx.rst>`_ (QGIS, ogr2ogr, Python)
+#. `Generate report from a DXF file <lessons/dxfinfo.rst>`_ (gawk)
+#. `Coordinate list processing with Unix text file utilities <lessons/coord_list.rst>`_
+
+GNSS
+
+#. `Statistics from NMEA file <lessons/nmea_stat.rst>`_ (OCtave, Python)
 #. `NMEA message processing and display <lessons/nmea.rst>`_ (gawk, Octave, Python)
+#. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_ (shell script, gawk)
+
+
+Point cloud data
+
+#. `Filter point cloud <lessons/pc_filter.rst>`_ (gawk, Python, CloudCompare)
+#. `Processing LiDAR data <lessons/lidar.rst>`_ (Octave, Python)
+#. `DTM GRID from point cloud <lessons/pc2grid.rst>`_ (Python, Octave)
+#. `Section from point cloud <lessons/lidar_section.rst>`_ (gawk, Octave, Python)
+
+Surveying calculation
+
 #. `Processing observations for a moving point <lessons/one_point.rst>`_ (Octave)
 #. `Measure point with slope prism rod <lessons/sphere.rst>`_ (Octave)
-#. `Processing LiDAR data <lessons/lidar.rst>`_ (Octave, Python)
-#. `Monitoring data processing <lessons/monitoring_data.rst>`_ (Octave)
+#. `Generalised inverse <lessons/pseudo_inverz.rst>`_ (Octave, Python)
 #. `Level network adjustment and data snooping <lessons/level_net.rst>`_ (Octave, Python)
 #. `Propagation of errors for polar observations <lessons/propagation_of_error.rst>`_ (OCtave)
-#. `Coordinate list processing with Unix text file utilities <lessons/coord_list.rst>`_
-#. `Statistics from NMEA file <lessons/nmea_stat.rst>`_ (OCtave, Python)
-#. `Polynom interpolation <lessons/polinom.rst>`_ (Octave, Python)
-#. `Generalised inverse <lessons/pseudo_inverz.rst>`_ (Octave, Python)
+#. `Processing bridge deflection data <lessons/deflection.rst>`_ (Octave)
+#. `Monitoring data processing <lessons/monitoring_data.rst>`_ (Octave)
+
+Interpolation, regression and transformation
+
+#. `Polynom interpolation and regression <lessons/polinom.rst>`_ (Octave, Python)
 #. `Regression circle <lessons/circle.rst>`_ (Octave, Python)
-#. `Generate report from a DXF file <lessons/dxfinfo.rst>`_ (gawk)
-#. `Find prime numbers <lessons/prime.rst>`_ (Octave, Python)
-#. `Filter point cloud <lessons/pc_filter.rst>`_ (gawk, Python, CloudCompare)
-#. `Section from point cloud <lessons/lidar_section.rst>`_ (gawk, Octave, Python)
-#. `DTM GRID from point cloud <lessons/pc2grid.rst>`_ (Python, Octave)
 #. `Regression sphere <lessons/reg_sphere.rst>`_ (Octave)
+#. `3D ortogonal transformation <lessons/3dtr.rst>`_ (Octave, Python)
+#. `Principal Component Analysis (PCA) <lessons/pca.rst>`_ (Python, Octave)
+
+
+Images
+
 #. `Bulk extract GPS positions from images <lessons/exif.rst>`_ (shell script, gawk, Python)
 #. `Bulk image convert to GeoTiff <lessons/image2geotiff.rst>`_ (shell script, gdal, Python)
-#. `3D ortogonal transformation <lessons/3dtr.rst>`_ (Octave, Python)
-#. `Processing bridge deflection data <lessons/deflection.rst>`_ (Octave)
-#. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_ (shell script, gawk)
 #. `Create image mosaic <lessons/img_mosaic.rst>`_ (shell script, Python)
-#. `Create time/data plot <lessons/time_data_plot.rst>`_ (Python)
 #. `Find circles in an image <lessons/find_circle.rst>`_ (Python)
-#. `Principal Component Analysis (PCA) <lessosons/pca.rst>`_ (Python, Octave)
+
+Mixed
+
+#. `Create time/data plot <lessons/time_data_plot.rst>`_ (Python)
+#. `Find prime numbers <lessons/prime.rst>`_ (Octave, Python)
 
 Program codes and sample data are in the `code <lessons/code>`_ folder.
 

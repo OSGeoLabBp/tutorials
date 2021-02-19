@@ -1,5 +1,5 @@
-Polynom interpolation
-=====================
+Polynom interpolation and regression
+====================================
 
 *Keywords*: interpolation, polynom
 
