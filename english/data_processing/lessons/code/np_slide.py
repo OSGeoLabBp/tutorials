@@ -4,6 +4,7 @@
     command line parameters: input_file, section_coordinate, column, tolerance 
 """
 import sys
+import numpy as np
 
 if len(sys.argv) < 5:
     print("usage: {} file section column tolerance\n".format(sys.argv[0]))
@@ -12,8 +13,7 @@ coo = float(sys.argv[2])
 col = int(sys.argv[3]) - 1  # shift column number to zero based
 tol = float(sys.argv[4])
 
-with open(sys.argv[1]) as fp:
-    for line in fp:
-        fields = [float(c) for c in line.strip().split(",")]
-        if abs(fields[col] - coo) < tol:
-            print("{:.3f},{:.3f},{:.3f}".format(fields[0], fields[1], fields[2]))
+pc = np.loadtxt(sys.argv[1], delimiter=',')
+sec = pc[np.absolute(pc[:, col] - coo) < tol]
+for i in range(sec.shape[0]):
+    print("{:.3f} {:.3f} {:.3f}".format(sec[i][0], sec[i][1], sec[i][2]))

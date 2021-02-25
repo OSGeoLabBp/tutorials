@@ -5,7 +5,7 @@ Find sections from lidar data
 
 *Data file*: lidar.txt, pc_ftszv_5cm.txt
 
-*Program files*: minmax.awk, minmax.m, minmax.py, slide.awk, slide.m, slide.py, section.m, section_cc.py
+*Program files*: minmax.awk, minmax.m, minmax.py, slide.awk, slide.m, slide.py, np_slide.py, section.m, section_cc.py
 
 The task will be solved in gawk, octave, Python and using command line interface of CloudCompare too.
 
@@ -321,6 +321,34 @@ Python solution (slide.py)
 			if abs(fields[col] - coo) < tol:
 				print("{:.3f},{:.3f},{:.3f}".format(fields[0], fields[1], fields[2]))
 
+Python solution using numpy (np_slide.py)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using numpy the code becames shorter but uses more memory. It loads the whole
+point cloud into the memory.
+
+.. code:: python
+
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+    """ filter point on a section perpendicular to an axis
+        command line parameters: input_file, section_coordinate, column, tolerance 
+    """
+    import sys
+    import numpy as np
+
+    if len(sys.argv) < 5:
+        print("usage: {} file section column tolerance\n".format(sys.argv[0]))
+        sys.exit()
+    coo = float(sys.argv[2])
+    col = int(sys.argv[3]) - 1  # shift column number to zero based
+    tol = float(sys.argv[4])
+
+    pc = np.loadtxt(sys.argv[1], delimiter=',')
+    sec = pc[np.absolute(pc[:, col] - coo) < tol]
+    for i in range(sec.shape[0]):
+        print("{:.3f} {:.3f} {:.3f}".format(sec[i][0], sec[i][1], sec[i][2]))
+
 General solution for sections
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -332,7 +360,6 @@ An other general solution for sections on point cloud was made by Timea Varga
 general section.
 
 .. code:: Octave
-
 
 	% Section of a point cloud
 	% (c)Varga Timea, Siki Zoltan 2017
