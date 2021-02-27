@@ -13,8 +13,8 @@ max = -min
 col = int(sys.argv[1]) - 1  # shift column number to zero based
 with open(sys.argv[2]) as fp:
     for line in fp:
-        fields = [float(c) for c in line.strip().split(",")]
-        if fields[col] < min: min = fields[col] 
-        if fields[col] > max: max = fields[col]
+        field = float(line.strip().split(",")[col])
+        if field < min: min = field 
+        if field > max: max = field
 
 print("{:.3f} {:.3f}".format(min, max))
