@@ -13,12 +13,12 @@ if len(sys.argv) < 7:
     print("usage: {} file e1 n1 e2 n2 tolerance\n".format(sys.argv[0]))
     sys.exit()
 
-# easting and northing of 1st and 2nd points on section    
+# easting and northing of 1st and 2nd points on section
 e1 = float(sys.argv[2])
 n1 = float(sys.argv[3])
 e2 = float(sys.argv[4])
 n2 = float(sys.argv[5])
-tol = float(sys.argv[6]) 
+tol = float(sys.argv[6])
 
 # coordinate differences
 de = e2 - e1
@@ -45,22 +45,26 @@ np3 = n1 + d * m - tol * r
 ep4 = e1 + tol * m
 np4 = n1 - tol * r
 
-#print out coordinates to check them out
+# print out coordinates to check them out
 print('{:.3f} {:.3f} {:.3f} {:.3f} {:.3f} {:.3f} {:.3f} {:.3f}'.format(ep1, np1, ep2, np2, ep3, np3, ep4, np4))
 
 # check platform
-if platform.system() is 'Windows':
-   cc = "C:\Program Files\CloudCompare\CloudCompare.exe"
-elif platform.system() is 'Linux':
-   cc = "cloudcompare.CloudCompare"
+if platform.system() == 'Windows':
+    cc = "C:\\Program Files\\CloudCompare\\CloudCompare.exe"
+elif platform.system() == 'Linux':
+    cc = "cloudcompare.CloudCompare"
 else:
-   print("you can use CC on windows or linux")
-   sys.exit()
+    print("you can use CC on windows or linux")
+    sys.exit()
 
-#print out CC command   
+# print out CC command
 print(cc)
 
 # run CC command
-subprocess.run([cc, "-SILENT", "-O", sys.argv[1], "-C_EXPORT_FMT", "ASC",
-    "-PREC", "3", "-Crop2d", "Z", "4", str(ep1), str(np1), str(ep2), str(np2),
-    str(ep3), str(np3), str(ep4), str(np4)])
+try:
+    subprocess.run([cc, "-SILENT", "-O", sys.argv[1], "-C_EXPORT_FMT", "ASC",
+                    "-PREC", "3", "-Crop2d", "Z", "4", str(ep1), str(np1),
+                    str(ep2), str(np2), str(ep3), str(np3), str(ep4), str(np4)],
+                   check=True)
+except subprocess.CalledProcessError:
+    print("Failde to run CC command")
