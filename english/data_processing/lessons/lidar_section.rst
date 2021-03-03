@@ -406,8 +406,8 @@ Let's make the code more general finding the point in a vertical section.
     the section line parameters and the homogenous coordinates (in 2D) of
     the points.
 
-CloudCompare solution
----------------------
+CloudCompare solution (section_cc.py)
+-------------------------------------
 
 Vertical section can be generated using CloudCompare (CC), as well. Here a simple
 python script is presented to get the section using command line interface of CC.
