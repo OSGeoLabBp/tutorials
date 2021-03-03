@@ -24,14 +24,14 @@ tol = float(sys.argv[6])
 de = e2 - e1
 dn = n2 - n1
 #distance
-d = math.sqrt(de**2 + dn**2)
+d = math.hypot(de, dn)
 # sinus/cosinus of the whole circle bearing
-r=de/d
-m=dn/d
+r = de / d
+m = dn / d
 
 # 1st corner of the rectangle
-ep1 = e1 - r - tol * m
-np1 = n1 - m + tol * r
+ep1 = e1 - tol * m
+np1 = n1 + tol * r
 
 # 2nd corner of the rectangle
 ep2 = e1 + d * r - tol * m
@@ -42,8 +42,11 @@ ep3 = e1 + d * r + tol * m
 np3 = n1 + d * m - tol * r
 
 # 4th corner of the rectangle
-ep4 = e1 - r + tol * m
-np4 = n1 - m - tol * r
+ep4 = e1 + tol * m
+np4 = n1 - tol * r
+
+#print out coordinates to check them out
+print('{:.3f} {:.3f} {:.3f} {:.3f} {:.3f} {:.3f} {:.3f} {:.3f}'.format(ep1, np1, ep2, np2, ep3, np3, ep4, np4))
 
 # check platform
 if platform.system() is 'Windows':
@@ -53,6 +56,9 @@ elif platform.system() is 'Linux':
 else:
    print("you can use CC on windows or linux")
    sys.exit()
+
+#print out CC command   
+print(cc)
 
 # run CC command
 subprocess.run([cc, "-SILENT", "-O", sys.argv[1], "-C_EXPORT_FMT", "ASC",
