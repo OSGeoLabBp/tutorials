@@ -21,18 +21,18 @@ fname = os.path.splitext(sys.argv[1])[0]
 
 # check platform
 if platform.system() == 'Windows':
-    cc = "C:\Program Files\CloudCompare\CloudCompare.exe"
-    #delete all the files with the point cloud filename but with extension asc
-    fileList = glob.glob(fname + '*.asc')
-    for f in fileList:
-        os.remove(f)
+    cc = "C:\\Program Files\\CloudCompare\\CloudCompare.exe"
 elif platform.system() == 'Linux':
     cc = "cloudcompare.CloudCompare"
 else:
     print("you can use CC on windows or linux")
     sys.exit()
 
-#print out CC command   
+#delete all the files with the point cloud filename but with extension asc
+fileList = glob.glob(fname + '*.asc')
+for f in fileList:
+    os.remove(f)
+#print out CC command
 #print(cc)
 
 #tolerance
@@ -78,16 +78,21 @@ with open(sys.argv[2]) as fp:
         #print('{:.3f} {:.3f} {:.3f} {:.3f} {:.3f} {:.3f} {:.3f} {:.3f}'.format(ep1, np1, ep2, np2, ep3, np3, ep4, np4))
 
         # run CC command
-        subprocess.run([cc, "-SILENT", "-O", sys.argv[1], "-C_EXPORT_FMT", "ASC",
-            "-PREC", "3", "-Crop2d", "Z", "4", str(ep1), str(np1), str(ep2), str(np2),
-            str(ep3), str(np3), str(ep4), str(np4)])
-        #CC automatically gives output filename
-        outpf_cc = glob.glob(fname + '*.asc')
-        #new filaname, first item in the section file
-        outp = "{:.0f}.asc".format(fields[0])
-        print(outpf_cc[0], outp)
-        #delete if exists
-        if os.path.exists(outp):
-            os.remove(outp)
-        #rename
-        os.rename(outpf_cc[0], outp)
+        try:
+            subprocess.run([cc, "-SILENT", "-O", sys.argv[1], "-C_EXPORT_FMT",
+                            "ASC", "-PREC", "3", "-Crop2d", "Z", "4",
+                            str(ep1), str(np1), str(ep2), str(np2),
+                            str(ep3), str(np3), str(ep4), str(np4)],
+                           check=True)
+            #CC automatically gives output filename
+            outpf_cc = glob.glob(fname + '*.asc')
+            #new filaname, first item in the section file
+            outp = "{:.0f}.asc".format(fields[0])
+            print(outpf_cc[0], outp)
+            #delete if exists
+            if os.path.exists(outp):
+                os.remove(outp)
+            #rename
+            os.rename(outpf_cc[0], outp)
+        except subprocess.CalledProcessError:
+            print("Failde to run CC command")
