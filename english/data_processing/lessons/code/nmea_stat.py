@@ -26,7 +26,7 @@ if len(sys.argv) > 1:
     fi = open(fin, 'r') # input file
 else:
     fi = sys.stdin
-token = {}
+tokens = {}
 minlat = 90
 minlon = 180
 maxlat = -90
@@ -36,11 +36,12 @@ for line in fi:
     if checksum(line) != line[-2:]:
         print("Chechsum error: " + line)
         continue
+    token = line[3:6]
     nmea = line.split(',')
-    if nmea[0] not in token:
-        token[nmea[0]] = 0
-    token[nmea[0]] += 1
-    if re.match('\$..GGA', line):
+    if token not in tokens:
+        tokens[token] = 0   # create new item in dictionary
+    tokens[token] += 1
+    if token == 'GGA':
         if nmea[6] == '1':  # use only fix
             lat = nmea2deg(nmea[2])
             if nmea[3].upper() == 'S':
@@ -55,5 +56,6 @@ for line in fi:
             maxlon = max(maxlon, lon)
 fi.close()
 print (minlat, minlon, maxlat, maxlon)
-for t in token:
-    print("{}: {}".format(t, token[t]))
+# print in reverse order of occurence
+for t in sorted(tokens.items(), key=lambda x: x[1], reverse=True):
+    print("{}: {}".format(t[0], t[1]))
