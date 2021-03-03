@@ -5,7 +5,7 @@ Find sections from lidar data
 
 *Data file*: lidar.txt, pc_ftszv_5cm.txt
 
-*Program files*: minmax.awk, minmax.m, minmax.py, slide.awk, slide.m, slide.py, np_slide.py, section.m, section_cc.py
+*Program files*: minmax.awk, minmax.m, minmax.py, slide.awk, slide.m, slide.py, vslide.py, np_slide.py, section.m, section_cc.py
 
 The task will be solved in gawk, octave, Python and using command line interface of CloudCompare too.
 
@@ -105,41 +105,11 @@ Python solution (minmax.py)
 	col = int(sys.argv[1]) - 1  # shift column number to zero based
 	with open(sys.argv[2]) as fp:
 		for line in fp:
-			field = float(line.strip().split(",")[col]
+			field = float(line.strip().split(",")[col])
 			if field < min: min = field 
 			if field > max: max = field
 
 	print("{:.3f} {:.3f}".format(min, max))
-
-Let's find the 3D bounding box of the pointcloud calling minmax.awk three times
-from a shell script.
-
-.. code:: bash
-
-	#! /bin/bash
-	if [ $# -ne 1 ]
-	then
-		echo "usage? $0 <file>"
-		exit 1
-	fi
-	if [ ! -f $1 ]
-	then
-		echo "$1 file not found"
-		exit 2
-	fi
-	for i in {1..3}
-	do
-		./minmax.awk -F, -v col=$i $1
-	done
-
-To use the shell script above, use the following command:
-
-.. code:: bash
-
-	./box.sh lidar.txt
-	548025.890 550424.100
-	5128996.490 5129293.080
-	933.310 1139.110
 
 Sections perpendicular to an axis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -192,6 +162,36 @@ Let's use GNUplot to display the section.
 	set style line 1 lt 1 lw 3 pt 3 linecolor rgb "red"
 	set output 'out.eps'
 	plot 'e1000.txt' using 1:2 w points title "section"
+
+Let's find the 3D bounding box of the pointcloud calling minmax.awk three times
+from a shell script.
+
+.. code:: bash
+
+	#! /bin/bash
+	if [ $# -ne 1 ]
+	then
+		echo "usage? $0 <file>"
+		exit 1
+	fi
+	if [ ! -f $1 ]
+	then
+		echo "$1 file not found"
+		exit 2
+	fi
+	for i in {1..3}
+	do
+		./minmax.awk -F, -v col=$i $1
+	done
+
+To use the shell script above, use the following command:
+
+.. code:: bash
+
+	./box.sh lidar.txt
+	548025.890 550424.100
+	5128996.490 5129293.080
+	933.310 1139.110
 
 octave solution (slide.m)
 -------------------------
@@ -302,8 +302,8 @@ chunks (*slide1.m*).
 		end
 	end
 
-Python solution (slide.py)
---------------------------
+Python solution (slide.py, vslide.py)
+-------------------------------------
 
 In the first Pytohn solution we read the file line by line, this way there is no 
 limitation for the file size.
@@ -330,11 +330,53 @@ limitation for the file size.
 			if abs(fields[col] - coo) < tol:
 				print("{:.3f},{:.3f},{:.3f}".format(fields[0], fields[1], fields[2]))
 
+Let's make the code more general finding the point in a vertical section.
+
+.. code:: python
+
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+    """ filter points on a vertical section
+        command line parameters: input_file, x1, y1, x2, y2, tolerance
+        vertical plain is defined by (x1,y1) and (x2,y2)
+    """
+    import sys
+    from math import hypot
+    import numpy as np
+
+    if len(sys.argv) < 5:
+        print("usage: {} file x1 y1 x2 y2 tolerance\n".format(sys.argv[0]))
+        sys.exit()
+    x1 = float(sys.argv[2])
+    y1 = float(sys.argv[3])
+    x2 = float(sys.argv[4])
+    y2 = float(sys.argv[5])
+    tol = float(sys.argv[6])
+    # set up equation for vertical plain a * x + b * y + c = 0
+    vp = np.zeros(3)
+    vp[0] = y1 - y2
+    vp[1] = x2 - x1
+    vp[2] = x1 * y2 - x2 * y1
+    # normalize
+    vp = vp / hypot(vp[0], vp[1])
+    mind = 1e38
+    with open(sys.argv[1]) as fp:
+        for line in fp:
+            p = [float(c) for c in line.strip().split(",")]
+            if abs(np.dot(vp, np.array([p[0], p[1], 1]))) < tol:
+                print("{:.3f},{:.3f},{:.3f}".format(p[0], p[1], p[2]))
+
+.. note::
+
+    The section line point distance is calculated by the scalar product  of 
+    the section line parameters and the homogenous coordinates (in 2D) of
+    the points.
+
 Python solution using numpy (np_slide.py)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Using numpy the code becomes shorter but uses more memory. It loads the whole
-point cloud into the memory.
+Using numpy the code becomes shorter but it uses more memory. It loads the
+whole point cloud into the memory.
 
 .. code:: python
 
