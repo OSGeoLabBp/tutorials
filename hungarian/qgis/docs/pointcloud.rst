@@ -7,13 +7,13 @@ QGIS 3.18
 
 A QGIS 3.18 verzióban jelent meg a pontfelhő állományok kezelése. LAS/LAZ
 fájlokat tölthetünk be. Az **Adatforrás kezelőben** egy új ikon jelent meg a 
-bel oldalon a pontfelhők betöltésére. Képeken szereplő pontfelhőt a 
+bal oldalon a pontfelhők betöltésére. A képeken szereplő pontfelhőt a 
 https://www.swisstopo.admin.ch/en/geodata/height/surface3d.html oldalról
 töltöttem le.
 
 |pointcloud1_png|
 
-A pontfelhők első megnyitása során a QGIS egy ingyexet épit fel a gyorsabb
+A pontfelhők első megnyitása során a QGIS egy indexet épit fel a gyorsabb
 megjelenítés érdekében, mely a gép teljesítményétől és a pontfelhő méretétől
 függően hosszabb időt vehet igénybe. Az index fájlok az *ept_*-vel kezdődő
 a fájl nevét tartalmazó alkönyvtárba kerülnek.
@@ -22,8 +22,9 @@ Az index mérete elég nagy lehet, például egy
 nyugodtan törölhetjük, ha szabad helyre lenne szükségünk a háttértárolón.
 
 A pontfelhők megjelenítése esetén a **Rétegstílusok** panelt célszerű
-bekapcsolni. A ponfelhőkre vonatkozóan többféle megjelenítési mód közül 
-választhatunk itt:
+bekapcsolni (Nézet/Panelek/Rétegstílusok a menüből).
+A ponfelhőkre vonatkozóan többféle megjelenítési mód közül 
+választhatunk itt a **Jelrendszer** fülön:
 
 * Csak a körvonal, piros szaggatot vonallal jelenik meg a befoglaló idom
 * Attribútum színezés, a pontfelhő fájlba szereplő attribútum szerinti színátmenetes színezés
@@ -42,8 +43,8 @@ A pontfelhő a 3D nézetben is megjeleníthető. Ahhoz, hogy ne csak 2D-ben
 lássuk a 3D nézetben a pontfelhőt, a rétegstílusok panelen egy-két beállítást
 el kell végezni. A 3D nézet fülön állítsuk be a 3D nézetben kívánt
 megjelenítést (az alapértelmezés az, hogy nem jelenik meg 3D-ben).
-Ezek többé-kevésbé egyeznek a 2D megjelenítés beállításival.
-Emellett célszerű a 2D-s nézetben csak a körvonl megjelenítését beállítani,
+Ezek többé-kevésbé egyeznek a 2D megjelenítés beállításiaival.
+Emellett célszerű a 2D-s nézetben csak a körvonal megjelenítését beállítani,
 hogy ne jelenjen meg kétszer a pontfelhő a 3D nézetben.
 
 |pointcloud3_png|
