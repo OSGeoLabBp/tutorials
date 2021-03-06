@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [Pontfelhők megjelenítése QGIS-ben](docs/pointcloud.rst)
 * [Méretezés](docs/meretezes.rst)
 * [Hasznos modulok](docs/useful_plugins.rst)
 * [PostGIS-ben tárolt pontok összeláncolása törtvonalakká](docs/pg_pontok.rst)
@@ -13,4 +14,4 @@ Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 * [Nyilvános térképek elérése QGIS-ből](docs/wms_szolg.rst)
 
 További oktatóanyagok:
-http://www.agt.bme.hu/gis/qgis
+http://osgeo.hu
