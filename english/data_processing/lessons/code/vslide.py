@@ -8,7 +8,7 @@ import sys
 from math import hypot
 import numpy as np
 
-if len(sys.argv) < 5:
+if len(sys.argv) < 7:
     print("usage: {} file x1 y1 x2 y2 tolerance\n".format(sys.argv[0]))
     sys.exit()
 x1 = float(sys.argv[2])
@@ -23,6 +23,7 @@ vp[1] = x2 - x1
 vp[2] = x1 * y2 - x2 * y1
 # normalize
 vp = vp / hypot(vp[0], vp[1])
+print(vp)
 mind = 1e38
 with open(sys.argv[1]) as fp:
     for line in fp:

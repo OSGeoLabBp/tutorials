@@ -5,7 +5,7 @@ Find sections from lidar data
 
 *Data file*: lidar.txt, pc_ftszv_5cm.txt
 
-*Program files*: minmax.awk, minmax.m, minmax.py, slide.awk, slide.m, slide.py, vslide.py, np_slide.py, section.m, section_cc.py
+*Program files*: minmax.awk, minmax.m, minmax.py, slide.awk, slide.m, slide.py, np_slide.py, vslide.py, np_vslide.py, section.m, section_cc.py
 
 The task will be solved in gawk, octave, Python and using command line interface of CloudCompare too.
 
@@ -361,10 +361,11 @@ whole point cloud into the memory.
 Vertical section
 ~~~~~~~~~~~~~~~~
 
-Python solution (vsection.py)
+Python solution 1 (vsection.py)
 -----------------------------
 
-Let's make the code more general finding the point in a vertical section.
+Let's make the code more general finding the points in a vertical section.
+In this solution only one line of the input file is read into the memory.
 
 .. code:: python
 
@@ -378,7 +379,7 @@ Let's make the code more general finding the point in a vertical section.
     from math import hypot
     import numpy as np
 
-    if len(sys.argv) < 5:
+    if len(sys.argv) < 7:
         print("usage: {} file x1 y1 x2 y2 tolerance\n".format(sys.argv[0]))
         sys.exit()
     x1 = float(sys.argv[2])
@@ -405,6 +406,45 @@ Let's make the code more general finding the point in a vertical section.
     The section line point distance is calculated by the scalar product  of 
     the section line parameters and the homogenous coordinates (in 2D) of
     the points.
+
+Python solution 2 (np_vslide.py)
+--------------------------------
+
+In this solution the input file is loaded into the memory and the points
+are selected by numpy array index-es.
+
+.. code:: python
+
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+    """ filter point on a vertical section
+        command line parameters: input_file, x1, y1, x2, y2, tolerance
+        vertical plain is defined by (x1,y1) and (x2,y2)
+    """
+    import sys
+    import numpy as np
+    from math import hypot
+
+    if len(sys.argv) < 7:
+        print("usage: {} file x1 y1 x2 y2 tolerance\n".format(sys.argv[0]))
+        sys.exit()
+    x1 = float(sys.argv[2])
+    y1 = float(sys.argv[3])
+    x2 = float(sys.argv[4])
+    y2 = float(sys.argv[5])
+    tol = float(sys.argv[6])
+    # set up equation for vertical plain vp[0] * x + vp[1] * y + vp[2] = 0
+    vp = np.zeros((3,))
+    vp[0] = y1 - y2
+    vp[1] = x2 - x1
+    vp[2] = x1 * y2 - x2 * y1
+    vp = vp / hypot(vp[0], vp[1])               # normalize
+    pc = np.loadtxt(sys.argv[1], delimiter=',') # load point cloud from text file
+    pc1 = pc.copy()
+    pc1[:, 2] = 1                   # change to homogenous 2D coord
+    sec = pc[np.dot(pc1, vp) < tol] # select points close to section
+    for i in range(sec.shape[0]):   # print out result
+        print("{:.3f} {:.3f} {:.3f}".format(pc[i][0], pc[i][1], pc[i][2]))
 
 CloudCompare solution (section_cc.py)
 -------------------------------------
