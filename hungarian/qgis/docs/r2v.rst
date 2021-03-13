@@ -74,12 +74,27 @@ Végül álljanak itt a GRASS parancsok:
 
 .. code:: bash
 
+    # raszter beolvasása a GRASS adatbázisba
     r.in.gdal -o input=contour2.png output=eredeti
+    # actuális számítási terület a raszter terjedelmére
     g.region raster=eredeti
+    # fehér színű pixelek NULL értékké alakítása
     r.null map=eredeti setnull=255
+    # raszter vonalak vékonyítása egy pixel szélesre
     r.thin input=eredeti output=vekonyitott iterations=200
+    # raszter-vektor átalakítás
     r.to.vect input=vekonyitott output=vektorizalt type=line
+    # vektor vonalak sikítása
     v.generalize input=vektorizalt output=simitott method=douglas threshold=1
+
+Ha a fenti sorokat egy parancsfájlba bemásoljuk (shell szkript Linuxon vagy
+bat fájl Windows-on), akkor egyben végrehejthatjuk  a műveleteket.
+
+.. note::
+
+    GRASS GIS használta esetén egy helyet (location) és egy térképcsoportot
+    (mapset) létre kell hozni. Lásd a GRASS oktató anyagokat a 
+    http://osgeo.hu oldalon.
 
 .. |r2v1_png| image:: images/r2v1.png
 
