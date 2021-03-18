@@ -13,13 +13,13 @@ import cv2
 # command line parameters
 parser = argparse.ArgumentParser()
 parser.add_argument('names', metavar='file_names', type=str, nargs='*',
-    help='pathes image files to process')
+    help='pathes to image files to process')
 parser.add_argument("-r", "--reference", required=True,
 	help="path to the input reference image")
 parser.add_argument('--nowrite', action="store_true",
-    help='show images')
+    help='do not write equalized images')
 parser.add_argument('--debug', action="store_true",
-    help='show images')
+    help='show images on screen')
 args = parser.parse_args()
 if not args.names:
     print("No input images given")
