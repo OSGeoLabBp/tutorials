@@ -4,7 +4,7 @@ Tutorials using OpenCV and Python
 Image correlation
 -----------------
 
-Find template image in the reference image
+Find template image in the reference image (code/img_correlation.py)
 
   Usage: img_correlation.py method_id template image gui
       method_id - 0/1/2/3 CV_TM_SQDIFF_NORMED/CV_TM_CCORR_NORMED/CV_TM_CCOEFF/CV_TM_CCOEFF_NORMED
