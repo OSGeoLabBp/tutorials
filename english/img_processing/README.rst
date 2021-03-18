@@ -14,6 +14,8 @@ Find template image in the reference image (code/img_correlation.py)
       image     - reference image
       
       gui       - draw image mark match
+      
+      img_correlation.py 0 mona_temp4.png monalisa.jpg gui
 
 Histogram equalization
 ----------------------
