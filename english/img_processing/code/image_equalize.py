@@ -3,7 +3,7 @@
 
 """
     Equalize images to the histogram of a reference image
-    Based on 
+    Based on https://www.pyimagesearch.com/2021/02/08/histogram-matching-with-opencv-scikit-image-and-python/
 """
 import argparse
 import os
