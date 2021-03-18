@@ -12,8 +12,8 @@ if __name__ == "__main__":
     if len(sys.argv) < 4:
         print("Usage: %s method_id template image gui" % sys.argv[0])
         print("    method_id - 0/1/2/3 CV_TM_SQDIFF_NORMED/CV_TM_CCORR_NORMED/CV_TM_CCOEFF/CV_TM_CCOEFF_NORMED")
-        print("    template  - template image to find in the video frames")
-        print("    image     - image to process")
+        print("    template  - template image to find in the reference images")
+        print("    image     - reference image")
         print("    gui       - draw image mark match")
         exit(1)
     # selected method
