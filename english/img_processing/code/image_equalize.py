@@ -17,7 +17,7 @@ parser.add_argument('names', metavar='file_names', type=str, nargs='*',
 parser.add_argument("-r", "--reference", required=True,
 	help="path to the input reference image")
 parser.add_argument('--nowrite', action="store_true",
-    help='do not write equalized images')
+    help='do not write equalized images to disk')
 parser.add_argument('--debug', action="store_true",
     help='show images on screen')
 args = parser.parse_args()
