@@ -21,10 +21,10 @@ vp = np.zeros((3,))
 vp[0] = y1 - y2
 vp[1] = x2 - x1
 vp[2] = x1 * y2 - x2 * y1
-vp = vp / hypot(vp[0], vp[1])               # normalize
+vp = vp / hypot(vp[0], vp[1])               # normalize line equation
 pc = np.loadtxt(sys.argv[1], delimiter=',') # load point cloud from text file
 pc1 = pc.copy()
 pc1[:, 2] = 1                   # change to homogenous 2D coord
 sec = pc[np.abs(np.dot(pc1, vp)) < tol] # select points close to section
-for i in range(sec.shape[0]):   # print out result
-    print("{:.3f} {:.3f} {:.3f}".format(pc[i][0], pc[i][1], pc[i][2]))
+for i in sec:   # print out result
+    print("{:.3f} {:.3f} {:.3f}".format(i[0], i[1], i[2]))
