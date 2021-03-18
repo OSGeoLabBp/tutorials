@@ -8,8 +8,11 @@ Find template image in the reference image
 
   Usage: img_correlation.py method_id template image gui
       method_id - 0/1/2/3 CV_TM_SQDIFF_NORMED/CV_TM_CCORR_NORMED/CV_TM_CCOEFF/CV_TM_CCOEFF_NORMED
+      
       template  - template image to find in the reference image
+      
       image     - image to process
+      
       gui       - draw image mark match
 
 Histogram equalization
