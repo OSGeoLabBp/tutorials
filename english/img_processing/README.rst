@@ -11,7 +11,7 @@ Find template image in the reference image
       
       template  - template image to find in the reference image
       
-      image     - image to process
+      image     - reference image
       
       gui       - draw image mark match
 
