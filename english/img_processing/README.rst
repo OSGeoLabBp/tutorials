@@ -16,6 +16,6 @@ Equalize image histogram to a reference image using Scikit (code/image_equalize.
     -h, --help            show this help message and exit
     -r REFERENCE, --reference REFERENCE
                           path to the input reference image
-    --nowrite             do not write equalized images
+    --nowrite             do not write equalized images to disk
     --debug               show images on screen
 
