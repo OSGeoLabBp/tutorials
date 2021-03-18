@@ -6,7 +6,6 @@ Histogram equalization
 
 Equalize image histogram to a reference image using Scikit (code/image_equalize.py).
 
-```
   usage: image_equalize.py [-h] -r REFERENCE [--nowrite] [--debug]
                          [file_names [file_names ...]]
 
@@ -19,4 +18,4 @@ Equalize image histogram to a reference image using Scikit (code/image_equalize.
                           path to the input reference image
     --nowrite             do not write equalized images
     --debug               show images on screen
-```
+
