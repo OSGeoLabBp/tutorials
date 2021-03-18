@@ -101,7 +101,7 @@ class GraphPlot:
             self.fmts.append(fmt)
         try:
             self.main_title, _ = os.path.splitext(os.path.basename(data_series[0][0]))
-        except:
+        except Exception:
             self.main_title, _ = os.path.splitext(os.path.basename(__file__))
 
     def draw(self):

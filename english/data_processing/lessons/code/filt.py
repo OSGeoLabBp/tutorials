@@ -59,7 +59,7 @@ if not args.names:  # process standard input
 for fn in args.names:   # process all files from commandline
     try:
         fp = open(fn)
-    except:
+    except Exception:
         continue        # skip files is not found
     pc_filter(args.nums, args.rows, args.decimals, args.input_separator,
               args.output_separator, fp)

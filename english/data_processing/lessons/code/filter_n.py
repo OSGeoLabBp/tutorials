@@ -11,12 +11,12 @@ fp = sys.stdin
 if len(sys.argv) > 1:
     try:
         n = int(sys.argv[1])
-    except:
+    except Exception:
         sys.exit(-1)
 if len(sys.argv) > 2:
     try:
         fp = open(sys.argv[2])
-    except:
+    except Exception:
         sys.exit(-2)
 for line in fp:
     i += 1

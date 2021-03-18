@@ -15,7 +15,7 @@ def GetNext(fp, separator=';'):
         if len(fields) > 2:
             try:
                 res = fields[0], [float(f) for f in fields[1:]]
-            except:
+            except Exception:
                 pass
         return res
     return None
@@ -54,7 +54,7 @@ def Area(pl, ps):
            are += (pl[ps[i]][0] + pl[ps[j]][0]) * (pl[ps[i]][1] - pl[ps[j]][1])
     return are / 2
 
-if __name__ == '__main__'
+if __name__ == '__main__':
     """ simple test """
     pp = GetCoo('labor.csv', ';')
     print(Filter(pp, '^1'))
