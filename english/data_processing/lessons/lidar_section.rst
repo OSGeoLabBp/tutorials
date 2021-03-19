@@ -442,7 +442,7 @@ are selected by numpy array index-es.
     pc = np.loadtxt(sys.argv[1], delimiter=',') # load point cloud from text file
     pc1 = pc.copy()
     pc1[:, 2] = 1                   # change to homogenous 2D coord
-    sec = pc[np.dot(pc1, vp) < tol] # select points close to section
+    sec = pc[np.abs(np.dot(pc1, vp)) < tol] # select points close to section
     for i in range(sec.shape[0]):   # print out result
         print("{:.3f} {:.3f} {:.3f}".format(pc[i][0], pc[i][1], pc[i][2]))
 
