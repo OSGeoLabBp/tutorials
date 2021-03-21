@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [QGIS domborzat modellezés](docs/dtm.rst)
 * [Raszter-vektor átalakítás](docs/r2v.rst)
 * [Pontfelhők megjelenítése QGIS-ben](docs/pointcloud.rst)
 * [Méretezés](docs/meretezes.rst)
