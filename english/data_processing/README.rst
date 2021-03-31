@@ -68,7 +68,7 @@ Surveying calculation
 #. `Level network adjustment and data snooping <lessons/level_net.rst>`_ (Octave, Python)
 #. `Propagation of errors for polar observations <lessons/propagation_of_error.rst>`_ (OCtave)
 #. `Processing bridge deflection data <lessons/deflection.rst>`_ (Octave)
-#. `Monitoring data processing <lessons/monitoring_data.rst>`_ (Octave)
+#. `Monitoring data processing <lessons/monitoring_data.rst>`_ (Octave, Python)
 
 Interpolation, regression and transformation
 
