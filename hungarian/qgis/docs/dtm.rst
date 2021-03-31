@@ -10,7 +10,8 @@ megjelenítésére. Alapvetően szabályos négyzetrácsban elrendezett modellek
 
 A munka során egy egyszerű ki állománnyal dolgozunk, mely szórt pontokat
 (points réteg) és idomvonalak (break_lines réteg) tartalmaz, a rétegek a 
-topo.gpkg Geopackage állományban találhatók. A két réteget adja hozzá egy 
+`topo.gpkg<data/topo.gpkg`_ Geopackage állományban találhatók. A két réteget
+adja hozzá egy 
 üres QGIS projekthez. Az idomvonlak (break_lines réteg) vannak völgyvonalak és
 hátvonalak, a hátvonalak megjelenítését állítsa szaggatott vonalra.
 
@@ -81,7 +82,7 @@ A QGIS a szintvonalakat a GDAL modul segítségével generálja. A
 rétegtulajdonságok információ fülén megtalálhatjuk, hogy a magasságok
 85 és 115 méter között változnak. A Feldolgozás eszköztárban egy 
 *Szintvonal* és egy *Szintvonalak* algoritmus is található. A *Szintvonal*
-vonalas elemek generál az azobos magasságú pontoból, míg a 
+vonalas elemek generál az azonos magasságú pontokból, míg a 
 *Szintvonalak* terület elemeket generál. Használjuk a vonalakat generáló
 algoritmust 2.5 méteres szintvonalközzel:
 
@@ -148,6 +149,17 @@ Számítsuk ki a DEM alatti 80 méter feletti térfogatot.
 |dtm11_png|
 
 A számítás eredményét a *Napló* fülön találjuk meg: 1571890 m3.
+
+Két domborzatmodell közötti térfogatot is meghatározhatjuk, ha azok kiterjedése
+azonos és a felbontást is célszerű azonosra felvenni. Az azonos kiterjedést egy maszk réteg létrehozásával és a **Raszter/Kivonat/Raszter vágás maszk réteggel**
+menüpont alkalmazásával érhetjük el. A két azonos kiterjedésű domborzat modell 
+közötti különbséget képezzük a **Raszter/Raszter kalkulátor** menüponttal.
+A különbség modellt szintén megjeleníthetjük és megjelenítve azt láthatóvá
+tehetjük a töltés, véltozatlan és bevágás területeket, ha a negatív, a nulla
+közeli és a pozitív értékeket eltérő színekkel jelenítjük meg.
+A bevágások és töltések térfogatát a különbség modellből a nulla szint felettei
+és alatti térfogatok külön-külön kiszámításával kaphatjuk meg (Raszter
+térfogat a Feldolgozás eszköztárból).
 
 .. |dtm1_png| image:: images/dtm1.png
 
