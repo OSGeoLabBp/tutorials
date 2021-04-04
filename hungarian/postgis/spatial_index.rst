@@ -258,3 +258,57 @@ A névre történő csoportképzés miatt egy rendezés szerepel a végrehajtás
      Execution Time: 4003.326 ms
 
 Ezzel az index-szel már csak kisebb gyorsítást tudtunk elérni. 
+
+Legközelebbi K szomszéd (KNN)
+-----------------------------
+
+A térinformatikában gyakran felmerülő probléma a legközelebbi K szomszéd
+(k-nearest neighbors). Nézzünk meg erre is egy példát. Itt már nem csak az
+index megléte, hanem az alkalamazott SQL lekérdezés is számít.
+Keressük meg a Műegyetemhez legközelebbi öt települést, a távolságot a 
+települések centrálisától mérjük.
+
+.. code:: sql
+
+    EXPLAIN ANALYSE
+    SELECT name, ST_Distance(ST_SetSRID(ST_MakePoint(2120666, 6021605), 3857), ST_Centroid(geom))
+        FROM admin8
+        ORDER BY ST_Distance(ST_SetSRID(ST_MakePoint(2120666, 6021605), 3857), ST_Centroid(geom))
+        LIMIT 5;
+
+.. code:: 
+
+    Limit  (cost=80301.46..80301.47 rows=5 width=18) (actual time=40.377..40.380 rows=5 loops=1)
+       ->  Sort  (cost=80301.46..80309.39 rows=3174 width=18) (actual time=40.375..40.376 rows=5 loops=1)
+             Sort Key: (st_distance('0101000020110F000000000000ED2D40410000004079F85641'::geometry, geom))
+             Sort Method: top-N heapsort  Memory: 25kB
+             ->  Seq Scan on admin8  (cost=0.00..80248.74 rows=3174 width=18) (actual time=0.052..38.686 rows=3174 loops=1)
+     Planning Time: 0.204 ms
+     Execution Time: 40.428 ms
+
+
+A fenti lekérdezés elemzéséből láthatjuk, hogy a fenti lekérdezés a térbeli
+indexet nem használja. A térbeli index használatának kikényszerítéséhez 
+speciális operátort (<->) kell használnunk.
+
+.. code:: sql
+
+    EXPLAIN ANALYSE
+    SELECT name, ST_Distance(ST_SetSRID(ST_MakePoint(2120666, 6021605), 3857), ST_Centroid(geom))
+        FROM admin8
+        ORDER BY ST_Centroid(geom) <-> ST_SetSRID(ST_MakePoint(2120666, 6021605), 3857)
+        LIMIT 5;
+
+A fenti lekérdezésben a <-> operátor kikényszeríti a térbeli index használatát,
+amit a lekérdezési tervből is láthatunk, valamint a kb. negyvenszeres
+gyorsulást.
+
+.. code::
+
+    Limit  (cost=0.15..143.31 rows=5 width=26) (actual time=0.616..1.195 rows=5 loops=1)
+       ->  Index Scan using admin8_geom on admin8  (cost=0.15..90880.69 rows=3174 width=26) (actual time=0.612..1.189 rows=5 loops=1)
+             Order By: (geom <-> '0101000020110F000000000000ED2D40410000004079F85641'::geometry)
+     Planning Time: 0.248 ms
+     Execution Time: 1.265 ms
+
+Lásd még a |=|, <#>, <<.>> és <<#>> oprátorokat.
