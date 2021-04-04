@@ -287,7 +287,7 @@ települések centrálisától mérjük.
      Execution Time: 40.428 ms
 
 
-A fenti lekérdezés elemzéséből láthatjuk, hogy a fenti lekérdezés a térbeli
+A fenti lekérdezés elemzéséből láthatjuk, hogy a térbeli
 indexet nem használja. A térbeli index használatának kikényszerítéséhez 
 speciális operátort (<->) kell használnunk.
 
@@ -312,3 +312,50 @@ gyorsulást.
      Execution Time: 1.265 ms
 
 Lásd még a |=|, <#>, <<.>> és <<#>> oprátorokat.
+
+Szomszédos települések megkeresése
+----------------------------------
+
+A szomszédok megkeresésére az érintkezés (ST_Touches) függvényt használhatjuk.
+
+.. code:: sql
+
+    EXPLAIN ANALYSE
+    SELECT a.name, b.name
+    FROM admin8 a INNER JOIN admin8 b ON ST_Touches(a.geom, b.geom);
+    
+A fenti lekérdezés eredményéből láthatjuk, hogy az ST_Touches függvény 
+használja a térbeli indexet.
+
+.. code::
+
+    Nested Loop  (cost=0.15..84344.19 rows=39254 width=20) (actual time=2.837..4272.443 rows=18530 loops=1)
+       ->  Seq Scan on admin8 a  (cost=0.00..898.74 rows=3174 width=2186) (actual time=0.012..1.473 rows=3174 loops=1)
+       ->  Index Scan using admin8_geom on admin8 b  (cost=0.15..26.28 rows=1 width=2186) (actual time=0.192..1.342 rows=6 loops=3174)
+             Index Cond: (geom && a.geom)
+             Filter: st_touches(a.geom, geom)
+             Rows Removed by Filter: 2
+     Planning Time: 0.645 ms
+     Execution Time: 4273.568 ms
+
+Azonban még kisebb mértékben a fenti lekérdezésen is gyorsíthatunk, ha az
+ST_Touches függvény hívása előtt egy a térbeli index alapján hatékonyabb
+előválogatást végzünk a befoglaló téglalapok alapján az && operátorral.
+
+.. code:: sql
+
+    EXPLAIN ANALYSE
+    SELECT a.name, b.name
+    FROM admin8 a INNER JOIN admin8 b
+    ON (a.geom && b.geom) and ST_Touches(a.geom, b.geom);
+    
+.. code::
+
+    Nested Loop  (cost=0.15..84352.13 rows=153 width=20) (actual time=3.322..3907.924 rows=18530 loops=1)
+       ->  Seq Scan on admin8 a  (cost=0.00..898.74 rows=3174 width=2186) (actual time=0.017..0.940 rows=3174 loops=1)
+       ->  Index Scan using admin8_geom on admin8 b  (cost=0.15..26.28 rows=1 width=2186) (actual time=0.175..1.228 rows=6 loops=3174)
+             Index Cond: ((geom && a.geom) AND (geom && a.geom))
+             Filter: st_touches(a.geom, geom)
+             Rows Removed by Filter: 2
+     Planning Time: 1.033 ms
+     Execution Time: 3908.732 ms
