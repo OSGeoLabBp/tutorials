@@ -10,7 +10,7 @@ Monitoring data processing
 
 *Sample data* (ID, Y, X, Z, date and time)
 
-We have the following data in csv file, time serie of x, y, z koordinates are stored.
+We have the following data in csv file, time serie of x, y, z koordinates are stored for different monitoring points.
 
 .. code:: text
 
@@ -34,6 +34,7 @@ We have the following data in csv file, time serie of x, y, z koordinates are st
     4;-19.333945026514478;478.235611597386139;15.923626830602119;2013-06-04 08:40:08
     6;-19.115290308679356;455.44931499712402;16.070135581243452;2013-06-04 08:40:08
 
+A row contains a point ID, the 3D coordinates and a datetime value.
 Let's draw a line chart for the data serie of z coordinate.
 
 Octave solution (monitoring.m)
@@ -104,11 +105,11 @@ Python solution (monitoring.py)
     """
         Graph from monitoring data
         Command line parameters 
-            csv input file
-            column number for point IDs (zero based)
-            column number for x (datetime) values
-            column number for y values
-            point number to use in chart (optional) several point ID can be given
+            1st csv input file
+            2nd column number for point IDs (zero based)
+            3rd column number for x (datetime) values
+            4th column number for y values
+            5th point number to use in chart (optional) several point ID can be given
                 if no point IDs are given all points are plotted
     """
 
@@ -120,7 +121,17 @@ Python solution (monitoring.py)
     import matplotlib.pyplot as plt    
 
     if len(sys.argv) < 2:
-        print("usage: input csv file p_num x_colum y_column p_num1 pnum2 ...")
+        print("""
+    usage: input_csv_file p_num_col x_colum y_column [p_num1 [pnum2 ...]]
+        Command line parameters 
+            1st csv input file
+            2nd column number for point IDs (zero based)
+            3rd column number for x (datetime) values
+            4th column number for y values
+            5th point number to use in chart (optional) several point IDs can be given
+                if no point IDs are given all points are plotted
+        """)
+
         sys.exit()
 
     if not os.path.exists(sys.argv[1]):

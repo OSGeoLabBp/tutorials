@@ -4,11 +4,11 @@
 """
     Graph from monitoring data
     Command line parameters 
-        csv input file
-        column number for point IDs (zero based)
-        column number for x (datetime) values
-        column number for y values
-        point number to use in chart (optional) several point ID can be given
+        1st csv input file
+        2nd column number for point IDs (zero based, optional)
+        3rd column number for x (datetime) values (optional)
+        4th column number for y values (optional)
+        5th point number to use in chart (optional) several point IDs can be given
             if no point IDs are given all points are plotted
 """
 
@@ -20,7 +20,16 @@ from datetime import datetime
 import matplotlib.pyplot as plt    
 
 if len(sys.argv) < 2:
-    print("usage: input csv file p_num x_colum y_column p_num1 pnum2 ...")
+    print("""
+usage: input_csv_file p_num_col x_colum y_column [p_num1 [pnum2 ...]]
+    Command line parameters 
+        1st csv input file
+        2nd column number for point IDs (zero based)
+        3rd column number for x (datetime) values
+        4th column number for y values
+        5th point number to use in chart (optional) several point IDs can be given
+            if no point IDs are given all points are plotted
+        """)
     sys.exit()
 
 if not os.path.exists(sys.argv[1]):
@@ -52,11 +61,12 @@ with open(sys.argv[1], newline='') as f:
         data[p_num][0].append(dt)
         data[p_num][1].append(y)
 fig = plt.figure(1)
-for key in data.keys():
-    plt.plot_date(data[key][0], data[key][1], '-', label=key)
+for key, val in data.items():
+    plt.plot_date(val[0], val[1], '-', label=key)
+#for key in data.keys():
+#    plt.plot_date(data[key][0], data[key][1], '-', label=key)
 plt.xticks(rotation=45)
 plt.xlabel("date time")
 plt.grid()
 plt.legend()
 plt.show()
-
