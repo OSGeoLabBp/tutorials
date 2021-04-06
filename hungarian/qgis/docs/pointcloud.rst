@@ -15,7 +15,7 @@ töltöttem le.
 
 A pontfelhők első megnyitása során a QGIS egy indexet épit fel a gyorsabb
 megjelenítés érdekében, mely a gép teljesítményétől és a pontfelhő méretétől
-függően hosszabb időt vehet igénybe. Az index fájlok az *ept_*-vel kezdődő
+függően hosszabb időt vehet igénybe. Az index fájlok az *ept_*-vel kezdődő,
 a fájl nevét tartalmazó alkönyvtárba kerülnek.
 Az index mérete elég nagy lehet, például egy
 ~400 MB-os LAS fájl esetén az index által foglalt háttértár ~80 MB. Az indexeket
@@ -56,7 +56,7 @@ eszközsorában található csavarkulcs ikonnal lenyitható listából a
 |pointcloud4_png|
 
 A 3D-s nézetben megjelenő szélrózsával és körülötte lévő ikonokkal 
-navigálhat, illetve az egeret és Shifti/Ctrl billentyűt használhatja. Minden
+navigálhat, illetve az egeret és Shift/Ctrl billentyűt használhatja. Minden
 mozgatásra több alternatív lehetőség van. Az alábbiakban a legegyszerűbb
 egér műveleteket adjuk meg.
 
