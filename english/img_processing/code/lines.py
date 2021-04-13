@@ -24,3 +24,8 @@ for fn in argv[1:]:
     fn3 = os.path.join(fn1[0], "l_" + fn1[1])
     cv2.imwrite(fn2, edges)
     cv2.imwrite(fn3, img)
+
+    cv2.imshow('img', img)
+    cv2.waitKey(0)
+    cv2.imshow('edges', edges)
+    cv2.waitKey(0)
