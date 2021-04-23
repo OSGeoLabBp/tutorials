@@ -17,10 +17,7 @@ x2 = float(sys.argv[4])
 y2 = float(sys.argv[5])
 tol = float(sys.argv[6])
 # set up equation for vertical plain a * x + b * y + c = 0
-vp = np.zeros(3)
-vp[0] = y1 - y2
-vp[1] = x2 - x1
-vp[2] = x1 * y2 - x2 * y1
+vp = np.array([y1 - y2, x2 - x1, x1 * y2 - x2 * y1], dtype=float)
 # normalize
 vp = vp / hypot(vp[0], vp[1])
 print(vp)
