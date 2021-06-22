@@ -84,7 +84,7 @@ használhatjuk a:
 
 címet. A fenti címet a pontfelhő megnyitása párbeszédablakban adhatjuk meg.
 
-|pointcloud4_png|
+|pointcloud5_png|
 
 .. |pointcloud1_png| image:: images/pointcloud1.png
 
