@@ -19,17 +19,22 @@ függően hosszabb időt vehet igénybe. Az index fájlok az *ept_*-vel kezdőd�
 a fájl nevét tartalmazó alkönyvtárba kerülnek.
 Az index mérete elég nagy lehet, például egy
 ~400 MB-os LAS fájl esetén az index által foglalt háttértár ~80 MB. Az indexeket
-nyugodtan törölhetjük, ha szabad helyre lenne szükségünk a háttértárolón.
+nyugodtan törölhetjük a QGIS automatikusan létrehozza a LAZ/LAS fájl
+megnyitásakor, ha szabad helyre lenne szükségünk a háttértárolón.
+A LAZ/LAS fájlt is törölhetjük/archiválhatjuk, ha később csak a QGIS-ben
+szeretnénk a pontfelhőt nézegetni. Ilyenkor az *ept.json* fájlt kell megnyitni
+az *ept_* könyvtárból
+a QGIS pontfelhő megnyitás párbeszédablakban.
 
 A pontfelhők megjelenítése esetén a **Rétegstílusok** panelt célszerű
 bekapcsolni (Nézet/Panelek/Rétegstílusok a menüből).
 A ponfelhőkre vonatkozóan többféle megjelenítési mód közül 
 választhatunk itt a **Jelrendszer** fülön:
 
-* Csak a körvonal, piros szaggatot vonallal jelenik meg a befoglaló idom
-* Attribútum színezés, a pontfelhő fájlba szereplő attribútum szerinti színátmenetes színezés
+* Csak a körvonal, piros szaggatot vonallal jelenik meg a befoglaló idom (a körvonal stílusa módosítható)
+* Attribútum színezés, a pontfelhő fájlba szereplő skalár érték szerinti színátmenetes megjelenítés (pl. intenzitás)
 * RGB, valódi színek szerinti megjelenítés
-* Osztályozás, talaj, épület, stb. osztályok megjelenítése
+* Osztályozás, talaj, épület, stb. osztályok megjelenítése (ez is egy attribútum szerinti megjelenítés, de gyakori haználata miatt önálló elem lett)
 
 A fenti megjelenítés típusokhoz szükséges adatokat nem feltétlenül 
 tartalmazzák az egyes pontfelhő állományok.
@@ -66,6 +71,21 @@ egér műveleteket adjuk meg.
 * Kamera irány - CTRL és bal egérgomb húzás
 * Nagyítás/kicsinyítés - egérgörgő forgatás
 
+A QGIS 3.20 verzióban Entwine formátumban lévő pontfelhőket közvetlenül
+megnyithatunk az internetről. Ezt a formátumot hozza létre a QGIS az *ept_*-vel
+kezdődő alkönyvtárban. A teljes *ept_* kezdetű könyvtárat egy web szerver
+egy nyilvános könyvtárába feltöltve az *ept.json* fájl URL-jét használhatjuk 
+a megnyitásnál. Például Chicago területére eső pontfelhő megnyitásához
+használhatjuk a:
+
+.. code::
+
+    https://s3-us-west-2.amazonaws.com/usgs-lidar-public/USGS_LPC_IL_4County_Cook_2017_LAS_2019/ept.json
+
+címet. A fenti címet a pontfelhő megnyitása párbeszédablakban adhatjuk meg.
+
+|pointcloud4_png|
+
 .. |pointcloud1_png| image:: images/pointcloud1.png
 
 .. |pointcloud2_png| image:: images/pointcloud2.png
@@ -74,3 +94,4 @@ egér műveleteket adjuk meg.
 
 .. |pointcloud4_png| image:: images/pointcloud4.png
 
+.. |pointcloud5_png| image:: images/pointcloud5.png
