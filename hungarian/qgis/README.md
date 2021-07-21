@@ -1,7 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
-* [DWG állomány megnyitása](opendwg.rst)
+* [DWG állomány megnyitása](docs/opendwg.rst)
 * [QGIS domborzat modellezés](docs/dtm.rst)
 * [Raszter-vektor átalakítás](docs/r2v.rst)
 * [Pontfelhők megjelenítése QGIS-ben](docs/pointcloud.rst)
