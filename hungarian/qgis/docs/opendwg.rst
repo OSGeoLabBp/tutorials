@@ -47,8 +47,9 @@ elemek. Általábn nem célszerű bekapcsolni.
 Az **Ok** gomb megnyomása után kezdődik el az import. A rajzi fájl méretétől
 függően az import hosszabb időt vehet igénybe. A QGIS automatikusan
 beállítja az importált rétegek stílusát, hogy azok megjelenése a lehető
-legjobban hasonlítson a DWG állományhoz. FIGYELEM ezek a stílus beállítások 
-a projekt mentésével őrizhetők meg!
+legjobban hasonlítson a DWG állományhoz. Azok a DWG rétegek, melyeken
+egyetlen rajzi elem sincs nem jelennek meg a QGIS réteglistájában. 
+FIGYELEM ezek a stílus beállítások a projekt mentésével őrizhetők meg!
 
 2021. július 21.
 
