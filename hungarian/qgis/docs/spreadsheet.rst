@@ -33,7 +33,7 @@ adatokat. A már betöltött táblázatunkat a **Feldolgozás eszköztárban**
 található *Pont réteg létrehozása táblából* eszközt használhatjuk. 
 Figyeljünk a vetületi rendszer helyes beálltására!
 
-|spreadsheet_png|
+|spreadsheet1_png|
 
 CSV fájlból közvetlenül is előállíthatjuk a pontokat tartalmazó QGIS réteget,
 a *Tagolt szöveg réteg hozzáadása* eszközzel vagy menüponttal.
