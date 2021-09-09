@@ -45,6 +45,8 @@ a *Tagolt szöveg réteg hozzáadása* eszközzel vagy menüponttal.
 |spreadsheet2_png|
 
 .. |spreadsheet1.png| image:: images/spreadsheet1.png
+    :width: 10cm
+    :height: 10cm
 
 .. |spreadsheet2.png| image:: images/spreadsheet2.png
 
