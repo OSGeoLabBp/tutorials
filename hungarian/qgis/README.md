@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [Réteg változatok összehasonlítása](docs/compare_layer.rst)
 * [DWG állomány megnyitása](docs/opendwg.rst)
 * [QGIS domborzat modellezés](docs/dtm.rst)
 * [Raszter-vektor átalakítás](docs/r2v.rst)
