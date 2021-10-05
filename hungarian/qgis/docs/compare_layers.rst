@@ -33,7 +33,7 @@ Az eredeti réteg:
 
 A módosult réteg:
 
-|layer_com2_png|
+|layer_comp2_png|
 
 A beállítások:
 
