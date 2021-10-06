@@ -42,7 +42,7 @@ rétegek importálás utáni láthatóságáról dönthetünk.
 
 A *Rétegek összevonása* jelölő négyzet segítségével a rajzi elem típusának
 megfelelő rétegekre (points, lines, polylines, texts, hatches) kerülnek a rajzi
-elemek. Általábn nem célszerű bekapcsolni.
+elemek. Általában nem célszerű bekapcsolni.
 
 Az **Ok** gomb megnyomása után kezdődik el az import. A rajzi fájl méretétől
 függően az import hosszabb időt vehet igénybe. A QGIS automatikusan
