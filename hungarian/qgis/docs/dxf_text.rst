@@ -8,7 +8,7 @@ QGIS 3.x
 A GIS és CAD állományok eltérő logikájából következően a CAD állományban lévő 
 feliratok átvétele problémát jelenthet.
 A QGIS többféle megoldást kínál a DXF állományok beolvasására, melyek különböző
-megoldásokat kínálnak a szövegek betöltésére.
+eredménnyel járnak a szövegek betöltésére.
 
 A következőkben egy minta fájl betöltésén keresztül mutatjuk be a különböző
 lehetőségek előnyeit, hátrányait.
