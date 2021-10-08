@@ -41,7 +41,7 @@ DXF fájl megnyitása a rétegkezelőből
 ------------------------------------
 
 Az adatforrás kezelőből a DXF vektor réteg hozzáadása egy párbeszédablakot 
-jeleni meg, melyben rajzi elem típusa alapján választhatunk a betölthető elemek
+jelenit meg, melyben a rajzi elem típusa alapján választhatunk a betölthető elemek
 közül. A minta állomány esetén *23 pont* és *159 törtvonal* betöltését
 választhatjuk. A betöltés során a szövegekből pontok lesznek.
 
@@ -50,7 +50,7 @@ választhatjuk. A betöltés során a szövegekből pontok lesznek.
 A szövegek a pontokat tartalmazó réteg *Text* nevű oszlopába kerülnek.
 Ezeket címkeként jeleníthetjük meg a QGIS-ben. Mivel a betöltés során a
 szövegek elforgatási szöge nem kerül be az attribútum táblába, az összes 
-szöveget azonos irányba tudjuk megjeleníteni.
+szöveget azonos szögben tudjuk megjeleníteni.
 
 |dxf_text3_png|
 
@@ -59,8 +59,8 @@ DXF fájl megnyitása projekt importból
 
 A **Projekt** menüben az **Import/Export** csoportban találhatjuk a 
 **Rétegek importálása DWG/DXF formátumból...** menüpontot. Segítségével a
-CAD fájl rétegszerkezetét megőrizve egy GeoPackage (.gpkg) állomány hozhatunk
-létre. A megjelenő párbeszédablakban megkell adnunk a cél geocsomag útvonalát,
+CAD fájlból egy GeoPackage (.gpkg) állomány hozhatunk
+létre. A megjelenő párbeszédablakban meg kell adnunk a cél geocsomag útvonalát,
 ez általában egy új fájl megadását jelenti. Mivel a DXF állomány nem tartalmaz
 a vetületre vonatkozó információt, ezért azt itt be kell állítanunk.
 A forrásrajz megadása után a rétegek listáját kitölti a program, ezek közül
@@ -113,7 +113,7 @@ az elfogatás szögét állítsuk be a *DIRECTION* attribútum értékére.
 AnotherDXFImporter modul használata
 ------------------------------------
 
-Ez a külön telepíthető QGIS modul a projekt importáládhoz hasonlóan számos
+Ez a külön telepíthető QGIS modul a projekt importáláshoz hasonlóan számos
 adatot átvesz az attribútum táblába a DXF fájlból és ennek megfelelően
 a megjelenítési stílusokat is beállítja. A stílusok megőrzéséhez a projektet
 kell menteni.
