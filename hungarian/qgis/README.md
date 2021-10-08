@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [Szövegek betöltése DXF fájlból](docs/dxf_text.rst)
 * [Réteg változatok összehasonlítása](docs/compare_layers.rst)
 * [DWG állomány megnyitása](docs/opendwg.rst)
 * [QGIS domborzat modellezés](docs/dtm.rst)
