@@ -8,7 +8,7 @@ Réteg különböző verzióinak összehasonlítása
 Gyakran előfordulhat, hogy nem sikerül jól szervezni az egyes rétegek 
 karbantartását, aktualizálását. A réteg két másolatán egymástól függetlenül 
 szerkesztenek. Amikor ezzel a helyzettel szembesülünk szeretnénk megtudni, hogy hol vannak eltérések a két változt között, illetve elkezdhetünk gondolkozni,
-hogy PostGIS adatbázist használhatnánk.
+hogy egy központi PostGIS adatbázist használhatnánk.
 
 A Feldolgozás eszköztár *Vektor általános* csoportja tartalmaz egy 
 *Adathalmaz változásainak detektálása* elemet, melyet az eltérések kimutatására 
