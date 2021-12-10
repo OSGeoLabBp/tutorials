@@ -136,6 +136,7 @@ Input data are separated into four files.
       printf('%4d %4d %9.4f  %7.4f %9.4f\n', p1, p2, dirs(i, 3), v_gon, dirs(i, 3)+v_gon);
     end
 
+Output of the program
 
 .. code::
 
@@ -185,7 +186,7 @@ Input data are separated into four files.
 
 .. note:: *Developing tipps*:
 
-    Calculate mean errors or adjusted coordinates and observations
+    Calculate mean errors of adjusted coordinates and observations
 
 
 
