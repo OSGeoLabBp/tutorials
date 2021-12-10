@@ -66,6 +66,7 @@ Surveying calculation
 #. `Measure point with slope prism rod <lessons/sphere.rst>`_ (Octave)
 #. `Generalised inverse <lessons/pseudo_inverz.rst>`_ (Octave, Python)
 #. `Level network adjustment and data snooping <lessons/level_net.rst>`_ (Octave, Python)
+#. `Free horizontal network adjustment <lessons/horiz_net.rst>`_ (Octave)
 #. `Propagation of errors for polar observations <lessons/propagation_of_error.rst>`_ (OCtave)
 #. `Processing bridge deflection data <lessons/deflection.rst>`_ (Octave)
 #. `Monitoring data processing <lessons/monitoring_data.rst>`_ (Octave, Python)
