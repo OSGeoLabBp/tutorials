@@ -162,6 +162,9 @@ folder,
       printf('%4d %4d %9.4f  %7.4f %9.4f  %7.4f\n', p1, p2, dirs(i, 3), v_gon, dd, m0 * sqrt(quu(j, j)));
     end
 
+Output of the program
+---------------------
+
 .. code::
 
     Check of calculation: 8.66432 = 8.66432?
@@ -219,7 +222,3 @@ folder,
 .. note:: *Developing tipps*:
 
     Change calculation units to cm and cc to reduce rounding errors.
-
-
-
-
