@@ -1,15 +1,20 @@
 % horizontal free network adjustment
-% point numbers should be 1, 2, 3, etc.
+% point numbers should be ordinal numbers: 1, 2, 3, etc.
+% coordinate list have to be sorted for point numbers
+% all input angles are in GONs
 
 format long
+% **** UPDATE A PRIORI MEAN ERRORS ****
 std_dist = 0.001; % mean error of distances im meters
-std_dir = 0.0006 / 200 * pi;  % mean error of directions in radians
+std_dir = 0.0006; % mean error of directions in GON
+% **** END UPDATEABLE PART ****
+std_dir = std_dir / 200 * pi;  % mean error to radians
 p_dist = 1.0 / std_dist**2;
 p_dir = 1.0/ std_dir**2;
 % load preliminary coordinates: Y, X or ID, Y, X 
 coords = dlmread('coords.txt', ',');
 if (columns(coords) > 2)
-  coords = coords(:, 2:3);
+  coords = coords(:, 2:3);  % drop point ids as it is the index
 end
 % load distances: from , to, horizontal distance
 dists = dlmread('dists.txt', ',');
@@ -71,36 +76,54 @@ Ninv = pinv(N);
 f = m - rank(N);        % number of redundant observations
 x = Ninv * A' * P * l;  % change of preliminary values
 v = A * x - l;          % corrections
-m0 = sqrt((v' * P * v) / f);
+m0 = sqrt((v' * P * v) / f);    % mean error of unit weight
+quu = A * Ninv * A';
 w1 = v' * P * v;
 w2 = -l' * P * v;
 % output
 printf('Check of calculation: %.5f = %.5f?\n', w1, w2);
 printf('m0 = %5.2f\n', m0);
 printf('\nOrientation unknowns [GON]\n');
-printf('Station  Prelim  Change Adjusted\n');
+printf('Station  Prelim  Change Adjusted Mean error\n');
 for i = 1:rows(oris)
-  printf('%6d %8.4f %6.4f %8.4f\n', i, oris(i), x(i) * 200.0 / pi, oris(i) + x(i) * 200.0 / pi);
+  x_gon = x(i) * 200 / pi;
+  oo = oris(i) + x_gon;
+  if (oo < 0)
+      oo += 400;
+  end
+  printf('%6d %8.4f %6.4f %8.4f %6.4f\n', i, oris(i), x_gon, oo, m0 * sqrt(Ninv(i, i)));
 end
 printf('\nAdjusted coordinates [m]\n');
-printf('Point            Prelim             Change              Adjusted\n')
+printf('                Preliminary         Change\n')
+printf('Point        East         North  East   North\n')
 for i = 1:rows(coords)
   j = stn + i * 2 - 1;
-  printf('%5d %12.3f,%12.3f %6.3f,%6.3f %12.3f,%12.3f\n', i, coords(i, 1), coords(i, 2), x(j), x(j+1), coords(i, 1)+x(j), coords(i, 2)+x(j+1));
+  printf('%5d %12.3f,%12.3f %6.3f,%6.3f\n', i, coords(i, 1), coords(i, 2), x(j), x(j+1));
+end
+printf('\n                  Adjusted        Mean error\n')
+printf('Point        East         North  East   North\n')
+for i = 1:rows(coords)
+  j = stn + i * 2 - 1;
+  printf('%5d %12.3f,%12.3f %6.3f,%6.3f\n', i, coords(i, 1)+x(j), coords(i, 2)+x(j+1), m0 * sqrt(Ninv(j,j)), m0 * sqrt(Ninv(j+1,j+1)));
 end
 printf('\nCorrections and observations\n');
 printf('Distances [m]\n');
-printf('From   To Measured    Corr    Adjusted\n');
+printf('From   To Measured    Corr    Adjusted  Mean error\n');
 for i = 1:rows(dists)
   p1 = dists(i, 1);
   p2 = dists(i, 2);
-  printf('%4d %4d %8.3f  %7.3f  %8.3f\n', p1, p2, dists(i, 3), v(i), dists(i, 3)+v(i));
+  printf('%4d %4d %8.3f  %7.3f  %8.3f  %7.3f\n', p1, p2, dists(i, 3), v(i), dists(i, 3)+v(i), m0 * sqrt(quu(i, i)));
 end
 printf('\nDirections [GON]\n');
-printf('From   To  Measured   Corr    Adjusted\n');
+printf('From   To  Measured   Corr    Adjusted  Mean error\n');
 for i = 1:rows(dirs)
-  p1 = dists(i, 1);
-  p2 = dists(i, 2);
-  v_gon = v(rows(dists) + i) * 200.0 / pi;
-  printf('%4d %4d %9.4f  %7.4f %9.4f\n', p1, p2, dirs(i, 3), v_gon, dirs(i, 3)+v_gon);
+  p1 = dirs(i, 1);
+  p2 = dirs(i, 2);
+  j = rows(dists) + i;
+  v_gon = v(j) * 200.0 * pi;
+  dd = dirs(i, 3) + v_gon;
+  if (dd < 0)
+    dd += 400;
+  end
+  printf('%4d %4d %9.4f  %7.4f %9.4f  %7.4f\n', p1, p2, dirs(i, 3), v_gon, dd, m0 * sqrt(quu(j, j)));
 end
