@@ -23,7 +23,7 @@ időmérés érdekében függvényt készítünk az összeg képzésére
             i += 1
         return s
 
-A fenti megoldásban mindnet a kezünkben tartunk a ciklus változó (**i**)
+A fenti megoldásban mindent a kezünkben tartunk a ciklus változó (**i**)
 növelését és az összeg képzését (**s**). A Pythonban írt kód sokkal lasabb
 mint a C/C++ nyelven írt kód. A Python beépített függvényeit C nyelven 
 írják, ezért célszerűbb beépített függvény (**range**) és **for** ciklus
