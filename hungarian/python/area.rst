@@ -296,12 +296,12 @@ listának az elemeit kell Point objektumokat tartalmazó listává.
 A \*i a listát felbontja az elemeire és Point onjektum konstruktora már
 két számot kap.
 
-A kódunk kipróbálásához használjuk a következő kódot:
+A kódunk kipróbálásához használjuk a következő programot:
 
 .. code:: python
 
-	from geom import Point
-	from area4 import Polygon
+    from geom import Point
+    from area4 import Polygon
 
     # read polygons from file and calculate areas
     fn = "polys.txt"
@@ -312,3 +312,26 @@ A kódunk kipróbálásához használjuk a következő kódot:
         for line in lines:
             i += 1
             print("{:4d} {:12.2f}".format(i, Polygon(Txt2PntList(line)).area()))
+
+Hatodik verzió
+--------------
+
+A gyakran előforduló problémák megoldására Pythonban kész modulokat találhatunk. 
+A geometriai elemekkel kapcsolatos számításokra a *shapely* bővítményt használhatjuk.
+
+.. code:: python
+
+    from shapely import wkt
+    poly = wkt.loads(''' POLYGON ((
+        634110.62 232422.09,
+        634108.23 232365.96,
+        634066.13 232378.12,
+        634062.95 232457.58,
+        634111.68 232454.93,
+        634110.62 232422.09))''')
+    print(abs(poly.area))    # terület
+    print(poly.length)       # kerület
+    
+A fenti kódban a szabványos WKT (Well Known Text) formátumot használjuk a *shapely*
+poly objektum létrehozására. Emellett számos további lehetőséget biztosít a *shapely*.
+Érdemes a dokumentációjába belenézni: https://shapely.readthedocs.io/en/stable/manual.html
