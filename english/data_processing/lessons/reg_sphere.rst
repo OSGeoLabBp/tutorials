@@ -1,6 +1,9 @@
 Regression sphere
 =================
 
+*Data files*: sphere1.txt
+*Program files*: sphere.m, sphere.py
+
 A set of observed points are on a sphere. Let's find
 the best fitting sphere (center point and radius) to these points.
 
@@ -18,6 +21,11 @@ the best fitting sphere (center point and radius) to these points.
 This solution is similar to the method used for circle fitting. Substitutions
 were used to have linear equation system for a1, a2, a3, a4, from these the
 center point coordinates (x0, y0, z0) can be calculated and then the radius.
+
+Octave solution
+---------------
+
+The above formulas are used for points read from text file.
 
 .. code::
 
@@ -38,3 +46,57 @@ center point coordinates (x0, y0, z0) can be calculated and then the radius.
 
 A vectorized solution is given above and the RMS value is calculated too.
 The RMS value reflects the goodness of the sphere fitting.
+
+Results of the program:
+
+.. code::
+
+    101.98 99.72 58.19 0.28
+    rms =    5.5532e-12
+
+Python/numpy solution
+---------------------
+
+In this Python code more input files are handled from the command line.
+The code for a sphere fitting is put into a function (*sphere*).
+
+.. code:: python
+
+    import numpy as np
+    from math import sqrt
+    from sys import argv
+
+    def sphere(x_, y_, z_):
+        """
+            calculate best fitting sphere (LSM) on points
+            :param returns: x0, y0, z0, R
+        """
+        n_ = x_.shape[0]
+        a = np.c_[x_, y_, z_, np.full(n_, 1, 'float64')]
+        b = -np.square(x_) - np.square(y_) - np.square(z_)
+        res = np.linalg.lstsq(a, b, rcond=None)[0]
+        return -0.5 * res[0], -0.5 * res[1], -0.5 * res[2], \
+              sqrt((res[0]**2 + res[1]**2 + res[2]**2) / 4 - res[3])
+
+    if __name__ == "__main__":
+        if len(argv) > 1:
+            file_names = argv[1:]
+        else:
+            file_names = ['sphere1.txt']
+        for file_name in file_names:
+            pnts = np.genfromtxt(file_name, 'float64', delimiter=',')
+            if pnts.shape[1] > 3:
+                pnts = pnts[:,1:4]  # skip first column (point id)
+            sph = sphere(pnts[:,0], pnts[:,1], pnts[:,2])
+            print("x0: {:.3f} y0: {:.3f} z0: {:.3f} R: {:.3f}".format(sph[0], sph[1], sph[2], sph[3]))
+            dr = np.sqrt(np.sum(np.square(pnts - sph[:3]), 1)) - sph[3] # difference in radius direction
+            RMS = sqrt(np.sum(np.square(dr)) / pnts.shape[0])
+            print("RMS: {:.3f}".format(RMS))
+
+Results of the program using sphere1.txt:
+
+.. code:: 
+
+    x0: 101.985 y0: 99.725 z0: 58.187 R: 0.277
+    RMS: 0.000
+
