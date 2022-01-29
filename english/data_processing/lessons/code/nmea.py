@@ -14,9 +14,9 @@ def checksum(buf):
     return ch[-2:].upper()
 
 def nmea2deg(nmea):
-    """ convert nmea angle (dddmm.ss) to degree """
+    """ convert nmea angle (dddmm.mm) to degree """
     w = nmea.rstrip('0').split('.')
-    return int(w[0][:-2]) + int(w[0][-2:]) / 60.0 + int(w[1]) / 3600.0
+    return int(w[0][:-2]) + int(w[0][-2:]) / 60.0 + int(w[1]) / 1000.0 / 60
     
 if len(sys.argv) > 1:
     fin = sys.argv[1]   # get input file from command line
