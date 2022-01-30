@@ -18,7 +18,12 @@ Matlab.
 
 Python is nowadays one of the most popular programming languages. It has several
 extension modules.
-Numpy modul adds the power to numeric processing to Python.
+Numpy modul adds the power to numeric processing to Python. `Python in a 
+nutshell <lessons/python_in_a_nutshell.ipynb>_` Jupyter notebook for beginners in Python.
+
+Some Python lessons are written in Jupiter notebook on Google Colab. You can 
+open them even if you have no Google account. These lessons have an **Open in 
+Colab** link at the beginning. Click on it and you can try and edit notebook.
 
 Samples mostly concern on observation data/file processing.
 
@@ -40,6 +45,7 @@ Table of contents
 
 Text file processing
 
+#. `Text file processing in Python <lessons/text_files.ipynb>`_ (Jupyter notebook)
 #. `Load coordinates from Leica GSI into QGIS or AutoCAD <lessons/leica_gsi.rst>`_ (gawk, Octave, Python)
 #. `Processing GSI file got from Leica DNA03 digital level <lessons/leica_dna03.rst>`_ (Octave)
 #. `Converting GPX to KML <lessons/gpx.rst>`_ (QGIS, ogr2ogr, Python)
@@ -51,6 +57,7 @@ GNSS
 #. `Statistics from NMEA file <lessons/nmea_stat.rst>`_ (OCtave, Python)
 #. `NMEA message processing and display <lessons/nmea.rst>`_ (gawk, Octave, Python)
 #. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_ (shell script, gawk)
+#. `Signal processing example using scipy, pandas and matplotlib <lessons/spectral.ipynb>_` (Jupyter notebook)
 
 
 Point cloud data
@@ -59,6 +66,7 @@ Point cloud data
 #. `Processing LiDAR data <lessons/lidar.rst>`_ (Octave, Python)
 #. `DTM GRID from point cloud <lessons/pc2grid.rst>`_ (Python, Octave)
 #. `Section from point cloud <lessons/lidar_section.rst>`_ (gawk, Octave, Python)
+#. `Finding spheres in a point cloud <lessons/ransac_sphere.ipynb>`_ (Jupyter notebook)
 
 Surveying calculation
 
@@ -78,6 +86,7 @@ Interpolation, regression and transformation
 #. `Regression sphere <lessons/reg_sphere.rst>`_ (Octave, Python)
 #. `3D ortogonal transformation <lessons/3dtr.rst>`_ (Octave, Python)
 #. `Principal Component Analysis (PCA) <lessons/pca.rst>`_ (Python, Octave)
+#. `Finding spheres in a point cloud <lessons/ransac_sphere.ipynb>`_ (Jupyter notebook)
 
 
 Images
@@ -86,6 +95,7 @@ Images
 #. `Bulk image convert to GeoTiff <lessons/image2geotiff.rst>`_ (shell script, gdal, Python)
 #. `Create image mosaic <lessons/img_mosaic.rst>`_ (shell script, Python)
 #. `Find circles in an image <lessons/find_circle.rst>`_ (Python)
+#. `Movement and deformation analysis from images <lessons/img_def.ipynb>`_ (Jupyter notebook)
 
 Mixed
 
