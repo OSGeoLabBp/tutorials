@@ -126,7 +126,7 @@ solve*.
 
 	b1 = np.arange(12).reshape(4, 3)
 	print(b1.transpose().dot(b1))		# transzponált szorzata a mátrix-szal
-	print(b1.T.dot(b1)			# azonos az előzővel
+	print(b1.T.dot(b1))			# azonos az előzővel
 	bb1= np.linalg.inv(b1.T.dot(b1))
 
 Gyakorlati példák
