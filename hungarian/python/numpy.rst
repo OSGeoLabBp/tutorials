@@ -154,7 +154,7 @@ egy pont adatai.
 	from math import sqrt
 	pnts = np.genfromtxt('pontok.txt', delimiter=' ')	# pontok egy tömbbe
 	c = np.polyfit(pnts[:,0], pnts[:,1], 2)			# parabola illesztés
-	v = np.polyval(c, pnts[:,0]) - pnts[:,1]		# maradék ellentmondások
+	v = np.polyval(c, pnts[:,0]) - pnts[:,1])		# maradék ellentmondások
 	rms = sqrt(np.sum(v**2) / pnts.shape[0])		# négyzetes átlagos hiba
 
 Ábrázoljuk az eredményeket grafikusan a matplotlib modul segítségével.
