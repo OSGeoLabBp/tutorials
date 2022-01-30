@@ -19,7 +19,7 @@ Matlab.
 Python is nowadays one of the most popular programming languages. It has several
 extension modules.
 Numpy modul adds the power to numeric processing to Python. `Python in a 
-nutshell <lessons/python_in_a_nutshell.ipynb>_` Jupyter notebook for beginners in Python.
+nutshell <lessons/python_in_a_nutshell.ipynb>`_ Jupyter notebook for beginners in Python.
 
 Some Python lessons are written in Jupiter notebook on Google Colab. You can 
 open them even if you have no Google account. These lessons have an **Open in 
