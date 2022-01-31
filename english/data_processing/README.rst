@@ -1,8 +1,8 @@
 Geodata processing using GAWK, Octave and Python/numpy
 ======================================================
 
-    :Authors: **Zoltan Siki** <siki.zoltan@epito.bme.hu>
-    :Version: 1.0
+    :Authors: **Zoltan Siki** <siki.zoltan@emk.bme.hu>, **Bence Takacs** <takacs.bence@emk.bme.hu>
+    :Version: 1.1
 
 Preface
 -------
