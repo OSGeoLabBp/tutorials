@@ -1,6 +1,11 @@
 Tutorials using OpenCV and Python
 =================================
 
+#. `Movement and deformation analysis from images <../data_processing/lessons/img_def.ipynb>`_ (Jupyter notebook)
+
+Sample programs in code folder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Image correlation
 -----------------
 
