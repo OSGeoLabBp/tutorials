@@ -1,103 +1,101 @@
 #! /usr/bin/env python
 
 """
-    Search for loops using connected points of a levelling network
-    and sum up distances and height differences in each loop.
+    Search for all loops in an undirected graph using deep first search
+    and sum up distances and a values of edges in each loop.
 
     Usage: loops.py input_file
 
-    ascii input file format for a line (space separated):
-    startp endp distance height_diff 
+    ascii input file format for a line/edge (space separated):
+    startp endp distance value
 """
 
 import sys
 
-def addp(obs, loop, indx):
+def addp(edges, loop, indx):
     """ find and add a point to the loop
-        :param obs: observations
+        :param edges: edges of graph
         :param loop: actual loop
-        :param indx: observation indices
+        :param indx: edge indices
 
         :returns: extended loop and new indx as a tuple
     """
-    for i in range(indx[-1], len(obs)):
-        ob1 = obs[i]
-        if ob1[0] == loop[-1] and ob1[1] != loop[-2] and not ob1[1] in loop[1:]:
-            # connection to end point
-            loop.append(ob1[1])
+    for i in range(indx[-1], len(edges)):
+        edge = edges[i]
+        if edge[0] == loop[-1] and edge[1] != loop[-2] and edge[1] not in loop[1:]:
+            # connection to start point
+            loop.append(edge[1])
             indx[-1] = i
             indx.append(0)
             return loop, indx
-        if ob1[1] == loop[-1] and ob1[0] != loop[-2] and not ob1[0] in loop[1:]:
+        if edge[1] == loop[-1] and edge[0] != loop[-2] and edge[0] not in loop[1:]:
             # connection to end point
-            loop.append(ob1[0])
+            loop.append(edge[0])
             indx[-1] = i
             indx.append(0)
             return loop, indx
     return loop, indx
 
 if len(sys.argv) < 2:
-    print ("Usage loops input_file")
-    #sys.exit()
-    fname = "test.csv"
+    print (f"Usage: {sys.argv[0]} input_file")
+    sys.exit()
 else:
     fname = sys.argv[1]
-obs = []
-obs_dic = {}
+edges = []
+edges_dic = {}
 i = 0
 with open(fname, "r") as f:
     for line in f:
         l = line.split()
         i += 1
-        obs.append(tuple(l))
+        ll = tuple(l[:2])
+        edges.append(ll)
         try:
-            obs_dic[l[0] + l[1]] = (float(l[2]), float(l[3]))
+            edges_dic[ll] = (float(l[2]), float(l[3]))
         except:
             print("Error in input file line: ", i)
             exit(-1)
 loops = []
-for ob in obs:
-    loop = [ob[0], ob[1]]
+for edge in edges:
+    loop = [edge[0], edge[1]]
     indx = [0, 0]
     while True:
         n = len(loop)
-        loop, indx = addp(obs, loop, indx)
-        if loop[0] == loop[-1]:
-            loops.append(loop[:])   # make a copy of list
-            n = len(loop)   # force back step
+        loop, indx = addp(edges, loop, indx)
+        if loop[0] == loop[-1]:     # closed loop found
+            n1 = len(loop)
+            s1 = set(loop)
+            for loop2 in loops:     # check same loop found?
+                if n1 == len(loop2) and s1 == set(loop2):
+                    break
+            else:
+                loops.append(loop[:])   # make a copy of list
+            n = len(loop)           # force back step
         if len(loop) == n:
             # no new point or loop found step back
             loop.pop()
             indx.pop()
             indx[-1] += 1
-            if len(loop) < 2:
+            if len(loop) < 2:       # no more step back
                 break
+loops.sort(key=len)                 # sort loop by length
 n = 0
-m = 0
-#print (obs_dic)
-loops.sort(key=len)
-for i in range(len(loops)):
-    # remove duplicates
-    loop1 = loops[i]
-    n1 = len(loop1)
-    s1 = set(loop1)
-    for j in range(i+1, len(loops)):
-        loop2 = loops[j]
-        if n1 == len(loop2) and s1 == set(loop2):
-            break   # same route found
-    else:
-        n += 1
-        if m < len(loop1):
-            m = len(loop1)
-        # calculate height difference & sum distance
-        sdist = 0
-        sdm = 0
-        for i in range(1, len(loop1)):
-            if loop1[i-1] + loop1[i] in obs_dic:
-                sdist += obs_dic[loop1[i-1] + loop1[i]][0]
-                sdm += obs_dic[loop1[i-1] + loop1[i]][1]
-            else:
-                sdist += obs_dic[loop1[i] + loop1[i-1]][0]
-                sdm -= obs_dic[loop1[i] + loop1[i-1]][1]
-        print ("%.5f;%.0f;%s" % (sdm, sdist, loop1))
-print (n, m)
+m = len(loops[-1])                  # length of longest loop
+for i, loop1 in enumerate(loops):
+    n += 1
+    # calculate sum distance and value
+    sdist = 0
+    sdm = 0
+    last = loop1[0]                 # start point
+    for node in loop1[1:]:
+        indx = last,node
+        if indx in edges_dic:       # forward direction
+            sdist += edges_dic[indx][0]
+            sdm += edges_dic[indx][1]
+        else:                       # reverse direction
+            indx = node,last
+            sdist += edges_dic[indx][0]
+            sdm -= edges_dic[indx][1]
+        last = node
+    print (f"{sdm:.5f};{sdist:.1f};{loop1}")
+print(f"Number of loops: {n}, Max loop length: {m}")
