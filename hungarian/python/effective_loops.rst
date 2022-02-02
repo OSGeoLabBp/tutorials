@@ -119,7 +119,7 @@ ciklussal és a **range** függvény használatával.
 A listából listát létrehozó feladatok esetén a Python egy speciális
 algoritmus szerkezetet a *lista feldolgozást* (list comprehesion) kínálja.
 Ez hatékonyabb megoldást biztosít a hagyományos ciklusoknál. A kiinduló
-megoldshoz képest 20-25% gyorsulást érhetünk el ezzel, amellett hogy a
+megoldáshoz képest 20-25% gyorsulást érhetünk el ezzel, amellett hogy a
 kódunk jóval tömörebb lett.
 
 .. code:: python
@@ -129,7 +129,7 @@ kódunk jóval tömörebb lett.
         return [m * i for i in range(n)]
 
 A Python **map** függvényével a lista minden elemére ugyanazt a függvényt
-alkalmazhatjuk amélkül, hogy ciklus szerkezetet használnánk. Ezzel már érdemi 
+alkalmazhatjuk anélkül, hogy ciklus szerkezetet használnánk. Ezzel már érdemi 
 gyorsulást nem tudunk elérni. Itt még egy speciális megoldást, a helyben
 definiált név nélküli függvényt (*lambda függvény*) használunk. Ez a 
 megoldást a lista feldolgozással azonos sebességgel dolgozik.
