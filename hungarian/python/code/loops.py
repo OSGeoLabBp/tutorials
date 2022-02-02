@@ -44,6 +44,7 @@ else:
 edges = []
 edges_dic = {}
 i = 0
+# loading input file
 with open(fname, "r") as f:
     for line in f:
         l = line.split()
@@ -55,6 +56,7 @@ with open(fname, "r") as f:
         except:
             print("Error in input file line: ", i)
             exit(-1)
+ # find all unique loops
 loops = []
 for edge in edges:
     loop = [edge[0], edge[1]]
@@ -81,6 +83,8 @@ for edge in edges:
 loops.sort(key=len)                 # sort loop by length
 n = 0
 m = len(loops[-1])                  # length of longest loop
+# sum up distances and values
+print("Value Distance Loop")
 for i, loop1 in enumerate(loops):
     n += 1
     # calculate sum distance and value
@@ -97,5 +101,5 @@ for i, loop1 in enumerate(loops):
             sdist += edges_dic[indx][0]
             sdm -= edges_dic[indx][1]
         last = node
-    print (f"{sdm:.5f};{sdist:.1f};{loop1}")
+    print (f"{sdm:.3f} {sdist:8.1f} {loop1}")
 print(f"Number of loops: {n}, Max loop length: {m}")
