@@ -16,7 +16,7 @@ def addp(obs, loop, indx):
     """ find and add a point to the loop
         :param obs: observations
         :param loop: actual loop
-        :param indx: observation indeces
+        :param indx: observation indices
 
         :returns: extended loop and new indx as a tuple
     """
@@ -42,13 +42,19 @@ if len(sys.argv) < 2:
     fname = "test.csv"
 else:
     fname = sys.argv[1]
-f = open(fname, "r")
 obs = []
 obs_dic = {}
-for line in f:
-    l = line.split()
-    obs.append(tuple(l))
-    obs_dic[l[0] + l[1]] = (float(l[2]), float(l[3]))
+i = 0
+with open(fname, "r") as f:
+    for line in f:
+        l = line.split()
+        i += 1
+        obs.append(tuple(l))
+        try:
+            obs_dic[l[0] + l[1]] = (float(l[2]), float(l[3]))
+        except:
+            print("Error in input file line: ", i)
+            exit(-1)
 loops = []
 for ob in obs:
     loop = [ob[0], ob[1]]
@@ -66,8 +72,6 @@ for ob in obs:
             indx[-1] += 1
             if len(loop) < 2:
                 break
-            if loop[0] == "P" and loop[1] == "S" and len(loop) == 2:
-                pass # bebug break
 n = 0
 m = 0
 #print (obs_dic)
