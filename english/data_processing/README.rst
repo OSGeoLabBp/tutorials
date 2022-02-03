@@ -56,7 +56,7 @@ Text file processing
 GNSS
 
 #. `NMEA files processing <lessons/nmea.ipynb>`_ (Jupyter notebook)
-#. `Statistics from NMEA file <lessons/nmea_stat.rst>`_ (OCtave, Python)
+#. `Statistics from NMEA file <lessons/nmea_stat.rst>`_ (Octave, Python)
 #. `NMEA message processing and display <lessons/nmea.rst>`_ (gawk, Octave, Python)
 #. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_ (shell script, gawk)
 #. `Signal processing example using scipy, pandas and matplotlib <lessons/spectral.ipynb>`_ (Jupyter notebook)
