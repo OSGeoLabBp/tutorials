@@ -43,10 +43,11 @@ Samples were tested on Linux but should run on a Windows box, too.
 Table of contents
 -----------------
 
-Text file processing
+File processing
 
 #. `Text file processing in Python <lessons/text_files.ipynb>`_ (Jupyter notebook)
 #. `Convert GSI data to CAD drawing <lessons/GSI2DXF.ipynb>`_ (Jupiter notebook)
+#. `Convert binary file to text file <lessons/binary_file.ipynb>`_ (Jupyter notebook)
 #. `Load coordinates from Leica GSI into QGIS or AutoCAD <lessons/leica_gsi.rst>`_ (gawk, Octave, Python)
 #. `Processing GSI file got from Leica DNA03 digital level <lessons/leica_dna03.rst>`_ (Octave)
 #. `Converting GPX to KML <lessons/gpx.rst>`_ (QGIS, ogr2ogr, Python)
