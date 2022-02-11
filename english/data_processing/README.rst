@@ -73,7 +73,7 @@ Point cloud data
 
 Time series
 
-#. `Processing sensor data for Structural Health Monitoring <lessons/shm.rtf>`_
+#. `Processing sensor data for Structural Health Monitoring <lessons/shm.rst>`_
 #. `Processing observations for a moving point <lessons/one_point.rst>`_ (Octave)
 #. `Processing bridge deflection data <lessons/deflection.rst>`_ (Octave)
 #. `Monitoring data processing <lessons/monitoring_data.rst>`_ (Octave, Python)
