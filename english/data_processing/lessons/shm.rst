@@ -8,7 +8,7 @@ Elisabeth bridge is one of the bridges over the Danube at Budapest.
 We would like to find the relation between bus passes on the bud and the
 deflection at the middle of the bridge.
 
-.. figure: images/elisabeth_bridge.png
+.. figure:: images/elisabeth_bridge.png
     :align: center
 
 Sensors
