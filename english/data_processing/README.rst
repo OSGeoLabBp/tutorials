@@ -61,8 +61,6 @@ GNSS
 #. `Statistics from NMEA file <lessons/nmea_stat.rst>`_ (Octave, Python)
 #. `NMEA message processing and display <lessons/nmea.rst>`_ (gawk, Octave, Python)
 #. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_ (shell script, gawk)
-#. `Signal processing example using scipy, pandas and matplotlib <lessons/spectral.ipynb>`_ (Jupyter notebook)
-
 
 Point cloud data
 
@@ -74,7 +72,8 @@ Point cloud data
 
 Time series
 
-#. `Processing sensor data for Structural Health Monitoring <lessons/shm.rst>`_
+#. `Processing sensor data for Structural Health Monitoring <lessons/shm.rst>`_ (Jupyter notebooks)
+#. `Signal processing example using scipy, pandas and matplotlib <lessons/spectral.ipynb>`_ (Jupyter notebook)
 #. `Processing observations for a moving point <lessons/one_point.rst>`_ (Octave)
 #. `Processing bridge deflection data <lessons/deflection.rst>`_ (Octave)
 #. `Monitoring data processing <lessons/monitoring_data.rst>`_ (Octave, Python)
