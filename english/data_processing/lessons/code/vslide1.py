@@ -56,15 +56,19 @@ def tr(e1, n1, e2, n2):
                 np.array([[m, r, 0], [-r, m, 0], [0, 0, 1]]))
 
 if len(sys.argv) < 7:
-  print("usage: {} file x1 y1 x2 y2 tolerance\n".format(sys.argv[0]))
-  sys.exit()
-
-pc = np.loadtxt(sys.argv[1], delimiter=',') ;# load point cloud
-x1 = float(sys.argv[2])
-y1 = float(sys.argv[3])
-x2 = float(sys.argv[4])
-y2 = float(sys.argv[5])
-tol = float(sys.argv[6])
+  pc = np.loadtxt('sample_data/lidar.txt', delimiter=',') ;# load point cloud
+  x1 = 548060.0
+  y1 = 5129130.0
+  x2 = 255130.0
+  y2 = 5129030.0
+  tol = 1.0
+else:
+    pc = np.loadtxt(sys.argv[1], delimiter=',') ;# load point cloud
+    x1 = float(sys.argv[2])
+    y1 = float(sys.argv[3])
+    x2 = float(sys.argv[4])
+    y2 = float(sys.argv[5])
+    tol = float(sys.argv[6])
 # set up equation for vertical plain a * x + b * y + c = 0
 vp = vplain(x1, y1, x2, y2)
 mind=1e38
