@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from math import hypot
+from math import hypot, atan2, sin, cos, pi, degrees
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -49,41 +49,48 @@ def tr(e1, n1, e2, n2):
     de = e2 - e1
     dn = n2 - n1
 
-    d = hypot(de, dn) # distance
-    r = de / d # sin
-    m = dn / d # cos
+    a = atan2(dn, de)
+    ca = cos(a)
+    sa = sin(a)
     return np.dot(np.array([[1, 0, 0], [0, 1, 0], [-e1, -n1, 1]]),
-                np.array([[m, r, 0], [-r, m, 0], [0, 0, 1]]))
+               np.array([[ca, -sa, 0], [sa, ca, 0], [0, 0, 1]]))
 
-if len(sys.argv) < 7:
-  pc = np.loadtxt('sample_data/lidar.txt', delimiter=',') ;# load point cloud
-  x1 = 548060.0
-  y1 = 5129130.0
-  x2 = 255130.0
-  y2 = 5129030.0
-  tol = 1.0
-else:
-    pc = np.loadtxt(sys.argv[1], delimiter=',') ;# load point cloud
-    x1 = float(sys.argv[2])
-    y1 = float(sys.argv[3])
-    x2 = float(sys.argv[4])
-    y2 = float(sys.argv[5])
-    tol = float(sys.argv[6])
-# set up equation for vertical plain a * x + b * y + c = 0
-vp = vplain(x1, y1, x2, y2)
-mind=1e38
-sec = section(pc,x1,y1,x2,y2,tol) 
-# transformation matrix
-trm = tr(x1, y1, x2, y2)
-# make a copy of section points for homogenous transformation
-pc1 = sec.copy()
-pc1[:, 2] = 1
-pc1 = np.dot(pc1, trm) # rotate points into the section plain
-pc1[:, 2] = sec[:, 2] # copy back elevations to transformed points
+if __name__ == "__main__":
+    if len(sys.argv) < 7:
+      pc = np.loadtxt('lidar.txt', delimiter=',') ;# load point cloud
+      x1 = 548060.0
+      y1 = 5129130.0
+      x2 = 549850.0
+      y2 = 5129030.0
+      #x1 = 549400
+      #y1 = 5128900
+      #x2 = 549200
+      #y2 = 5129300
+      tol = 1.0
+    else:
+        pc = np.loadtxt(sys.argv[1], delimiter=',') ;# load point cloud
+        x1 = float(sys.argv[2])
+        y1 = float(sys.argv[3])
+        x2 = float(sys.argv[4])
+        y2 = float(sys.argv[5])
+        tol = float(sys.argv[6])
+    # set up equation for vertical plain a * x + b * y + c = 0
+    vp = vplain(x1, y1, x2, y2)
+    sec = section(pc,x1,y1,x2,y2,tol) 
+    # transformation matrix
+    trm = tr(x1, y1, x2, y2)
+    if abs(np.dot(np.array([x1, y1, 1]), trm)[1]) > 1e-5 or \
+            abs(np.dot(np.array([x2, y2, 1]), trm)[1]) > 1e-5:
+        print("tr error")
+    # make a copy of section points for homogenous transformation
+    pc1 = sec.copy()
+    pc1[:, 2] = 1
+    pc1 = np.dot(pc1, trm) # rotate points into the section plain
+    pc1[:, 2] = sec[:, 2] # copy back elevations to transformed points
 
-plt.plot(pc1[:,1], pc1[:,2], 'o')
-plt.xlabel('chainage (m)')
-plt.ylabel('elevation (m)')
-plt.axis('equal')
-plt.grid('on')
-plt.show() 
+    plt.plot(pc1[:,0], pc1[:,2], 'o')
+    plt.xlabel('chainage (m)')
+    plt.ylabel('elevation (m)')
+    plt.axis('equal')
+    plt.grid('on')
+    plt.show() 
