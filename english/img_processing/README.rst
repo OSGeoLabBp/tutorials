@@ -1,6 +1,7 @@
 Tutorials using OpenCV and Python
 =================================
 
+#. `Common image processing tasks <img_proc.ipynb>`_ (Jupyter notebook)
 #. `Movement and deformation analysis from images <../data_processing/lessons/img_def.ipynb>`_ (Jupyter notebook)
 
 Sample programs in code folder
