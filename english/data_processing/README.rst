@@ -105,6 +105,7 @@ Images
 #. `Create image mosaic <lessons/img_mosaic.rst>`_ (shell script, Python)
 #. `Find circles in an image <lessons/find_circle.rst>`_ (Python)
 #. `Movement and deformation analysis from images <lessons/img_def.ipynb>`_ (Jupyter notebook)
+#. `Common image processing tasks <../image_processing/img_proc.ipynb>`_ (Jupyter notebook)
 
 Mixed
 
