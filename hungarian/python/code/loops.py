@@ -84,7 +84,7 @@ loops.sort(key=len)                 # sort loop by length
 n = 0
 m = len(loops[-1])                  # length of longest loop
 # sum up distances and values
-print("Value Distance Loop")
+print("  Value  Distance Loop")
 for i, loop1 in enumerate(loops):
     n += 1
     # calculate sum distance and value
@@ -101,5 +101,5 @@ for i, loop1 in enumerate(loops):
             sdist += edges_dic[indx][0]
             sdm -= edges_dic[indx][1]
         last = node
-    print (f"{sdm:.3f} {sdist:8.1f} {loop1}")
+    print (f"{sdm:8.4f} {sdist:8.1f} {loop1}")
 print(f"Number of loops: {n}, Max loop length: {m}")
