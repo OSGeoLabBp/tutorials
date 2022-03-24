@@ -70,6 +70,7 @@ Point cloud data
 #. `DTM GRID from point cloud <lessons/pc2grid.rst>`_ (Python, Octave)
 #. `Section from point cloud <lessons/lidar_section.rst>`_ (gawk, Octave, Python)
 #. `Finding spheres in a point cloud <lessons/ransac_sphere.ipynb>`_ (Jupyter notebook)
+#. `Find plane in a point cloud <lessons/ransac_plane.ipynb>`_ (Jupyter notebook)
 
 Time series
 
