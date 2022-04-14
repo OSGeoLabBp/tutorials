@@ -96,8 +96,6 @@ Interpolation, regression and transformation
 #. `Regression sphere <lessons/reg_sphere.rst>`_ (Octave, Python)
 #. `3D ortogonal transformation <lessons/3dtr.rst>`_ (Octave, Python)
 #. `Principal Component Analysis (PCA) <lessons/pca.rst>`_ (Python, Octave)
-#. `Finding spheres in a point cloud <lessons/ransac_sphere.ipynb>`_ (Jupyter notebook)
-
 
 Images
 
