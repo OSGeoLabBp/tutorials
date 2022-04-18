@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import cv2
 import numpy as np
 import sys
@@ -15,7 +17,7 @@ def img_correlation(img, templ):
         i1 = i + trows                  # row for the bottom of template
         for j in range(cols - tcols):   # scan image columns
             j1 = j + tcols              # column for the right of template
-            s = np.sum(np.square(t - img[i:i1, j:j1]))  # pixel wise scatistic
+            s = np.sum(np.square(templ - img[i:i1, j:j1]))  # pixel wise scatistic
             if s < mins:                # better statistic found?
                 mins = s                # store the actual best match
                 row = i
