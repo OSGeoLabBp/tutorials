@@ -8,11 +8,11 @@ import sys
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
-        print "Usage: %s method_id template image1 [img2 ...]" % sys.argv[0]
-        print "    method_id - 0/1/2/3 CV_TM_SQDIFF_NORMED/CV_TM_CCORR_NORMED/CV_TM_CCOEFF/CV_TM_CCOEFF_NORMED"
-        print "    template  - template image to find in the video frames"
-        print "    image1"
-        print "    image2    - images to process"
+        print(f"Usage: {sys.argv[0]} method_id template image1 [img2 ...]")
+        print("    method_id - 0/1/2/3 CV_TM_SQDIFF_NORMED/CV_TM_CCORR_NORMED/CV_TM_CCOEFF/CV_TM_CCOEFF_NORMED")
+        print("    template  - template image to find in the video frames")
+        print("    image1")
+        print("    image2    - images to process")
         exit(1)
     # selected method
     minv = 2    # index of min value
@@ -27,4 +27,4 @@ if __name__ == "__main__":
         img_gray = cv2.imread(sys.argv[i], cv2.IMREAD_GRAYSCALE)
         result = cv2.matchTemplate(img_gray, templ_gray, method[0])
         min_max = cv2.minMaxLoc(result)
-        print i-2, min_max[method[1]]
+        print(i-2, min_max[method[1]])
