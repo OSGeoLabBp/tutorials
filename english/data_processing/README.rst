@@ -91,6 +91,7 @@ Surveying calculation
 
 Interpolation, regression and transformation
 
+#. `RANNSAC line in 2D <lessons/ransac_line.ipynb>`_ (Jupyter notebook)
 #. `Polynom interpolation and regression <lessons/polinom.rst>`_ (Octave, Python)
 #. `Regression circle <lessons/circle.rst>`_ (Octave, Python)
 #. `Regression sphere <lessons/reg_sphere.rst>`_ (Octave, Python)
