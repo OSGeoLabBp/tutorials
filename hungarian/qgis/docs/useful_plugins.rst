@@ -132,4 +132,15 @@ A *Table* fülön a metszet pontjait táblázatos formában láthatjuk. Emellett
 különböző formátumban a vágólapra vagy ideiglenes rétegbe (pontok)
 tehetjük át a metszet adatait.
 
+Clip multiple layers
+--------------------
 
+Kivágat készítése a látható vektor és raszter rétegekből. A modul elindítása 
+előtt létre kell hozni egy felület (polygon) réteget a vágó idommal.
+Ezt legkönnyebben egy ideiglenes réteg létrehozásával tehetjük meg.
+Az ideiglenes rétegen hozzunk létre egy új felület elemet.
+
+.. figure:: images/hasznos_modulok7.png
+        :align: center
+
+A réteg kivágatok a megadott könyvvtár *vector* és *raster* alkönyvtáraiba kerülnek.
