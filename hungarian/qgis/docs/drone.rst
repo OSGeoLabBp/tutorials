@@ -38,14 +38,14 @@ képek elérési útjai is. A képek megjelenítéséhez nézze meg a
 
 |uav5_png|
 
-.. |uav1_png| image: images/uav1.png
+.. |uav1_png| image:: images/uav1.png
     :width: 5.0cm
     :height: 3.0cm
 
-.. |uav2_png| image: images/uav2.png
+.. |uav2_png| image:: images/uav2.png
 
-.. |uav3_png| image: images/uav3.png
+.. |uav3_png| image:: images/uav3.png
 
-.. |uav4_png| image: images/uav4.png
+.. |uav4_png| image:: images/uav4.png
 
-.. |uav5_png| image: images/uav5.png
+.. |uav5_png| image:: images/uav5.png
