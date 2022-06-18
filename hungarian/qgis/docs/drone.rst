@@ -39,7 +39,8 @@ képek elérési útjai is. A képek megjelenítéséhez nézze meg a
 |uav5_png|
 
 .. |uav1_png| image: images/uav1.png
-    :width: 5.0 cm
+    :width: 5.0cm
+    :height: 3.0cm
 
 .. |uav2_png| image: images/uav2.png
 
