@@ -7,6 +7,22 @@ Geodata processing using GAWK, Octave and Python/numpy
 Preface
 -------
 
+Python is nowadays one of the most popular programming languages. It has several
+extension modules.
+Numpy, scipy and pandas modules add the power of numeric processing to Python. 
+See some elementary lessons for Python:
+
+* `Python in a nutshell <lessons/python_in_a_nutshell.ipynb>`_ a Jupyter notebook for beginners in Python.
+* `Numpy in a nutshell <../python/numpy_tutor.ipynb>`__ a Jupyter notebook
+* `Regular expressions in Python <../python/regexp_in_python.ipynb>`__ a Jupyter notebook
+* `Pylint <../python/pylint.ipynb>`__ beautify your Python code, a Jupyter notebook
+
+Many Python lessons are written in Jupiter notebook on Google Colab. You can 
+open them even if you have no Google account. These lessons have an **Open in 
+Colab** link at the beginning. Click on it and you can try and edit the notebook.
+
+Samples mostly concern on observation data/file processing.
+
 GNU AWK (named after the creators Aho, Weinberger and Kernighan) is a 
 Unix/Linux programable text utility what is compiled for Windows platforms, too.
 The GAWK program syntax is similiar to C language.
@@ -16,29 +32,7 @@ intended for numerical computations. The syntax of the Octave program is
 quite similiar to Matlab, you can easy port programs between GNU Octave and
 Matlab.
 
-Python is nowadays one of the most popular programming languages. It has several
-extension modules.
-Numpy modul adds the power to numeric processing to Python. `Python in a 
-nutshell <lessons/python_in_a_nutshell.ipynb>`_ Jupyter notebook for beginners in Python.
-
-Some Python lessons are written in Jupiter notebook on Google Colab. You can 
-open them even if you have no Google account. These lessons have an **Open in 
-Colab** link at the beginning. Click on it and you can try and edit notebook.
-
-Samples mostly concern on observation data/file processing.
-
-Samples were tested on Linux but should run on a Windows box, too.
-
-*Topics covered*
-
-*   using pipelines, redirecting standard input and output (Unix/DOS)
-*   using simple text processing utilities (grep, gawk, etc.)
-*   using file input/output
-*   using variables, expressions, decision control (conditional statement, loops), functions
-*   using regular expressions
-*   extending Octave/Matlab knowledge
-*   vectorization
-*	extending Python/numpy knowledge
+Samples were tested on Linux and Google colab, but should run on other environments, too.
 
 Table of contents
 -----------------
@@ -58,6 +52,7 @@ GNSS
 
 #. `NMEA files processing <lessons/nmea.ipynb>`_ (Jupyter notebook)
 #. `Download navigational RINEX file from IGS data center <lessons/download_gnss_data.ipynb>`_ (Jupyter notebook)
+#. `Run RTKLIB from a python script <lessons/rtklib_python.ipynb>`__ (Jupyter notebook)
 #. `Statistics from NMEA file <lessons/nmea_stat.rst>`_ (Octave, Python)
 #. `NMEA message processing and display <lessons/nmea.rst>`_ (gawk, Octave, Python)
 #. `Download RINEX navigation files and count ephemeris of different satellite systems <lessons/numephem.rst>`_ (shell script, gawk)
@@ -65,12 +60,12 @@ GNSS
 Point cloud data
 
 #. `Point cloud section <lessons/point_cloud_section.ipynb>`_ (Jupyter notebook)
+#. `Find plane in a point cloud <lessons/ransac_plane.ipynb>`_ (Jupyter notebook)
+#. `Finding spheres in a point cloud <lessons/ransac_sphere.ipynb>`_ (Jupyter notebook)
 #. `Filter point cloud <lessons/pc_filter.rst>`_ (gawk, Python, CloudCompare)
 #. `Processing LiDAR data <lessons/lidar.rst>`_ (Octave, Python)
 #. `DTM GRID from point cloud <lessons/pc2grid.rst>`_ (Python, Octave)
 #. `Section from point cloud <lessons/lidar_section.rst>`_ (gawk, Octave, Python)
-#. `Finding spheres in a point cloud <lessons/ransac_sphere.ipynb>`_ (Jupyter notebook)
-#. `Find plane in a point cloud <lessons/ransac_plane.ipynb>`_ (Jupyter notebook)
 
 Time series
 
@@ -80,18 +75,11 @@ Time series
 #. `Processing bridge deflection data <lessons/deflection.rst>`_ (Octave)
 #. `Monitoring data processing <lessons/monitoring_data.rst>`_ (Octave, Python)
 
+Clustering, interpolation, regression and transformation
 
-Surveying calculation
-
-#. `Measure point with slope prism rod <lessons/sphere.rst>`_ (Octave)
-#. `Generalised inverse <lessons/pseudo_inverz.rst>`_ (Octave, Python)
-#. `Level network adjustment and data snooping <lessons/level_net.rst>`_ (Octave, Python)
-#. `Free horizontal network adjustment <lessons/horiz_net.rst>`_ (Octave)
-#. `Propagation of errors for polar observations <lessons/propagation_of_error.rst>`_ (OCtave)
-
-Interpolation, regression and transformation
-
+#. `Clastering with Machine Learning <lessons/ml_clustering.ipynb>`__ (Jupyter notebook)
 #. `RANSAC line in 2D <lessons/ransac_line.ipynb>`_ (Jupyter notebook)
+#. `Robust 2D transformation <lessons/trans.ipynb>`__ (Jupyter notebook)
 #. `Polynom interpolation and regression <lessons/polinom.rst>`_ (Octave, Python)
 #. `Regression circle <lessons/circle.rst>`_ (Octave, Python)
 #. `Regression sphere <lessons/reg_sphere.rst>`_ (Octave, Python)
@@ -100,12 +88,20 @@ Interpolation, regression and transformation
 
 Images
 
+#. `Movement and deformation analysis from images <lessons/img_def.ipynb>`_ (Jupyter notebook)
+#. `Digital image processing <../img_processing/img_proc.ipynb>`_ (Jupyter notebook)
 #. `Bulk extract GPS positions from images <lessons/exif.rst>`_ (shell script, gawk, Python)
 #. `Bulk image convert to GeoTiff <lessons/image2geotiff.rst>`_ (shell script, gdal, Python)
 #. `Create image mosaic <lessons/img_mosaic.rst>`_ (shell script, Python)
 #. `Find circles in an image <lessons/find_circle.rst>`_ (Python)
-#. `Movement and deformation analysis from images <lessons/img_def.ipynb>`_ (Jupyter notebook)
-#. `Digital image processing <../img_processing/img_proc.ipynb>`_ (Jupyter notebook)
+
+Surveying calculation
+
+#. `Measure point with slope prism rod <lessons/sphere.rst>`_ (Octave)
+#. `Generalised inverse <lessons/pseudo_inverz.rst>`_ (Octave, Python)
+#. `Level network adjustment and data snooping <lessons/level_net.rst>`_ (Octave, Python)
+#. `Free horizontal network adjustment <lessons/horiz_net.rst>`_ (Octave)
+#. `Propagation of errors for polar observations <lessons/propagation_of_error.rst>`_ (OCtave)
 
 Mixed
 
