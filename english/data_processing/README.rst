@@ -19,7 +19,8 @@ See some elementary lessons for Python:
 
 Many Python lessons are written in Jupiter notebook on Google Colab. You can 
 open them even if you have no Google account. These lessons have an **Open in 
-Colab** link at the beginning. Click on it and you can try and edit the notebook.
+Colab** link at the beginning. Click on it and you can try and edit the notebook
+(for editing you have to login to Google).
 
 Samples mostly concern on observation data/file processing.
 
@@ -29,8 +30,8 @@ The GAWK program syntax is similiar to C language.
 
 GNU Octave is an open source high-level interpreted language, primarily 
 intended for numerical computations. The syntax of the Octave program is 
-quite similiar to Matlab, you can easy port programs between GNU Octave and
-Matlab.
+quite similiar to MATLAB, you can easy port programs between GNU Octave and
+MATLAB (see the table at the end of this page.
 
 Samples were tested on Linux and Google colab, but should run on other environments, too.
 
@@ -77,7 +78,7 @@ Time series
 
 Clustering, interpolation, regression and transformation
 
-#. `Clastering with Machine Learning <lessons/ml_clustering.ipynb>`__ (Jupyter notebook)
+#. `Clustering with Machine Learning <lessons/ml_clustering.ipynb>`__ (Jupyter notebook)
 #. `RANSAC line in 2D <lessons/ransac_line.ipynb>`_ (Jupyter notebook)
 #. `Robust 2D transformation <lessons/trans.ipynb>`__ (Jupyter notebook)
 #. `Polynom interpolation and regression <lessons/polinom.rst>`_ (Octave, Python)
