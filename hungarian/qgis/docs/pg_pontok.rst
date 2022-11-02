@@ -75,7 +75,7 @@ táblákat.
 		end_chainage int NOT NULL,
 		condition varchar(10) NOT NULL,
 		PRIMARY KEY (r_id, start_chainage),
-		CHECK (stat_chainage < end_chainage)
+		CHECK (start_chainage < end_chainage)
 	);
 
 A fenti SQL parancsokat hajtsuk végre *psql* prancssori vagy a *pgAdmin* 
