@@ -4,4 +4,4 @@
 - [Numpy basics](numpy_tutor.ipynb) (Jupyter notebook)
 - [Regexp in Python](regexp_in_python.ipynb) (Jupyter notebook)
 - [Improve your code with PyLint](pylint.ipynb) (Jupyter notebook)
-- [Effectivee algorithms (case study)](effective_algorithms.ipynb)
+- [Effectivee algorithms (case study)](effective_algorithms.ipynb) (Jupyter notebook)
