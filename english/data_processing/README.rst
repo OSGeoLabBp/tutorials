@@ -107,6 +107,7 @@ Surveying calculation
 Mixed
 
 #. `Create time/data plot <lessons/time_data_plot.rst>`_ (Python)
+#. `Find prime numbers <../python/effective_algorithms.ipnb>`_ (Jupyter notebook)
 #. `Find prime numbers <lessons/prime.rst>`_ (Octave, Python)
 
 Program codes and sample data are in the `code <lessons/code>`_ folder.
