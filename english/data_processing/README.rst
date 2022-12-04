@@ -82,6 +82,7 @@ Clustering, interpolation, regression and transformation
 #. `Clustering with Machine Learning <lessons/ml_clustering.ipynb>`__ (Jupyter notebook)
 #. `RANSAC line in 2D <lessons/ransac_line.ipynb>`_ (Jupyter notebook)
 #. `Robust 2D transformation <lessons/trans.ipynb>`__ (Jupyter notebook)
+#. `Regression circle & RANSAC circle <lessons/circle.ipynb>`_ (Jupyter notebook)
 #. `Polynom interpolation and regression <lessons/polinom.rst>`_ (Octave, Python)
 #. `Regression circle <lessons/circle.rst>`_ (Octave, Python)
 #. `Regression sphere <lessons/reg_sphere.rst>`_ (Octave, Python)
