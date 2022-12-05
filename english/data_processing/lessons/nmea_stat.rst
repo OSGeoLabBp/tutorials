@@ -79,8 +79,8 @@ From an NMEA file let's calculate statistical values:
 
     def nmea2deg(nmea):
         """ convert nmea angle (dddmm.ss) to degree """
-        w = nmea.rstrip('0').split('.')
-        return int(w[0][:-2]) + int(w[0][-2:]) / 60.0 + int(w[1]) / 3600.0
+        p = nmea.find('.')
+        return int(nmea[:p-2]) + int(nmea[p-2:]) / 60.0
         
     if len(sys.argv) > 1:
         fin = sys.argv[1]   # get input file from command line
