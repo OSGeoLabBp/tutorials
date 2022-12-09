@@ -8,3 +8,4 @@ Python oktatóanyagok Python 3.x verziókhoz
 - `Az egyszerű algoritmustól az osztályokig <area.rst>`_ (zárt sokszög területe)
 - `Apache Python modul használata <apache_python.rst>`_ (internet programozás Apache-ban)
 - `NumPy használata <numpy.ipynb>`_ (bevezetés és példák, Jupyter notebook)
+- `Szabályos kifejezések <regexp_in_python.ipynb>`_ (Jupyter notebook)
