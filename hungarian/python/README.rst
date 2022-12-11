@@ -1,12 +1,16 @@
 Python oktatóanyagok Python 3.x verziókhoz
 
 - `Python3 mogyoróhéjban <python3_oktato.rst>`_
-- `Egyszerű problémák Python megoldása <simple.rst>`_
+- `Pythonic kód készítés <simple.ipynb>`_  (Jupyter notebook)
 - `Hatékony ciklusok <loops.ipynb>`_  (Jupyter notebook)
 - `Hatékony algoritmus készítése <effective_algoritm.ipynb>`_ (prim számok, Jupyter notebook)
 - `Az egyszerű algoritmustól, a vektorizáláson át az osztályokig <area.ipynb>`_ (zárt sokszög területe, Jupyter notebook)
 - `NumPy használata <numpy.ipynb>`_ (bevezetés és példák, Jupyter notebook)
 - `Szabályos kifejezések <regexp_in_python.ipynb>`_ (Jupyter notebook)
+
+Korábbi anyagok
+
 - `Egyszerű objektum létrehozása <angle_algorithms.rst>`_ (Szög osztály)
 - `Az egyszerű algoritmustól az osztályokig <area.rst>`_ (zárt sokszög területe)
 - `Apache Python modul használata <apache_python.rst>`_ (internet programozás Apache-ban)
+- `Egyszerű problémák Python megoldása <simple.rst>`_
