@@ -10,7 +10,7 @@ megjelenítésére. Alapvetően szabályos négyzetrácsban elrendezett modellek
 
 A munka során egy egyszerű ki állománnyal dolgozunk, mely szórt pontokat
 (points réteg) és idomvonalak (break_lines réteg) tartalmaz, a rétegek a 
-`topo.gpkg<data/topo.gpkg`_ Geopackage állományban találhatók. A két réteget
+`topo.gpkg<data/topo.gpkg>`_ Geopackage állományban találhatók. A két réteget
 adja hozzá egy 
 üres QGIS projekthez. Az idomvonlak (break_lines réteg) vannak völgyvonalak és
 hátvonalak, a hátvonalak megjelenítését állítsa szaggatott vonalra.
