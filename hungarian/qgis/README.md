@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [Excel táblázat hozzákapcsolása térképi réteghez](docs/xls_join.rst)
 * [QGIS használata parancssorból](docs/cli.rst)
 * [Geotag-gel rendelkező képek kezelése](docs/drone.rst)
 * [Szövegek betöltése DXF fájlból](docs/dxf_text.rst)
