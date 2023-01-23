@@ -65,6 +65,7 @@ Point cloud data
 #. `Point cloud section <lessons/point_cloud_section.ipynb>`_ (Jupyter notebook)
 #. `Find plane in a point cloud <lessons/ransac_plane.ipynb>`_ (Jupyter notebook)
 #. `Finding spheres in a point cloud <lessons/ransac_sphere.ipynb>`_ (Jupyter notebook)
+#. `GRID from LiDAR data <lessons/grid.ipynb>`_ (Jupyter notebook)
 #. `Filter point cloud <lessons/pc_filter.rst>`_ (gawk, Python, CloudCompare)
 #. `Processing LiDAR data <lessons/lidar.rst>`_ (Octave, Python)
 #. `DTM GRID from point cloud <lessons/pc2grid.rst>`_ (Python, Octave)
