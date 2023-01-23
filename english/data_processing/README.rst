@@ -1,4 +1,4 @@
-Geodata processing using GAWK, Octave and Python/numpy
+Geodata processing using Python/numpy, GAWK and Octave
 ======================================================
 
     :Authors: **Zoltan Siki** <siki.zoltan@emk.bme.hu>, **Bence Takacs** <takacs.bence@emk.bme.hu>
@@ -18,7 +18,7 @@ See some elementary lessons for Python:
 * `Regular expressions in Python <../python/regexp_in_python.ipynb>`__ a Jupyter notebook
 * `Pylint <../python/pylint.ipynb>`__ beautify your Python code, a Jupyter notebook
 
-Many Python lessons are written in Jupiter notebook on Google Colab. You can 
+Many Python lessons are written in Jupyter notebook on Google Colab. You can 
 open them even if you have no Google account. These lessons have an **Open in 
 Colab** link at the beginning. Click on it and you can try and edit the notebook
 (for editing you have to login to Google).
