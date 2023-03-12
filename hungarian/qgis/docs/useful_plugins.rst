@@ -51,6 +51,10 @@ Ezután néhány modul ismertetése következik.
 Map Swipe Tool
 --------------
 
+**FIGYELEM**
+
+*A QGIS 2.26 (illetve Qt 5.15) verziótól a modul egy hibával elszáll, melynek kijavítását továbbítottam a fejlesztőknek, de eddig nem vették figyelembe, lásd: https://github.com/lmotta/mapswipetool_plugin/pull/17.*
+
 Akinek rendszeresen űrfelvételeket, ortofotókat kell összehasonlítania, nagyon
 hasznos lehet a **MapSwipe** modul. Vízszintesen vagy függőlegesen mozgathatunk
 egy vonalat a felső réteg eltakarásához vagy megjelenítéséhez.
@@ -90,6 +94,10 @@ a Google StreetView alkalmazást.
 
 Profile tool
 ------------
+
+**MEGJEGYZÉS**
+
+*A Profile tool modul funkcionalitása a QGIS 3.26 verziótól bekerült az alapprogramba és új funkciókkal bővült. A profile tool modul távolítsa el a 3.26 vagy újabb verzióban és a Nézet/Szintmetszet menüpontot használja.*
 
 A **Profile tool** modullal szabályos négyzetrácsban elrendezett magasságok
 (vagy egyéb adatok) metszetét készíthetjük el. A telepítés után a modult a
