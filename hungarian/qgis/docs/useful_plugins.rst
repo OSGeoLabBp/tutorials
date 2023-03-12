@@ -97,7 +97,7 @@ Profile tool
 
 **MEGJEGYZÉS**
 
-*A Profile tool modul funkcionalitása a QGIS 3.26 verziótól bekerült az alapprogramba és új funkciókkal bővült. A profile tool modul távolítsa el a 3.26 vagy újabb verzióban és a Nézet/Szintmetszet menüpontot használja.*
+*A Profile tool modul funkcionalitása a QGIS 3.26 verziótól bekerült az alapprogramba és új funkciókkal bővült. A profile tool modult távolítsa el a 3.26 vagy újabb verzióban és a Nézet/Szintmetszet menüpontot használja.*
 
 A **Profile tool** modullal szabályos négyzetrácsban elrendezett magasságok
 (vagy egyéb adatok) metszetét készíthetjük el. A telepítés után a modult a
