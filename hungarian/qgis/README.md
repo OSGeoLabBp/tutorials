@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [GeoPDF állomány létrehozása](docs/geopdf.rst)
 * [Excel táblázat hozzákapcsolása térképi réteghez](docs/xls_join.rst)
 * [QGIS használata parancssorból](docs/cli.rst)
 * [Geotag-gel rendelkező képek kezelése](docs/drone.rst)
