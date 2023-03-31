@@ -2,7 +2,7 @@ GeoPDF állomány létrehozása
 ===========================
 3.16+ verzió
 
-A GeoPDF fájlok egy raszter réteget és több vektor réteget tartalmazhat.
+A GeoPDF fájlok egy raszter réteget és több vektor réteget tartalmazhatnak.
 A raszter réteg kötelező része, de ez lehet egyszínű háttér réteg is. 
 Jelenleg két szabványos GeoPDF létezik az **ISO 3200 Extension** és az **OGC
 Best Practice**. A QGIS mindkét formátum létrehozását és megjelenítését is 
