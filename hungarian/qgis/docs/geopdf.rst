@@ -12,7 +12,7 @@ A GeoPDF tartalmának megfelelő QGIS projektet először létre kell hoznunk,
 a rétegek megjelenítési stílusát, a címke feliratokat be kell állítanunk.
 
 Az alábbi képen az OpenStreetMap adatokból összeállított egyszerű
-térképet konvertáljuk GEoPDF-be.
+térképet konvertáljuk GeoPDF-be.
 
 .. image:: images/geopdf1.png
    :align: center
@@ -33,7 +33,7 @@ A felső részen a térkép terjedelmét állíthatjuk be, számos módszerrel
 * a térképvászonon egérrel kijelölve
 
 A méretarány, a felbontás és a pixelben megadott méret a raszteres adatokra 
-vonatkozik. A párbeszéablak felső része megegyezik a projekt képként
+vonatkozik. A párbeszédablak felső része megegyezik a projekt képként
 exportálása során megjelenővel.
 
 Az aktív dekorációk közé tartozik az észak nyíl, a lépték vonalzó, stb. 
@@ -44,23 +44,26 @@ esetén releváns. A metadatok tárolása csak az arra alkalmas formátumok
 esetén történik meg.
 
 GeoPDF készítés beállításakor kétféle formátum közül választhatunk, javasolt
-az ISO formátum alkalmazása. A Tartalmazza a vektoros elem információk
+az ISO formátum alkalmazása. A **Tartalmazza a vektoros elem információit**
 bejelölése esetén a GeoPDF állomány tartalmazni fogja a vektoros rétegek
 attribútumait is.
 
-A bővített beállítások közül a Térkép raszterizálását nem célszerű GeoPDF
-esetén alkalmazni. A geometria egyszerűsítése esetén a beállítás felbontás 
-függvényében töréspontok kihagyásával egyszerűsíti a program a geometriát.
-Nem kapcsolja be, ha az eredeti geometria beállítása a cél. A szöveg
+A bővített beállítások közül a **Térkép raszterizálását** nem célszerű GeoPDF
+esetén alkalmazni. A geometria egyszerűsítése esetén, a beállítás felbontás 
+függvényében töréspontok kihagyásával egyszerűsíti a geometriát.
+Ne kapcsolja be, ha az eredeti geometria megőrzése a cél. A szöveg
 exportálás két beállítása közül csak akkor válasszuk a szöveg objektumként
 történő exportot, ha külső alkalmazással szerkeszteni kivánnánk azokat.
 
 A **Mentés** gomb megnyomása után adhatjuk meg az output fájl nevét.
 
+
 Abobe PDF nézegetőben a GeoPDF megjelenítése:
 
 .. image:: images/geopdf2.png
    :align: center
+
+A GeoPDF megjelenítőben további funkciókat érhetünk el, például távolságmérés.
 
 .. note::
     Megjegyzés
