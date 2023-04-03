@@ -97,6 +97,10 @@ szükség szintvonalakra.
 Metszet készítés
 ----------------
 
+*Megjegyzés*: A QGIS újabb változataiban a metszet készítés bekerült az
+alap rendszerbe, a **Nézet/Szintmetszet** menüpont alatt található meg és kibővült
+a funkcionalitása (pl. pontfelhőkből is képes metszetet készíteni).
+
 A metszet készítésre egy külső modul használható a QGIS-ben.
 A **Modulok/Modulok kezelése és telepítése** menüpont segítségével telepítse
 a *Profile Tool* modult. Válassza ki az eszközsorban megjelenő zöld színű,
