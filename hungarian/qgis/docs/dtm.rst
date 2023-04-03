@@ -23,7 +23,7 @@ elrendezve áll rendelkezésünkre. Szabálytalan elrendezésű pontokból, tör
 idomvonalakból indulhatunk ki. A QGIS Feldolgozás modulban több algoritmust
 találhatunk erre a célra a QGIS, a GRASS és a SAGA csoportban. Itt most csak 
 
-Inverz távolság interpláció
+Inverz távolság interpoláció
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Az inverz távolság súlyozás (IDW) eljárás egy pont magasságát a környezetében
