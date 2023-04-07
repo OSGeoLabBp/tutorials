@@ -1,4 +1,5 @@
-# QGIS táblák összekapcsolása a mezőértékek részleges egyezése alapján
+QGIS táblák összekapcsolása a mezőértékek részleges egyezése alapján
+====================================================================
 
 **QGIS 3.8+**
 
@@ -30,7 +31,8 @@ A megoldás lépései:
 #. Az első összekapcsolandó táblában létrehozunk egy virtuális oszlopot a második táblában található legjobban egyező, az összekapcsoláshoz használt mező tartalmával
 #. A két tábla összekapcsolását virtuális mező segítségével oldjuk meg
 
-## Virtuális mező létrehozása
+Virtuális mező létrehozása
+--------------------------
 
 A virtuális mezőt abban a rétegben/táblázatban hozzuk létre, melyhez a
 másik tábla adatait szeretnénk kapcsolni. A virtuális mezőbe a
@@ -81,7 +83,8 @@ jelenti, hogy tíznél nem több szerkesztési művelet különbség van a két
 karakterlánc között). Ez együtt jár annak a kockázatával, hogy hamis 
 illeszkedést találunk.
 
-## Táblák összkapcsolása a virtuális mező segítségével
+Táblák összkapcsolása a virtuális mező segítségével
+---------------------------------------------------
 
 Most már csak a **LAYER1** attribútum tábláját kell összekapcsolni a
 **MATCH** oszlopon keresztül a **LAYER2** **TITLE** oszlopával.
