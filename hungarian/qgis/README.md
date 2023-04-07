@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [QGIS táblák összekapcsolása a mezőértékek részleges egyezése alapján](docs/fuzzymatch.rst)
 * [GeoPDF állomány létrehozása](docs/geopdf.rst)
 * [Excel táblázat hozzákapcsolása térképi réteghez](docs/xls_join.rst)
 * [QGIS használata parancssorból](docs/cli.rst)
