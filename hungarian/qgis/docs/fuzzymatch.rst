@@ -11,17 +11,17 @@ Sokszor bosszúságot okozhatnak az elírások, ha két adatbázis táblát szö
 tartalmazó oszlop alapján akarunk összekapcsolni. A réteg tulajdonságai 
 között található **Összekapcsolások** fül csak a mezőtartalom teljes egyezése
 esetén tudja a két táblázat egy-egy sorának az összekapcsolását megoldani.
-Használata esetén előzetesen egy adattisztítást kell végrehajtanunk, mely
-időigényes lehet.
+Használata esetén előzetesen egy adattisztítást kell végrehajtanunk a gépelési 
+hibák kiküszöbölésére, mely időigényes lehet.
 
 Az úgynevezet Fuzzy összehasonlítás esetén a közelítően azonos értékek alapján
-is dolgozhatunk. A QGIS mező kalkulátor tartalmaz néhány olyen függvényt,
+is dolgozhatunk. A QGIS mező kalkulátor tartalmaz néhány olyan függvényt,
 melyek segítségével a részleges egyezés esetén is meg lehet oldani az
 összekapcsolást. Ezek közül a *levershtein* függvényt használjuk, mely két
 karakterlánc szerkesztési távolságát határozza meg (a karakter beszúrások,
 törlések és helyettesítések számát, hogy az egyik szövegláncot a másik 
 szöveglánccá alakítsuk át). Minél nagyobb a függvény által visszaadott érték,
-annál nagyobb a különbség a két összehasonlított függvény között.
+annál nagyobb a különbség a két összehasonlított szöveg között.
 
 A megoldás során az aggregátor függvényeket is használjuk, melyekről a fentebb
 megadott linken olvashat.
@@ -34,10 +34,15 @@ A megoldás lépései:
 Virtuális mező létrehozása
 --------------------------
 
+A virtuális mezők tartalmát az attribútum táblázat minden megnyitásakor 
+automatikusan újraszámítja. Egy állandó oszlopot is generálhatnánk a
+táblába, de annak a tartalmát a forrás mezők módosítása esetén újra kellene
+generálni, amiről könnyen elfeledkezhetünk.
 A virtuális mezőt abban a rétegben/táblázatban hozzuk létre, melyhez a
 másik tábla adatait szeretnénk kapcsolni. A virtuális mezőbe a
-*levershtein* távolságban legközelebbi mezőtartalmat másoljuk át.
-A páldában a **LAYER1** réteg **name** oszlopát kapcsoljuk össze a
+*levershtein* távolságban legközelebbi mezőtartalmat másoljuk át a másik
+táblából.
+A példában a **LAYER1** réteg **name** oszlopát kapcsoljuk össze a
 **LAYER2** réteg **TITLE** oszlopával.
 
 .. image:: images/fuzzymatch1.png
@@ -81,13 +86,13 @@ Látható, hogy nem sikerült minden névhez párt találni a második tábláb�
 Megpróbálhatjuk a *filter* feltéttelben lévő 10 értékét növelni (ami azt
 jelenti, hogy tíznél nem több szerkesztési művelet különbség van a két 
 karakterlánc között). Ez együtt jár annak a kockázatával, hogy hamis 
-illeszkedést találunk.
+illeszkedést találunk. Először prőbálkozzunk kisebb, 2-5 közötti értékkel.
 
 Táblák összkapcsolása a virtuális mező segítségével
 ---------------------------------------------------
 
 Most már csak a **LAYER1** attribútum tábláját kell összekapcsolni a
-**MATCH** oszlopon keresztül a **LAYER2** **TITLE** oszlopával.
+**MATCH** virtuális oszlopon keresztül a **LAYER2** **TITLE** oszlopával.
 
 .. image:: images/fuzzymatch5.png
    :align: center
