@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [2.5D megjelenítés](docs/25dview.rst)
 * [QGIS táblák összekapcsolása a mezőértékek részleges egyezése alapján](docs/fuzzymatch.rst)
 * [GeoPDF állomány létrehozása](docs/geopdf.rst)
 * [Excel táblázat hozzákapcsolása térképi réteghez](docs/xls_join.rst)
