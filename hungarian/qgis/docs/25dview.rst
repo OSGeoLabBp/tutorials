@@ -45,7 +45,7 @@ alakban. Ezek közül mi a *buildings:levels* (szintek száma) értéket fogjuk 
     :align: center
     
 A fenti ábrán látható táblázat részletből azt a következtetést vonhatjuk le,
-hogy nincs minden épülethez szintek száma adat. Néhány esetben a *hight*
+hogy nincs minden épülethez szintek száma adat. Néhány esetben a *height*
 taget is láthatunk, de ez még kevesebb esetben található meg. A tökéletes 
 eredményhez az adatokat ki kellene egészítenünk.
 
