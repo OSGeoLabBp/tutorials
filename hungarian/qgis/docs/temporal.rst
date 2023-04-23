@@ -1,4 +1,4 @@
-Idóbeli vezérlő használata
+Időbeli vezérlő használata
 ==========================
 
 QGIS 3.14+
