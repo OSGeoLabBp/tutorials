@@ -8,7 +8,7 @@ QGIS 3.14+
 Az időbeli vezérlőt olyan rétegek megjelenítésénél használhatjuk, melyekben
 egy vagy két dátumot vagy időpontot tartalmazó oszlop van. Emellett a rétegek 
 egy csoportjára is használhatjuk az időbeli vezérlőt, ha a rétegekhez
-hozzárendelünk wgy időtartományt amikor megjelenjenek.
+hozzárendelünk egy időtartományt amikor megjelenjenek.
 
 A példánkban egy kerékpártúrán rögzített GPS nyomot jelenitünk meg az
 időbeli vezérlő segítségével navigálva.
@@ -48,15 +48,22 @@ mellett a jobb oldalon egy óra szimbólum jelenik meg.
 
 A projekt tulajdonságok között is van egy *Időbeliség* fül. Itt az egész 
 projektre vonatkozó idő intervallumot állíthatunk be. A *Számítás a rétegekből*
-valamennyi időbeliséget tartalmazó rétegek alapján számítja a program a
+valamennyi időbeliséget tartalmazó réteg alapján számítja a program a
 két mező értékét.
+
+.. image:: images/temporal3.png
+   :align: center
 
 A beállítások után kapcsoljuk be az *Időbeliség vezérlőt*. Ezt az óra ikonnal
 vagy a *Nézet* menü *Panelek* csoportjában tehetjük meg.
-Az animáció tartományát a frissítés gombbal aktualizálhatjuk a projekt vagy egy réteg időtartományához. A lépés beállításával adhatjuk meg, hogy mekkora 
+Az animáció tartományát a frissítés gombbal aktualizálhatjuk a projekt vagy egy
+réteg időtartományához. A lépés beállításával adhatjuk meg, hogy mekkora 
 időtartamba eső pontok látszanak. A lejátszás elindítása után hat percnyi
-időtartam ponjai jelennek meg. A *ciklus* bekapcsolása esetén a lejátszás
+időtartam pontjai jelennek meg. A *ciklus* bekapcsolása esetén a lejátszás
 folyamatos lesz.
+
+.. image:: images/temporal4.png
+   :align: center
 
 .. note::
    Ne mentse az állományt shape fájlba, mert az időpontokból szöveges mező
