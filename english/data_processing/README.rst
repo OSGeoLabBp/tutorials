@@ -12,7 +12,8 @@ extension modules.
 Numpy, scipy and pandas modules add the power of numeric processing to Python. 
 See some elementary lessons for Python:
 
-* `Python in a nutshell <lessons/python_in_a_nutshell.ipynb>`_ a Jupyter notebook for beginners in Python.
+* `Python in a nutshell <lessons/python_in_a_nutshell.ipynb>`_ a Jupyter notebook for beginners in Python
+* `Command line arguments <lessons/commandlineparameters.ipynb>`_ a Jupyter notebook
 * `Numpy in a nutshell <../python/numpy_tutor.ipynb>`__ a Jupyter notebook
 * `Pandas in a nutshell <../python/pandas_tutor.ipynb>`__ a Jupyter notebook
 * `Regular expressions in Python <../python/regexp_in_python.ipynb>`__ a Jupyter notebook
