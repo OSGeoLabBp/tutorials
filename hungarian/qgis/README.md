@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [2D-s nézetek használata QGIS-ben](docs/2dviews.rst)
 * [Időbeli vezérlő használata](docs/temporal.rst)
 * [2.5D megjelenítés](docs/25dview.rst)
 * [QGIS táblák összekapcsolása a mezőértékek részleges egyezése alapján](docs/fuzzymatch.rst)
