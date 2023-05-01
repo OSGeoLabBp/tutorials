@@ -12,7 +12,7 @@ leckében leírt *Map Swipe Tool* modulhoz.
 
 A BME területét ábrázoló két eltérő időpontban készült ortofotót adtam a QGIS
 projektemhez. A célunk az, hogy két egymás melletti 2D-s nézet ablakban
-ugyanazt a területet lássük, de az egyikben a körábbi, a másikban az újabb 
+ugyanazt a területet lássuk, de az egyikben a korábbi, a másikban az újabb 
 ortofotó látszódjon.
 
 Először hozzunk létre egy második 2D-s nézetet a **Nézet/Új térkép nézet**
@@ -21,7 +21,7 @@ menüponttal. Egy *Térkép 1* új ablakot kapunk a QGIS fő ablak felett.
 .. image:: images/2dviews1.png
    :align: center
 
-Mozgassuk a *Térkép 1* ablakot a fejlécét megragadva a fő ablak jobb széléhet,
+Mozgassuk a *Térkép 1* ablakot a fejlécét megragadva a fő ablak jobb széléhez,
 hogy a "lebegő" ablakot a fő térkép ablak mellé helyezzük (dokkoljuk).
 
 .. image:: images/3dviews2.png
@@ -51,7 +51,7 @@ A *Rétegek* panel eszközsorában kattintsunk
 a szem ikonra (Térképtémák kezelése) és válasszuk a **Téma hozzáadása...**
 menüpontot és hozzunk létre egy *Téma 1* témát.
 
-A *Térkép 1* nézet eszközsorában is megtalálható szem ikonra kettintva
+A *Térkép 1* nézet eszközsorában is megtalálható szem ikonra kattintva
 rendeljük a nézethez a létrehozott *Téma 1* témát.
 
 .. image:: images/3dviews4.png
