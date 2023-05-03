@@ -5,6 +5,12 @@ QGIS táblák összekapcsolása a mezőértékek részleges egyezése alapján
 
 **Összeállította: dr. Siki Zoltán**
 
+> *2023 május 3. óta elérhető a QGIS modul tárházban a FuzzyJoinTables modulom, mely
+egyszerűbbé teszi a táblák részleges egyezés (Fuzzy) alapján történő összekapcsolását.
+Emellett a lenti megoldáshoz képest a gyakran a gépelésben előforduló betű felcserélést
+is egyszerű hibaként kezeli, az elfogadási küszöböt százalékosan lehet megadni, és lehetőség
+külső illetve belső összekapcsolásra is*. Lásd:https://plugins.qgis.org/plugins/fuzzy_join/ 
+
 Lásd még https://github.com/OSGeoLabBp/tutorials/blob/master/hungarian/qgis/docs/aggregator.rst
 
 Sokszor bosszúságot okozhatnak az elírások, ha két adatbázis táblát szöveget
