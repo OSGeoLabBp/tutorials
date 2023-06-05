@@ -1,5 +1,5 @@
-# tutorials
-Hungarian tutorials for FOSS/FOSS4G software and programming
+# Oktatóanyagok / Tutorials
+Magyar nyelvű oktatóanyagok FOSS/FOSS4G szoftverekhez és programozáshoz
 
 * [Képfeldolgozás](image_processing)
 * [GDAL](gdal)
