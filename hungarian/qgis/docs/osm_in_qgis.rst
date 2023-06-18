@@ -68,7 +68,7 @@ Azok akik az OSM adatokat egyéni stílussal szeretnék megjeleníteni, egy
 részét be szeretnék építeni a térképükbe vagy az elekhez rendelt címkéket
 is használni szeretnék le kell tölteniük a vektoros adatokat. A Földre
 kiterjedő OSM adatokat a nagy méretük miatt (több mint 69 GB tömörített PBF
-formátumban). Több lehetőséget mutatunk be az OSM adatok egy részének 
+formátumban) nem tölthetők le. Több lehetőséget mutatunk be az OSM adatok egy részének 
 letöltésére.
 
 Magyarországra leválogatott adatok
