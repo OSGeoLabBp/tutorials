@@ -87,7 +87,7 @@ A .qml fájl létrehozására a réteg fekbukkanó menü **Export**
 menüpontja ad lehetőséget. A stílus fájlt a rétegtulajdonságok ablakban 
 tölthetjük be egy réteghez a **Stílus** gomb segítségével az ablak alján.
 
-|styles3_png|
+|style3_png|
 
 A .qml fájlt bármelyik réteghez hozzáadhatjuk, de például az adatvezérelt
 megjelenítés csak akkor lesz helyes, ha a stílusban szereplő attribútum
@@ -165,10 +165,10 @@ projekthez rendelt (*Projektstílusok*) névvel bíró stílusokat.
    :width: 8.17cm
    :height: 5.10cm
 
-.. |styles3_png| image:: images/style3.png
+.. |style3_png| image:: images/style3.png
    :width: 6.60cm
    :height: 4.81cm
 
-.. |styles4_png| image:: images/style4.png
+.. |style4_png| image:: images/style4.png
    :width: 7.51cm
    :height: 3.94cm
