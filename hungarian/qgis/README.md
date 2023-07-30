@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [Rétegstílusok kezelése](docs/styles.rst)
 * [OSM adatok használata QGIS-ben](docs/osm_in_qgis.rst)
 * [2D-s nézetek használata QGIS-ben](docs/2dviews.rst)
 * [Időbeli vezérlő használata](docs/temporal.rst)
