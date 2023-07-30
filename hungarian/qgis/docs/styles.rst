@@ -1,4 +1,4 @@
-Réteg stílusok kezelése
+Rétegstílusok kezelése
 =======================
 
 QGIS 3.18+
