@@ -178,4 +178,10 @@ sikerült-e minden hibát megszüntetnünk. Ha maradtak volna még hibák, akkor
 a *MapShaper* *clean* parancsának a paramétereit módosítanunk kell az
 újrafutttásnál vagy kézzel kell kijavítanunk azokat.
 
+.. note:: Kiegészítés
+
+    Az előzőekben felvázolt megoldás mellett a GRASS GIS *v.clean* és v.build* parancsok
+    illetve a PostGIS *st_makevalid* és *ValidateTopology* függvények.
+    A GRASS GIS és a PostGIS emellett a topológia kezelésére is képes.
+
 2023. augusztus 10.
