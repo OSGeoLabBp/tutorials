@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [QGIS táblakapcsolatok](docs/join_relate.rst)
 * [Topológiai hibák feltárása és javítása](docs/fix_topo.rst)
 * [Rétegstílusok kezelése](docs/styles.rst)
 * [OSM adatok használata QGIS-ben](docs/osm_in_qgis.rst)
