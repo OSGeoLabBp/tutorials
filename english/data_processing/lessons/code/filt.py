@@ -6,7 +6,7 @@
         switches:
             -i or --input_separator separator in input file, default ","
             -o or --output_separator separator in output file, default ","
-            -r or --rows keep only every rth rows, default 10
+            -r or --rows keep only every rth rows, default 1, all lines
             -d or --decimals write d decimals to output, default 3
             -n or --nums add row numbers to output
         input - name of ascii point cloud or standard input if none given
@@ -25,17 +25,26 @@ def pc_filter(row_num, r_skip, n_dec, i_sep, o_sep, i_fp):
     """
     i = j = 0   # initialize input and output row numbers
     # set up format for required decimals
-    form = "{2:." + str(n_dec) + "f}{0}{3:." + str(n_dec) + \
-           "f}{0}{4:." + str(n_dec) + "f}"
-    if row_num:   # add row number to format string
-        form = "{1:d}{0}" + form
     for line in i_fp:
         i += 1          # count input lines
         if i % r_skip == 0:  # write only every rth line
-            j += 1      # count output lines0
-            # change input fields to numbers for formatting
-            x_coo, y_coo, z_coo = [float(c) for c in line.split(i_sep)]
-            print(form.format(o_sep, j, x_coo, y_coo, z_coo))
+            j += 1      # count output lines
+            items = line.split(i_sep)
+            line_no = str(j) + o_sep if row_num else ''
+            # note invalid lines are skiped
+            if len(items) == 3: # no point id
+                # convert coordinate fields to numbers for formatting
+                try:
+                    x_coo, y_coo, z_coo = [float(c) for c in items]
+                except ValueError:
+                    continue
+                print(f"{line_no}{x_coo:.{n_dec}f}{o_sep}{y_coo:.{n_dec}f}{o_sep}{z_coo:.{n_dec}f}")
+            elif len(items) == 4:   # with point id
+                try:
+                    x_coo, y_coo, z_coo = [float(c) for c in items[1:]]
+                except ValueError:
+                    continue
+                print(f"{line_no}{items[0]}{o_sep}{x_coo:.{n_dec}f}{o_sep}{y_coo:.{n_dec}f}{o_sep}{z_coo:.{n_dec}f}")
 
 parser = argparse.ArgumentParser()
 parser.add_argument('names', metavar='file_names', type=str, nargs='*',
@@ -44,8 +53,8 @@ parser.add_argument('-i', '--input_separator', type=str, default=',',
                     help='input separator, default ","')
 parser.add_argument('-o', '--output_separator', type=str, default=',',
                     help='output separator, default ","')
-parser.add_argument('-r', '--rows', type=int, default=10,
-                    help='rows to keep, default 10')
+parser.add_argument('-r', '--rows', type=int, default=1,
+                    help='rows to keep, default 1')
 parser.add_argument('-d', '--decimals', type=int, default=3,
                     help='number of decimals in output co-ordinates, default 3')
 parser.add_argument('-n', '--nums', action='store_true',
