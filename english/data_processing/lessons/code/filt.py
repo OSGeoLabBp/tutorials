@@ -30,21 +30,18 @@ def pc_filter(row_num, r_skip, n_dec, i_sep, o_sep, i_fp):
         if i % r_skip == 0:  # write only every rth line
             j += 1      # count output lines
             items = line.split(i_sep)
-            line_no = str(j) + o_sep if row_num else ''
-            # note invalid lines are skiped
-            if len(items) == 3: # no point id
-                # convert coordinate fields to numbers for formatting
+            n_items = len(items)
+            if n_items in (3, 4):
                 try:
-                    x_coo, y_coo, z_coo = [float(c) for c in items]
+                    # convert coordinate fields to numbers for formatting
+                    x_coo, y_coo, z_coo = [float(c) for c in items[-3:]]
                 except ValueError:
-                    continue
-                print(f"{line_no}{x_coo:.{n_dec}f}{o_sep}{y_coo:.{n_dec}f}{o_sep}{z_coo:.{n_dec}f}")
-            elif len(items) == 4:   # with point id
-                try:
-                    x_coo, y_coo, z_coo = [float(c) for c in items[1:]]
-                except ValueError:
-                    continue
-                print(f"{line_no}{items[0]}{o_sep}{x_coo:.{n_dec}f}{o_sep}{y_coo:.{n_dec}f}{o_sep}{z_coo:.{n_dec}f}")
+                    continue    # spkip invalid line
+                line_no = str(j) + o_sep if row_num else ''
+                if n_items == 3: # no point id
+                    print(f"{line_no}{x_coo:.{n_dec}f}{o_sep}{y_coo:.{n_dec}f}{o_sep}{z_coo:.{n_dec}f}")
+                else:
+                    print(f"{line_no}{items[0]}{o_sep}{x_coo:.{n_dec}f}{o_sep}{y_coo:.{n_dec}f}{o_sep}{z_coo:.{n_dec}f}")
 
 parser = argparse.ArgumentParser()
 parser.add_argument('names', metavar='file_names', type=str, nargs='*',
