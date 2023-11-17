@@ -1389,9 +1389,9 @@ hatékonyabb, olvashatóbb, egyszerűbb megoldást kínál a más programnyelvek
 | Ciklusok                                                                                         |
 +-------------------------------------------------+------------------------------------------------+
 | i = 0                                           | for i in range(10):                            |
-| while i < 10:                                   |     print i                                    |
-|     print i                                     |                                                |
-|     i += 1                                      |                                                |
+| while i < 10:                                   |     prin(i)                                    |
+|     print(i)                                    | vagy                                           |
+|     i += 1                                      | print(list(range(10)))                         |
 +-------------------------------------------------+------------------------------------------------+
 | lista = ['Peti', 'Franciska', 'Regő']           | lista = ['Peti', 'Franciska', 'Regő']          |
 | index = 0                                       | for index, elem in enumerate(ista):            |
@@ -1434,6 +1434,14 @@ hatékonyabb, olvashatóbb, egyszerűbb megoldást kínál a más programnyelvek
 | s = ''                                          | s = ','.join(l)                                |
 | for i in l:                                     |                                                |
 |     s += i + ','                                |                                                |
++-------------------------------------------------+------------------------------------------------+
+| Lista leggyakoribb eleme  mylist = [2, 2, 4, 5, 6, 4, 2, 3, 9, 3, 2, 4, 4, 7, 0, 1]              |
++-------------------------------------------------+------------------------------------------------+
+| for item in mylist:                             | freq = max(set(mylist), key = mylist.count)    |
+|     if item in freqs:                           |                                                |
+|         freqs[item] = 1                         | print(freq)                                    |
+|     else:                                       |                                                |
+|         freqs[item] += 1                        |                                                |
 +-------------------------------------------------+------------------------------------------------+
 | Van hamis (nulla/False) elem a listában?                                                         |
 +-------------------------------------------------+------------------------------------------------+
