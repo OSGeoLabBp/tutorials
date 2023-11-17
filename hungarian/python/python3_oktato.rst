@@ -1472,8 +1472,8 @@ Prim számok 1000-ig
 
 .. code:: python
 
-	numbers = range(1000)
-	for j in numbers[2:]:
+	numbers = list(range(1000))
+	for j in numbers[2:int(1000**0.5+0.5)]:
 		numbers[j+j::j] = [0 for k in numbers[j+j::j]]
 	prims = sorted(list(set(numbers) - set([0])))
 
