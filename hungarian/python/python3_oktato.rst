@@ -1360,38 +1360,45 @@ hatékonyabb, olvashatóbb, egyszerűbb megoldást kínál a más programnyelvek
 Két változó tartalmának felcserélése
 
 .. code:: python
+
 	a, b = b, a
 
 Többszörös értékadás
 
-.. code::
+.. code:: python
+
 	A = B = C = 0
 
 Érték egy intervallumba esik-e? 
 
 .. code::
+
 	if a < b < c:
 		print('közötte')
 
 Adott értékeke közül egyik:
 
 .. code:: python
+
 	if a in ('alma', 'körte', 'szilva'):
 		print('szeretem')
 
 Rövid feltételes kiértékelés
 
 .. code:: python
+
 	a = 2 if b > 6 else 1
 
 Ciklusok                                                                                         |
 
 .. code:: python
+
 	lista = ['Peti', 'Franciska', 'Regő']
 	for index, elem in enumerate(ista):
 		print(f'{index} {elem}')
 
 .. code:: python
+
 	for cim in minden_cim():
 		if hibas_cim(cim):
 			print('Hibás cím') 
@@ -1402,38 +1409,43 @@ Ciklusok                                                                        
 Függvény hívások láncolása
 
 .. code::
+
 	konyv_info = 'A zabhegyező: Salinger'
 	konyv =konyv_info.strip().upper().replace(':', 'by')
 
 Szöveglánc vagy lista fordított sorrendbe állítása
 
 .. code:: python
+
 	s = 'python'
 	w = s[::-1]
-
 
 Lista összefűzése szöveglánccá
 
 .. code:: python
+
 	l = ['egy', kettő', 'sok']
 	s = ','.join(l)
-
 
 Lista leggyakoribb eleme
 
 .. code:: python
+
 	mylist = [2, 2, 4, 5, 6, 4, 2, 3, 9, 3, 2, 4, 4, 7, 0, 1]
 	freq = max(set(mylist), key = mylist.count)
 	print(freq)	# 2
+
 Van hamis (nulla/False) elem a listában?
 
 .. code:: python
+
 	l = [2, 4, 0, 2, 5, 6]
 	print(all(l))	# false
 	
 Skaláris szorzat
 
 .. code:: python
+
 	a = [1, 4, -2] 
 	b = [-2, 3, -4]
 	s = sum([x * y for (x,y) in zip(a,b)])
@@ -1442,19 +1454,24 @@ Skaláris szorzat
 Listák egyesítése szótárrá
 
 .. code:: python
+
 	l1 = ['Csabi', 'Tomi', 'Piri']
 	l2 = [2, 0, 3]
 	s = { l1[i]: l2[i] for i in range(len(l1)) if l2[i] }
 	print(s)	# {'Csabi': 2, 'Piri': 3}
+
 Ismétlődő elemek megszüntetése a listában
 
 .. code:: python
+
 	l =[1, 2, 1, 3, 2, 4, 3]
 	l1 = list(set(l))
 	print(l1)	# [1, 2, 3, 4]
+
 Prim számok 1000-ig
 
 .. code:: python
+
 	numbers = range(1000)
 	for j in numbers[2:]:
 		numbers[j+j::j] = [0 for k in numbers[j+j::j]]
