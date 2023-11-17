@@ -1353,140 +1353,110 @@ port: 5432 alapértelmezéseket használtuk).
 Pythonic kód készítés
 =====================
 
-Egy régi programozói mondás szerint minden programnyelben lehet FORTRAN progrmaot írni. Ezt elkerülendő néhány példát mutatunk be, hogy mi a Pythonban alkalmazandó megoldás. A python sokszors
+Egy régi programozói mondás szerint minden programnyelben lehet FORTRAN programot írni. 
+Ezt elkerülendő néhány példát mutatunk be, hogy mi a Pythonban alkalmazandó megoldás. A python sokszor
 hatékonyabb, olvashatóbb, egyszerűbb megoldást kínál a más programnyelvekben használtnál.
 
-+-------------------------------------------------+------------------------------------------------+
-| NEM Pytonic kód                                 | Pythonic kód                                   |
-+=================================================+================================================+
-| Két változó tartalmának felcserélése                                                             |
-+-------------------------------------------------+------------------------------------------------+
-| tmp = a                                         | a, b = b, a                                    |
-| a = b                                           |                                                |
-| b = tmp                                         |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| Többszörös értékadás                                                                             |
-+-------------------------------------------------+------------------------------------------------+
-| A = 0                                           | A = B = C = 0                                  |
-| B = 0                                           |                                                |
-| C =                                             |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| Érték egy intervallumba esik-e?                                                                  |
-+-------------------------------------------------+------------------------------------------------+
-|  if a < b and b < c:                            |  if a < b < c:                                 |
-|     print ('közötte')                           |     print('közötte')                           |
-+-------------------------------------------------+------------------------------------------------+
-| if a == 'alma' or a == 'körte' or a =='szilva': | if a in ('alma', 'körte', 'szilva'):           |
-|     print('szeretem')                           |     print('szeretem')                          |
-+-------------------------------------------------+------------------------------------------------+
-| Rövid feltételes kiértékelés                                                                     |
-+-------------------------------------------------+------------------------------------------------+
-| if nagy:                                        | a = 2 if nagy else 1                           |
-|     a = 2                                       |                                                |
-| else:                                           |                                                |
-|     a = 1                                       |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| Ciklusok                                                                                         |
-+-------------------------------------------------+------------------------------------------------+
-| i = 0                                           | for i in range(10):                            |
-| while i < 10:                                   |     prin(i)                                    |
-|     print(i)                                    | vagy                                           |
-|     i += 1                                      | print(list(range(10)))                         |
-+-------------------------------------------------+------------------------------------------------+
-| lista = ['Peti', 'Franciska', 'Regő']           | lista = ['Peti', 'Franciska', 'Regő']          |
-| index = 0                                       | for index, elem in enumerate(ista):            |
-| for elem in lista:                              |     print('{} {}'.format(index, elem))         |
-|     print('{} {}'.format(index, elem))          |                                                |
-| index += 1                                      |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| lista = ['Peti', 'Franciska', 'Regő']           | lista = ['Peti', 'Franciska', 'Regő']          |
-| index = 0                                       | for elem in lista:                             |
-| while index < len(lista):                       |     print(elem)                                |
-|     print(lista[index])                         |                                                |
-|     index += 1                                  |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| hiba = False                                    | for cim in minden_cim():                       |
-| for cim in minden_cim():                        |     if hibas_cim(cim):                         |
-|     if hibas_cim(cim):                          |         print('Hibás cím')                     |
-|         hiba = True                             |         break                                  |
-|         print('Hibás cím')                      | else:                                          |
-|         break                                   |     print('minden cím jó')                     |
-| if not hiba:                                    | # az else a for-hoz tartozik és akkor fut      |
-|     print('minden cím jó')                      | # le, ha nem breakkel léptünk ki a ciklusból   |
-+-------------------------------------------------+------------------------------------------------+
-| Függvény hívások láncolása                                                                       |
-+-------------------------------------------------+------------------------------------------------+
-| konyv_info = '  A zabhegyező: Salinger  '       | konyv_info = '  A zabhegyező: Salinger  '      |
-| konyv = konyv_info.strip()                      | konyv =konyv_info.strip().upper().replace(':', |
-| konyv = konyv.upper()                           | 'by')                                          |
-| konyv = konyv.replace(':', ' by')               |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| Szöveglánc vagy lista fordított sorrendbe állítása                                               |
-+-------------------------------------------------+------------------------------------------------+
-| s = 'python'                                    | s = 'python'                                   |
-| w = ''                                          | w = s[::-1]                                    |
-| for i in range(len(s)-1, -1, -1):               |                                                |
-|     w += s[i]                                   |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| Lista összefűzése szöveglánccá                                                                   |
-+-------------------------------------------------+------------------------------------------------+
-| l = ['egy', kettő', 'sok']                      | l = ['egy', kettő', 'sok']                     |
-| s = ''                                          | s = ','.join(l)                                |
-| for i in l:                                     |                                                |
-|     s += i + ','                                |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| Lista leggyakoribb eleme  mylist = [2, 2, 4, 5, 6, 4, 2, 3, 9, 3, 2, 4, 4, 7, 0, 1]              |
-+-------------------------------------------------+------------------------------------------------+
-| for item in mylist:                             | freq = max(set(mylist), key = mylist.count)    |
-|     if item in freqs:                           |                                                |
-|         freqs[item] = 1                         | print(freq)                                    |
-|     else:                                       |                                                |
-|         freqs[item] += 1                        |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| Van hamis (nulla/False) elem a listában?                                                         |
-+-------------------------------------------------+------------------------------------------------+
-| l = [2, 4, 0, 2, 5, 6]                          | l = [2, 4, 0, 2, 5, 6]                         |
-| for i in l:                                     | all(l)                                         |
-|     if not l[i]:                                |                                                |
-|         print(False)                            |                                                |
-|         break                                   |                                                |
-| else:                                           |                                                |
-|     print True                                  |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| Skaláris szorzat                                                                                 |
-+-------------------------------------------------+------------------------------------------------+
-| a = [1, 4, -2]                                  | a = [1, 4, -2]                                 |
-| b = [-2, 3, -4]                                 | b = [-2, 3, -4]                                |
-| s = 0                                           | s = sum([x * y for (x,y) in zip(a,b)])         |
-| for i in range(len(a)):                         |                                                |
-|     s += a[i] * b[i]                            |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| Listák egyesítése szótárrá                                                                       |
-+-------------------------------------------------+------------------------------------------------+
-| l1 = ['Csabi', 'Tomi', 'Piri']                  | l1 = ['Csabi', 'Tomi', 'Piri']                 |
-| l2 = [2, 0, 3]                                  | l2 = [2, 0, 3]                                 |
-| s = {}                                          | s = { l1[i]: l2[i] for i in range(len(l1))     |
-| for i in range(len(l1)):                        |       if l2[i] }                               |
-|     if l2[i]:                                   |                                                |
-|         s[l1[i]] = l2[i]                        |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| Ismétlődő elemek megszüntetése a listában                                                        |
-+-------------------------------------------------+------------------------------------------------+
-| l =[1, 2, 1, 3, 2, 4, 3]                        | l =[1, 2, 1, 3, 2, 4, 3]                       |
-| l1 = []                                         | l1 = list(set(l))                              |
-| for i in l:                                     |                                                |
-|     if not i in l1:                             |                                                |
-|         l1.append(i)                            |                                                |
-+-------------------------------------------------+------------------------------------------------+
-| Prim számok 1000-ig                                                                              |
-+-------------------------------------------------+------------------------------------------------+
-| prims = [1]                                     | numbers = range(1000)                          |
-| for i in range(2, 1000):                        | for j in numbers[2:]:                          |
-|     prim = True                                 |   numbers[j+j::j] = [0 for k innumbers[j+j::j]]|
-|     for j in range(2, int(math.sqrt(i))+1):     | prims = sorted(list(set(numbers) -set([0])))   |
-|         if i % j == 0:                          |                                                |
-|             prim = False                        |                                                |
-|     if prim:                                    |                                                |
-|         prims.append(i)                         |                                                |
-+-------------------------------------------------+------------------------------------------------+
+Két változó tartalmának felcserélése
+
+.. code:: python
+	a, b = b, a
+
+Többszörös értékadás
+
+.. code::
+	A = B = C = 0
+
+Érték egy intervallumba esik-e? 
+
+.. code::
+	if a < b < c:
+		print('közötte')
+
+Adott értékeke közül egyik:
+
+.. code:: python
+	if a in ('alma', 'körte', 'szilva'):
+		print('szeretem')
+
+Rövid feltételes kiértékelés
+
+.. code:: python
+	a = 2 if b > 6 else 1
+
+Ciklusok                                                                                         |
+
+.. code:: python
+	lista = ['Peti', 'Franciska', 'Regő']
+	for index, elem in enumerate(ista):
+		print(f'{index} {elem}')
+
+.. code:: python
+	for cim in minden_cim():
+		if hibas_cim(cim):
+			print('Hibás cím') 
+			break
+	else:
+		print('minden cím jó') 
+
+Függvény hívások láncolása
+
+.. code::
+	konyv_info = 'A zabhegyező: Salinger'
+	konyv =konyv_info.strip().upper().replace(':', 'by')
+
+Szöveglánc vagy lista fordított sorrendbe állítása
+
+.. code:: python
+	s = 'python'
+	w = s[::-1]
+
+
+Lista összefűzése szöveglánccá
+
+.. code:: python
+	l = ['egy', kettő', 'sok']
+	s = ','.join(l)
+
+
+Lista leggyakoribb eleme
+
+.. code:: python
+	mylist = [2, 2, 4, 5, 6, 4, 2, 3, 9, 3, 2, 4, 4, 7, 0, 1]
+	freq = max(set(mylist), key = mylist.count)
+	print(freq)	# 2
+Van hamis (nulla/False) elem a listában?
+
+.. code:: python
+	l = [2, 4, 0, 2, 5, 6]
+	print(all(l))	# false
+	
+Skaláris szorzat
+
+.. code:: python
+	a = [1, 4, -2] 
+	b = [-2, 3, -4]
+	s = sum([x * y for (x,y) in zip(a,b)])
+	print(s)	# 18
+
+Listák egyesítése szótárrá
+
+.. code:: python
+	l1 = ['Csabi', 'Tomi', 'Piri']
+	l2 = [2, 0, 3]
+	s = { l1[i]: l2[i] for i in range(len(l1)) if l2[i] }
+	print(s)	# {'Csabi': 2, 'Piri': 3}
+Ismétlődő elemek megszüntetése a listában
+
+.. code:: python
+	l =[1, 2, 1, 3, 2, 4, 3]
+	l1 = list(set(l))
+	print(l1)	# [1, 2, 3, 4]
+Prim számok 1000-ig
+
+.. code:: python
+	numbers = range(1000)
+	for j in numbers[2:]:
+		numbers[j+j::j] = [0 for k in numbers[j+j::j]]
+	prims = sorted(list(set(numbers) - set([0])))
 
