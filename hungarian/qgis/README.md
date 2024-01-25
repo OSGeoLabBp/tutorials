@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [Koordináta lista készítés](docs/coord_list.rst)
 * [Cesium ion modul](docs/cesium_plugin.rst)
 * [QGIS táblakapcsolatok](docs/join_relate.rst)
 * [Topológiai hibák feltárása és javítása](docs/fix_topo.rst)
