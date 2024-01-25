@@ -40,11 +40,11 @@ belekerülnek. Az első sorba az oszlopok neve kerül.
 
 
 
-.. |cood_list1_png| image:: images/coord_list1.png
+.. |coord_list1_png| image:: images/coord_list1.png
     :width: 7.154cm
     :height: 6.587cm
 
-.. |cood_list2_png| image:: images/coord_list2.png
+.. |coord_list2_png| image:: images/coord_list2.png
     :width: 5.546cm
     :height: 5.757cm
 
