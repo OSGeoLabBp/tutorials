@@ -3,6 +3,7 @@ Python oktatóanyagok Python 3.x verziókhoz
 - `Python3 mogyoróhéjban <python_in_a_nutshell_hu.ipynb>`_   (Jupyter notebook)
 - `Pythonic kód készítés <simple.ipynb>`_  (Jupyter notebook)
 - `Hatékony ciklusok <loops.ipynb>`_  (Jupyter notebook)
+- `Vektorizáció<vectorization_hu.ipynb> (Jupyter notebook)
 - `Hatékony algoritmus készítése <effective_algoritm.ipynb>`_ (prim számok, Jupyter notebook)
 - `Az egyszerű algoritmustól, a vektorizáláson át az osztályokig <area.ipynb>`_ (zárt sokszög területe, Jupyter notebook)
 - `NumPy használata <numpy.ipynb>`_ (bevezetés és példák, Jupyter notebook)
