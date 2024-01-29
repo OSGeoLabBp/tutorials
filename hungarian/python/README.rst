@@ -9,6 +9,7 @@ Python oktatóanyagok Python 3.x verziókhoz
 - `NumPy használata <numpy.ipynb>`_ (bevezetés és példák, Jupyter notebook)
 - `Bevezetés a pandas használatába <pandas_tutor_hu.ipynb>`__ (Jupyter notebook)
 - `Szabályos kifejezések <regexp_in_python.ipynb>`_ (Jupyter notebook)
+- `Parancssori paraméterek <commandlineparameters_hu.ipynb>`_ (Jupyter notebook)
 
 Korábbi anyagok
 
