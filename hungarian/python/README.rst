@@ -7,6 +7,7 @@ Python oktatóanyagok Python 3.x verziókhoz
 - `Hatékony algoritmus készítése <effective_algoritm.ipynb>`_ (prim számok, Jupyter notebook)
 - `Az egyszerű algoritmustól, a vektorizáláson át az osztályokig <area.ipynb>`_ (zárt sokszög területe, Jupyter notebook)
 - `NumPy használata <numpy.ipynb>`_ (bevezetés és példák, Jupyter notebook)
+- `Bevezetés a pandas használatába <pandas_tutor_hu.ipynb>`__ (Jupyter notebook)
 - `Szabályos kifejezések <regexp_in_python.ipynb>`_ (Jupyter notebook)
 
 Korábbi anyagok
