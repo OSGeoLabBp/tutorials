@@ -79,7 +79,16 @@ A HTML kódban szöveges részek is megjelenhetnek. Például az épület nevév
 	<p>[% "MINOSITES" %]</p>
 	<div><img src='file:///[% "FOTO" %]' width="400" height="400" /></div>
 
-|foto9_png|
+|foto9_png
+
+**Kiegészítés**
+
+A fenti példákban a *FOTO* mezőben a fénykép abszolút elérési útját adtuk meg. Ennél rugalmasabb megoldás lehet, ha a projekt fájl könyvtárához képest relatív útvonallal adjuk meg 
+a képék elérérési útját. A külső fénykép megjelenítő alkalmazás a relatívútvonallal nem találja meg a képeinket, mivel fogalma sincs a projekt könyvtárunk elérési útjáról.
+Ezért nem elég a relatív útvonalat tartalmazó oszlop megadása, azt ki kell egészíteni a projekt könyvtárral, [% @project_folder %][%FOTO%] a mi példánkban. 
+A projekt könyvtár csak a projekt első mentése
+után kapja meg az értékét, tartalmát a **Projekt/Tulajdonságok** menüpont kiválasztása után a *Változók* fülön nézhetjük meg. Erre azért lehet szükség, hogy elkerüljük a
+könyvtár elválasztó katakterek (előre és vissza törtvonal) vegyes használatát.
 
 Budapest, 2020. január 30.
 
