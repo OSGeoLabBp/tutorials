@@ -79,7 +79,7 @@ A HTML kódban szöveges részek is megjelenhetnek. Például az épület nevév
 	<p>[% "MINOSITES" %]</p>
 	<div><img src='file:///[% "FOTO" %]' width="400" height="400" /></div>
 
-|foto9_png
+|foto9_png|
 
 **Kiegészítés**
 
