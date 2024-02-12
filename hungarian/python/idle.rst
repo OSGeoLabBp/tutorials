@@ -19,7 +19,7 @@ Visual Studio, pydb).
 Az *IDLE* 100%-ban Python nyelven készült, a *tkinter* grafikus könyvtár
 felhasználásával. Az *IDLE* elindítása után az *IDLE Shell* ablak
 jelenik meg, melyben Python parancsokat adhatunk ki a Python promt után.
-Például írja be a promptnál a
+Például írja be a promptnál a::
 
    print("Hello world")
 
@@ -43,41 +43,25 @@ A fenti képlet a koordinátatengelyek és a zárt sokszög olalai által
 alkotott derékszügű trapézok területeit összegzi.
 
 Nyissunk egy új ablakot a **File/New File** menüpont segítségével és
-írjuk be vagy másoljuk át a következő rövid programot:
+írjuk be vagy másoljuk át a következő rövid programot::
 
-from sys import argv
-
-import numpy as np
-
-# területszámítás koordinátákból
-
-if len(argv) > 1:
-
-coords = list(np.genfromtxt(argv[1], delimiter=","))
-
-else:
-
-coords = [[634110.62, 232422.09],
-
-[634108.23, 232365.96],
-
-[634066.13, 232378.12],
-
-[634062.95, 232457.58],
-
-[634111.68, 232454.93],
-
-[634110.62, 232422.09]]
-
-area = 0.0
-
-for i in range(len(coords)):
-
-j = i + 1
-
-area += (coords[j][0] + coords[i][0]) \* (coords[j][1] - coords[i][1])
-
-print(abs(area))
+    from sys import argv
+    import numpy as np
+    # területszámítás koordinátákból
+    if len(argv) > 1:
+        coords = list(np.genfromtxt(argv[1], delimiter=","))
+    else:
+        coords = [[634110.62, 232422.09],
+                  [634108.23, 232365.96],
+                  [634066.13, 232378.12],
+                  [634062.95, 232457.58],
+                  [634111.68, 232454.93],
+                  [634110.62, 232422.09]]
+    area = 0.0
+    for i in range(len(coords)):
+        j = i + 1
+        area += (coords[j][0] + coords[i][0]) \* (coords[j][1] - coords[i][1])
+    print(abs(area))
 
 |image2|
 
@@ -167,7 +151,7 @@ Hogyan tudjuk kijavítani a hibát? A számítási képletünket úgy kell
 értelmezni, hogyha az i+1 érték a pontok számánál nagyobb lenne akkor az
 első pontot kell használni. Vegyük észre, hogy a koodinátalistában a
 kezdőpont és a végpont megegyezik, így elegendő az *i* változóval
-vezérelt ciklust eggyel kevesebbszer lefuttatni. Módosítsuk a 15. sort:
+vezérelt ciklust eggyel kevesebbszer lefuttatni. Módosítsuk a 15. sort::
 
    for i in range(len(coords)-1):
 
@@ -181,9 +165,9 @@ coords listában szereplő pontok által alkotott zárt sokszög területe
 
 Vegyük észre, hogy a képlet a kétszeres területre vonatkozik,
 elfelejtettük kettővel osztani a ciklus végére kialakuló értéket.
-Módosítsuk az utolsó sort!
+Módosítsuk az utolsó sort!::
 
-print(abs(area / 2))
+    print(abs(area / 2))
 
 Majd ellenőrizzük, hogy helyes eredményt ad-e a program! Próbálja meg
 más adatokkal is ellenőrizni a programot. Próbáljuk egy a parancssorban
@@ -216,39 +200,24 @@ hosszáig el kell engednünk, de az utolsó pont esetén a *j* értékét
 nullára kell állítanunk. Kitörölhetjük a megismételt kezdőpontot a
 koordinátalistából.
 
-A javított kód:
+A javított kód::
 
-from sys import argv
-
-import numpy as np
-
-# területszámítás koordinátákból
-
-if len(argv) > 1:
-
-coords = list(np.genfromtxt(argv[1], delimiter=","))
-
-else:
-
-coords = [[634110.62, 232422.09],
-
-[634108.23, 232365.96],
-
-[634066.13, 232378.12],
-
-[634062.95, 232457.58],
-
-[634111.68, 232454.93]]
-
-area = 0.0
-
-for i in range(len(coords)):
-
-j = i + 1 if i < len(coords) - 1 else 0
-
-area += (coords[j][0] + coords[i][0]) \* (coords[j][1] - coords[i][1])
-
-print(abs(area/2))
+    from sys import argv
+    import numpy as np
+    # területszámítás koordinátákból
+    if len(argv) > 1:
+        coords = list(np.genfromtxt(argv[1], delimiter=","))
+    else:
+        coords = [[634110.62, 232422.09],
+                  [634108.23, 232365.96],
+                  [634066.13, 232378.12],
+                  [634062.95, 232457.58],
+                  [634111.68, 232454.93]]
+    area = 0.0
+    for i in range(len(coords)):
+        j = i + 1 if i < len(coords) - 1 else 0
+        area += (coords[j][0] + coords[i][0]) \* (coords[j][1] - coords[i][1])
+    print(abs(area/2))
 
 Tesztelje, hogy a program utolsó változata akkor is helyes eredményt ad,
 ha megismétli a kezdőpontot a lista végén.
