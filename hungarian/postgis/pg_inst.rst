@@ -3,6 +3,10 @@ PostgreSQL és PostGIS telepítése
 
 **Összeállította: dr. Siki Zoltán**
 
+**FIGYELEM**
+
+        A dokumentum készítése óta eltelt időben a honlapok elrendezése megváltozott!
+
 Telepítés Windows operációs rendszeren
 --------------------------------------
 
@@ -24,7 +28,7 @@ legmagasabb verziót.
 
         Telepítő kiválasztása
 
-A használt böngésző beállításának megfelelően megjelnhet egy a letöltést
+A használt böngésző beállításának megfelelően megjelenhet egy a letöltést
 megerősítő ablak. Például FireFox esetén a következő.
 
 .. figure:: images/save.png
@@ -40,7 +44,7 @@ PostGIS telepítése
 ~~~~~~~~~~~~~~~~~~
 
 A telepítő program elindítása után egy szokásos telepítő varázsló segít minket.
-Jellenzően elegendő a Next (tovább) gombot megnyomnunk.
+Jellemzően elegendő a Next (tovább) gombot megnyomnunk.
 
 A nyitó képernyőn csak egy üdvözlő szöveg jelenik meg.
 
@@ -49,7 +53,7 @@ A nyitó képernyőn csak egy üdvözlő szöveg jelenik meg.
 
         Telepítő üdvözlő oldala
 
-A kövekező ablakban a telepítés cél könyvtárát állíthjuk be, ha nincs különösebb
+A kövekező ablakban a telepítés cél könyvtárát állíthatjuk be, ha nincs különösebb
 indokunk más könyvtár használatára, fogadjuk el a telepítő által felkínált
 alapértelmezett mappát.
 
@@ -73,7 +77,7 @@ alternatívája.
         Telepítendő komponensek kiválasztása
 
 A varázsló következő lépésében az adatbázis adminisztrátor jelszavát adhatjuk
-meg. Jól jegyezzem meg a megadott jelszót! Ez a telepítés során automatikusan
+meg. Jól jegyezze meg a megadott jelszót! Ez a telepítés során automatikusan
 létrehozott *postgis* felhasználó jelszava lesz. A *postgis* felhasználó
 rendelkezik a rendszergazda jogosultsággal az adatbázis-kezelőben.
 
