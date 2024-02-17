@@ -233,4 +233,9 @@ egyetlen parancsfájlban foglalhatjuk össze:
     # fix track id
     psql < gpx_points2pg_post.sql
 
+Záró gondolatok
+---------------
+
+Ezután A QGIS idővezérlő használatával `szemléletesen nézegetheti az adatok <../qgis/docs/temporal.rst>`_.
+A PostGIS adatbázisban tárolt adatok eléréséhez `itt találhat segítséget <https://forrest.nyc/postgis-and-qgis-in-4-minutes/>`_
 
