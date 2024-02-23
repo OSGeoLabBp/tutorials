@@ -1,6 +1,7 @@
 # tutorials
 Hungarian tutorials for QGIS/Magyar oktatóanyagok QGIS-hez
 
+* [GPU gyorsítás a QGIS-ben](docs/qgis_gpu.rst)
 * [Koordináta lista készítés](docs/coord_list.rst)
 * [Cesium ion modul](docs/cesium_plugin.rst)
 * [QGIS táblakapcsolatok](docs/join_relate.rst)
