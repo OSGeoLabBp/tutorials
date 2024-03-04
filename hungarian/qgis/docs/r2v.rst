@@ -8,6 +8,11 @@ QGIS 3.10/GRASS 7
 Egy kis szintvonalas raszter segítségével mutatom be a raszter-vektor átalakítás lépéseit a
 GRASS GIS segítségével. A GRASS funkciókat a QGIS processing modul segítségével érjük el.
 
+.. nore::
+
+    Az újabb QGIS verziókban (3.24+) a GRASS GIS a feldolgozás eszköztárban csak akkor jelenik meg,
+    ha a modulok között a **GRASS GIS Provider** modult bekapcsolja.
+
 .. note::
 
     A GRASS felhasználóknak megadjuk a megfelelő GRASS parancsokat, melyek egy 
