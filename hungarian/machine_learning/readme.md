@@ -1,4 +1,4 @@
-Gépi tanulás / Machine Learnig
+# Gépi tanulás / Machine Learnig (ML), Mélytanulás / Deep Learning (DL)
 
 Magyar nyelvű oktatóanyagok a gépi tanulás és mély tanulás területéről, nyílt forráskódú Python könyvtárak felhasználásával
 (Scikit-learn, Keras).
