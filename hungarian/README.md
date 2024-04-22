@@ -12,3 +12,4 @@ Magyar nyelvű oktatóanyagok FOSS/FOSS4G szoftverekhez és programozáshoz
 * [QGIS](qgis)
 * [QGIS server](qgis_server)
 * [RANSAC](ransac)
+* [MACHINLE LEARNING](machine-learning)
