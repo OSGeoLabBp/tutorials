@@ -10,3 +10,4 @@ Magyar nyelvű oktatóanyagok a gépi tanulás és mély tanulás területéről
 * [Gépi tanitási módszerek regresszióra](lessons/concrete_keras.ipynb)
 * [Szegmentálás SAM-el](lessons/SAM_img_segmentation_hun.ipynb)
 * [Pontfelhő osztályozás többrétegú neurális hálózat (Multi-Layer Percetron) segítségével](lessons/pc_classification_with_mlp.ipynb)
+* [YOLO5 modell használata Pythonból](lessons/yolo_cv2.ipynb)
