@@ -104,7 +104,7 @@ meg.
 Színezett pontfelhő kinyerése
 -----------------------------
 
-A Meshroom a feldolgozás során *abc* formátumú, szineket nem tartalmazó 
+A Meshroom CUDA a feldolgozás során *abc* formátumú, szineket nem tartalmazó 
 pontfelhőt állít elő, melyet kevés program képes betölteni. 
 Például a CloudCompare programban használható 
 pontfelhő elkészítéséhez az alapértelmezett munkafolyamatot módosítanunk kell.
@@ -121,24 +121,30 @@ A *Describer Types* csoportban válassza ki az *unknown* jelölőnégyzetet. Az
 
 .. image:: images/mr2.png
 
+A Meshroom CL változat esetén a szinezett pontfelhőt az alap munkafolyamatban 
+elkészíti ply formátumban, így nincs szükség konvertálásra. A *dense.ply* fájl 
+tartalmazza a szinezett sűrű pontfelhőt a *MultiviewStrereoCL* elem 
+könyvtárában.
+
 Egy feldolgozás bemutatása
 --------------------------
 
 Egy villa épületről készült felvételek feldolgozását mutatjuk be a
 következőkben. Ötvenöt felvételt használunk fel a feldolgozás során.
 A CL változat esetén a lassabb futási idő miatt nem érdemes 10 képnél többet
-feldolgozni.
+használni.
 Csak a pontfelhőt szeretnénk előállítani, így a térháló szűrését 
 (MeshFiltering) és a textura létrehozását (Texturing) kitörölhetjük a
 munkafolyamatból (a jobb gomb menüből **Remove node(s)**),
-viszont a színezett pontfelhő előállításához szükséges lépést hozzáadtuk.
+viszont a színezett pontfelhő előállításához szükséges lépést csak a CUDA
+verzió esetén kell hozzáadnunk.
 
 .. image:: images/mr3.png
 
 
 A munkafolyamat kialakítása és a képek hozzáadása után mentsük el a projektet.
 Ez azért szükséges, hogy az előállított adatállományokat a futás után is
-megtaláljuk a *MeshroomCache* könyvtárban.
+megtaláljuk a projektet fájlt trtalmazó mappa  *MeshroomCache* alkönyvtárában.
 
 A **Start** gomb megnyomása után várakozzunk a munkafolyamat befejezésére.
 A munka megszakítható a **Stop** gombbal, és újraindítható.
@@ -153,24 +159,33 @@ előrehalad a ritka pontfelhő megjelenik a *3D view* mezőben.
 .. image:: images/mr4.png
 
 A munkafolyamat során létrejött adatállományok a *MeshroomCache* könyvtár
-alkönyvtáraiban jönnek létre. A *MeshroomCache* könyvtár a Meshroom 
-telepítési könyvtárban található. A pontfelhőnket (*sfm.ply*) 
-*ConvertSfmFormat* alatt találjuk meg. Itt minden futtatásnál létrejön egy 
+alkönyvtáraiban jönnek létre. A *MeshroomCache* könyvtár a projekt fájl 
+mappájának alkönyvtárában található. A pontfelhőnket (*sfm.ply*) 
+*ConvertSfmFormat* alatt találjuk meg a CUDA verzióban. A CL verzióban a 
+*MultiviewStereoCL* alatt találjuk meg *fused.ply* névvel. 
+Az elemek nevének megfelelő könyvtárban minden futtatásnál létrejön egy 
 a futtatás azonosítónak megfelelő nevű alkönyvtár (hosszú hexadecimális kód).
 Legkönnyebben úgy találhatja meg a pontfelhőjét, ha a *Graph Editor* mezőben 
-kiválasztja *ConvertSfmFormat* elemet és az attribútumai közül kikeresi az 
+kiválasztja *ConvertSfmFormat* (CUDA) vagy a *MultiviewStereoCL* (CL) elemet és az attribútumai közül kikeresi az 
 *Output* mező értéket. Az fájlok könyvtára közvetlenül is megnyitható a
 fájlkezelőben, ha a megfelelő feldolgozási lépés paraméterei felett, jobb 
 oldalon található három pontra kattint és a menüből kiválasztja az
 *Open Cache Folder* opciót.
 
-A létrejött pontfelhő mérete nem lesz helyes és egy ismeretlen 
-koordináta-rendszerben lesznek a koordinátái. Ezt egy másik programban,
-például a CloudCompareben tudjuk elvégezni.
+A létrejött pontfelhő méretraránya nem lesz helyes és egy ismeretlen 
+koordináta-rendszerben lesznek a koordinátái. A CL változat esetén ezt egy 
+másik programban, például a CloudCompareben tudjuk kijavítani.
 
 .. note::
 
-    A Meshroom program speciális jelekkel megjelölt illesztőpontok esetén képes     automatikusan egy ismert koordináta-rendszerbe transzformálni a pontfelhőt,
-    a térhálót.
+    A Meshroom CUDA változatban a program speciális jelekkel megjelölt
+    illesztőpontok esetén képes automatikusan egy ismert koordináta-rendszerbe 
+    transzformálni a pontfelhőt, a térhálót.
+    Ehhez lást a https://github.com/OSGeoLabBp/tutorials/blob/master/hungarian/meshroom/meshroom_aruco.rst leírást.
 
 .. image:: images/mr5.png
+
+Miután előállítottuk a pontfelhőt, a kép nézegető mezőben meg tudjuk jeleníteni
+az egyes képeken megtalált kulcspontokat.
+
+.. image:: images/mr6.png
