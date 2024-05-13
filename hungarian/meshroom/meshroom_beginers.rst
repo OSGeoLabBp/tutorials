@@ -28,7 +28,11 @@ A munkát a *Meshroom* program indításával kezdheti meg. Ez legegyszerűbben 
 program asztalon található ikonjával történhet.
 
 .. image:: images/mr_icon.png
-   :width: 200
+   :width: 150
+
+.. note:: Figyelem
+
+   A CUDA és CL verzióval létrehozott munkafolyamatok nem konpatibilisek.
 
 Ismerkedés a felhasználói felülettel
 ------------------------------------
@@ -105,7 +109,8 @@ Színezett pontfelhő kinyerése
 -----------------------------
 
 A Meshroom CUDA a feldolgozás során *abc* formátumú, szineket nem tartalmazó 
-pontfelhőt állít elő, melyet kevés program képes betölteni. 
+pontfelhőt állít elő az alapértelmezett munkafolyamatban, 
+melyet kevés program képes betölteni. 
 Például a CloudCompare programban használható 
 pontfelhő elkészítéséhez az alapértelmezett munkafolyamatot módosítanunk kell.
 
@@ -114,7 +119,8 @@ kapcsolja be a *Colorize Output* opciót, hogy színezett pontfelhőt kapjunk.
 
 Addjon hozzá egy új feldolgozási elemet a *Graph Editor* mezőben. Kattintson
 egy üres területre a jobb egérgombbal és a felbukkanó menüben válassza ki a 
-*ConvertSfmFormat* elemet az *Utils* csoportból. A *Meshing* elem *DenseSfmData*pontját húzzuk rá a *ConvertSfmFormat* elem *Input* pontjára. A 
+*ConvertSfmFormat* elemet az *Utils* csoportból. A *Meshing* elem *DenseSfmData*
+pontját húzzuk rá a *ConvertSfmFormat* elem *Input* pontjára. A 
 *ConvertSfmFormat* attribútumait módosítsuk. Az *SfM File Format* legyen *ply*.
 A *Describer Types* csoportban válassza ki az *unknown* jelölőnégyzetet. Az
 *output* mezőben megnézheti illetve módosíthatja a létrehozott fájl nevét.
@@ -122,7 +128,7 @@ A *Describer Types* csoportban válassza ki az *unknown* jelölőnégyzetet. Az
 .. image:: images/mr2.png
 
 A Meshroom CL változat esetén a szinezett pontfelhőt az alap munkafolyamatban 
-elkészíti ply formátumban, így nincs szükség konvertálásra. A *dense.ply* fájl 
+elkészíti *ply* formátumban, így nincs szükség konvertálásra. A *dense.ply* fájl 
 tartalmazza a szinezett sűrű pontfelhőt a *MultiviewStrereoCL* elem 
 könyvtárában.
 
@@ -181,7 +187,7 @@ másik programban, például a CloudCompareben tudjuk kijavítani.
     A Meshroom CUDA változatban a program speciális jelekkel megjelölt
     illesztőpontok esetén képes automatikusan egy ismert koordináta-rendszerbe 
     transzformálni a pontfelhőt, a térhálót.
-    Ehhez lást a https://github.com/OSGeoLabBp/tutorials/blob/master/hungarian/meshroom/meshroom_aruco.rst leírást.
+    Ehhez lásd a https://github.com/OSGeoLabBp/tutorials/blob/master/hungarian/meshroom/meshroom_aruco.rst leírást.
 
 .. image:: images/mr5.png
 
