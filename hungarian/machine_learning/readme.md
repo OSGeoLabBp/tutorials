@@ -5,6 +5,7 @@ Magyar nyelvű oktatóanyagok a gépi tanulás és mély tanulás területéről
 
 * [Bevezetés a gépi tanulási módszerek alkalmazásába](lessons/gita_ml.ipynb)
 * [Kézzel írt jelek osztályozása](lessons/o_x_classification.ipynb)
+* [Csivava vagy muffin?](lessons/csivava.ipynb)
 * [Gépi látás betanított modellek alapján](lessons/machine_vision.ipynb)
 * [Idősorok előrebecslése mély tanulással](lessons/time_series.ipynb)
 * [Gépi tanitási módszerek regresszióra](lessons/concrete_keras.ipynb)
