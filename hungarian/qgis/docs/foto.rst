@@ -54,6 +54,11 @@ ikon használata esetén az azonosítás eredményében megjelenik a fogaskerék
 A **Megnyitás** típusú műveletek mellett
 operációs rendszer függő (Unix, Windows, Mac) illetve Python kódot tartalmazó műveletet is létrehozhatunk.
 
+.. note::
+
+	Az újabb QGIS verziókban már nem található meg a **open** művelet, ebben az esetben az URL megnyitása művelet 
+használható a követkoző URL-el: file:///[%FOT%]
+
 Képek megjelenítése térkép tippel
 ---------------------------------
 
