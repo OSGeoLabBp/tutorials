@@ -48,4 +48,6 @@ követni fogja azt.
 
 .. image:: images/theme4.png
 
+A projekt mentésével a nézetek beállításai is megőrződnek.
+
 2025. február 14.
