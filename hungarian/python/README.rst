@@ -11,6 +11,7 @@ Python oktatóanyagok Python 3.x verziókhoz
 - `Szabályos kifejezések <regexp_in_python.ipynb>`_ (Jupyter notebook)
 - `Parancssori paraméterek <commandlineparameters_hu.ipynb>`_ (Jupyter notebook)
 - `DXF fájlok kezelése Python-ból <dxf_python.ipynb>`_ (Jupyter notebook)
+- `Python térinformatikai programozás <spatial_programming.ipynb>`_ (Jupyter notebook)
 
 Korábbi anyagok
 
