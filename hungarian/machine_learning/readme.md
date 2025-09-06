@@ -12,3 +12,4 @@ Magyar nyelvű oktatóanyagok a gépi tanulás és mély tanulás területéről
 * [Szegmentálás SAM-el](lessons/SAM_img_segmentation_hun.ipynb)
 * [Pontfelhő osztályozás többrétegú neurális hálózat (Multi-Layer Percetron) segítségével](lessons/pc_classification_with_mlp.ipynb)
 * [YOLO modell használata Pythonból](lessons/yolo_cv2.ipynb)
+* [Durvahibák detektálása](lessons/outliers.ipynb)
