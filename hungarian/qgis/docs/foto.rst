@@ -16,7 +16,7 @@ dokumentum (pl. pdf, odt), egy
 kép (jpg, png, stb.) vagy bármilyen olyan fájltípus melynek megnyitására
 alkalmas program van a számítógépünkön. Ebben a kis anyagban fényképeket fogunk
 hozzárendelni az épületekhez és azok megjelenítésére a QGIS fogjuk használni.
-A megoldáshoz a réteghez műveletet fogunk rendelni a réteghez a réteg
+A megoldáshoz műveletet fogunk rendelni a réteghez a réteg
 tulajdonságok ablakban. A következőábrán látható Műegyetem térkép épület
 rétegéhez rendelünk hozzá fotókat.
 
