@@ -5,6 +5,7 @@ Python oktatóanyagok Python 3.x verziókhoz
 - `Hatékony ciklusok <loops.ipynb>`_  (Jupyter notebook)
 - `Vektorizáció <vectorization_hu.ipynb>`_ (Jupyter notebook)
 - `Hatékony algoritmus készítése <effective_algoritm.ipynb>`_ (prim számok, Jupyter notebook)
+- `Esettanulmány Pi értékének kiszámítására <pi.ipynb>`_ (Jupyter notebook)
 - `Az egyszerű algoritmustól, a vektorizáláson át az osztályokig <area.ipynb>`_ (zárt sokszög területe, Jupyter notebook)
 - `NumPy használata <numpy.ipynb>`_ (bevezetés és példák, Jupyter notebook)
 - `Bevezetés a pandas használatába <pandas_tutor_hu.ipynb>`__ (Jupyter notebook)
